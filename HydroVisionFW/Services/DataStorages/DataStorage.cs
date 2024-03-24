@@ -85,9 +85,17 @@ namespace HydroVisionDesign.Services.DataStorages
 
         #region Переменные ДБ
 
+        // для котла
         public int BoilerPerfomance { get; set; } = 0;
         public int BoilerType { get; set; } = 0;
-        public int SelectredItem { get; set; } = 1;
+        public int SelectedBoilerItem { get; set; } = 1;
+
+        // для турбины
+        public int WaterConsumption { get; set; } = 0;
+        public int SelectedTurbineItem { get; set; } = 1;
+
+        // для топлива
+        public int SelectedFuelItem { get; set; } = 1;
 
         #endregion
 

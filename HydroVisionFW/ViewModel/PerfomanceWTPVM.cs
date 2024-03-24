@@ -1,4 +1,5 @@
 ﻿using HydroVisionDesign.Infrastructure.Base;
+using HydroVisionDesign.Services.Calculations;
 using HydroVisionDesign.Services.DataStorages;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,8 @@ namespace HydroVisionDesign.ViewModel
 
         public PerfomanceWTPVM() 
         {
+            Calculations calculations = new Calculations();
+            calculations.RecalculationOfQualityIndicators();
             FillingTextBox();
         }
 

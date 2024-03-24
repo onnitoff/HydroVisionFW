@@ -12,6 +12,9 @@ using MathWater;
 using HydroVisionDesign.Services.Calculations;
 using System.Collections.ObjectModel;
 using HydroVisionFW.Model.DataBaseModel;
+using HydroVisionFW.Model;
+using System.Threading;
+using System.Data.Entity;
 
 namespace HydroVisionDesign.ViewModel
 {
@@ -139,15 +142,6 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _ElectricPower, value);
         }
 
-        private double _BoilerProductivity = DataStorage.Instance.BoilerProductivity;
-
-        /// <summary>Свойство textBox Производительность котла</summary>
-        public double BoilerProductivity
-        {
-            get => _BoilerProductivity;
-            set => Set(ref _BoilerProductivity, value);
-        }
-
         private int _NumberOfBoilers = DataStorage.Instance.NumberOfBoilers;
 
         /// <summary>Свойство textBox Количество котлов</summary>
@@ -157,15 +151,6 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _NumberOfBoilers, value);
         }
 
-        //private int _TurbineType = DataStorage.Instance.TurbineType; // ПОДУМАТЬ НАД БД
-
-        ///// <summary>Свойство textBox Тип турбины</summary>
-        //public int TurbineType
-        //{
-        //    get => _TurbineType;
-        //    set => Set(ref _TurbineType, value);
-        //}
-
         private int _NumberOfTurbines = DataStorage.Instance.NumberOfTurbines;
 
         /// <summary>Свойство textBox Количество турбин</summary>
@@ -174,15 +159,6 @@ namespace HydroVisionDesign.ViewModel
             get => _NumberOfTurbines;
             set => Set(ref _NumberOfTurbines, value);
         }
-
-        //private int _FuelType = DataStorage.Instance.FuelType;
-
-        ///// <summary>Свойство textBox Тип топлива</summary>
-        //public int FuelType
-        //{
-        //    get => _FuelType;
-        //    set => Set(ref _FuelType, value);
-        //}
 
         private double _VacationCouple = DataStorage.Instance.VacationCouple;
 
@@ -215,60 +191,34 @@ namespace HydroVisionDesign.ViewModel
 
         #region Выбор оборудования
 
-        private int _BoilerType;
-
-        /// <summary>Свойство comboBox Тип котла</summary>
-        public int BoilerType
-        {
-            get => _BoilerType;
-            set => Set(ref _BoilerType, value);
-        }
-
-        private int _TurbineType;
-
-        /// <summary>Свойство comboBox Тип турбины</summary>
-        public int TurbineType
-        {
-            get => _TurbineType;
-            set => Set(ref _TurbineType, value);
-        }
-
-        private int _FuelType;
-
-        /// <summary>Свойство comboBox Тип котла</summary>
-        public int FuelType
-        {
-            get => _FuelType;
-            set => Set(ref _FuelType, value);
-        }
-
-        #endregion
-
-
-        #region Коллекции
-
-        private int myVar;
-
-        public int MyProperty
-        {
-            get { return myVar; }
-            set { myVar = value; }
-        }
-
-
         public ObservableCollection<Boilers> BoilerItems { get; set; }
-        private Boilers _SelectedItem;
-        public Boilers SelectredItem
+        private Boilers _SelectedBoilerItem;
+        public Boilers SelectedBoilerItem
         {
-            get => _SelectedItem;
+            get => _SelectedBoilerItem;
 
-            set { Set(ref _SelectedItem, value);
-
-            }
+            set => Set(ref _SelectedBoilerItem, value);
         }
 
+        public ObservableCollection<CoolingWaterFlowOnTurbine> TubineItems { get; set; }
+        private CoolingWaterFlowOnTurbine _SelectedTurbineItem;
+        public CoolingWaterFlowOnTurbine SelectedTurbineItem
+        {
+            get => _SelectedTurbineItem;
+            set => Set(ref _SelectedTurbineItem, value);
+        }
+
+        public ObservableCollection<FuelModel> FuelItems { get; set; }
+        private FuelModel _SelectedFuelItem;
+        public FuelModel SelectedFuelItem
+        {
+            get => _SelectedFuelItem;
+            set => Set(ref _SelectedFuelItem, value);
+        }
 
         #endregion
+
+
 
 
         #region Команды
@@ -309,19 +259,29 @@ namespace HydroVisionDesign.ViewModel
             calculations.RecalculationOfQualityIndicators();
 
             DataStorage.Instance.ElectricPower = ElectricPower;
-            DataStorage.Instance.BoilerProductivity = BoilerProductivity;
+            //DataStorage.Instance.BoilerProductivity = BoilerProductivity;
             DataStorage.Instance.NumberOfBoilers = NumberOfBoilers;
-            DataStorage.Instance.TurbineType = TurbineType;
+            //DataStorage.Instance.TurbineType = TurbineType;
             DataStorage.Instance.NumberOfTurbines = NumberOfTurbines;
-            DataStorage.Instance.FuelType = FuelType;
+            //DataStorage.Instance.FuelType = FuelType;
             DataStorage.Instance.VacationCouple = VacationCouple;
             DataStorage.Instance.Losses = Losses;
             DataStorage.Instance.BlowdownLosses = BlowdownLosses;
+            // запись из бд для котла
+            DataStorage.Instance.SelectedBoilerItem = SelectedBoilerItem.Id;
+            DataStorage.Instance.BoilerType = SelectedBoilerItem.Type;
+            DataStorage.Instance.BoilerProductivity = SelectedBoilerItem.Perfomance;
+
+            // запись из бд для турбины
+            DataStorage.Instance.SelectedTurbineItem = SelectedTurbineItem.Id;
+            DataStorage.Instance.WaterConsumption = (int)SelectedTurbineItem.WaterConsumption;
+
+            // запись для топлива
+            DataStorage.Instance.SelectedFuelItem = SelectedFuelItem.Id;
             calculations.CalculationOfWTPPerformance();
 
-            DataStorage.Instance.SelectredItem = SelectredItem.Id;
-            DataStorage.Instance.BoilerType = SelectredItem.Type;
-            DataStorage.Instance.BoilerProductivity = SelectredItem.Perfomance;
+            
+
 
 
         }
@@ -332,26 +292,42 @@ namespace HydroVisionDesign.ViewModel
         public GivenParametersVM() 
         {
             UnitOfMeasurement = "мг/дм3";
-
+            FillComboBox();
             #region Команды
             ClearTextBoxCommand = new RelayCommand(OnClearTextBoxCommand);
             ApplyCommand = new RelayCommand(OnApplyCommand);
             #endregion
 
+
+        }
+
+        private void FillComboBox()
+        {
             using (var context = new WaterContext())
             {
                 BoilerItems = new ObservableCollection<Boilers>();
-                var boilers = context.Boilers;
+                 var boilers = context.Boilers;
                 foreach (var boiler in boilers)
                 {
                     BoilerItems.Add(boiler);
                 }
                 if (BoilerItems.Count > 0)
-                    SelectredItem = BoilerItems[DataStorage.Instance.SelectredItem - 1];
+                    SelectedBoilerItem = BoilerItems[DataStorage.Instance.SelectedBoilerItem - 1];
+
+                TubineItems = new ObservableCollection<CoolingWaterFlowOnTurbine>();
+                var turbines = context.CoolingWaterFlowOnTurbine;
+                foreach (var turbine in turbines)
+                {
+                    TubineItems.Add(turbine);
+                }
+                if (TubineItems.Count > 0)
+                    SelectedTurbineItem = TubineItems[DataStorage.Instance.SelectedTurbineItem - 1];
             }
 
-
-
+            FuelItems = new ObservableCollection<FuelModel>();
+            FuelItems.Add(new FuelModel { Id = 1, Name = "Газ" });
+            FuelItems.Add(new FuelModel { Id = 2, Name = "Мазут" });
+            SelectedFuelItem = FuelItems[DataStorage.Instance.SelectedFuelItem - 1];
         }
     }
 }
