@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
+                    xmlns:view="clr-namespace:HydroVisionDesign.View">
+
+    <DataTemplate DataType="{x:Type vm:WaterQualityIndicatorsVM}">
+        <view:WaterQualityIndicators/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:PerfomanceWTPVM}">
+        <view:PerfomanceWTP/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:DesaltingPartWTPVM}">
+        <view:DesaltingPartWTP/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:CoolingSystemVM}">
+        <view:CoolingSystem/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:CirculationPumpsVM}">
+        <view:CirculationPumps/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:GivenParametersVM}">
+        <view:GivenParameters/>
+    </DataTemplate>
+
+
+</ResourceDictionary>

@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище WaterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplyingFilter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Boilers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Perfomance" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrandAndPerfomanceClarifiers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Volume" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calciners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Performance" Type="int" Nullable="false" />
+          <Property Name="Diameter" Type="int" Nullable="false" />
+          <Property Name="CrossAreaSections" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="AirFlow" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clarifiers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBrand" Type="int" Nullable="false" />
+          <Property Name="IdForWith" Type="int" Nullable="false" />
+          <Property Name="Perfomance" Type="int" Nullable="false" />
+          <Property Name="Diameter" Type="int" Nullable="false" />
+          <Property Name="Height" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoolingTowers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SquareSpinkler" Type="int" Nullable="false" />
+          <Property Name="PerfomanceMin" Type="int" />
+          <Property Name="PerfomanceMax" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Base" Type="decimal" Precision="10" Scale="1" />
+          <Property Name="Estuary" Type="decimal" Precision="10" Scale="1" />
+        </EntityType>
+        <EntityType Name="CoolingWaterFlowOnTurbine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TurbineType" Type="nvarchar" MaxLength="20" />
+          <Property Name="WaterConsumption" Type="int" />
+        </EntityType>
+        <EntityType Name="Filters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cipheer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdOperatingPressure" Type="int" Nullable="false" />
+          <Property Name="Diameter" Type="int" Nullable="false" />
+          <Property Name="IonExchangerLayerHieght" Type="int" />
+          <Property Name="FilterPerfomance" Type="int" />
+          <Property Name="IdApplyingFilters" Type="int" Nullable="false" />
+          <Property Name="IdFilterTypes" Type="int" />
+        </EntityType>
+        <EntityType Name="FilterType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForWithClarifiers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeOfBoilers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Boilers_TypeOfBoilers">
+          <End Role="TypeOfBoilers" Type="Self.TypeOfBoilers" Multiplicity="1" />
+          <End Role="Boilers" Type="Self.Boilers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfBoilers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Boilers">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filters_ApplyingFilter">
+          <End Role="ApplyingFilter" Type="Self.ApplyingFilter" Multiplicity="1" />
+          <End Role="Filters" Type="Self.Filters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplyingFilter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Filters">
+              <PropertyRef Name="IdApplyingFilters" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filters_FilterType">
+          <End Role="FilterType" Type="Self.FilterType" Multiplicity="0..1" />
+          <End Role="Filters" Type="Self.Filters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilterType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Filters">
+              <PropertyRef Name="IdFilterTypes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище WaterModelContainer">
+          <EntitySet Name="ApplyingFilter" EntityType="Self.ApplyingFilter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Boilers" EntityType="Self.Boilers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandAndPerfomanceClarifiers" EntityType="Self.BrandAndPerfomanceClarifiers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calciners" EntityType="Self.Calciners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clarifiers" EntityType="Self.Clarifiers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoolingTowers" EntityType="Self.CoolingTowers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoolingWaterFlowOnTurbine" EntityType="Self.CoolingWaterFlowOnTurbine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Filters" EntityType="Self.Filters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilterType" EntityType="Self.FilterType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForWithClarifiers" EntityType="Self.ForWithClarifiers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfBoilers" EntityType="Self.TypeOfBoilers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Boilers_TypeOfBoilers" Association="Self.FK_Boilers_TypeOfBoilers">
+            <End Role="TypeOfBoilers" EntitySet="TypeOfBoilers" />
+            <End Role="Boilers" EntitySet="Boilers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filters_ApplyingFilter" Association="Self.FK_Filters_ApplyingFilter">
+            <End Role="ApplyingFilter" EntitySet="ApplyingFilter" />
+            <End Role="Filters" EntitySet="Filters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filters_FilterType" Association="Self.FK_Filters_FilterType">
+            <End Role="FilterType" EntitySet="FilterType" />
+            <End Role="Filters" EntitySet="Filters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WaterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplyingFilter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Filters" Relationship="Self.FK_Filters_ApplyingFilter" FromRole="ApplyingFilter" ToRole="Filters" />
+        </EntityType>
+        <EntityType Name="Boilers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Perfomance" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypeOfBoilers" Relationship="Self.FK_Boilers_TypeOfBoilers" FromRole="Boilers" ToRole="TypeOfBoilers" />
+        </EntityType>
+        <EntityType Name="BrandAndPerfomanceClarifiers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Volume" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calciners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Performance" Type="Int32" Nullable="false" />
+          <Property Name="Diameter" Type="Int32" Nullable="false" />
+          <Property Name="CrossAreaSections" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="AirFlow" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clarifiers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBrand" Type="Int32" Nullable="false" />
+          <Property Name="IdForWith" Type="Int32" Nullable="false" />
+          <Property Name="Perfomance" Type="Int32" Nullable="false" />
+          <Property Name="Diameter" Type="Int32" Nullable="false" />
+          <Property Name="Height" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoolingTowers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SquareSpinkler" Type="Int32" Nullable="false" />
+          <Property Name="PerfomanceMin" Type="Int32" />
+          <Property Name="PerfomanceMax" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Base" Type="Decimal" Precision="10" Scale="1" />
+          <Property Name="Estuary" Type="Decimal" Precision="10" Scale="1" />
+        </EntityType>
+        <EntityType Name="CoolingWaterFlowOnTurbine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TurbineType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WaterConsumption" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Filters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cipheer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdOperatingPressure" Type="Int32" Nullable="false" />
+          <Property Name="Diameter" Type="Int32" Nullable="false" />
+          <Property Name="IonExchangerLayerHieght" Type="Int32" />
+          <Property Name="FilterPerfomance" Type="Int32" />
+          <Property Name="IdApplyingFilters" Type="Int32" Nullable="false" />
+          <Property Name="IdFilterTypes" Type="Int32" />
+          <NavigationProperty Name="ApplyingFilter" Relationship="Self.FK_Filters_ApplyingFilter" FromRole="Filters" ToRole="ApplyingFilter" />
+          <NavigationProperty Name="FilterType" Relationship="Self.FK_Filters_FilterType" FromRole="Filters" ToRole="FilterType" />
+        </EntityType>
+        <EntityType Name="FilterType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Filters" Relationship="Self.FK_Filters_FilterType" FromRole="FilterType" ToRole="Filters" />
+        </EntityType>
+        <EntityType Name="ForWithClarifiers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeOfBoilers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Boilers" Relationship="Self.FK_Boilers_TypeOfBoilers" FromRole="TypeOfBoilers" ToRole="Boilers" />
+        </EntityType>
+        <Association Name="FK_Filters_ApplyingFilter">
+          <End Role="ApplyingFilter" Type="Self.ApplyingFilter" Multiplicity="1" />
+          <End Role="Filters" Type="Self.Filters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplyingFilter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Filters">
+              <PropertyRef Name="IdApplyingFilters" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Boilers_TypeOfBoilers">
+          <End Role="TypeOfBoilers" Type="Self.TypeOfBoilers" Multiplicity="1" />
+          <End Role="Boilers" Type="Self.Boilers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfBoilers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Boilers">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Filters_FilterType">
+          <End Role="FilterType" Type="Self.FilterType" Multiplicity="0..1" />
+          <End Role="Filters" Type="Self.Filters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilterType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Filters">
+              <PropertyRef Name="IdFilterTypes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WaterContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplyingFilter" EntityType="Self.ApplyingFilter" />
+          <EntitySet Name="Boilers" EntityType="Self.Boilers" />
+          <EntitySet Name="BrandAndPerfomanceClarifiers" EntityType="Self.BrandAndPerfomanceClarifiers" />
+          <EntitySet Name="Calciners" EntityType="Self.Calciners" />
+          <EntitySet Name="Clarifiers" EntityType="Self.Clarifiers" />
+          <EntitySet Name="CoolingTowers" EntityType="Self.CoolingTowers" />
+          <EntitySet Name="CoolingWaterFlowOnTurbine" EntityType="Self.CoolingWaterFlowOnTurbine" />
+          <EntitySet Name="Filters" EntityType="Self.Filters" />
+          <EntitySet Name="FilterType" EntityType="Self.FilterType" />
+          <EntitySet Name="ForWithClarifiers" EntityType="Self.ForWithClarifiers" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeOfBoilers" EntityType="Self.TypeOfBoilers" />
+          <AssociationSet Name="FK_Filters_ApplyingFilter" Association="Self.FK_Filters_ApplyingFilter">
+            <End Role="ApplyingFilter" EntitySet="ApplyingFilter" />
+            <End Role="Filters" EntitySet="Filters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Boilers_TypeOfBoilers" Association="Self.FK_Boilers_TypeOfBoilers">
+            <End Role="TypeOfBoilers" EntitySet="TypeOfBoilers" />
+            <End Role="Boilers" EntitySet="Boilers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Filters_FilterType" Association="Self.FK_Filters_FilterType">
+            <End Role="FilterType" EntitySet="FilterType" />
+            <End Role="Filters" EntitySet="Filters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище WaterModelContainer" CdmEntityContainer="WaterContext">
+          <EntitySetMapping Name="ApplyingFilter">
+            <EntityTypeMapping TypeName="WaterModel.ApplyingFilter">
+              <MappingFragment StoreEntitySet="ApplyingFilter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Boilers">
+            <EntityTypeMapping TypeName="WaterModel.Boilers">
+              <MappingFragment StoreEntitySet="Boilers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Perfomance" ColumnName="Perfomance" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandAndPerfomanceClarifiers">
+            <EntityTypeMapping TypeName="WaterModel.BrandAndPerfomanceClarifiers">
+              <MappingFragment StoreEntitySet="BrandAndPerfomanceClarifiers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calciners">
+            <EntityTypeMapping TypeName="WaterModel.Calciners">
+              <MappingFragment StoreEntitySet="Calciners">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Performance" ColumnName="Performance" />
+                <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+                <ScalarProperty Name="CrossAreaSections" ColumnName="CrossAreaSections" />
+                <ScalarProperty Name="AirFlow" ColumnName="AirFlow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clarifiers">
+            <EntityTypeMapping TypeName="WaterModel.Clarifiers">
+              <MappingFragment StoreEntitySet="Clarifiers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
+                <ScalarProperty Name="IdForWith" ColumnName="IdForWith" />
+                <ScalarProperty Name="Perfomance" ColumnName="Perfomance" />
+                <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoolingTowers">
+            <EntityTypeMapping TypeName="WaterModel.CoolingTowers">
+              <MappingFragment StoreEntitySet="CoolingTowers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SquareSpinkler" ColumnName="SquareSpinkler" />
+                <ScalarProperty Name="PerfomanceMin" ColumnName="PerfomanceMin" />
+                <ScalarProperty Name="PerfomanceMax" ColumnName="PerfomanceMax" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Base" ColumnName="Base" />
+                <ScalarProperty Name="Estuary" ColumnName="Estuary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoolingWaterFlowOnTurbine">
+            <EntityTypeMapping TypeName="WaterModel.CoolingWaterFlowOnTurbine">
+              <MappingFragment StoreEntitySet="CoolingWaterFlowOnTurbine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TurbineType" ColumnName="TurbineType" />
+                <ScalarProperty Name="WaterConsumption" ColumnName="WaterConsumption" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Filters">
+            <EntityTypeMapping TypeName="WaterModel.Filters">
+              <MappingFragment StoreEntitySet="Filters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cipheer" ColumnName="Cipheer" />
+                <ScalarProperty Name="IdOperatingPressure" ColumnName="IdOperatingPressure" />
+                <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+                <ScalarProperty Name="IonExchangerLayerHieght" ColumnName="IonExchangerLayerHieght" />
+                <ScalarProperty Name="FilterPerfomance" ColumnName="FilterPerfomance" />
+                <ScalarProperty Name="IdApplyingFilters" ColumnName="IdApplyingFilters" />
+                <ScalarProperty Name="IdFilterTypes" ColumnName="IdFilterTypes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FilterType">
+            <EntityTypeMapping TypeName="WaterModel.FilterType">
+              <MappingFragment StoreEntitySet="FilterType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForWithClarifiers">
+            <EntityTypeMapping TypeName="WaterModel.ForWithClarifiers">
+              <MappingFragment StoreEntitySet="ForWithClarifiers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WaterModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfBoilers">
+            <EntityTypeMapping TypeName="WaterModel.TypeOfBoilers">
+              <MappingFragment StoreEntitySet="TypeOfBoilers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

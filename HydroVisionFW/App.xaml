@@ -1,0 +1,16 @@
+﻿<Application x:Class="HydroVisionFW.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HydroVisionFW"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Infrastructure/Styles/Button.xaml"/>
+                <ResourceDictionary Source="Infrastructure/Styles/Page.xaml"/>
+                <ResourceDictionary Source="Infrastructure/Styles/Text.xaml"/>
+                <ResourceDictionary Source="Infrastructure/DataTemplates/DataTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

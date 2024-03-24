@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="HydroVisionDesign.View.PerfomanceWTP"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="600"
+             d:DesignWidth="660"
+             Style="{StaticResource Page_Style}">
+    <UserControl.DataContext>
+        <vm:PerfomanceWTPVM/>
+    </UserControl.DataContext>
+    <Grid>
+        <Border>
+            <Border.Background>
+                <SolidColorBrush Color="BlanchedAlmond"/>
+            </Border.Background>
+        </Border>
+
+        <StackPanel Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+            </Grid>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Расчет производительности ВПУ для подпитки основного цикла" VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Внутренние потери:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=InternalLosses}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Запас:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Stock}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Производительность ВПУ для подпитки основного цикла:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=PerfomanceWTPToFeedMainCycle}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Производительность ВПУ для подпитки тепловых сетей" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=PerfomanceWTPToFeedHeatingNetwork}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,212 @@
+﻿<UserControl x:Class="HydroVisionDesign.View.WaterQualityIndicators"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="1450" 
+             d:DesignWidth="660"
+             Style="{StaticResource Page_Style}">
+    <UserControl.DataContext>
+        <vm:WaterQualityIndicatorsVM/>
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Border>
+            <Border.Background>
+                <SolidColorBrush Color="DarkOliveGreen"/>
+            </Border.Background>
+        </Border>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <DockPanel Margin="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Пересчет показателей качества воды" VerticalAlignment="Top"/>
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding Path=WaterIndicators}"
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            GridLinesVisibility="Vertical"
+                            VerticalGridLinesBrush="DarkGray"
+                            AlternatingRowBackground="LightGray"
+                            EnableRowVirtualization="True"
+                            IsReadOnly="True"
+                            HorizontalAlignment="Center">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Показатель" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="мг/дм3" Binding="{Binding InitialUnit}" Width="*"/>
+                            <DataGridTextColumn Header="Эквивалент" Binding="{Binding Eq}" Width="*"/>
+                            <DataGridTextColumn Header="мг-экв/дм3" Binding="{Binding FinalUnit}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Суммарное содержание катионов:" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=TotalCationContent}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                    <TextBlock Grid.Row="4" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Суммарное содержание анионов:" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=TotalAnionContent}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                    <TextBlock Grid.Row="6" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Общая щелочность поверхностных вод:" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=TotalAlkalinity}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                    <TextBlock Grid.Row="8" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Некарбонатная жесткость:" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=NonCarbonateHardness}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                    <TextBlock Grid.Row="10" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Сумма анионов сильных кислот:" VerticalAlignment="Top"/>
+                    <TextBox Grid.Row="11" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=SumOfStrongAcidAnions}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                    <StackPanel Grid.Row="12" Visibility="{Binding Path=IsHiddenAl, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Жесткость карбонатная остаточная:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ResidualHardnessCarbonate}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="2" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Жесткость некарбонатная остаточная:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ResidualHardnessNoCarbonate}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="4" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Жесткость общая остаточная:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ResidualOverallHarndess}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="6" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Щелочность остаточная:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ResidualAlkalinity}" VerticalAlignment="Top" Width="500" Height="30"/>
+                            
+                            <TextBlock Grid.Row="8" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Концентрация кремниевой кислоты:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=SilicicAcidConcentration}" VerticalAlignment="Top" Width="500" Height="30"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="12" Visibility="{Binding IsHiddenFe, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Жесткость карбонатная остаточная:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ResidualHardnessCarbonate}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="2" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Жесткость некарбонатная остаточная:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ResidualHardnessNoCarbonate}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="4" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Жесткость общая остаточная:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ResidualOverallHarndess}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="6" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Концентрация сульфатов:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ConcentrationSO}" VerticalAlignment="Top" Width="500" Height="30"/>
+                            
+                            <TextBlock Grid.Row="8" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Щелочность остаточная:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ResidualAlkalinity}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="10" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Концентрация кремниевой кислоты:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="11" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=SilicicAcidConcentration}" VerticalAlignment="Top" Width="500" Height="30"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="13">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Пересчет показателей по ионообменной части схемы" VerticalAlignment="Top"/>
+
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="На Н-фильтрах первой ступени катионы удаляются в количестве:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=CationOnFirstStageFilter}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="3" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="На Н-фильтрах второй ступени катионы удаляются в количестве:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=CationOnSecondStageFilter}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                            <TextBlock Grid.Row="5" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Количество CO2 после декарбонизатора:" VerticalAlignment="Top"/>
+                            <TextBox Grid.Row="6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=ConcentrationCOBeforeDecarbonizer}" VerticalAlignment="Top" Width="500" Height="30"/>
+                           
+                            <Grid Grid.Row="7" Visibility="{Binding Path=IsHiddenSimplified, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="На А-фильтрах второй упрощенной ступени анионы удаляются в количестве:" VerticalAlignment="Top"/>
+                                <TextBox Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=AnionOnSecondStageFilterSimplified}" VerticalAlignment="Top" Width="500" Height="30"/>
+                            </Grid>
+
+                            <Grid Grid.Row="7" Visibility="{Binding Path=IsHiddenTwoStage, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="На А-фильтрах первой ступени анионы сильных кислот удаляются в количестве:" VerticalAlignment="Top"/>
+                                <TextBox Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=AnionOnFirstStageFilter}" VerticalAlignment="Top" Width="500" Height="30"/>
+
+                                <TextBlock Grid.Row="2" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="На А-фильтрах второй ступени анионы слабых кислот и оставшийся после декарбонизатора CO2 удаляются в количестве:" VerticalAlignment="Top"/>
+                                <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=AnionOnSecondStageFilter}" VerticalAlignment="Top" Width="500" Height="30"/>
+                            </Grid>
+
+                            <Grid Grid.Row="8" Visibility="{Binding IsHiddenCentralHeating, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="На Na-фильтрах катионы удаляются в количестве:" VerticalAlignment="Top"/>
+                                <TextBox Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=NaCationOnFilter}" VerticalAlignment="Top" Width="500" Height="30"/>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+
+                </Grid>
+
+            </DockPanel>
+        </ScrollViewer>
+        
+        
+    </Grid>
+</UserControl>
