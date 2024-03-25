@@ -292,38 +292,56 @@ namespace HydroVisionDesign.ViewModel
         public GivenParametersVM() 
         {
             UnitOfMeasurement = "мг/дм3";
-            FillComboBox();
+
             #region Команды
             ClearTextBoxCommand = new RelayCommand(OnClearTextBoxCommand);
             ApplyCommand = new RelayCommand(OnApplyCommand);
             #endregion
 
-
+            Task.Run(async () => await GetBoilersAsync());
+            Task.Run(async () => await GetTurbineAsync());
+            //InitializeAsync();
+            GetFuel();
         }
 
-        private void FillComboBox()
+        
+        private async Task GetBoilersAsync()
         {
+            BoilerItems = new ObservableCollection<Boilers>();
             using (var context = new WaterContext())
             {
-                BoilerItems = new ObservableCollection<Boilers>();
-                 var boilers = context.Boilers;
-                foreach (var boiler in boilers)
+                await context.Boilers.ForEachAsync(boiler =>
                 {
-                    BoilerItems.Add(boiler);
-                }
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        BoilerItems.Add(boiler);
+
+                    });
+                });
                 if (BoilerItems.Count > 0)
                     SelectedBoilerItem = BoilerItems[DataStorage.Instance.SelectedBoilerItem - 1];
+            }
+        }
 
-                TubineItems = new ObservableCollection<CoolingWaterFlowOnTurbine>();
-                var turbines = context.CoolingWaterFlowOnTurbine;
-                foreach (var turbine in turbines)
+        private async Task GetTurbineAsync()
+        {
+            TubineItems = new ObservableCollection<CoolingWaterFlowOnTurbine>();
+            using (var context = new WaterContext())
+            {
+                await context.CoolingWaterFlowOnTurbine.ForEachAsync(turbine =>
                 {
-                    TubineItems.Add(turbine);
-                }
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        TubineItems.Add(turbine);
+                    });
+                });
                 if (TubineItems.Count > 0)
                     SelectedTurbineItem = TubineItems[DataStorage.Instance.SelectedTurbineItem - 1];
             }
+        }
 
+        private void GetFuel()
+        {
             FuelItems = new ObservableCollection<FuelModel>();
             FuelItems.Add(new FuelModel { Id = 1, Name = "Газ" });
             FuelItems.Add(new FuelModel { Id = 2, Name = "Мазут" });
