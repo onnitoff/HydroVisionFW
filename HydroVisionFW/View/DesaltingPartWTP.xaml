@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="600"
              d:DesignWidth="1000"
@@ -20,8 +21,18 @@
             <Border.Background>
                 <SolidColorBrush Color="#FF7654"/>
             </Border.Background>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </Border>
         <Grid>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="250"/>

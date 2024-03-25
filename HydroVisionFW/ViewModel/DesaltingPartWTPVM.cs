@@ -34,13 +34,22 @@ namespace HydroVisionDesign.ViewModel
         }
         #endregion
 
-        #region LeftBtnA1Command
-        /// <summary>Кнопка очистки всех textBox</summary>
+        #region LeftDoubleBtnA1Command
+        /// <summary>Нажатие дабл левой кнопки по А1</summary>
         public ICommand LeftDoubleBtnA1Command { get; }
         private void OnLeftDoubleBtnA1Command(object obj)
         {
             FilterA1Window filterA1 = new FilterA1Window();
             filterA1.Show();
+        }
+        #endregion
+
+        #region LeftBtnGridCommand
+        /// <summary>Нажатие левой кнопки по Grid </summary>
+        public ICommand LeftBtnGridCommand { get; }
+        private void OnLeftBtnGridCommand(object obj)
+        {
+            IsHiddenProperty = false;
         }
         #endregion
 
@@ -50,6 +59,7 @@ namespace HydroVisionDesign.ViewModel
             #region Команды
             LeftBtnA1Command = new RelayCommand(OnLeftBtnA1Command);
             LeftDoubleBtnA1Command = new RelayCommand(OnLeftDoubleBtnA1Command);
+            LeftBtnGridCommand = new RelayCommand(OnLeftBtnGridCommand);
             #endregion
 
         }

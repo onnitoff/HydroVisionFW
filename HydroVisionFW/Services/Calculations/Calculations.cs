@@ -141,6 +141,8 @@ namespace HydroVisionDesign.Services.Calculations
 
             DataStorage.Instance.PerfomanceWTPForHeatingSystem = perfomance.ProductivityWTPForHeatingSystem(
                 DataStorage.Instance.WaterConsumptionForNetworkHeaters);
+
+            DataStorage.Instance.PerfomanceWTP = DataStorage.Instance.PerfomanceWTPForHeatingSystem;
         }
 
         private void DesaltedWaterSupplyCalc()

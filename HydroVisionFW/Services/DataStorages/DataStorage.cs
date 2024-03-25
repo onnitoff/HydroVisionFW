@@ -135,6 +135,10 @@ namespace HydroVisionDesign.Services.DataStorages
         /// <summary>Для тепловых сетей</summary>
         public double PerfomanceWTPForHeatingSystem { get; set; } = 0;
 
+        public double PerfomanceWTP { get; set; } = 0;
+
         #endregion
+
+        
     }
 }
