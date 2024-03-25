@@ -11,6 +11,18 @@ namespace HydroVisionDesign.ViewModel
 {
     internal class PerfomanceWTPVM : ViewModelBase
     {
+        #region Свойство Hidden
+        /// <summary>Свойство для открытия и сокрытия элементов xaml DirectFlow</summary>
+        private bool _IsHiddenDirectFlow = true;
+
+        public bool IsHiddenDirectFlow
+        {
+            get => _IsHiddenDirectFlow;
+            set => Set(ref _IsHiddenDirectFlow, value);
+        }
+        #endregion
+
+        #region Свойство textBox 
         /// <summary>Свойство textBox Внутренние потери</summary>
         private string _InternalLosses;
 
@@ -46,6 +58,7 @@ namespace HydroVisionDesign.ViewModel
             get => _PerfomanceWTPToFeedHeatingNetwork;
             set => Set(ref _PerfomanceWTPToFeedHeatingNetwork, value);
         }
+        #endregion
 
         public PerfomanceWTPVM() 
         {

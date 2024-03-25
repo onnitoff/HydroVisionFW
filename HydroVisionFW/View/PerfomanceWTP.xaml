@@ -6,11 +6,16 @@
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="600"
-             d:DesignWidth="660"
+             d:DesignWidth="1000"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:PerfomanceWTPVM/>
     </UserControl.DataContext>
+    
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    
     <Grid>
         <Border>
             <Border.Background>
@@ -19,8 +24,13 @@
         </Border>
 
         <StackPanel Margin="20">
-            <Grid>
+            <Grid Visibility="{Binding IsHiddenDirectFlow, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -29,20 +39,21 @@
                 </Grid.RowDefinitions>
 
 
-            </Grid>
+           
             <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Расчет производительности ВПУ для подпитки основного цикла" VerticalAlignment="Top"/>
 
-            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Внутренние потери:" VerticalAlignment="Top"/>
-            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=InternalLosses}" VerticalAlignment="Top" Width="500" Height="30"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Внутренние потери:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=InternalLosses}" VerticalAlignment="Top" Width="500" Height="30"/>
 
-            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Запас:" VerticalAlignment="Top"/>
-            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Stock}" VerticalAlignment="Top" Width="500" Height="30"/>
+            <TextBlock Grid.Row="3" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Запас:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Stock}" VerticalAlignment="Top" Width="500" Height="30"/>
 
-            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Производительность ВПУ для подпитки основного цикла:" VerticalAlignment="Top"/>
-            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=PerfomanceWTPToFeedMainCycle}" VerticalAlignment="Top" Width="500" Height="30"/>
+            <TextBlock Grid.Row="5" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Производительность ВПУ для подпитки основного цикла:" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=PerfomanceWTPToFeedMainCycle}" VerticalAlignment="Top" Width="500" Height="30"/>
 
-            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Производительность ВПУ для подпитки тепловых сетей" VerticalAlignment="Top"/>
-            <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=PerfomanceWTPToFeedHeatingNetwork}" VerticalAlignment="Top" Width="500" Height="30"/>
+            <TextBlock Grid.Row="7" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Производительность ВПУ для подпитки тепловых сетей" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="8" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=PerfomanceWTPToFeedHeatingNetwork}" VerticalAlignment="Top" Width="500" Height="30"/>
+            </Grid>
 
         </StackPanel>
     </Grid>

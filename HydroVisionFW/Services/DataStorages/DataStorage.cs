@@ -109,7 +109,6 @@ namespace HydroVisionDesign.Services.DataStorages
         public double ElectricPower { get; set; } = 0;
         public int NumberOfBoilersFirst { get; set; } = 0;
         public int NumberOfBoilersSecond { get; set; } = 0;
-        public int TurbineType { get; set; } = 0;
         public int NumberOfTurbinesFirst { get; set; } = 0;
         public int NumberOfTurbinesSecond { get; set; } = 0;
         public int FuelType { get; set; } = 0;

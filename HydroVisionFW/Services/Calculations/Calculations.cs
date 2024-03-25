@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HydroVisionDesign.Services.Calculations
 {
@@ -139,6 +140,20 @@ namespace HydroVisionDesign.Services.Calculations
 
             DataStorage.Instance.PerfomanceWTPForHeatingSystem = perfomance.ProductivityWTPForHeatingSystem(
                 DataStorage.Instance.WaterConsumptionForNetworkHeaters);
+        }
+
+        private void DesaltedWaterSupplyCalc()
+        {
+            if (DataStorage.Instance.BoilerTypeFirst == 1)
+            {
+                DataStorage.Instance.DesaltedWaterSupply = 25;
+            }
+
+            if (DataStorage.Instance.BoilerTypeFirst == 2)
+            {
+                if(DataStorage.Instance.)
+            }
+
         }
     }
 }
