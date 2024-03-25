@@ -26,6 +26,7 @@ namespace HydroVisionFW.Services.DataStorages
 
         /// <summary>Переменные ФСД</summary>
         #region Filter_AA
+
         public double F {  get; set; }
         public double w { get; set; }
         public double f_p { get; set; }
@@ -60,11 +61,6 @@ namespace HydroVisionFW.Services.DataStorages
         public double G_cutA { get; set; }
 
         public double Q_br { get; set; }
-
-
-
-
-
 
         #endregion
     }

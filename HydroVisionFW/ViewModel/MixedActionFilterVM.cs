@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace HydroVisionFW.ViewModel
 {
-    internal class MixingActionFilterVM
+    internal class MixedActionFilterVM
     {
-        public MixingActionFilterVM() { }
+        public MixedActionFilterVM() { }
     }
 }

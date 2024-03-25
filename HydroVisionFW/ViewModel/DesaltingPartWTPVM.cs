@@ -1,5 +1,7 @@
 ﻿using HydroVisionDesign.Infrastructure.Base;
 using HydroVisionDesign.Infrastructure.Commands;
+using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Services.DataStorages;
 using HydroVisionFW.View;
 using System;
 using System.Collections.Generic;
@@ -17,13 +19,22 @@ namespace HydroVisionDesign.ViewModel
     {
         #region Свойство Hidden
 
-        private bool _IsHiddenFAAProperty = false;
-        /// <summary>Свойство для открытия и сокрытия элементов xaml DirectFlow</summary>
-        public bool IsHiddenFAAProperty
+        private bool _IsHiddenA1Property = false;
+        /// <summary>Свойство для скрытия свойств A1/summary>
+        public bool IsHiddenA1Property
         {
-            get => _IsHiddenFAAProperty;
-            set => Set(ref _IsHiddenFAAProperty, value);
+            get => _IsHiddenA1Property;
+            set => Set(ref _IsHiddenA1Property, value);
         }
+
+        private bool _IsHiddenMAFProperty = false;
+        /// <summary>Свойство для скрытия свойств ФСД</summary>
+        public bool IsHiddenMAFProperty
+        {
+            get => _IsHiddenMAFProperty;
+            set => Set(ref _IsHiddenMAFProperty, value);
+        }
+
         #endregion
 
         #region Свойство textBox 
@@ -206,7 +217,7 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftBtnA1Command { get; }
         private void OnLeftBtnA1Command(object obj)
         {
-            IsHiddenFAAProperty = true;
+            IsHiddenA1Property = true;
         }
         #endregion
 
@@ -220,24 +231,76 @@ namespace HydroVisionDesign.ViewModel
         }
         #endregion
 
+        #region LeftBtnMAFCommand
+        /// <summary>Нажатие левой кнопки по ФСД</summary>
+        public ICommand LeftBtnMAFCommand { get; }
+        private void OnLeftBtnMAFCommand(object obj)
+        {
+            IsHiddenMAFProperty = true;
+        }
+        #endregion
+
+        #region LeftDoubleBtnCommand
+        /// <summary>Нажатие дабл левой кнопки по ФСД</summary>
+        public ICommand LeftDoubleBtnMAFCommand { get; }
+        private void OnLeftDoubleBtnMAFCommand(object obj)
+        {
+            MixedActionFilterWindow filter = new MixedActionFilterWindow();
+            filter.Show();
+        }
+        #endregion
+
         #region LeftBtnGridCommand
         /// <summary>Нажатие левой кнопки по Grid </summary>
         public ICommand LeftBtnGridCommand { get; }
         private void OnLeftBtnGridCommand(object obj)
         {
-            IsHiddenFAAProperty = false;
+            IsHiddenA1Property = false;
+            IsHiddenMAFProperty = false;
         }
         #endregion
 
         #endregion
+
+
         public DesaltingPartWTPVM() 
         {
             #region Команды
             LeftBtnA1Command = new RelayCommand(OnLeftBtnA1Command);
             LeftDoubleBtnA1Command = new RelayCommand(OnLeftDoubleBtnA1Command);
+
+            LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
+            LeftDoubleBtnMAFCommand = new RelayCommand(OnLeftDoubleBtnMAFCommand);
+
             LeftBtnGridCommand = new RelayCommand(OnLeftBtnGridCommand);
             #endregion
 
+        }
+
+
+        private void FillTextBoxMAF()
+        {
+            FiltrationArea = MAFStorage.Instance.F;
+            FiltrationSpeed = MAFStorage.Instance.w;
+            WaterConsumptionPerFilter = DataStorage.Instance.PerfomanceWTP;
+            FiltrationAreaOfEachFilter = MAFStorage.Instance.f_p;
+            DesignFilterDiameter = MAFStorage.Instance.d_p;
+            FilterArea = MAFStorage.Instance.f_ct;
+            FilterCycleDuration = MAFStorage.Instance.T_FAA;
+            NumberOfRegenerationsPerDay = MAFStorage.Instance.n;
+            VolumeOfIonExchangeMaterialsInOneFilter = MAFStorage.Instance.V_vl;
+            VolumeOfIonExchangeMaterialsInOneFilterCationOrAnion = MAFStorage.Instance.V_vlK;
+            VolumeOfIonExchangeMaterialsInGroupFilter = MAFStorage.Instance.SumV_vl;
+            VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion = MAFStorage.Instance.SumV_vlK;
+            WaterConsumptionForOwnNeedsCation = MAFStorage.Instance.g_cnK;
+            ConsumptionOfChemicalReagentsCation = MAFStorage.Instance.G_100pK;
+            TechnicalProductConsumptionCation = MAFStorage.Instance.G_texK;
+            DailyConsumptionOfChemicalReagentCation = MAFStorage.Instance.G_cutK;
+            WaterConsumptionForOwnNeedsAnion = MAFStorage.Instance.g_cnA;
+            ConsumptionOfChemicalReagentsAnion = MAFStorage.Instance.G_100pA;
+            TechnicalProductConsumptionAnion = MAFStorage.Instance.G_texA;
+            DailyConsumptionOfChemicalReagentAnion = MAFStorage.Instance.G_cutA;
+            WaterConsumptionForNextGroupOfFilters = MAFStorage.Instance.Q_br;
         }
     }
 }

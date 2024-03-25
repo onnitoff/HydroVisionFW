@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HydroVisionFW.View
 {
     /// <summary>
-    /// Логика взаимодействия для MixingActionFIlter.xaml
+    /// Логика взаимодействия для MixedActionFilterWindow.xaml
     /// </summary>
-    public partial class MixingActionFIlter : UserControl
+    public partial class MixedActionFilterWindow : Window
     {
-        public MixingActionFIlter()
+        public MixedActionFilterWindow()
         {
             InitializeComponent();
         }
