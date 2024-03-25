@@ -86,13 +86,18 @@ namespace HydroVisionDesign.Services.DataStorages
         #region Переменные ДБ
 
         // для котла
-        public int BoilerPerfomance { get; set; } = 0;
-        public int BoilerType { get; set; } = 0;
-        public int SelectedBoilerItem { get; set; } = 1;
+        public int BoilerPerfomanceFirst { get; set; } = 0;
+        public int BoilerTypeFirst { get; set; } = 0;
+        public int BoilerPerfomanceSecond { get; set; } = 0;
+        public int BoilerTypeSecond { get; set; } = 0;
+        public int SelectedBoilerFirstItem { get; set; } = 1;
+        public int SelectedBoilerSecondItem { get; set; } = 1;
 
         // для турбины
-        public int WaterConsumption { get; set; } = 0;
-        public int SelectedTurbineItem { get; set; } = 1;
+        public int WaterConsumptionFirst { get; set; } = 0;
+        public int SelectedTurbineFirstItem { get; set; } = 1;
+        public int WaterConsumptionSecond { get; set; } = 0;
+        public int SelectedTurbineSecondItem { get; set; } = 1;
 
         // для топлива
         public int SelectedFuelItem { get; set; } = 1;
@@ -102,10 +107,11 @@ namespace HydroVisionDesign.Services.DataStorages
         /// <summary>Переменные производительности ВПУ</summary>
         #region Perfomance WTP
         public double ElectricPower { get; set; } = 0;
-        public double BoilerProductivity { get; set; } = 0;
-        public int NumberOfBoilers { get; set; } = 0;
+        public int NumberOfBoilersFirst { get; set; } = 0;
+        public int NumberOfBoilersSecond { get; set; } = 0;
         public int TurbineType { get; set; } = 0;
-        public int NumberOfTurbines { get; set; } = 0;
+        public int NumberOfTurbinesFirst { get; set; } = 0;
+        public int NumberOfTurbinesSecond { get; set; } = 0;
         public int FuelType { get; set; } = 0;
         public double VacationCouple { get; set; } = 0;
         public double Losses { get; set; } = 0;

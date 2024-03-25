@@ -142,22 +142,40 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _ElectricPower, value);
         }
 
-        private int _NumberOfBoilers = DataStorage.Instance.NumberOfBoilers;
+        private int _NumberOfBoilersFirst = DataStorage.Instance.NumberOfBoilersFirst;
 
         /// <summary>Свойство textBox Количество котлов</summary>
-        public int NumberOfBoilers
+        public int NumberOfBoilersFirst
         {
-            get => _NumberOfBoilers;
-            set => Set(ref _NumberOfBoilers, value);
+            get => _NumberOfBoilersFirst;
+            set => Set(ref _NumberOfBoilersFirst, value);
         }
 
-        private int _NumberOfTurbines = DataStorage.Instance.NumberOfTurbines;
+        private int _NumberOfBoilersSecond = DataStorage.Instance.NumberOfBoilersSecond;
+
+        /// <summary>Свойство textBox Количество котлов</summary>
+        public int NumberOfBoilersSecond
+        {
+            get => _NumberOfBoilersSecond;
+            set => Set(ref _NumberOfBoilersSecond, value);
+        }
+
+        private int _NumberOfTurbinesFirst = DataStorage.Instance.NumberOfTurbinesFirst;
 
         /// <summary>Свойство textBox Количество турбин</summary>
-        public int NumberOfTurbines
+        public int NumberOfTurbinesFirst
         {
-            get => _NumberOfTurbines;
-            set => Set(ref _NumberOfTurbines, value);
+            get => _NumberOfTurbinesFirst;
+            set => Set(ref _NumberOfTurbinesFirst, value);
+        }
+
+        private int _NumberOfTurbinesSecond = DataStorage.Instance.NumberOfTurbinesSecond;
+
+        /// <summary>Свойство textBox Количество турбин</summary>
+        public int NumberOfTurbinesSecond
+        {
+            get => _NumberOfTurbinesSecond;
+            set => Set(ref _NumberOfTurbinesSecond, value);
         }
 
         private double _VacationCouple = DataStorage.Instance.VacationCouple;
@@ -192,20 +210,35 @@ namespace HydroVisionDesign.ViewModel
         #region Выбор оборудования
 
         public ObservableCollection<Boilers> BoilerItems { get; set; }
-        private Boilers _SelectedBoilerItem;
-        public Boilers SelectedBoilerItem
+        private Boilers _SelectedBoilerFirstItem;
+        public Boilers SelectedBoilerFirstItem
         {
-            get => _SelectedBoilerItem;
+            get => _SelectedBoilerFirstItem;
 
-            set => Set(ref _SelectedBoilerItem, value);
+            set => Set(ref _SelectedBoilerFirstItem, value);
+        }
+
+        private Boilers _SelectedBoilerSecondItem;
+        public Boilers SelectedBoilerSecondItem
+        {
+            get => _SelectedBoilerSecondItem;
+
+            set => Set(ref _SelectedBoilerSecondItem, value);
         }
 
         public ObservableCollection<CoolingWaterFlowOnTurbine> TubineItems { get; set; }
-        private CoolingWaterFlowOnTurbine _SelectedTurbineItem;
-        public CoolingWaterFlowOnTurbine SelectedTurbineItem
+        private CoolingWaterFlowOnTurbine _SelectedTurbineFirstItem;
+        public CoolingWaterFlowOnTurbine SelectedTurbineFirstItem
         {
-            get => _SelectedTurbineItem;
-            set => Set(ref _SelectedTurbineItem, value);
+            get => _SelectedTurbineFirstItem;
+            set => Set(ref _SelectedTurbineFirstItem, value);
+        }
+
+        private CoolingWaterFlowOnTurbine _SelectedTurbineSecondItem;
+        public CoolingWaterFlowOnTurbine SelectedTurbineSecondItem
+        {
+            get => _SelectedTurbineSecondItem;
+            set => Set(ref _SelectedTurbineSecondItem, value);
         }
 
         public ObservableCollection<FuelModel> FuelItems { get; set; }
@@ -259,22 +292,28 @@ namespace HydroVisionDesign.ViewModel
             calculations.RecalculationOfQualityIndicators();
 
             DataStorage.Instance.ElectricPower = ElectricPower;
-            //DataStorage.Instance.BoilerProductivity = BoilerProductivity;
-            DataStorage.Instance.NumberOfBoilers = NumberOfBoilers;
-            //DataStorage.Instance.TurbineType = TurbineType;
-            DataStorage.Instance.NumberOfTurbines = NumberOfTurbines;
-            //DataStorage.Instance.FuelType = FuelType;
+            DataStorage.Instance.NumberOfBoilersFirst = NumberOfBoilersFirst;
+            DataStorage.Instance.NumberOfBoilersSecond = NumberOfBoilersSecond;
+            DataStorage.Instance.NumberOfTurbinesFirst = NumberOfTurbinesFirst;
+            DataStorage.Instance.NumberOfTurbinesSecond = NumberOfTurbinesSecond;
             DataStorage.Instance.VacationCouple = VacationCouple;
             DataStorage.Instance.Losses = Losses;
             DataStorage.Instance.BlowdownLosses = BlowdownLosses;
             // запись из бд для котла
-            DataStorage.Instance.SelectedBoilerItem = SelectedBoilerItem.Id;
-            DataStorage.Instance.BoilerType = SelectedBoilerItem.Type;
-            DataStorage.Instance.BoilerProductivity = SelectedBoilerItem.Perfomance;
+            DataStorage.Instance.SelectedBoilerFirstItem = SelectedBoilerFirstItem.Id;
+            DataStorage.Instance.BoilerTypeFirst = SelectedBoilerFirstItem.Type;
+            DataStorage.Instance.BoilerPerfomanceFirst = SelectedBoilerFirstItem.Perfomance;
+
+            DataStorage.Instance.SelectedBoilerSecondItem = SelectedBoilerSecondItem.Id;
+            DataStorage.Instance.BoilerTypeSecond = SelectedBoilerSecondItem.Type;
+            DataStorage.Instance.BoilerPerfomanceSecond = SelectedBoilerSecondItem.Perfomance;
 
             // запись из бд для турбины
-            DataStorage.Instance.SelectedTurbineItem = SelectedTurbineItem.Id;
-            DataStorage.Instance.WaterConsumption = (int)SelectedTurbineItem.WaterConsumption;
+            DataStorage.Instance.SelectedTurbineFirstItem = SelectedTurbineFirstItem.Id;
+            DataStorage.Instance.WaterConsumptionFirst = (int)SelectedTurbineFirstItem.WaterConsumption;
+
+            DataStorage.Instance.SelectedTurbineSecondItem = SelectedTurbineSecondItem.Id;
+            DataStorage.Instance.WaterConsumptionSecond = (int)SelectedTurbineSecondItem.WaterConsumption;
 
             // запись для топлива
             DataStorage.Instance.SelectedFuelItem = SelectedFuelItem.Id;
@@ -300,11 +339,11 @@ namespace HydroVisionDesign.ViewModel
 
             Task.Run(async () => await GetBoilersAsync());
             Task.Run(async () => await GetTurbineAsync());
-            //InitializeAsync();
             GetFuel();
         }
 
-        
+        /// <summary>Обращение к базе данных</summary>
+        /// <returns>ObservableCollection коллекция котлов</returns>
         private async Task GetBoilersAsync()
         {
             BoilerItems = new ObservableCollection<Boilers>();
@@ -319,10 +358,13 @@ namespace HydroVisionDesign.ViewModel
                     });
                 });
                 if (BoilerItems.Count > 0)
-                    SelectedBoilerItem = BoilerItems[DataStorage.Instance.SelectedBoilerItem - 1];
+                    SelectedBoilerFirstItem = BoilerItems[DataStorage.Instance.SelectedBoilerFirstItem - 1];
+                    SelectedBoilerSecondItem = BoilerItems[DataStorage.Instance.SelectedBoilerSecondItem - 1];
             }
         }
 
+        /// <summary>Обращение к базе данных</summary>
+        /// <returns>ObservableCollection коллекция турбин</returns>
         private async Task GetTurbineAsync()
         {
             TubineItems = new ObservableCollection<CoolingWaterFlowOnTurbine>();
@@ -336,10 +378,15 @@ namespace HydroVisionDesign.ViewModel
                     });
                 });
                 if (TubineItems.Count > 0)
-                    SelectedTurbineItem = TubineItems[DataStorage.Instance.SelectedTurbineItem - 1];
+                    SelectedTurbineFirstItem = TubineItems[DataStorage.Instance.SelectedTurbineFirstItem - 1];
+                    SelectedTurbineSecondItem = TubineItems[DataStorage.Instance.SelectedTurbineSecondItem - 1];
             }
         }
 
+
+        /// <summary>
+        /// ObservableCollection коллекция топлива
+        /// </summary>
         private void GetFuel()
         {
             FuelItems = new ObservableCollection<FuelModel>();

@@ -58,24 +58,41 @@
         <ComboBox ItemsSource="{Binding Path=BoilerItems}"
                   DisplayMemberPath="Name"
                   SelectedValuePath="Id"
-                  SelectedItem="{Binding Path=SelectedBoilerItem}"
+                  SelectedItem="{Binding Path=SelectedBoilerFirstItem}"
                   HorizontalAlignment="Left" Margin="452,63,0,0" VerticalAlignment="Top" Width="120"/>
+        
+        <ComboBox ItemsSource="{Binding BoilerItems}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="Id"
+                  SelectedItem="{Binding SelectedBoilerSecondItem}"
+                  HorizontalAlignment="Left" Margin="590,63,0,0" VerticalAlignment="Top" Width="120"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="300,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Количество котлов"></TextBlock>
-        <TextBox x:Name="NumberOfBoilers" HorizontalAlignment="Left" Margin="450,90,0,0" TextWrapping="Wrap" Text="{Binding Path=NumberOfBoilers}" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="NumberOfBoilers" HorizontalAlignment="Left" Margin="450,90,0,0" TextWrapping="Wrap" Text="{Binding Path=NumberOfBoilersFirst}" VerticalAlignment="Top" Width="95"/>
         <TextBlock HorizontalAlignment="Left" Margin="550,90,0,0" TextWrapping="Wrap" Text="шт" VerticalAlignment="Top"/>
 
-        <!--убрать этот блок на рефакторинге-->
+        <TextBox x:Name="NumberOfBoilers_Копировать" HorizontalAlignment="Left" Margin="593,92,0,0" TextWrapping="Wrap" Text="{Binding Path=NumberOfBoilersSecond}" VerticalAlignment="Top" Width="95"/>
+        <TextBlock HorizontalAlignment="Left" Margin="693,92,0,0" TextWrapping="Wrap" Text="шт" VerticalAlignment="Top"/>
+
         <TextBlock HorizontalAlignment="Left" Margin="300,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Тип турбины"></TextBlock>
         <ComboBox ItemsSource="{Binding Path=TubineItems}"
                   DisplayMemberPath="TurbineType"
                   SelectedValuePath="Id"
-                  SelectedItem="{Binding Path=SelectedTurbineItem}"
+                  SelectedItem="{Binding Path=SelectedTurbineFirstItem}"
                   HorizontalAlignment="Left" Margin="451,113,0,0" VerticalAlignment="Top" Width="120"/>
 
+        <ComboBox ItemsSource="{Binding TubineItems}"
+                  DisplayMemberPath="TurbineType"
+                  SelectedValuePath="Id"
+                  SelectedItem="{Binding SelectedTurbineSecondItem}"
+                  HorizontalAlignment="Left" Margin="591,115,0,0" VerticalAlignment="Top" Width="120"/>
+
         <TextBlock HorizontalAlignment="Left" Margin="300,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Количество котлов"></TextBlock>
-        <TextBox x:Name="NumberOfTurbines" HorizontalAlignment="Left" Margin="450,140,0,0" TextWrapping="Wrap" Text="{Binding Path=NumberOfTurbines}" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="NumberOfTurbines" HorizontalAlignment="Left" Margin="450,140,0,0" TextWrapping="Wrap" Text="{Binding Path=NumberOfTurbinesFirst}" VerticalAlignment="Top" Width="95"/>
         <TextBlock HorizontalAlignment="Left" Margin="550,140,0,0" TextWrapping="Wrap" Text="шт" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="NumberOfTurbines_Копировать" HorizontalAlignment="Left" Margin="593,146,0,0" TextWrapping="Wrap" Text="{Binding NumberOfTurbinesSecond}" VerticalAlignment="Top" Width="95"/>
+        <TextBlock HorizontalAlignment="Left" Margin="693,146,0,0" TextWrapping="Wrap" Text="шт" VerticalAlignment="Top"/>
 
         <!--убрать этот блок на рефакторинге-->
         <TextBlock HorizontalAlignment="Left" Margin="300,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Тип топлива"></TextBlock>
@@ -101,7 +118,11 @@
         <Button Command="{Binding Path=ApplyCommand}" Content="Применить" HorizontalAlignment="Right" Margin="0,270,50,0" VerticalAlignment="Bottom" Width="300" Height="50"/>
         
         
+       
         
+
+
+
 
     </Grid>
 </UserControl>

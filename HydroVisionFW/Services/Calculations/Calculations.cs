@@ -116,7 +116,7 @@ namespace HydroVisionDesign.Services.Calculations
             WaterTreatmentPlantPerfomance perfomance = new WaterTreatmentPlantPerfomance();
 
             DataStorage.Instance.InternalLosses = perfomance.InternalLosses(
-                DataStorage.Instance.BoilerProductivity, DataStorage.Instance.NumberOfBoilers);
+                DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst);
 
             if (DataStorage.Instance.Losses != 0)
                 DataStorage.Instance.ExternalLosses = perfomance.ExternalLosses(
@@ -124,14 +124,14 @@ namespace HydroVisionDesign.Services.Calculations
 
             if(DataStorage.Instance.BlowdownLosses != 0)
                 DataStorage.Instance.PurgingLosses = perfomance.PurgingLosses(
-                DataStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerProductivity, DataStorage.Instance.NumberOfBoilers);
+                DataStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst);
             
             if(DataStorage.Instance.FuelOilConsumption != 0)
             DataStorage.Instance.LossesInFuelOilProduction = perfomance.LossesInFuelOilProduction(
-                DataStorage.Instance.FuelOilConsumption, DataStorage.Instance.NumberOfBoilers);
+                DataStorage.Instance.FuelOilConsumption, DataStorage.Instance.NumberOfBoilersFirst);
 
             DataStorage.Instance.PerfomanceWTPForIES = perfomance.ProductivityWTPForIES(
-                DataStorage.Instance.BoilerProductivity, DataStorage.Instance.NumberOfBoilers, DataStorage.Instance.DesaltedWaterSupply);
+                DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.DesaltedWaterSupply);
 
             DataStorage.Instance.PerfomanceWTPForTPP = perfomance.ProductivityWTPForTPP(
                 DataStorage.Instance.InternalLosses, DataStorage.Instance.ExternalLosses, DataStorage.Instance.PurgingLosses, DataStorage.Instance.LossesInFuelOilProduction,

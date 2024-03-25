@@ -57,7 +57,7 @@ namespace HydroVisionDesign.ViewModel
         /// <summary>Заполнение textBox</summary>
         private void FillingTextBox()
         {
-            InternalLosses = $"q_внутр = 2% * D * n = 2% * {DataStorage.Instance.BoilerProductivity} * {DataStorage.Instance.NumberOfBoilers} + " +
+            InternalLosses = $"q_внутр = 2% * D * n = 2% * {DataStorage.Instance.BoilerPerfomanceFirst} * {DataStorage.Instance.NumberOfBoilersFirst} + " +
                 $"{DataStorage.Instance.DesaltedWaterSupply} = {DataStorage.Instance.InternalLosses} т/ч";
 
             Stock = $"q_зап = {DataStorage.Instance.DesaltedWaterSupply} т/ч";
