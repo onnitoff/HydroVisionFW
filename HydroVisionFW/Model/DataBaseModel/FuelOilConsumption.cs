@@ -12,11 +12,10 @@ namespace HydroVisionFW.Model.DataBaseModel
     using System;
     using System.Collections.Generic;
     
-    public partial class CoolingWaterFlowOnTurbine
+    public partial class FuelOilConsumption
     {
         public int Id { get; set; }
-        public string TurbineType { get; set; }
-        public Nullable<int> WaterConsumption { get; set; }
-        public Nullable<int> Perfomance { get; set; }
+        public int Perfomance { get; set; }
+        public int OilConsumption { get; set; }
     }
 }

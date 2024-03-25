@@ -15,20 +15,11 @@ namespace HydroVisionFW.Model.DataBaseModel
     
     public partial class WaterContext : DbContext
     {
-        private static WaterContext _context;
-
         public WaterContext()
             : base("name=WaterContext")
         {
         }
-
-        public static WaterContext GetContext()
-        {
-            if (_context == null)
-                _context = new WaterContext();
-            return _context;
-        }   
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -46,5 +37,6 @@ namespace HydroVisionFW.Model.DataBaseModel
         public virtual DbSet<ForWithClarifiers> ForWithClarifiers { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeOfBoilers> TypeOfBoilers { get; set; }
+        public virtual DbSet<FuelOilConsumption> FuelOilConsumption { get; set; }
     }
 }

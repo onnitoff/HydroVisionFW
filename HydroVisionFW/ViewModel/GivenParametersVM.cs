@@ -311,6 +311,8 @@ namespace HydroVisionDesign.ViewModel
             // запись из бд для турбины
             DataStorage.Instance.SelectedTurbineFirstItem = SelectedTurbineFirstItem.Id;
             DataStorage.Instance.WaterConsumptionFirst = (int)SelectedTurbineFirstItem.WaterConsumption;
+            DataStorage.Instance.TurbinePerfomanceFirst = (int)SelectedTurbineFirstItem.Perfomance;
+            DataStorage.Instance.TurbinePerfomanceSecond = (int)SelectedTurbineSecondItem.Perfomance;
 
             DataStorage.Instance.SelectedTurbineSecondItem = SelectedTurbineSecondItem.Id;
             DataStorage.Instance.WaterConsumptionSecond = (int)SelectedTurbineSecondItem.WaterConsumption;

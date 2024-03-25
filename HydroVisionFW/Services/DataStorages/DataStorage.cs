@@ -95,6 +95,8 @@ namespace HydroVisionDesign.Services.DataStorages
 
         // для турбины
         public int WaterConsumptionFirst { get; set; } = 0;
+        public int TurbinePerfomanceFirst {  get; set; } = 0;
+        public int TurbinePerfomanceSecond { get; set; } = 0;
         public int SelectedTurbineFirstItem { get; set; } = 1;
         public int WaterConsumptionSecond { get; set; } = 0;
         public int SelectedTurbineSecondItem { get; set; } = 1;
@@ -115,7 +117,8 @@ namespace HydroVisionDesign.Services.DataStorages
         public double VacationCouple { get; set; } = 0;
         public double Losses { get; set; } = 0;
         public double BlowdownLosses { get; set; } = 0;
-        public double DesaltedWaterSupply {  get; set; } = 0;
+        public double DesaltedWaterSupplyFirst {  get; set; } = 0;
+        public double DesaltedWaterSupplySecond { get; set; } = 0;
         public double WaterConsumptionForNetworkHeaters { get; set; } = 0;
 
         /// <summary>Для ТЭЦ</summary>

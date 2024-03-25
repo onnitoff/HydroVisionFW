@@ -112,6 +112,9 @@
     <Compile Include="Model\DataBaseModel\ForWithClarifiers.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataBaseModel\FuelOilConsumption.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataBaseModel\sysdiagrams.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
