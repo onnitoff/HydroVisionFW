@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace HydroVisionFW.Services.DataStorages
 {
-    public class FAAStorage
+    public class MAFStorage
     {
-        private static FAAStorage instance;
-        private FAAStorage() { }
+        private static MAFStorage instance;
+        private MAFStorage() { }
 
-        public static FAAStorage Instance
+        public static MAFStorage Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new FAAStorage();
+                    instance = new MAFStorage();
                 }
                 return instance;
             }
