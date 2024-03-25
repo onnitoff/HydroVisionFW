@@ -246,6 +246,8 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftDoubleBtnMAFCommand(object obj)
         {
             MixedActionFilterWindow filter = new MixedActionFilterWindow();
+            //filter.WindowClosed += FillTextBoxMAF;
+
             filter.Show();
         }
         #endregion
@@ -273,6 +275,7 @@ namespace HydroVisionDesign.ViewModel
             LeftDoubleBtnMAFCommand = new RelayCommand(OnLeftDoubleBtnMAFCommand);
 
             LeftBtnGridCommand = new RelayCommand(OnLeftBtnGridCommand);
+            MAFStorage.Instance.F = 100;
             #endregion
 
         }

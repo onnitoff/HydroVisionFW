@@ -19,9 +19,16 @@ namespace HydroVisionFW.View
     /// </summary>
     public partial class MixedActionFilterWindow : Window
     {
+        public event EventHandler WindowClosed;
+
         public MixedActionFilterWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            WindowClosed?.Invoke(this, EventArgs.Empty);
         }
     }
 }
