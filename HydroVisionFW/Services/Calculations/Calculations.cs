@@ -115,6 +115,7 @@ namespace HydroVisionDesign.Services.Calculations
         public void CalculationOfWTPPerformance()
         {
             WaterTreatmentPlantPerfomance perfomance = new WaterTreatmentPlantPerfomance();
+            DesaltedWaterSupplyCalc();
 
             DataStorage.Instance.InternalLosses = perfomance.InternalLosses(
                 DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst);
@@ -132,26 +133,41 @@ namespace HydroVisionDesign.Services.Calculations
                 DataStorage.Instance.FuelOilConsumption, DataStorage.Instance.NumberOfBoilersFirst);
 
             DataStorage.Instance.PerfomanceWTPForIES = perfomance.ProductivityWTPForIES(
-                DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.DesaltedWaterSupply);
+                DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.DesaltedWaterSupplyFirst);
 
             DataStorage.Instance.PerfomanceWTPForTPP = perfomance.ProductivityWTPForTPP(
                 DataStorage.Instance.InternalLosses, DataStorage.Instance.ExternalLosses, DataStorage.Instance.PurgingLosses, DataStorage.Instance.LossesInFuelOilProduction,
-                DataStorage.Instance.DesaltedWaterSupply);
+                DataStorage.Instance.DesaltedWaterSupplyFirst);
 
             DataStorage.Instance.PerfomanceWTPForHeatingSystem = perfomance.ProductivityWTPForHeatingSystem(
                 DataStorage.Instance.WaterConsumptionForNetworkHeaters);
+
+            DataStorage.Instance.PerfomanceWTP = DataStorage.Instance.PerfomanceWTPForHeatingSystem;
         }
 
         private void DesaltedWaterSupplyCalc()
         {
             if (DataStorage.Instance.BoilerTypeFirst == 1)
             {
-                DataStorage.Instance.DesaltedWaterSupply = 25;
+                DataStorage.Instance.DesaltedWaterSupplyFirst = 25;
             }
 
             if (DataStorage.Instance.BoilerTypeFirst == 2)
             {
-                if(DataStorage.Instance.)
+                if(DataStorage.Instance.TurbinePerfomanceFirst <= 300)
+                {
+                    DataStorage.Instance.DesaltedWaterSupplyFirst = 25;
+                }
+
+                if(DataStorage.Instance.TurbinePerfomanceFirst > 300 && DataStorage.Instance.TurbinePerfomanceFirst <= 500)
+                {
+                    DataStorage.Instance.DesaltedWaterSupplyFirst = 50;
+                }
+
+                if(DataStorage.Instance.TurbinePerfomanceFirst > 800)
+                {
+                    DataStorage.Instance.DesaltedWaterSupplyFirst = 75;
+                }
             }
 
         }

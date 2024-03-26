@@ -4,18 +4,224 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="600"
-             d:DesignWidth="660"
+             d:DesignWidth="1000"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:DesaltingPartWTPVM/>
     </UserControl.DataContext>
+    
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
     <Grid>
-        <Border CornerRadius="0,20,20,0">
+        <Border >
             <Border.Background>
                 <SolidColorBrush Color="#FF7654"/>
             </Border.Background>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </Border>
+        <Grid>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="290"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Resources\Images\Filter_A1.png"
+                   Height="110"
+                   Width="110"
+                   Grid.Column="0" Margin="209,243,391,247">
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
+                </Image.InputBindings>
+            </Image>
+
+            <Image Source="/Resources/Images/Filter_MA.png"
+                   Height="100"
+                   Width="100"
+                   Grid.Column="0" Margin="589,254,21,246">
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnMAFCommand}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnMAFCommand}"/>
+                </Image.InputBindings>
+            </Image>
+
+            <GroupBox Header="Свойства"
+                      Grid.Column="1">
+               
+                <Grid x:Name="FilterProperty" 
+                      Visibility="{Binding IsHiddenMAFProperty, 
+                      Converter = {StaticResource BooleanToVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Площадь фильтрования" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" Margin="2"
+                             Text="{Binding FiltrationArea}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="0" Text="м2" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Скорость фильтрования" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Margin="2"
+                             Text="{Binding FiltrationSpeed}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="1" Text="м/с" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Расход воды на фильтр" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" Margin="2"
+                             Text="{Binding WaterConsumptionPerFilter}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="2" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Площадь фильтр. каждого ф." Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" Margin="2"
+                             Text="{Binding FiltrationAreaOfEachFilter}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="3" Text="м2" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Расчетный диаметр фильтра" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" Margin="2"
+                             Text="{Binding DesignFilterDiameter}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="4" Text="м" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="5" Text="Площадь фильтра" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="5" Margin="2"
+                             Text="{Binding FilterArea}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="5" Text="м2" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="6" Text="Продолжительность фильтроцикла" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="6" Margin="2"
+                             Text="{Binding FilterCycleDuration}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="6" Text="ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="7" Text="Количество регенераций в сутки" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="7" Margin="2"
+                             Text="{Binding NumberOfRegenerationsPerDay}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="7" Text="" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="8" Text="Обьем ионитных материалов" Margin="5,0,0,0"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="9" Text="В один фильтр" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="9" Margin="2"
+                             Text="{Binding VolumeOfIonExchangeMaterialsInOneFilter}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="9" Text="м3" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="0" Grid.Row="10" Text="В один фильтр катионов / анионов" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="10" Margin="2"
+                             Text="{Binding VolumeOfIonExchangeMaterialsInOneFilterCationOrAnion}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="10" Text="м3" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="11" Text="В группу фильтров" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="11" Margin="2"
+                             Text="{Binding VolumeOfIonExchangeMaterialsInGroupFilter}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="11" Text="м3" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="0" Grid.Row="12" Text="В группу фильтр катионов / анионов" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="12" Margin="2"
+                             Text="{Binding VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="12" Text="м3" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="14" Text="Расчет катионита" Margin="5,0,0,0"/>
+                    <TextBlock Grid.Column="0" Grid.Row="15" Text="Расход воды на собственные нужды" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="15" Margin="2"
+                             Text="{Binding WaterConsumptionForOwnNeedsCation}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="15" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="16" Text="Расход хим реагентов" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="16" Margin="2"
+                             Text="{Binding ConsumptionOfChemicalReagentsCation}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="16" Text="кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="17" Text="Расход технического продукта" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="17" Margin="2"
+                             Text="{Binding TechnicalProductConsumptionCation}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="17" Text="кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="18" Text="Суточный расход хим реагентов" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="18" Margin="2"
+                             Text="{Binding DailyConsumptionOfChemicalReagentCation}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="18" Text="кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="19" Text="Расчет анионита" Margin="5,0,0,0"/>
+                    <TextBlock Grid.Column="0" Grid.Row="20" Text="Расход воды на собственные нужды" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="20" Margin="2"
+                             Text="{Binding WaterConsumptionForOwnNeedsAnion}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="20" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="21" Text="Расход хим реагентов" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="21" Margin="2"
+                             Text="{Binding ConsumptionOfChemicalReagentsAnion}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="21" Text="кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="22" Text="Расход технического продукта" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="22" Margin="2"
+                             Text="{Binding TechnicalProductConsumptionAnion}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="22" Text="кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="23" Text="Суточный расход хим реагентов" Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="23" Margin="2"
+                             Text="{Binding DailyConsumptionOfChemicalReagentAnion}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="23" Text="кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="24" Text="Расход воды на след группу ф." Margin="5,0,0,0"/>
+                    <TextBox Grid.Column="1" Grid.Row="24" Margin="2"
+                             Text="{Binding WaterConsumptionForNextGroupOfFilters}"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="24" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+
+
+
+
+
+
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+
+
+
     </Grid>
 </UserControl>

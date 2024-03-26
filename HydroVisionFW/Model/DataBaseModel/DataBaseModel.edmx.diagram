@@ -20,6 +20,7 @@
         <AssociationConnector Association="WaterModel.FK_Filters_ApplyingFilter" ManuallyRouted="false" />
         <AssociationConnector Association="WaterModel.FK_Boilers_TypeOfBoilers" ManuallyRouted="false" />
         <AssociationConnector Association="WaterModel.FK_Filters_FilterType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WaterModel.FuelOilConsumption" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

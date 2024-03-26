@@ -71,11 +71,11 @@ namespace HydroVisionDesign.ViewModel
         private void FillingTextBox()
         {
             InternalLosses = $"q_внутр = 2% * D * n = 2% * {DataStorage.Instance.BoilerPerfomanceFirst} * {DataStorage.Instance.NumberOfBoilersFirst} + " +
-                $"{DataStorage.Instance.DesaltedWaterSupply} = {DataStorage.Instance.InternalLosses} т/ч";
+                $"{DataStorage.Instance.DesaltedWaterSupplyFirst} = {DataStorage.Instance.InternalLosses} т/ч";
 
-            Stock = $"q_зап = {DataStorage.Instance.DesaltedWaterSupply} т/ч";
+            Stock = $"q_зап = {DataStorage.Instance.DesaltedWaterSupplyFirst} т/ч";
 
-            PerfomanceWTPToFeedMainCycle = $"q_внутр + q_зап = {DataStorage.Instance.InternalLosses} + {DataStorage.Instance.DesaltedWaterSupply} = {DataStorage.Instance.PerfomanceWTPForIES} т/ч";
+            PerfomanceWTPToFeedMainCycle = $"q_внутр + q_зап = {DataStorage.Instance.InternalLosses} + {DataStorage.Instance.DesaltedWaterSupplyFirst} = {DataStorage.Instance.PerfomanceWTPForIES} т/ч";
 
             PerfomanceWTPToFeedHeatingNetwork = $"2% * G_св = 2% * {DataStorage.Instance.WaterConsumptionForNetworkHeaters} = {DataStorage.Instance.PerfomanceWTPForHeatingSystem} т/ч";
         }

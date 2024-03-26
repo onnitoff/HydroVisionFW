@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище WaterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище WaterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplyingFilter">
           <Key>
             <PropertyRef Name="Id" />
@@ -69,6 +69,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TurbineType" Type="nvarchar" MaxLength="20" />
           <Property Name="WaterConsumption" Type="int" />
+          <Property Name="Perfomance" Type="int" />
         </EntityType>
         <EntityType Name="Filters">
           <Key>
@@ -96,6 +97,14 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuelOilConsumption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Perfomance" Type="int" Nullable="false" />
+          <Property Name="OilConsumption" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -161,6 +170,7 @@
           <EntitySet Name="Filters" EntityType="Self.Filters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FilterType" EntityType="Self.FilterType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ForWithClarifiers" EntityType="Self.ForWithClarifiers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuelOilConsumption" EntityType="Self.FuelOilConsumption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeOfBoilers" EntityType="Self.TypeOfBoilers" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Boilers_TypeOfBoilers" Association="Self.FK_Boilers_TypeOfBoilers">
@@ -176,8 +186,7 @@
             <End Role="Filters" EntitySet="Filters" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WaterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -247,6 +256,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TurbineType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="WaterConsumption" Type="Int32" />
+          <Property Name="Perfomance" Type="Int32" />
         </EntityType>
         <EntityType Name="Filters">
           <Key>
@@ -357,7 +367,16 @@
             <End Role="FilterType" EntitySet="FilterType" />
             <End Role="Filters" EntitySet="Filters" />
           </AssociationSet>
+          <EntitySet Name="FuelOilConsumption" EntityType="WaterModel.FuelOilConsumption" />
         </EntityContainer>
+        <EntityType Name="FuelOilConsumption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Perfomance" Type="Int32" Nullable="false" />
+          <Property Name="OilConsumption" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -430,6 +449,7 @@
           <EntitySetMapping Name="CoolingWaterFlowOnTurbine">
             <EntityTypeMapping TypeName="WaterModel.CoolingWaterFlowOnTurbine">
               <MappingFragment StoreEntitySet="CoolingWaterFlowOnTurbine">
+                <ScalarProperty Name="Perfomance" ColumnName="Perfomance" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TurbineType" ColumnName="TurbineType" />
                 <ScalarProperty Name="WaterConsumption" ColumnName="WaterConsumption" />
@@ -482,6 +502,15 @@
               <MappingFragment StoreEntitySet="TypeOfBoilers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuelOilConsumption">
+            <EntityTypeMapping TypeName="WaterModel.FuelOilConsumption">
+              <MappingFragment StoreEntitySet="FuelOilConsumption">
+                <ScalarProperty Name="OilConsumption" ColumnName="OilConsumption" />
+                <ScalarProperty Name="Perfomance" ColumnName="Perfomance" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
