@@ -25,5 +25,6 @@ namespace HydroVisionFW.Model.DataBaseModel
     
         public virtual ApplyingFilter ApplyingFilter { get; set; }
         public virtual FilterType FilterType { get; set; }
+        public virtual OperatingPressure OperatingPressure { get; set; }
     }
 }

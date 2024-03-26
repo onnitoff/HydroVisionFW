@@ -31,9 +31,9 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _DesignDiameter, value);
         }
 
-        private double _FilterCount = MAFStorage.Instance.m;
+        private int _FilterCount = MAFStorage.Instance.m;
         /// <summary>Свойство для textBox Количество фильтров</summary>
-        public double FilterCount
+        public int FilterCount
         {
             get => _FilterCount;
             set => Set(ref _FilterCount, value);
@@ -122,13 +122,24 @@ namespace HydroVisionFW.ViewModel
         private void RecordParamToStorage()
         {
             MAFStorage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
+            MAFStorage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionCation;
+            MAFStorage.Instance.e_pK = SelectedBrandOfIon.WorkingExchangeCapacity;
+            MAFStorage.Instance.e_pA = SelectedBrandOfIon.WorkingExchangeCapacity;
             MAFStorage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionSecond;
+            MAFStorage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
             MAFStorage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
             MAFStorage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
             MAFStorage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
             MAFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 36;
+
+            MAFStorage.Instance.CK = 75;
+            MAFStorage.Instance.CA = 42;
+
+            MAFStorage.Instance.m = FilterCount;
+
+            MAFStorage.Instance.w = FiltrationSpeed;
 
         }
 

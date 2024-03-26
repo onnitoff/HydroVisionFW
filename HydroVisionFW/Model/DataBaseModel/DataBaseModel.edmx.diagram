@@ -34,6 +34,10 @@
         <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent" />
         <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1" />
         <EntityTypeShape EntityType="WaterModel.OperatingPressure" Width="2" PointX="5.5" PointY="3.125" />
+        <EntityTypeShape EntityType="WaterModel.WaterConsumptionForOwnNeedsFSD" Width="1.5" PointX="3" PointY="15.25" />
+        <AssociationConnector Association="WaterModel.FK_WaterConsumptionForOwnNeedsFSD_BrandUseIon" />
+        <AssociationConnector Association="WaterModel.FK_Filters_OperatingPressure" />
+        <AssociationConnector Association="WaterModel.FK_WaterConsumptionForOwnNeedsFSD_IonFiltersNames" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,27 +17,21 @@ namespace HydroVisionFW.Services.DataRepository
             {
                 return await (from first in context.ExchangeCapacityAndReagentConsumptionFSD
                               join second in context.BrandUseIon on first.IdBrandUseIon equals second.Id
+                              join third in context.WaterConsumptionForOwnNeedsFSD on first.Id equals third.Id
                               select new BrandOfIonModel
                               {
                                   Id = first.Id,
                                   Name = second.Name,
+                                  WorkingExchangeCapacity = first.WorkingExchangeCapacity,
                                   SpecificConsumptionFirst = (double)first.SpecificConsumptionFirst,
-                                  SpecificConsumptionSecond = (double)first.SpecificConsumptionSecond
+                                  SpecificConsumptionSecond = (double)first.SpecificConsumptionSecond,
+                                  GeneralWaterConsumptionCation = (double)third.GeneralWaterConsumptionCation,
+                                  GeneralWaterConsumptionAnion = (double)third.GeneralWaterConsumptionAnion
                               }).ToListAsync();
-
             }
         }
 
-        //public async Task<double> GetSpecificConsumptionOfChemicalReagents(int id)
-        //{
-        //    using (var context = new WaterContext())
-        //    {
-        //        return await context.ExchangeCapacityAndReagentConsumptionFSD
-        //            .Where(x => x.Id == id)
-        //            .Select(x => (double)x.SpecificConsumptionFirst)
-        //            .FirstOrDefaultAsync();
-        //    }
-        //}
+       
 
         public async Task<List<FilterModel>> GetFilterMAAsync()
         {

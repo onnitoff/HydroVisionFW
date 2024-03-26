@@ -10,7 +10,10 @@ namespace HydroVisionFW.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int WorkingExchangeCapacity { get; set; }
         public double SpecificConsumptionFirst { get; set; }
         public double SpecificConsumptionSecond { get; set; }
+        public double GeneralWaterConsumptionCation { get; set; }
+        public double GeneralWaterConsumptionAnion { get; set; }
     }
 }

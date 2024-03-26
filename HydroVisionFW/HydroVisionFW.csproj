@@ -152,6 +152,9 @@
     <Compile Include="Model\DataBaseModel\TypeOfBoilers.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataBaseModel\WaterConsumptionForOwnNeedsFSD.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\FilterModel.cs" />
     <Compile Include="Model\FuelModel.cs" />
     <Compile Include="Model\WaterIndicatorModel.cs" />

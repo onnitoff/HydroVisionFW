@@ -18,6 +18,7 @@ namespace HydroVisionFW.Model.DataBaseModel
         public BrandUseIon()
         {
             this.ExchangeCapacityAndReagentConsumptionFSD = new HashSet<ExchangeCapacityAndReagentConsumptionFSD>();
+            this.WaterConsumptionForOwnNeedsFSD = new HashSet<WaterConsumptionForOwnNeedsFSD>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace HydroVisionFW.Model.DataBaseModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WaterConsumptionForOwnNeedsFSD> WaterConsumptionForOwnNeedsFSD { get; set; }
     }
 }
