@@ -245,11 +245,12 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftDoubleBtnMAFCommand { get; }
         private void OnLeftDoubleBtnMAFCommand(object obj)
         {
-            MixedActionFilterWindow filter = new MixedActionFilterWindow();
-            //filter.WindowClosed += FillTextBoxMAF;
+            MixedActionFilterWindow mixed = new MixedActionFilterWindow();
+            mixed.Show();
+            mixed.Closed += MAFWindow_Closed;
 
-            filter.Show();
         }
+
         #endregion
 
         #region LeftBtnGridCommand
@@ -280,7 +281,14 @@ namespace HydroVisionDesign.ViewModel
 
         }
 
+        /// <summary>Вызов метода после закрытия MAFWindow</summary>
+        private void MAFWindow_Closed(object sender, EventArgs e)
+        {
+            MessageBox.Show("Work");
+        }
 
+
+        /// <summary>Заполнение данными из MAFStorage свойств textBox</summary>
         private void FillTextBoxMAF()
         {
             FiltrationArea = MAFStorage.Instance.F;

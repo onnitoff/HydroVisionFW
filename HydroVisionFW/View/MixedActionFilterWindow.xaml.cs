@@ -26,7 +26,13 @@ namespace HydroVisionFW.View
             InitializeComponent();
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            OnWindowClosed();
+        }
+
+        protected virtual void OnWindowClosed()
         {
             WindowClosed?.Invoke(this, EventArgs.Empty);
         }

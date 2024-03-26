@@ -20,27 +20,40 @@
                    VerticalAlignment="Top" 
                    Margin="0,126,0,0"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Text="Необходимый диаметр"/><Run Language="ru-ru" Text=":"/><LineBreak/><Run/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Language="ru-ru" Text="Расчетный"/><Run Text=" диаметр"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
             <TextBox HorizontalAlignment="Left" Margin="152,44,0,0" VerticalAlignment="Top" Width="62"
-                     Text=""/>
+                     Text="{Binding Path=DesignDiameter}"/>
 
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="15,73,0,0"><Run Text="Количество фильтров:"/><LineBreak/><Run/></TextBlock>
             <TextBox HorizontalAlignment="Left" Margin="150,74,0,0" VerticalAlignment="Top" Width="62"
-                     Text=""/>
+                     Text="{Binding Path=FilterCount}"/>
 
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="16,114,0,0"><Run Text="Выбрать "/><Run Text="марку"/><Run Language="ru-ru" Text=" катионита"/><Run Text=" "/></TextBlock>
-            <ComboBox HorizontalAlignment="Left" Margin="16,135,0,0" VerticalAlignment="Top" Width="163"/>
+            <ComboBox HorizontalAlignment="Left" Margin="16,135,0,0" VerticalAlignment="Top" Width="163"
+                      ItemsSource="{Binding Path=BrandOfCation}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"
+                      SelectedItem="{}"/>
 
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="17,169,0,0"><Run Text="Выбрать "/><Run Language="ru-ru" Text="марку анионита"/><Run Text=" "/></TextBlock>
-            <ComboBox HorizontalAlignment="Left" Margin="17,190,0,0" VerticalAlignment="Top" Width="163"/>
+            <ComboBox HorizontalAlignment="Left" Margin="17,190,0,0" VerticalAlignment="Top" Width="163"
+                      ItemsSource="{Binding Path=BrandOfAnion}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"
+                      SelectedItem="{}"/>
 
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="19,240,0,0"><Run Language="ru-ru" Text="Скорость фильтрации"/></TextBlock>
             <TextBox HorizontalAlignment="Left" Margin="156,242,0,0" VerticalAlignment="Top" Width="62"
-                     Text=""/>
+                     Text="{Binding Path=FiltrationSpeed}"/>
 
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="29,286,0,0"><Run Text="Выбрать подходящий фил"/><Run Language="ru-ru" Text="ьтр"/><Run Text=" "/></TextBlock>
-            <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"/>
-            <Button Content="Применить"  Height="50" Margin="0,383,0, 0"/>
+            <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"
+                      ItemsSource="{Binding Path=SuitableFilter}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"
+                      SelectedItem="{}"/>
+            <Button Content="Применить"  Height="50" Margin="0,383,0,0"
+                    Command="{Binding ApplyBtnCommand}"/>
         </Grid>
 
 
