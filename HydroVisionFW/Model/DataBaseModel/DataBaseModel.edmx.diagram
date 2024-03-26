@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f966f35e9d09405a936f7012453c5589" Name="Diagram1">
+      <Diagram DiagramId="f966f35e9d09405a936f7012453c5589" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="WaterModel.ApplyingFilter" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="WaterModel.Boilers" Width="1.5" PointX="5" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WaterModel.BrandAndPerfomanceClarifiers" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
@@ -21,6 +21,18 @@
         <AssociationConnector Association="WaterModel.FK_Boilers_TypeOfBoilers" ManuallyRouted="false" />
         <AssociationConnector Association="WaterModel.FK_Filters_FilterType" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WaterModel.FuelOilConsumption" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WaterModel.AxialPumps" Width="1.5" PointX="5.75" PointY="10.75" />
+        <EntityTypeShape EntityType="WaterModel.BrandUseIon" Width="1.5" PointX="0.75" PointY="15.125" />
+        <EntityTypeShape EntityType="WaterModel.CentrifugalPumps" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="WaterModel.EfficiencyMinAxialPumps" Width="1.5" PointX="7.75" PointY="10.75" />
+        <EntityTypeShape EntityType="WaterModel.ExchangeCapacityAndReagentConsumptionFSD" Width="1.5" PointX="3" PointY="11" />
+        <EntityTypeShape EntityType="WaterModel.FrequencyRotationPumps" Width="1.5" PointX="9.75" PointY="10.75" />
+        <EntityTypeShape EntityType="WaterModel.IonFiltersNames" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="WaterModel.NameReagent" Width="1.5" PointX="0.75" PointY="11.75" />
+        <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon" />
+        <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames" />
+        <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent" />
+        <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

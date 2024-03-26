@@ -70,7 +70,11 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BrandOfIonModel.cs" />
     <Compile Include="Model\DataBaseModel\ApplyingFilter.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBaseModel\AxialPumps.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBaseModel\Boilers.cs">
@@ -79,7 +83,13 @@
     <Compile Include="Model\DataBaseModel\BrandAndPerfomanceClarifiers.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataBaseModel\BrandUseIon.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataBaseModel\Calciners.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBaseModel\CentrifugalPumps.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBaseModel\Clarifiers.cs">
@@ -106,6 +116,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataBaseModel\EfficiencyMinAxialPumps.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBaseModel\ExchangeCapacityAndReagentConsumptionFSD.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataBaseModel\Filters.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
@@ -115,7 +131,16 @@
     <Compile Include="Model\DataBaseModel\ForWithClarifiers.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataBaseModel\FrequencyRotationPumps.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataBaseModel\FuelOilConsumption.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBaseModel\IonFiltersNames.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBaseModel\NameReagent.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBaseModel\sysdiagrams.cs">
@@ -128,6 +153,7 @@
     <Compile Include="Model\WaterIndicatorModel.cs" />
     <Compile Include="Services\Calculations\CalcMAF.cs" />
     <Compile Include="Services\Calculations\Calculations.cs" />
+    <Compile Include="Services\DataRepository\DataRepository.cs" />
     <Compile Include="Services\DataStorages\DataStorage.cs" />
     <Compile Include="Services\DataStorages\MAFStorage.cs" />
     <Compile Include="Services\TestValues\Values.cs" />

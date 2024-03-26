@@ -12,6 +12,24 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="80" Nullable="false" />
         </EntityType>
+        <EntityType Name="AxialPumps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StandartSize" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="InningsMin" Type="int" Nullable="false" />
+          <Property Name="InningsMax" Type="int" />
+          <Property Name="PressureMin" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+          <Property Name="PressureMax" Type="decimal" Precision="10" Scale="1" />
+          <Property Name="AcceptableCavitationStockMin" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+          <Property Name="AcceptableCavitationStockMax" Type="decimal" Precision="10" Scale="1" />
+          <Property Name="IdFrequencyRotation" Type="int" Nullable="false" />
+          <Property Name="PowerConsumptionMin" Type="int" Nullable="false" />
+          <Property Name="PowerConsumptionMax" Type="int" />
+          <Property Name="IdEfficiencyMin" Type="int" Nullable="false" />
+          <Property Name="EfficiencyMax" Type="decimal" Precision="10" Scale="1" />
+        </EntityType>
         <EntityType Name="Boilers">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,6 +47,13 @@
           <Property Name="Brand" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Volume" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="BrandUseIon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
         <EntityType Name="Calciners">
           <Key>
             <PropertyRef Name="Id" />
@@ -38,6 +63,19 @@
           <Property Name="Diameter" Type="int" Nullable="false" />
           <Property Name="CrossAreaSections" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="AirFlow" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CentrifugalPumps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StandartSize" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Innings" Type="int" Nullable="false" />
+          <Property Name="Pressure" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+          <Property Name="AcceptableCavitationStock" Type="int" />
+          <Property Name="IdFrequencyRotation" Type="int" Nullable="false" />
+          <Property Name="PowerConsumption" Type="int" Nullable="false" />
+          <Property Name="Efficiency" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Clarifiers">
           <Key>
@@ -71,6 +109,26 @@
           <Property Name="WaterConsumption" Type="int" />
           <Property Name="Perfomance" Type="int" />
         </EntityType>
+        <EntityType Name="EfficiencyMinAxialPumps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExchangeCapacityAndReagentConsumptionFSD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdIonFiltersNames" Type="int" Nullable="false" />
+          <Property Name="IdBrandUseIon" Type="int" Nullable="false" />
+          <Property Name="WorkingExchangeCapacity" Type="int" Nullable="false" />
+          <Property Name="IdNameReagentFirst" Type="int" Nullable="false" />
+          <Property Name="IdNameReagentSecond" Type="int" Nullable="false" />
+          <Property Name="SpecificConsumptionFirst" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+          <Property Name="SpecificConsumptionSecond" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+        </EntityType>
         <EntityType Name="Filters">
           <Key>
             <PropertyRef Name="Id" />
@@ -98,6 +156,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="FrequencyRotationPumps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="FuelOilConsumption">
           <Key>
             <PropertyRef Name="Id" />
@@ -105,6 +170,21 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Perfomance" Type="int" Nullable="false" />
           <Property Name="OilConsumption" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IonFiltersNames">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NameReagent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -135,6 +215,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon">
+          <End Role="BrandUseIon" Type="Self.BrandUseIon" Multiplicity="1" />
+          <End Role="ExchangeCapacityAndReagentConsumptionFSD" Type="Self.ExchangeCapacityAndReagentConsumptionFSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandUseIon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeCapacityAndReagentConsumptionFSD">
+              <PropertyRef Name="IdBrandUseIon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames">
+          <End Role="IonFiltersNames" Type="Self.IonFiltersNames" Multiplicity="1" />
+          <End Role="ExchangeCapacityAndReagentConsumptionFSD" Type="Self.ExchangeCapacityAndReagentConsumptionFSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IonFiltersNames">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeCapacityAndReagentConsumptionFSD">
+              <PropertyRef Name="IdIonFiltersNames" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent">
+          <End Role="NameReagent" Type="Self.NameReagent" Multiplicity="1" />
+          <End Role="ExchangeCapacityAndReagentConsumptionFSD" Type="Self.ExchangeCapacityAndReagentConsumptionFSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameReagent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeCapacityAndReagentConsumptionFSD">
+              <PropertyRef Name="IdNameReagentFirst" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1">
+          <End Role="NameReagent" Type="Self.NameReagent" Multiplicity="1" />
+          <End Role="ExchangeCapacityAndReagentConsumptionFSD" Type="Self.ExchangeCapacityAndReagentConsumptionFSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameReagent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeCapacityAndReagentConsumptionFSD">
+              <PropertyRef Name="IdNameReagentSecond" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Filters_ApplyingFilter">
           <End Role="ApplyingFilter" Type="Self.ApplyingFilter" Multiplicity="1" />
           <End Role="Filters" Type="Self.Filters" Multiplicity="*" />
@@ -161,21 +289,45 @@
         </Association>
         <EntityContainer Name="Хранилище WaterModelContainer">
           <EntitySet Name="ApplyingFilter" EntityType="Self.ApplyingFilter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AxialPumps" EntityType="Self.AxialPumps" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Boilers" EntityType="Self.Boilers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BrandAndPerfomanceClarifiers" EntityType="Self.BrandAndPerfomanceClarifiers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandUseIon" EntityType="Self.BrandUseIon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calciners" EntityType="Self.Calciners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CentrifugalPumps" EntityType="Self.CentrifugalPumps" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clarifiers" EntityType="Self.Clarifiers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CoolingTowers" EntityType="Self.CoolingTowers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CoolingWaterFlowOnTurbine" EntityType="Self.CoolingWaterFlowOnTurbine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EfficiencyMinAxialPumps" EntityType="Self.EfficiencyMinAxialPumps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeCapacityAndReagentConsumptionFSD" EntityType="Self.ExchangeCapacityAndReagentConsumptionFSD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Filters" EntityType="Self.Filters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FilterType" EntityType="Self.FilterType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ForWithClarifiers" EntityType="Self.ForWithClarifiers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FrequencyRotationPumps" EntityType="Self.FrequencyRotationPumps" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FuelOilConsumption" EntityType="Self.FuelOilConsumption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IonFiltersNames" EntityType="Self.IonFiltersNames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NameReagent" EntityType="Self.NameReagent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeOfBoilers" EntityType="Self.TypeOfBoilers" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Boilers_TypeOfBoilers" Association="Self.FK_Boilers_TypeOfBoilers">
             <End Role="TypeOfBoilers" EntitySet="TypeOfBoilers" />
             <End Role="Boilers" EntitySet="Boilers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon" Association="Self.FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon">
+            <End Role="BrandUseIon" EntitySet="BrandUseIon" />
+            <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames" Association="Self.FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames">
+            <End Role="IonFiltersNames" EntitySet="IonFiltersNames" />
+            <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent" Association="Self.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent">
+            <End Role="NameReagent" EntitySet="NameReagent" />
+            <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1" Association="Self.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1">
+            <End Role="NameReagent" EntitySet="NameReagent" />
+            <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
           </AssociationSet>
           <AssociationSet Name="FK_Filters_ApplyingFilter" Association="Self.FK_Filters_ApplyingFilter">
             <End Role="ApplyingFilter" EntitySet="ApplyingFilter" />
@@ -368,6 +520,30 @@
             <End Role="Filters" EntitySet="Filters" />
           </AssociationSet>
           <EntitySet Name="FuelOilConsumption" EntityType="WaterModel.FuelOilConsumption" />
+          <EntitySet Name="AxialPumps" EntityType="WaterModel.AxialPumps" />
+          <EntitySet Name="BrandUseIon" EntityType="WaterModel.BrandUseIon" />
+          <EntitySet Name="CentrifugalPumps" EntityType="WaterModel.CentrifugalPumps" />
+          <EntitySet Name="EfficiencyMinAxialPumps" EntityType="WaterModel.EfficiencyMinAxialPumps" />
+          <EntitySet Name="ExchangeCapacityAndReagentConsumptionFSD" EntityType="WaterModel.ExchangeCapacityAndReagentConsumptionFSD" />
+          <EntitySet Name="FrequencyRotationPumps" EntityType="WaterModel.FrequencyRotationPumps" />
+          <EntitySet Name="IonFiltersNames" EntityType="WaterModel.IonFiltersNames" />
+          <EntitySet Name="NameReagent" EntityType="WaterModel.NameReagent" />
+          <AssociationSet Name="FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon" Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon">
+            <End Role="BrandUseIon" EntitySet="BrandUseIon" />
+            <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames" Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames">
+            <End Role="IonFiltersNames" EntitySet="IonFiltersNames" />
+            <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent" Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent">
+            <End Role="NameReagent" EntitySet="NameReagent" />
+            <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1" Association="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1">
+            <End Role="NameReagent" EntitySet="NameReagent" />
+            <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="FuelOilConsumption">
           <Key>
@@ -377,6 +553,142 @@
           <Property Name="Perfomance" Type="Int32" Nullable="false" />
           <Property Name="OilConsumption" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="AxialPumps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StandartSize" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="InningsMin" Type="Int32" Nullable="false" />
+          <Property Name="InningsMax" Type="Int32" />
+          <Property Name="PressureMin" Type="Decimal" Nullable="false" Precision="10" Scale="1" />
+          <Property Name="PressureMax" Type="Decimal" Precision="10" Scale="1" />
+          <Property Name="AcceptableCavitationStockMin" Type="Decimal" Nullable="false" Precision="10" Scale="1" />
+          <Property Name="AcceptableCavitationStockMax" Type="Decimal" Precision="10" Scale="1" />
+          <Property Name="IdFrequencyRotation" Type="Int32" Nullable="false" />
+          <Property Name="PowerConsumptionMin" Type="Int32" Nullable="false" />
+          <Property Name="PowerConsumptionMax" Type="Int32" />
+          <Property Name="IdEfficiencyMin" Type="Int32" Nullable="false" />
+          <Property Name="EfficiencyMax" Type="Decimal" Precision="10" Scale="1" />
+        </EntityType>
+        <EntityType Name="BrandUseIon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExchangeCapacityAndReagentConsumptionFSD" Relationship="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon" FromRole="BrandUseIon" ToRole="ExchangeCapacityAndReagentConsumptionFSD" />
+        </EntityType>
+        <EntityType Name="CentrifugalPumps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StandartSize" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Innings" Type="Int32" Nullable="false" />
+          <Property Name="Pressure" Type="Decimal" Nullable="false" Precision="10" Scale="1" />
+          <Property Name="AcceptableCavitationStock" Type="Int32" />
+          <Property Name="IdFrequencyRotation" Type="Int32" Nullable="false" />
+          <Property Name="PowerConsumption" Type="Int32" Nullable="false" />
+          <Property Name="Efficiency" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EfficiencyMinAxialPumps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ExchangeCapacityAndReagentConsumptionFSD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdIonFiltersNames" Type="Int32" Nullable="false" />
+          <Property Name="IdBrandUseIon" Type="Int32" Nullable="false" />
+          <Property Name="WorkingExchangeCapacity" Type="Int32" Nullable="false" />
+          <Property Name="IdNameReagentFirst" Type="Int32" Nullable="false" />
+          <Property Name="IdNameReagentSecond" Type="Int32" Nullable="false" />
+          <Property Name="SpecificConsumptionFirst" Type="Decimal" Nullable="false" Precision="10" Scale="1" />
+          <Property Name="SpecificConsumptionSecond" Type="Decimal" Nullable="false" Precision="10" Scale="1" />
+          <NavigationProperty Name="BrandUseIon" Relationship="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon" FromRole="ExchangeCapacityAndReagentConsumptionFSD" ToRole="BrandUseIon" />
+          <NavigationProperty Name="IonFiltersNames" Relationship="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames" FromRole="ExchangeCapacityAndReagentConsumptionFSD" ToRole="IonFiltersNames" />
+          <NavigationProperty Name="NameReagent" Relationship="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent" FromRole="ExchangeCapacityAndReagentConsumptionFSD" ToRole="NameReagent" />
+          <NavigationProperty Name="NameReagent1" Relationship="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1" FromRole="ExchangeCapacityAndReagentConsumptionFSD" ToRole="NameReagent" />
+        </EntityType>
+        <EntityType Name="FrequencyRotationPumps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IonFiltersNames">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExchangeCapacityAndReagentConsumptionFSD" Relationship="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames" FromRole="IonFiltersNames" ToRole="ExchangeCapacityAndReagentConsumptionFSD" />
+        </EntityType>
+        <EntityType Name="NameReagent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExchangeCapacityAndReagentConsumptionFSD" Relationship="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent" FromRole="NameReagent" ToRole="ExchangeCapacityAndReagentConsumptionFSD" />
+          <NavigationProperty Name="ExchangeCapacityAndReagentConsumptionFSD1" Relationship="WaterModel.FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1" FromRole="NameReagent" ToRole="ExchangeCapacityAndReagentConsumptionFSD" />
+        </EntityType>
+        <Association Name="FK_ExchangeCapacityAndReagentConsumptionFSD_BrandUseIon">
+          <End Type="WaterModel.BrandUseIon" Role="BrandUseIon" Multiplicity="1" />
+          <End Type="WaterModel.ExchangeCapacityAndReagentConsumptionFSD" Role="ExchangeCapacityAndReagentConsumptionFSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandUseIon">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeCapacityAndReagentConsumptionFSD">
+              <PropertyRef Name="IdBrandUseIon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeCapacityAndReagentConsumptionFSD_IonFiltersNames">
+          <End Type="WaterModel.IonFiltersNames" Role="IonFiltersNames" Multiplicity="1" />
+          <End Type="WaterModel.ExchangeCapacityAndReagentConsumptionFSD" Role="ExchangeCapacityAndReagentConsumptionFSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IonFiltersNames">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeCapacityAndReagentConsumptionFSD">
+              <PropertyRef Name="IdIonFiltersNames" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent">
+          <End Type="WaterModel.NameReagent" Role="NameReagent" Multiplicity="1" />
+          <End Type="WaterModel.ExchangeCapacityAndReagentConsumptionFSD" Role="ExchangeCapacityAndReagentConsumptionFSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameReagent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeCapacityAndReagentConsumptionFSD">
+              <PropertyRef Name="IdNameReagentFirst" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExchangeCapacityAndReagentConsumptionFSD_NameReagent1">
+          <End Type="WaterModel.NameReagent" Role="NameReagent" Multiplicity="1" />
+          <End Type="WaterModel.ExchangeCapacityAndReagentConsumptionFSD" Role="ExchangeCapacityAndReagentConsumptionFSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NameReagent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExchangeCapacityAndReagentConsumptionFSD">
+              <PropertyRef Name="IdNameReagentSecond" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -510,6 +822,94 @@
               <MappingFragment StoreEntitySet="FuelOilConsumption">
                 <ScalarProperty Name="OilConsumption" ColumnName="OilConsumption" />
                 <ScalarProperty Name="Perfomance" ColumnName="Perfomance" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AxialPumps">
+            <EntityTypeMapping TypeName="WaterModel.AxialPumps">
+              <MappingFragment StoreEntitySet="AxialPumps">
+                <ScalarProperty Name="EfficiencyMax" ColumnName="EfficiencyMax" />
+                <ScalarProperty Name="IdEfficiencyMin" ColumnName="IdEfficiencyMin" />
+                <ScalarProperty Name="PowerConsumptionMax" ColumnName="PowerConsumptionMax" />
+                <ScalarProperty Name="PowerConsumptionMin" ColumnName="PowerConsumptionMin" />
+                <ScalarProperty Name="IdFrequencyRotation" ColumnName="IdFrequencyRotation" />
+                <ScalarProperty Name="AcceptableCavitationStockMax" ColumnName="AcceptableCavitationStockMax" />
+                <ScalarProperty Name="AcceptableCavitationStockMin" ColumnName="AcceptableCavitationStockMin" />
+                <ScalarProperty Name="PressureMax" ColumnName="PressureMax" />
+                <ScalarProperty Name="PressureMin" ColumnName="PressureMin" />
+                <ScalarProperty Name="InningsMax" ColumnName="InningsMax" />
+                <ScalarProperty Name="InningsMin" ColumnName="InningsMin" />
+                <ScalarProperty Name="StandartSize" ColumnName="StandartSize" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandUseIon">
+            <EntityTypeMapping TypeName="WaterModel.BrandUseIon">
+              <MappingFragment StoreEntitySet="BrandUseIon">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CentrifugalPumps">
+            <EntityTypeMapping TypeName="WaterModel.CentrifugalPumps">
+              <MappingFragment StoreEntitySet="CentrifugalPumps">
+                <ScalarProperty Name="Efficiency" ColumnName="Efficiency" />
+                <ScalarProperty Name="PowerConsumption" ColumnName="PowerConsumption" />
+                <ScalarProperty Name="IdFrequencyRotation" ColumnName="IdFrequencyRotation" />
+                <ScalarProperty Name="AcceptableCavitationStock" ColumnName="AcceptableCavitationStock" />
+                <ScalarProperty Name="Pressure" ColumnName="Pressure" />
+                <ScalarProperty Name="Innings" ColumnName="Innings" />
+                <ScalarProperty Name="StandartSize" ColumnName="StandartSize" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfficiencyMinAxialPumps">
+            <EntityTypeMapping TypeName="WaterModel.EfficiencyMinAxialPumps">
+              <MappingFragment StoreEntitySet="EfficiencyMinAxialPumps">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeCapacityAndReagentConsumptionFSD">
+            <EntityTypeMapping TypeName="WaterModel.ExchangeCapacityAndReagentConsumptionFSD">
+              <MappingFragment StoreEntitySet="ExchangeCapacityAndReagentConsumptionFSD">
+                <ScalarProperty Name="SpecificConsumptionSecond" ColumnName="SpecificConsumptionSecond" />
+                <ScalarProperty Name="SpecificConsumptionFirst" ColumnName="SpecificConsumptionFirst" />
+                <ScalarProperty Name="IdNameReagentSecond" ColumnName="IdNameReagentSecond" />
+                <ScalarProperty Name="IdNameReagentFirst" ColumnName="IdNameReagentFirst" />
+                <ScalarProperty Name="WorkingExchangeCapacity" ColumnName="WorkingExchangeCapacity" />
+                <ScalarProperty Name="IdBrandUseIon" ColumnName="IdBrandUseIon" />
+                <ScalarProperty Name="IdIonFiltersNames" ColumnName="IdIonFiltersNames" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FrequencyRotationPumps">
+            <EntityTypeMapping TypeName="WaterModel.FrequencyRotationPumps">
+              <MappingFragment StoreEntitySet="FrequencyRotationPumps">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IonFiltersNames">
+            <EntityTypeMapping TypeName="WaterModel.IonFiltersNames">
+              <MappingFragment StoreEntitySet="IonFiltersNames">
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NameReagent">
+            <EntityTypeMapping TypeName="WaterModel.NameReagent">
+              <MappingFragment StoreEntitySet="NameReagent">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

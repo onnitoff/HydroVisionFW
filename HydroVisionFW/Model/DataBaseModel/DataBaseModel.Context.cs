@@ -38,5 +38,13 @@ namespace HydroVisionFW.Model.DataBaseModel
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeOfBoilers> TypeOfBoilers { get; set; }
         public virtual DbSet<FuelOilConsumption> FuelOilConsumption { get; set; }
+        public virtual DbSet<AxialPumps> AxialPumps { get; set; }
+        public virtual DbSet<BrandUseIon> BrandUseIon { get; set; }
+        public virtual DbSet<CentrifugalPumps> CentrifugalPumps { get; set; }
+        public virtual DbSet<EfficiencyMinAxialPumps> EfficiencyMinAxialPumps { get; set; }
+        public virtual DbSet<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD { get; set; }
+        public virtual DbSet<FrequencyRotationPumps> FrequencyRotationPumps { get; set; }
+        public virtual DbSet<IonFiltersNames> IonFiltersNames { get; set; }
+        public virtual DbSet<NameReagent> NameReagent { get; set; }
     }
 }
