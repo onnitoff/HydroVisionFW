@@ -1,4 +1,5 @@
 ﻿using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Services.DataStorages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,12 @@ namespace HydroVisionDesign.Services.TestValues
             DataStorage.Instance.VacationCouple = 0;
             DataStorage.Instance.Losses = 0;
             DataStorage.Instance.BlowdownLosses = 0;
+
+
+            //MAF
+            MAFStorage.Instance.m = 3;
+            MAFStorage.Instance.w = 50;
+
 
         }
     }

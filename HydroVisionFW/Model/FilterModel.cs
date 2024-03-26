@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace HydroVisionFW.Model
 {
-    internal class BrandOfIonModel
+    internal class FilterModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double SpecificConsumptionFirst { get; set; }
-        public double SpecificConsumptionSecond { get; set; }
+        public double OperatingPressure { get; set; }
+        public int Diameter { get; set; }
+        public int IonExchangerLayerHieght { get; set; }
+        public int FilterPerfomance { get; set; }
     }
 }

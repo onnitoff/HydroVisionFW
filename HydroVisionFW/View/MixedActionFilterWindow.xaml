@@ -44,7 +44,7 @@
                       ItemsSource="{Binding Path=SuitableFilter}"
                       DisplayMemberPath="Name"
                       SelectedValuePath="Id"
-                      SelectedItem="{}"/>
+                      SelectedItem="{Binding SelectedSuitableFilter}"/>
             <Button Content="Применить"  Height="50" Margin="0,383,0,0"
                     Command="{Binding ApplyBtnCommand}"/>
         </Grid>

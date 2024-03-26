@@ -46,5 +46,6 @@ namespace HydroVisionFW.Model.DataBaseModel
         public virtual DbSet<FrequencyRotationPumps> FrequencyRotationPumps { get; set; }
         public virtual DbSet<IonFiltersNames> IonFiltersNames { get; set; }
         public virtual DbSet<NameReagent> NameReagent { get; set; }
+        public virtual DbSet<OperatingPressure> OperatingPressure { get; set; }
     }
 }

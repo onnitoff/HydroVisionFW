@@ -25,7 +25,7 @@ namespace HydroVisionFW.Services.DataStorages
         }
 
         /// <summary>Переменные ФСД</summary>
-        #region Filter_AA
+        #region Filter_MA
 
         public double F {  get; set; }
         public double w { get; set; }
@@ -61,6 +61,13 @@ namespace HydroVisionFW.Services.DataStorages
         public double G_cutA { get; set; }
 
         public double Q_br { get; set; }
+
+
+        #region DB
+
+        public int SelectedBrandOfIon { get; set; } = 1;
+        public int SelectedSuitableFilter { get; set; } = 0;
+        #endregion
 
         #endregion
     }

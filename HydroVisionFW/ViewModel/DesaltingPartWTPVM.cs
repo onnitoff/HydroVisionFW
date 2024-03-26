@@ -1,6 +1,7 @@
 ﻿using HydroVisionDesign.Infrastructure.Base;
 using HydroVisionDesign.Infrastructure.Commands;
 using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Services.Calculations;
 using HydroVisionFW.Services.DataStorages;
 using HydroVisionFW.View;
 using System;
@@ -284,7 +285,10 @@ namespace HydroVisionDesign.ViewModel
         /// <summary>Вызов метода после закрытия MAFWindow</summary>
         private void MAFWindow_Closed(object sender, EventArgs e)
         {
-            MessageBox.Show("Work");
+            CalcMAF calcMAF = new CalcMAF();
+            calcMAF.Calculations();
+            FillTextBoxMAF();
+
         }
 
 

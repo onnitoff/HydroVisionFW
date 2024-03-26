@@ -17,6 +17,8 @@ namespace HydroVisionFW.Services.Calculations
         {
             const double t = 3.5;
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
+
+
             MAFStorage.Instance.F = filters.FiltrationArea(DataStorage.Instance.PerfomanceWTP, MAFStorage.Instance.w);
 
             MAFStorage.Instance.f_p = filters.RequiredFiltrationAreaOfEachFilter(MAFStorage.Instance.F, MAFStorage.Instance.m);

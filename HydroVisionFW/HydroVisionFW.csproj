@@ -143,12 +143,16 @@
     <Compile Include="Model\DataBaseModel\NameReagent.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataBaseModel\OperatingPressure.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataBaseModel\sysdiagrams.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBaseModel\TypeOfBoilers.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FilterModel.cs" />
     <Compile Include="Model\FuelModel.cs" />
     <Compile Include="Model\WaterIndicatorModel.cs" />
     <Compile Include="Services\Calculations\CalcMAF.cs" />

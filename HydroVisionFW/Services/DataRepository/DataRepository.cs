@@ -20,7 +20,41 @@ namespace HydroVisionFW.Services.DataRepository
                               select new BrandOfIonModel
                               {
                                   Id = first.Id,
-                                  Name = second.Name
+                                  Name = second.Name,
+                                  SpecificConsumptionFirst = (double)first.SpecificConsumptionFirst,
+                                  SpecificConsumptionSecond = (double)first.SpecificConsumptionSecond
+                              }).ToListAsync();
+
+            }
+        }
+
+        //public async Task<double> GetSpecificConsumptionOfChemicalReagents(int id)
+        //{
+        //    using (var context = new WaterContext())
+        //    {
+        //        return await context.ExchangeCapacityAndReagentConsumptionFSD
+        //            .Where(x => x.Id == id)
+        //            .Select(x => (double)x.SpecificConsumptionFirst)
+        //            .FirstOrDefaultAsync();
+        //    }
+        //}
+
+        public async Task<List<FilterModel>> GetFilterMAAsync()
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.Filters
+                              join second in context.FilterType on first.IdFilterTypes equals second.Id
+                              join third in context.OperatingPressure on first.IdOperatingPressure equals third.Id
+                              where second.Id == 7 
+                              select new FilterModel
+                              {
+                                  Id = first.Id,
+                                  Name = first.Cipheer,
+                                  OperatingPressure = (double)third.OperatingPressure1,
+                                  Diameter = first.Diameter,
+                                  IonExchangerLayerHieght = (int)first.IonExchangerLayerHieght,
+                                  FilterPerfomance = (int)first.FilterPerfomance,
                               }).ToListAsync();
 
             }

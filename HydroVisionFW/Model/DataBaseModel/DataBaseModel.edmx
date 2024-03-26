@@ -186,6 +186,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="5" Nullable="false" />
         </EntityType>
+        <EntityType Name="OperatingPressure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperatingPressure" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -307,6 +314,7 @@
           <EntitySet Name="FuelOilConsumption" EntityType="Self.FuelOilConsumption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IonFiltersNames" EntityType="Self.IonFiltersNames" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NameReagent" EntityType="Self.NameReagent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperatingPressure" EntityType="Self.OperatingPressure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeOfBoilers" EntityType="Self.TypeOfBoilers" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Boilers_TypeOfBoilers" Association="Self.FK_Boilers_TypeOfBoilers">
@@ -544,6 +552,7 @@
             <End Role="NameReagent" EntitySet="NameReagent" />
             <End Role="ExchangeCapacityAndReagentConsumptionFSD" EntitySet="ExchangeCapacityAndReagentConsumptionFSD" />
           </AssociationSet>
+          <EntitySet Name="OperatingPressure" EntityType="WaterModel.OperatingPressure" />
         </EntityContainer>
         <EntityType Name="FuelOilConsumption">
           <Key>
@@ -689,6 +698,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="OperatingPressure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperatingPressure1" Type="Decimal" Nullable="false" Precision="10" Scale="1" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -910,6 +926,14 @@
             <EntityTypeMapping TypeName="WaterModel.NameReagent">
               <MappingFragment StoreEntitySet="NameReagent">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperatingPressure">
+            <EntityTypeMapping TypeName="WaterModel.OperatingPressure">
+              <MappingFragment StoreEntitySet="OperatingPressure">
+                <ScalarProperty Name="OperatingPressure1" ColumnName="OperatingPressure" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

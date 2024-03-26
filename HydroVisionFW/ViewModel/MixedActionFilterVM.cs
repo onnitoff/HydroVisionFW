@@ -2,7 +2,9 @@
 using HydroVisionDesign.Infrastructure.Commands;
 using HydroVisionFW.Model;
 using HydroVisionFW.Model.DataBaseModel;
+using HydroVisionFW.Services.Calculations;
 using HydroVisionFW.Services.DataRepository;
+using HydroVisionFW.Services.DataStorages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,12 +17,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 
 namespace HydroVisionFW.ViewModel
 {
     internal class MixedActionFilterVM : ViewModelBase
     {
-        private double _DesignDiameter;
+        private double _DesignDiameter = MAFStorage.Instance.f_p;
         /// <summary>Свойство для textBox Расчетный диаметр</summary>
         public double DesignDiameter
         {
@@ -28,7 +31,7 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _DesignDiameter, value);
         }
 
-        private double _FilterCount;
+        private double _FilterCount = MAFStorage.Instance.m;
         /// <summary>Свойство для textBox Количество фильтров</summary>
         public double FilterCount
         {
@@ -37,35 +40,17 @@ namespace HydroVisionFW.ViewModel
         }
 
         /// <summary>Коллекция для ComboBox Марка ионита</summary>
-        //public ObservableCollection<ExchangeCapacityAndReagentConsumptionFSD> BrandOfIonItems { get; set; }
         public List<BrandOfIonModel> BrandOfIonItems { get; set; }
-        //public IQueryable<BrandOfIonData> BrandOfIonItems {  get; set; }
 
-        /// <summary>Свойство для Select ComboBox Марка ионита</summary>
         private BrandOfIonModel _SelectedBrandOfIon;
+        /// <summary>Свойство для Select ComboBox Марка ионита</summary>
         public BrandOfIonModel SelectedBrandOfIon
         {
             get => _SelectedBrandOfIon;
             set => Set(ref _SelectedBrandOfIon, value);
         }
 
-        //private double _BrandOfIon;
-        ///// <summary>Свойство для textBox Бренд катиона</summary>
-        //public double BrandOfIon
-        //{
-        //    get => _BrandOfIon;
-        //    set => Set(ref _BrandOfIon, value);
-        //}
-
-        //private double _BrandOfAnion;
-        ///// <summary>Свойство для textBox Бренд аниона</summary>
-        //public double BrandOfAnion
-        //{
-        //    get => _BrandOfAnion;
-        //    set => Set(ref _BrandOfAnion, value);
-        //}
-
-        private double _FiltrationSpeed;
+        private double _FiltrationSpeed = MAFStorage.Instance.w;
         /// <summary>Свойство для textBox Скорость фильтрации</summary>
         public double FiltrationSpeed
         {
@@ -73,15 +58,17 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _FiltrationSpeed, value);
         }
 
-        public List<BrandOfIonModel> SuitableFilter { get; set; }
+        /// <summary>Коллекция для ComboBox Фильтр</summary>
+        public List<FilterModel> SuitableFilter { get; set; }
 
-        //private double _SuitableFilter;
-        ///// <summary>Свойство для textBox Подходящий фильтр</summary>
-        //public double SuitableFilter
-        //{
-        //    get => _SuitableFilter;
-        //    set => Set(ref _SuitableFilter, value);
-        //}
+        private FilterModel _SelectedSuitableFilter;
+        /// <summary>Свойство для Select ComboBox Фильтр</summary>
+        public FilterModel SelectedSuitableFilter
+        {
+            get => _SelectedSuitableFilter;
+            set => Set(ref _SelectedSuitableFilter, value);
+        }
+
 
         #region Команды
 
@@ -90,6 +77,8 @@ namespace HydroVisionFW.ViewModel
         public ICommand ApplyBtnCommand { get; }
         private void OnApplyBtnCommand(object obj)
         {
+            RecordParamToStorage();
+
             Window activeWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             activeWindow?.Close();
         }
@@ -104,34 +93,45 @@ namespace HydroVisionFW.ViewModel
             ApplyBtnCommand = new RelayCommand(OnApplyBtnCommand);
             #endregion
 
+            //CalcMAF calcMAF = new CalcMAF();
+            //calcMAF.Calculations();
+
+            GetComboBox();
+        }
+
+
+        private void GetComboBox()
+        {
             DataRepository data = new DataRepository();
 
+            // обращение к бд марка ионита
             Task.Run(async () =>
             {
                 BrandOfIonItems = await data.GetBrandIonAsync();
             }).Wait();
-            GetList();
+            SelectedBrandOfIon = BrandOfIonItems[MAFStorage.Instance.SelectedBrandOfIon - 1];
 
-
+            // обращение к бд фильтры
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterMAAsync();
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[MAFStorage.Instance.SelectedSuitableFilter];
         }
 
-
-        private void GetList()
+        private void RecordParamToStorage()
         {
-            List<BrandOfIonModel> brandOfIonModels = new List<BrandOfIonModel>();
-            brandOfIonModels.Add(new BrandOfIonModel
-            {
-                Id = 1,
-                Name = "Name"
-            });
-            brandOfIonModels.Add(new BrandOfIonModel
-            {
-                Id = 2,
-                Name = "Name2"
-            });
+            MAFStorage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
+            MAFStorage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionSecond;
 
-            SuitableFilter = brandOfIonModels;
+            MAFStorage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
+            MAFStorage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+
+            MAFStorage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
+            MAFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 36;
+
         }
+
         
     }
 }
