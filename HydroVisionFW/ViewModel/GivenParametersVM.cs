@@ -214,7 +214,6 @@ namespace HydroVisionDesign.ViewModel
         public Boilers SelectedBoilerFirstItem
         {
             get => _SelectedBoilerFirstItem;
-
             set => Set(ref _SelectedBoilerFirstItem, value);
         }
 
@@ -222,7 +221,6 @@ namespace HydroVisionDesign.ViewModel
         public Boilers SelectedBoilerSecondItem
         {
             get => _SelectedBoilerSecondItem;
-
             set => Set(ref _SelectedBoilerSecondItem, value);
         }
 
