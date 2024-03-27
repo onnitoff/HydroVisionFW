@@ -24,11 +24,11 @@ namespace HydroVisionFW.Services.Calculations
             A2Storage.Instance.T_FAA = filters.FilterCycleDurationForThreeStage(A2Storage.Instance.f_ct, A2Storage.Instance.m, A2Storage.Instance.h, MAFStorage.Instance.Q_br);
             A2Storage.Instance.n = filters.NumberOfRegenerationsPerDay(A2Storage.Instance.T_FAA, t);
             A2Storage.Instance.V_vl = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilter(A2Storage.Instance.f_ct, A2Storage.Instance.h);
-            A2Storage.Instance.V_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilterCationAndAnion(A2Storage.Instance.V_vl);
+            //A2Storage.Instance.V_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilterCationAndAnion(A2Storage.Instance.V_vl);
             A2Storage.Instance.SumV_vl = filters.VolumeOfIonExchangeMaterialsInWetStateInGroupFilters(A2Storage.Instance.f_ct, A2Storage.Instance.h, A2Storage.Instance.m);
-            A2Storage.Instance.SumV_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInGroupFiltersCationAndAnion(A2Storage.Instance.SumV_vl);
+            //A2Storage.Instance.SumV_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInGroupFiltersCationAndAnion(A2Storage.Instance.SumV_vl);
 
-            A2Storage.Instance.g_cnA = filters.WaterConsumptionForOwnNeeds(A2Storage.Instance.SumV_vlK, A2Storage.Instance.P_iA, A2Storage.Instance.n);
+            A2Storage.Instance.g_cnA = filters.WaterConsumptionForOwnNeeds(A2Storage.Instance.SumV_vl, A2Storage.Instance.P_iA, A2Storage.Instance.n);
             A2Storage.Instance.G_100pA = filters.ConsumptionOfChemicalReagentsForRegenerationOfOneFilter(A2Storage.Instance.bA, A2Storage.Instance.V_vl, A2Storage.Instance.e_pA);
             A2Storage.Instance.G_texA = filters.SpecificConsumptionOfChemicals(A2Storage.Instance.G_100pA, A2Storage.Instance.CA);
             A2Storage.Instance.G_cutA = filters.SpecificConsumptionOfChemicalsPerDay(A2Storage.Instance.G_texA, A2Storage.Instance.n, A2Storage.Instance.m);

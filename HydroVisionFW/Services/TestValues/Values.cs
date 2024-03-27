@@ -53,12 +53,25 @@ namespace HydroVisionDesign.Services.TestValues
             A2Storage.Instance.CA = 42;
 
 
-
-            //A2
+            //H2
             H2Storage.Instance.m = 3;
-            H2Storage.Instance.w = 30;
+            H2Storage.Instance.w = 40;
 
             H2Storage.Instance.CK = 75;
+
+
+            //A1
+            A1Storage.Instance.m = 3;
+            A1Storage.Instance.w = 20;
+
+            A1Storage.Instance.CA = 42;
+
+
+            //H1
+            H1Storage.Instance.m = 3;
+            H1Storage.Instance.w = 30;
+
+            H1Storage.Instance.CK = 75;
 
 
         }

@@ -289,8 +289,8 @@ namespace HydroVisionFW.ViewModel
             MAFStorage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionSecond;
             MAFStorage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
-            MAFStorage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
-            MAFStorage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+            MAFStorage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
+            MAFStorage.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
             MAFStorage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
             MAFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 35;
@@ -340,8 +340,8 @@ namespace HydroVisionFW.ViewModel
             A2Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionFirst;
             A2Storage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
-            A2Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
-            A2Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+            A2Storage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
+            A2Storage.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
             A2Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 10;
             A2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 24;
@@ -391,8 +391,8 @@ namespace HydroVisionFW.ViewModel
             H2Storage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
             H2Storage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
-            H2Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
-            H2Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+            H2Storage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
+            H2Storage.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
             H2Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 6;
             H2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 24;
@@ -442,8 +442,8 @@ namespace HydroVisionFW.ViewModel
             A1Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionFirst;
             A1Storage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
-            A1Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
-            A1Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+            A1Storage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
+            A1Storage.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
             A1Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 8;
             A1Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 14;
@@ -493,8 +493,8 @@ namespace HydroVisionFW.ViewModel
             H1Storage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
             H1Storage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
-            H1Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
-            H1Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+            H1Storage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
+            H1Storage.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
             H1Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 4;
             H1Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 14;
