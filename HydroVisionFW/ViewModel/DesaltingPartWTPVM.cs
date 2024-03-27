@@ -21,20 +21,32 @@ namespace HydroVisionDesign.ViewModel
     {
         #region Свойство Hidden
 
-        private bool _IsHiddenA1Property = false;
-        /// <summary>Свойство для скрытия свойств A1/summary>
-        public bool IsHiddenA1Property
+        #region блоки
+
+        private bool _IsHiddenCationProperty = false;
+        /// <summary>Свойство для скрытия свойств Катионов/summary>
+        public bool IsHiddenCationProperty
         {
-            get => _IsHiddenA1Property;
-            set => Set(ref _IsHiddenA1Property, value);
+            get => _IsHiddenCationProperty;
+            set => Set(ref _IsHiddenCationProperty, value);
         }
 
-        private bool _IsHiddenMAFProperty = false;
-        /// <summary>Свойство для скрытия свойств ФСД</summary>
-        public bool IsHiddenMAFProperty
+        private bool _IsHiddenAnionProperty = false;
+        /// <summary>Свойство для скрытия свойств Анионов/summary>
+        public bool IsHiddenAnionProperty
         {
-            get => _IsHiddenMAFProperty;
-            set => Set(ref _IsHiddenMAFProperty, value);
+            get => _IsHiddenAnionProperty;
+            set => Set(ref _IsHiddenAnionProperty, value);
+        }
+
+        #endregion
+
+        private bool _IsHiddenFilterProperty = false;
+        /// <summary>Свойство для скрытия свойств ФСД</summary>
+        public bool IsHiddenFilterProperty
+        {
+            get => _IsHiddenFilterProperty;
+            set => Set(ref _IsHiddenFilterProperty, value);
         }
 
         #endregion
@@ -214,36 +226,36 @@ namespace HydroVisionDesign.ViewModel
 
 
         #region Команды
-        #region LeftBtnA1Command
+
+        #region LeftBtnAndDoubleA1Command
         /// <summary>Нажатие левой кнопки по А1</summary>
         public ICommand LeftBtnA1Command { get; }
         private void OnLeftBtnA1Command(object obj)
         {
-            IsHiddenA1Property = true;
         }
-        #endregion
 
-        #region LeftDoubleBtnA1Command
         /// <summary>Нажатие дабл левой кнопки по А1</summary>
         public ICommand LeftDoubleBtnA1Command { get; }
         private void OnLeftDoubleBtnA1Command(object obj)
         {
-            DataStorage.Instance.ViewModel = 2;
+            DataStorage.Instance.ViewModel = 0;
             EquipmentWindow mixed = new EquipmentWindow();
             mixed.Show();
         }
         #endregion
 
-        #region LeftBtnMAFCommand
+        #region LeftBtnAndDoubleMAFCommand
         /// <summary>Нажатие левой кнопки по ФСД</summary>
         public ICommand LeftBtnMAFCommand { get; }
         private void OnLeftBtnMAFCommand(object obj)
         {
-            IsHiddenMAFProperty = true;
-        }
-        #endregion
+            IsHiddenFilterProperty = true;
+            IsHiddenCationProperty = true;
+            IsHiddenAnionProperty = true;
 
-        #region LeftDoubleBtnCommand
+            FillTextBoxMAF();
+        }
+
         /// <summary>Нажатие дабл левой кнопки по ФСД</summary>
         public ICommand LeftDoubleBtnMAFCommand { get; }
         private void OnLeftDoubleBtnMAFCommand(object obj)
@@ -252,7 +264,6 @@ namespace HydroVisionDesign.ViewModel
             EquipmentWindow mixed = new EquipmentWindow();
             mixed.Show();
             mixed.Closed += MAFWindow_Closed;
-
         }
 
         #endregion
@@ -262,9 +273,33 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftBtnGridCommand { get; }
         private void OnLeftBtnGridCommand(object obj)
         {
-            IsHiddenA1Property = false;
-            IsHiddenMAFProperty = false;
+            IsHiddenFilterProperty = false;
         }
+        #endregion
+
+        #region LeftBtnAndDoubleA2Command
+        /// <summary>Нажатие левой кнопки по A2</summary>
+        public ICommand LeftBtnA2Command { get; }
+        private void OnLeftBtnA2Command(object obj)
+        {
+            IsHiddenFilterProperty = true;
+            IsHiddenCationProperty = false;
+            IsHiddenAnionProperty = true;
+
+            FillTextBoxA2();
+
+        }
+
+        /// <summary>Нажатие дабл левой кнопки по A2</summary>
+        public ICommand LeftDoubleBtnA2Command { get; }
+        private void OnLeftDoubleBtnA2Command(object obj)
+        {
+            DataStorage.Instance.ViewModel = 2;
+            EquipmentWindow mixed = new EquipmentWindow();
+            mixed.Show();
+            mixed.Closed += A2Window_Closed;
+        }
+
         #endregion
 
         #endregion
@@ -280,11 +315,51 @@ namespace HydroVisionDesign.ViewModel
             LeftDoubleBtnMAFCommand = new RelayCommand(OnLeftDoubleBtnMAFCommand);
 
             LeftBtnGridCommand = new RelayCommand(OnLeftBtnGridCommand);
-            MAFStorage.Instance.F = 100;
+
+            LeftBtnA2Command = new RelayCommand(OnLeftBtnA2Command);
+            LeftDoubleBtnA2Command = new RelayCommand(OnLeftDoubleBtnA2Command);
+
             #endregion
 
         }
 
+        /// <summary>Вызов метода после закрытия A2Window</summary>
+        private void A2Window_Closed(object sender, EventArgs e)
+        {
+            CalcA2 calcA2 = new CalcA2();
+            calcA2.Calculations();
+            FillTextBoxA2();
+
+
+        }
+
+        /// <summary>Заполнение данными из A2Storage свойств textBox</summary>
+        private void FillTextBoxA2()
+        {
+            FiltrationArea = A2Storage.Instance.F;
+            FiltrationSpeed = A2Storage.Instance.w;
+            WaterConsumptionPerFilter = MAFStorage.Instance.Q_br;
+            FiltrationAreaOfEachFilter = A2Storage.Instance.f_p;
+            DesignFilterDiameter = A2Storage.Instance.d_p;
+            FilterArea = A2Storage.Instance.f_ct;
+            FilterCycleDuration = A2Storage.Instance.T_FAA;
+            NumberOfRegenerationsPerDay = A2Storage.Instance.n;
+            VolumeOfIonExchangeMaterialsInOneFilter = A2Storage.Instance.V_vl;
+            VolumeOfIonExchangeMaterialsInOneFilterCationOrAnion = A2Storage.Instance.V_vlK;
+            VolumeOfIonExchangeMaterialsInGroupFilter = A2Storage.Instance.SumV_vl;
+            VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion = A2Storage.Instance.SumV_vlK;
+
+            WaterConsumptionForOwnNeedsAnion = A2Storage.Instance.g_cnA;
+            ConsumptionOfChemicalReagentsAnion = A2Storage.Instance.G_100pA;
+            TechnicalProductConsumptionAnion = A2Storage.Instance.G_texA;
+            DailyConsumptionOfChemicalReagentAnion = A2Storage.Instance.G_cutA;
+
+            WaterConsumptionForNextGroupOfFilters = A2Storage.Instance.Q_br;
+        }
+
+
+
+        #region MAF
         /// <summary>Вызов метода после закрытия MAFWindow</summary>
         private void MAFWindow_Closed(object sender, EventArgs e)
         {
@@ -320,5 +395,7 @@ namespace HydroVisionDesign.ViewModel
             DailyConsumptionOfChemicalReagentAnion = MAFStorage.Instance.G_cutA;
             WaterConsumptionForNextGroupOfFilters = MAFStorage.Instance.Q_br;
         }
+
+        #endregion
     }
 }

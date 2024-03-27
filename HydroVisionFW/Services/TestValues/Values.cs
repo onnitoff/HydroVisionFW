@@ -45,6 +45,14 @@ namespace HydroVisionDesign.Services.TestValues
             MAFStorage.Instance.CK = 75;
             MAFStorage.Instance.CA = 42;
 
+
+            //A2
+            A2Storage.Instance.m = 3;
+            A2Storage.Instance.w = 50;
+
+            A2Storage.Instance.CA = 42;
+
+
         }
     }
 }

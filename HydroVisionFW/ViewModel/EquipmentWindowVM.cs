@@ -133,7 +133,9 @@ namespace HydroVisionFW.ViewModel
                 // открыт А2
                 case 2:
                     {
-                        
+                        LoadProperty_A2();
+                        GetComboBox_A2();
+                        RecordParamToStorage_A2();
                         MessageBox.Show("A2");
                     }
                     break;
@@ -190,6 +192,53 @@ namespace HydroVisionFW.ViewModel
 
             MAFStorage.Instance.m = FilterCount;
             MAFStorage.Instance.w = FiltrationSpeed;
+        }
+
+        #endregion
+
+        #region A2
+
+        private void LoadProperty_A2()
+        {
+            _DesignDiameter = A2Storage.Instance.f_p;
+            _FilterCount = A2Storage.Instance.m;
+            _FiltrationSpeed = A2Storage.Instance.w;
+
+        }
+
+        private void GetComboBox_A2()
+        {
+            DataRepository data = new DataRepository();
+
+            // обращение к бд марка ионита
+            Task.Run(async () =>
+            {
+                BrandOfIonItems = await data.GetBrandIonMAFAsync();
+            }).Wait();
+            SelectedBrandOfIon = BrandOfIonItems[A2Storage.Instance.SelectedBrandOfIon - 1];
+
+            // обращение к бд фильтры
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterMAAsync();
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[A2Storage.Instance.SelectedSuitableFilter];
+        }
+
+        private void RecordParamToStorage_A2()
+        {
+            A2Storage.Instance.e_pA = SelectedBrandOfIon.WorkingExchangeCapacity;
+            A2Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionSecond;
+            A2Storage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
+
+            A2Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
+            A2Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+
+            A2Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
+            A2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 36;
+
+            A2Storage.Instance.m = FilterCount;
+            A2Storage.Instance.w = FiltrationSpeed;
         }
 
         #endregion

@@ -158,9 +158,11 @@
     <Compile Include="Model\FilterModel.cs" />
     <Compile Include="Model\FuelModel.cs" />
     <Compile Include="Model\WaterIndicatorModel.cs" />
+    <Compile Include="Services\Calculations\CalcA2.cs" />
     <Compile Include="Services\Calculations\CalcMAF.cs" />
     <Compile Include="Services\Calculations\Calculations.cs" />
     <Compile Include="Services\DataRepository\DataRepository.cs" />
+    <Compile Include="Services\DataStorages\A2Storage.cs" />
     <Compile Include="Services\DataStorages\DataStorage.cs" />
     <Compile Include="Services\DataStorages\MAFStorage.cs" />
     <Compile Include="Services\TestValues\Values.cs" />
