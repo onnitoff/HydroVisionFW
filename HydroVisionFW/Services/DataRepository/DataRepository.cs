@@ -11,7 +11,9 @@ namespace HydroVisionFW.Services.DataRepository
 {
     internal class DataRepository
     {
-        public async Task<List<BrandOfIonModel>> GetBrandIonAsync()
+        /// <summary>обращение к бд и вытягивание брендов ионитов ФСД</summary>
+        /// <returns>List BrandOfIonModel</returns>
+        public async Task<List<BrandOfIonModel>> GetBrandIonMAFAsync()
         {
             using (var context = new WaterContext())
             {
@@ -32,7 +34,8 @@ namespace HydroVisionFW.Services.DataRepository
         }
 
        
-
+        /// <summary>обращение к бд и вытягивание список фильтров ФСД</summary>
+        /// <returns>List FilterModel</returns>
         public async Task<List<FilterModel>> GetFilterMAAsync()
         {
             using (var context = new WaterContext())

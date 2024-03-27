@@ -169,7 +169,7 @@
     <Compile Include="ViewModel\DesaltingPartWTPVM.cs" />
     <Compile Include="ViewModel\FilterA1WindowVM.cs" />
     <Compile Include="ViewModel\GivenParametersVM.cs" />
-    <Compile Include="ViewModel\MixedActionFilterVM.cs" />
+    <Compile Include="ViewModel\EquipmentWindowVM.cs" />
     <Compile Include="ViewModel\NavigationVM.cs" />
     <Compile Include="ViewModel\PerfomanceWTPVM.cs" />
     <Compile Include="ViewModel\WaterQualityIndicatorsVM.cs" />
@@ -188,8 +188,8 @@
     <Compile Include="View\GivenParameters.xaml.cs">
       <DependentUpon>GivenParameters.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MixedActionFilterWindow.xaml.cs">
-      <DependentUpon>MixedActionFilterWindow.xaml</DependentUpon>
+    <Compile Include="View\EquipmentWindow.xaml.cs">
+      <DependentUpon>EquipmentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PerfomanceWTP.xaml.cs">
       <DependentUpon>PerfomanceWTP.xaml</DependentUpon>
@@ -244,7 +244,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\MixedActionFilterWindow.xaml">
+    <Page Include="View\EquipmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -26,6 +26,8 @@ namespace HydroVisionDesign.Services.DataStorages
             }
         }
 
+        public int ViewModel { get; set; }
+
         /// <summary>Переменные показателей качества воды, показателей качества воды по отдельным стадиям обработки</summary>
         #region AnalysisOfWater
 

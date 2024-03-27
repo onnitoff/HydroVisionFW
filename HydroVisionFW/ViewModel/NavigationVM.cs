@@ -14,13 +14,21 @@ namespace HydroVisionDesign.ViewModel
 {
     internal class NavigationVM : ViewModelBase
     {
-		private object _currentView;
+		//private object _currentView;
 
-		public object CurrentView
-		{
-			get { return _currentView; }
-			set { _currentView = value; OnPropertyChanged(); }
-		}
+		//public object CurrentView
+		//{
+		//	get { return _currentView; }
+		//	set { _currentView = value; OnPropertyChanged(); }
+		//}
+
+        private object _CurrentView;
+        /// <summary>Свойство для навигац</summary>
+        public object CurrentView
+        {
+            get => _CurrentView;
+            set => Set(ref _CurrentView, value);
+        }
 
         #region Command
 

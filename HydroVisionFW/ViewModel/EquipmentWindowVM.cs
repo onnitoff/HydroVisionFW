@@ -1,5 +1,6 @@
 ﻿using HydroVisionDesign.Infrastructure.Base;
 using HydroVisionDesign.Infrastructure.Commands;
+using HydroVisionDesign.Services.DataStorages;
 using HydroVisionFW.Model;
 using HydroVisionFW.Model.DataBaseModel;
 using HydroVisionFW.Services.Calculations;
@@ -21,9 +22,9 @@ using System.Windows.Markup;
 
 namespace HydroVisionFW.ViewModel
 {
-    internal class MixedActionFilterVM : ViewModelBase
+    internal class EquipmentWindowVM : ViewModelBase
     {
-        private double _DesignDiameter = MAFStorage.Instance.f_p;
+        private double _DesignDiameter;
         /// <summary>Свойство для textBox Расчетный диаметр</summary>
         public double DesignDiameter
         {
@@ -31,7 +32,7 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _DesignDiameter, value);
         }
 
-        private int _FilterCount = MAFStorage.Instance.m;
+        private int _FilterCount;
         /// <summary>Свойство для textBox Количество фильтров</summary>
         public int FilterCount
         {
@@ -50,7 +51,7 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _SelectedBrandOfIon, value);
         }
 
-        private double _FiltrationSpeed = MAFStorage.Instance.w;
+        private double _FiltrationSpeed;
         /// <summary>Свойство для textBox Скорость фильтрации</summary>
         public double FiltrationSpeed
         {
@@ -77,7 +78,27 @@ namespace HydroVisionFW.ViewModel
         public ICommand ApplyBtnCommand { get; }
         private void OnApplyBtnCommand(object obj)
         {
-            RecordParamToStorage();
+            switch (DataStorage.Instance.ViewModel)
+            {
+                case 0:
+                    break;
+
+                // открыт ФСД
+                case 1:
+                    {
+                        RecordParamToStorage_MAF();
+                    }
+                    break;
+                // открыт А2
+                case 2:
+                    {
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+
 
             Window activeWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             activeWindow?.Close();
@@ -87,27 +108,60 @@ namespace HydroVisionFW.ViewModel
         #endregion
 
 
-        public MixedActionFilterVM()
+        public EquipmentWindowVM()
         {
             #region Команды
             ApplyBtnCommand = new RelayCommand(OnApplyBtnCommand);
             #endregion
 
-            //CalcMAF calcMAF = new CalcMAF();
-            //calcMAF.Calculations();
 
-            GetComboBox();
+
+
+            switch (DataStorage.Instance.ViewModel)
+            {
+                case 0:
+                    break;
+
+                // открыт ФСД
+                case 1:
+                    {
+                        LoadProperty_MAF();
+                        GetComboBox_MAF();
+                        MessageBox.Show("FSD");
+                    }
+                    break;
+                // открыт А2
+                case 2:
+                    {
+                        
+                        MessageBox.Show("A2");
+                    }
+                    break;
+                default:
+                    MessageBox.Show("Ошибка, перезапустите приложение");
+                    break;
+            }
         }
 
 
-        private void GetComboBox()
+        #region MAF
+  
+        private void LoadProperty_MAF()
+        {
+            _DesignDiameter = MAFStorage.Instance.f_p;
+            _FilterCount = MAFStorage.Instance.m;
+            _FiltrationSpeed = MAFStorage.Instance.w;
+
+        }
+
+        private void GetComboBox_MAF()
         {
             DataRepository data = new DataRepository();
 
             // обращение к бд марка ионита
             Task.Run(async () =>
             {
-                BrandOfIonItems = await data.GetBrandIonAsync();
+                BrandOfIonItems = await data.GetBrandIonMAFAsync();
             }).Wait();
             SelectedBrandOfIon = BrandOfIonItems[MAFStorage.Instance.SelectedBrandOfIon - 1];
 
@@ -119,7 +173,7 @@ namespace HydroVisionFW.ViewModel
             SelectedSuitableFilter = SuitableFilter[MAFStorage.Instance.SelectedSuitableFilter];
         }
 
-        private void RecordParamToStorage()
+        private void RecordParamToStorage_MAF()
         {
             MAFStorage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
             MAFStorage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionCation;
@@ -134,15 +188,12 @@ namespace HydroVisionFW.ViewModel
             MAFStorage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
             MAFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 36;
 
-            MAFStorage.Instance.CK = 75;
-            MAFStorage.Instance.CA = 42;
-
             MAFStorage.Instance.m = FilterCount;
-
             MAFStorage.Instance.w = FiltrationSpeed;
-
         }
 
-        
+        #endregion
+
+
     }
 }

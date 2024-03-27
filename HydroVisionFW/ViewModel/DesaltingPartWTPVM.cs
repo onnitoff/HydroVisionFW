@@ -4,6 +4,7 @@ using HydroVisionDesign.Services.DataStorages;
 using HydroVisionFW.Services.Calculations;
 using HydroVisionFW.Services.DataStorages;
 using HydroVisionFW.View;
+using HydroVisionFW.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -227,8 +228,9 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftDoubleBtnA1Command { get; }
         private void OnLeftDoubleBtnA1Command(object obj)
         {
-            FilterA1Window filterA1 = new FilterA1Window();
-            filterA1.Show();
+            DataStorage.Instance.ViewModel = 2;
+            EquipmentWindow mixed = new EquipmentWindow();
+            mixed.Show();
         }
         #endregion
 
@@ -246,7 +248,8 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftDoubleBtnMAFCommand { get; }
         private void OnLeftDoubleBtnMAFCommand(object obj)
         {
-            MixedActionFilterWindow mixed = new MixedActionFilterWindow();
+            DataStorage.Instance.ViewModel = 1;
+            EquipmentWindow mixed = new EquipmentWindow();
             mixed.Show();
             mixed.Closed += MAFWindow_Closed;
 
