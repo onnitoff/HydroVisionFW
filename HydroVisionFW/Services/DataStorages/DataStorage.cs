@@ -138,6 +138,7 @@ namespace HydroVisionDesign.Services.DataStorages
         public double PerfomanceWTPForHeatingSystem { get; set; } = 0;
 
         public double PerfomanceWTP { get; set; } = 0;
+        public double PerfomanceOF { get; set; } = 0;
 
         #endregion
 
