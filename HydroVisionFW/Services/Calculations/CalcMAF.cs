@@ -1,4 +1,5 @@
 ﻿using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Model.DataBaseModel;
 using HydroVisionFW.Services.DataStorages;
 using MathWater;
 using System;
@@ -18,11 +19,6 @@ namespace HydroVisionFW.Services.Calculations
             const double t = 3.5;
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
 
-
-            MAFStorage.Instance.F = filters.FiltrationArea(DataStorage.Instance.PerfomanceWTP, MAFStorage.Instance.w);
-
-            MAFStorage.Instance.f_p = filters.RequiredFiltrationAreaOfEachFilter(MAFStorage.Instance.F, MAFStorage.Instance.m);
-            MAFStorage.Instance.d_p = filters.FilterDiameter(MAFStorage.Instance.f_p);
             MAFStorage.Instance.f_ct = filters.FilterArea(MAFStorage.Instance.d_ct);
             MAFStorage.Instance.T_FAA = filters.FilterCycleDurationForThreeStage(MAFStorage.Instance.f_ct, MAFStorage.Instance.m, MAFStorage.Instance.h, DataStorage.Instance.PerfomanceWTP);
             MAFStorage.Instance.n = filters.NumberOfRegenerationsPerDay(MAFStorage.Instance.T_FAA, t);
@@ -41,7 +37,15 @@ namespace HydroVisionFW.Services.Calculations
             MAFStorage.Instance.G_texA = filters.SpecificConsumptionOfChemicals(MAFStorage.Instance.G_100pA, MAFStorage.Instance.CA);
             MAFStorage.Instance.G_cutA = filters.SpecificConsumptionOfChemicalsPerDay(MAFStorage.Instance.G_texA, MAFStorage.Instance.n, MAFStorage.Instance.m);
             MAFStorage.Instance.Q_br = filters.WaterConsumptionForTheNextGroupOfFiltersMAF(DataStorage.Instance.PerfomanceWTP, MAFStorage.Instance.g_cnK, MAFStorage.Instance.g_cnA);
-        }   
+        }  
+        
+        public void CaclFirstProperty()
+        {
+            CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
+            MAFStorage.Instance.F = filters.FiltrationArea(DataStorage.Instance.PerfomanceWTP, MAFStorage.Instance.w);
+            MAFStorage.Instance.f_p = filters.RequiredFiltrationAreaOfEachFilter(MAFStorage.Instance.F, MAFStorage.Instance.m);
+            MAFStorage.Instance.d_p = filters.FilterDiameter(MAFStorage.Instance.f_p);
+        }
             
     }
 }

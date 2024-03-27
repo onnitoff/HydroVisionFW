@@ -1,4 +1,5 @@
 ﻿using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Model.DataBaseModel;
 using HydroVisionFW.Services.DataStorages;
 using MathWater;
 using System;
@@ -19,10 +20,6 @@ namespace HydroVisionFW.Services.Calculations
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
 
 
-            A2Storage.Instance.F = filters.FiltrationArea(MAFStorage.Instance.Q_br, A2Storage.Instance.w);
-
-            A2Storage.Instance.f_p = filters.RequiredFiltrationAreaOfEachFilter(A2Storage.Instance.F, A2Storage.Instance.m);
-            A2Storage.Instance.d_p = filters.FilterDiameter(A2Storage.Instance.f_p);
             A2Storage.Instance.f_ct = filters.FilterArea(A2Storage.Instance.d_ct);
             A2Storage.Instance.T_FAA = filters.FilterCycleDurationForThreeStage(A2Storage.Instance.f_ct, A2Storage.Instance.m, A2Storage.Instance.h, MAFStorage.Instance.Q_br);
             A2Storage.Instance.n = filters.NumberOfRegenerationsPerDay(A2Storage.Instance.T_FAA, t);
@@ -36,6 +33,14 @@ namespace HydroVisionFW.Services.Calculations
             A2Storage.Instance.G_texA = filters.SpecificConsumptionOfChemicals(A2Storage.Instance.G_100pA, A2Storage.Instance.CA);
             A2Storage.Instance.G_cutA = filters.SpecificConsumptionOfChemicalsPerDay(A2Storage.Instance.G_texA, A2Storage.Instance.n, A2Storage.Instance.m);
             A2Storage.Instance.Q_br = filters.WaterConsumptionForTheNextGroupOfFilters(MAFStorage.Instance.Q_br, A2Storage.Instance.g_cnA);
+        }
+
+        public void CaclFirstProperty()
+        {
+            CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
+            A2Storage.Instance.F = filters.FiltrationArea(MAFStorage.Instance.Q_br, A2Storage.Instance.w);
+            A2Storage.Instance.f_p = filters.RequiredFiltrationAreaOfEachFilter(A2Storage.Instance.F, A2Storage.Instance.m);
+            A2Storage.Instance.d_p = filters.FilterDiameter(A2Storage.Instance.f_p);
         }
     }
 }

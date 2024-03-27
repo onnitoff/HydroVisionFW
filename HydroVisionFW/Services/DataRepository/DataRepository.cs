@@ -11,6 +11,29 @@ namespace HydroVisionFW.Services.DataRepository
 {
     internal class DataRepository
     {
+        /// <summary>обращение к бд и вытягивание список фильтров</summary>
+        /// <returns>List FilterModel</returns>
+        public async Task<List<FilterModel>> GetFilterAsync(int id)
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.Filters
+                              join second in context.FilterType on first.IdFilterTypes equals second.Id
+                              join third in context.OperatingPressure on first.IdOperatingPressure equals third.Id
+                              where second.Id == id
+                              select new FilterModel
+                              {
+                                  Id = first.Id,
+                                  Name = first.Cipheer,
+                                  OperatingPressure = (double)third.OperatingPressure1,
+                                  Diameter = first.Diameter,
+                                  IonExchangerLayerHieght = (int)first.IonExchangerLayerHieght,
+                                  FilterPerfomance = (int)first.FilterPerfomance
+                              }).ToListAsync();
+
+            }
+        }
+
         #region MAF
         /// <summary>обращение к бд и вытягивание брендов ионитов ФСД</summary>
         /// <returns>List BrandOfIonModel</returns>
@@ -34,16 +57,43 @@ namespace HydroVisionFW.Services.DataRepository
             }
         }
 
-        /// <summary>обращение к бд и вытягивание список фильтров ФСД</summary>
+        
+
+        #endregion
+
+        #region A2
+
+        /// <summary>обращение к бд и вытягивание брендов ионитов А2</summary>
+        /// <returns>List BrandOfIonModel</returns>
+        public async Task<List<BrandOfIonModel>> GetBrandIonAsync(int id)
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.ExchangeCapacityAndReagentConsumption
+                              join second in context.BrandUseIon on first.IdBrandUseIon equals second.Id
+                              join third in context.WaterConsumptionForOwnNeeds on first.IdBrandUseIon equals third.IdBrandUseIon
+                              where first.IdIonFiltersNames == id
+                              select new BrandOfIonModel
+                              {
+                                  Id = first.Id,
+                                  Name = second.Name,
+                                  WorkingExchangeCapacity = first.WorkingExchangeCapacityMin,
+                                  SpecificConsumptionFirst = first.SpecificConsumptionMin,
+                                  GeneralWaterConsumptionAnion = (double)third.GeneralWaterConsumption
+                              }).ToListAsync();
+            }
+        }
+
+        /// <summary>обращение к бд и вытягивание список фильтров A</summary>
         /// <returns>List FilterModel</returns>
-        public async Task<List<FilterModel>> GetFilterMAAsync()
+        public async Task<List<FilterModel>> GetFilterAAsync(int id)
         {
             using (var context = new WaterContext())
             {
                 return await (from first in context.Filters
                               join second in context.FilterType on first.IdFilterTypes equals second.Id
                               join third in context.OperatingPressure on first.IdOperatingPressure equals third.Id
-                              where second.Id == 7 
+                              where second.Id == id
                               select new FilterModel
                               {
                                   Id = first.Id,
@@ -52,32 +102,6 @@ namespace HydroVisionFW.Services.DataRepository
                                   Diameter = first.Diameter,
                                   IonExchangerLayerHieght = (int)first.IonExchangerLayerHieght,
                                   FilterPerfomance = (int)first.FilterPerfomance,
-                              }).ToListAsync();
-
-            }
-        }
-
-        #endregion
-
-        #region A2
-
-        /// <summary>обращение к бд и вытягивание брендов ионитов А2</summary>
-        /// <returns>List BrandOfIonModel</returns>
-        public async Task<List<BrandOfIonModel>> GetBrandIonA2Async()
-        {
-            using (var context = new WaterContext())
-            {
-                return await (from first in context.ExchangeCapacityAndReagentConsumption
-                              join second in context.BrandUseIon on first.IdBrandUseIon equals second.Id
-                              join third in context.WaterConsumptionForOwnNeeds on first.IdBrandUseIon equals third.IdBrandUseIon
-                              where first.IdIonFiltersNames == 9
-                              select new BrandOfIonModel
-                              {
-                                  Id = first.Id,
-                                  Name = second.Name,
-                                  WorkingExchangeCapacity = first.WorkingExchangeCapacityMin,
-                                  SpecificConsumptionFirst = first.SpecificConsumptionMin,
-                                  GeneralWaterConsumptionAnion = (double)third.GeneralWaterConsumption
                               }).ToListAsync();
             }
         }

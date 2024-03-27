@@ -11,14 +11,68 @@
     <Window.DataContext>
         <vm:EquipmentWindowVM/>
     </Window.DataContext>
+    
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
     <Grid>
         <Grid Background="Bisque">
-            <Image Source="/Resources\Images\Filter_MA.png"   
-                   Height="182" 
-                   Width="120" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Top" 
-                   Margin="0,126,0,0"/>
+
+            <Grid x:Name="MAF" 
+                  Visibility="{Binding IsHiddenMAScheme, 
+                  Converter = {StaticResource BooleanToVisibilityConverter}}">
+                <Image Source="/Resources\Images\Filter_MA.png"   
+                       Height="182" 
+                       Width="120" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Top" 
+                       Margin="0,126,0,0"/>
+            </Grid>
+
+            <Grid x:Name="A2" 
+                 Visibility="{Binding IsHiddenA2Scheme, 
+                 Converter = {StaticResource BooleanToVisibilityConverter}}">
+                <Image Source="/Resources/Images/Filter_A2.png"   
+                      Height="182" 
+                      Width="120" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Top" 
+                      Margin="0,126,0,0"/>
+            </Grid>
+
+            <Grid x:Name="H2" 
+                 Visibility="{Binding IsHiddenH2Scheme, 
+                 Converter = {StaticResource BooleanToVisibilityConverter}}">
+                <Image Source="/Resources/Images/Filter_H2.png"   
+                      Height="182" 
+                      Width="120" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Top" 
+                      Margin="0,126,0,0"/>
+            </Grid>
+
+            <Grid x:Name="A1" 
+                 Visibility="{Binding IsHiddenA1Scheme, 
+                 Converter = {StaticResource BooleanToVisibilityConverter}}">
+                <Image Source="/Resources/Images/Filter_A1.png"   
+                      Height="182" 
+                      Width="120" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Top" 
+                      Margin="0,126,0,0"/>
+            </Grid>
+
+            <Grid x:Name="H1" 
+                  Visibility="{Binding IsHiddenH1Scheme, 
+                  Converter = {StaticResource BooleanToVisibilityConverter}}">
+                 <Image Source="/Resources/Images/Filter_H1.png"   
+                        Height="182" 
+                        Width="120" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top" 
+                        Margin="0,126,0,0"/>
+            </Grid>
+
 
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Language="ru-ru" Text="Расчетный"/><Run Text=" диаметр"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
             <TextBox HorizontalAlignment="Left" Margin="152,44,0,0" VerticalAlignment="Top" Width="62"

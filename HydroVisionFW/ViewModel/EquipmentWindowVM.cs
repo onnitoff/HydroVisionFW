@@ -24,6 +24,53 @@ namespace HydroVisionFW.ViewModel
 {
     internal class EquipmentWindowVM : ViewModelBase
     {
+
+        #region IsHidden Prop
+
+        private bool _IsHiddenMAScheme = false;
+        /// <summary>Свойство для сокрытия схемы ФСД</summary>
+        public bool IsHiddenMAScheme
+        {
+            get => _IsHiddenMAScheme;
+            set => Set(ref _IsHiddenMAScheme, value);
+        }
+
+        private bool _IsHiddenA2Scheme = false;
+        /// <summary>Свойство для сокрытия схемы A2</summary>
+        public bool IsHiddenA2Scheme
+        {
+            get => _IsHiddenA2Scheme;
+            set => Set(ref _IsHiddenA2Scheme, value);
+        }
+
+        private bool _IsHiddenH2Scheme = false;
+        /// <summary>Свойство для сокрытия схемы H2</summary>
+        public bool IsHiddenH2Scheme
+        {
+            get => _IsHiddenH2Scheme;
+            set => Set(ref _IsHiddenH2Scheme, value);
+        }
+
+        private bool _IsHiddenA1Scheme = false;
+        /// <summary>Свойство для сокрытия схемы A1</summary>
+        public bool IsHiddenA1Scheme
+        {
+            get => _IsHiddenA1Scheme;
+            set => Set(ref _IsHiddenA1Scheme, value);
+        }
+
+        private bool _IsHiddenH1Scheme = false;
+        /// <summary>Свойство для сокрытия схемы H1</summary>
+        public bool IsHiddenH1Scheme
+        {
+            get => _IsHiddenH1Scheme;
+            set => Set(ref _IsHiddenH1Scheme, value);
+        }
+
+        #endregion
+
+        #region textBox Prop
+
         private double _DesignDiameter;
         /// <summary>Свойство для textBox Расчетный диаметр</summary>
         public double DesignDiameter
@@ -69,6 +116,8 @@ namespace HydroVisionFW.ViewModel
             get => _SelectedSuitableFilter;
             set => Set(ref _SelectedSuitableFilter, value);
         }
+
+        #endregion
 
 
         #region Команды
@@ -125,17 +174,17 @@ namespace HydroVisionFW.ViewModel
                 // открыт ФСД
                 case 1:
                     {
-                        LoadProperty_MAF();
+                        IsHiddenMAScheme = true;
+                        LoadAndCalcProperty_MAF();
                         GetComboBox_MAF();
-                        MessageBox.Show("FSD");
                     }
                     break;
                 // открыт А2
                 case 2:
                     {
+                        IsHiddenA2Scheme = true;
                         LoadProperty_A2();
                         GetComboBox_A2();
-                        MessageBox.Show("A2");
                     }
                     break;
                 default:
@@ -147,8 +196,10 @@ namespace HydroVisionFW.ViewModel
 
         #region MAF
   
-        private void LoadProperty_MAF()
+        private void LoadAndCalcProperty_MAF()
         {
+            CalcMAF calc = new CalcMAF();
+            calc.CaclFirstProperty();
             _DesignDiameter = MAFStorage.Instance.f_p;
             _FilterCount = MAFStorage.Instance.m;
             _FiltrationSpeed = MAFStorage.Instance.w;
@@ -158,6 +209,7 @@ namespace HydroVisionFW.ViewModel
         private void GetComboBox_MAF()
         {
             DataRepository data = new DataRepository();
+            int id = 7;
 
             // обращение к бд марка ионита
             Task.Run(async () =>
@@ -169,7 +221,7 @@ namespace HydroVisionFW.ViewModel
             // обращение к бд фильтры
             Task.Run(async () =>
             {
-                SuitableFilter = await data.GetFilterMAAsync();
+                SuitableFilter = await data.GetFilterAsync(id);
             }).Wait();
             SelectedSuitableFilter = SuitableFilter[MAFStorage.Instance.SelectedSuitableFilter];
         }
@@ -199,6 +251,8 @@ namespace HydroVisionFW.ViewModel
 
         private void LoadProperty_A2()
         {
+            CalcA2 calc = new CalcA2();
+            calc.CaclFirstProperty();
             _DesignDiameter = A2Storage.Instance.f_p;
             _FilterCount = A2Storage.Instance.m;
             _FiltrationSpeed = A2Storage.Instance.w;
@@ -208,18 +262,20 @@ namespace HydroVisionFW.ViewModel
         private void GetComboBox_A2()
         {
             DataRepository data = new DataRepository();
+            int idBrand = 9;
+            int idFilter = 5;
 
             // обращение к бд марка ионита
             Task.Run(async () =>
             {
-                BrandOfIonItems = await data.GetBrandIonA2Async();
+                BrandOfIonItems = await data.GetBrandIonAsync(idBrand);
             }).Wait();
-            SelectedBrandOfIon = BrandOfIonItems[A2Storage.Instance.SelectedBrandOfIon];
+            SelectedBrandOfIon = BrandOfIonItems[A2Storage.Instance.SelectedBrandOfIon - 1];
 
             // обращение к бд фильтры
             Task.Run(async () =>
             {
-                SuitableFilter = await data.GetFilterMAAsync();
+                SuitableFilter = await data.GetFilterAsync(idFilter);
             }).Wait();
             SelectedSuitableFilter = SuitableFilter[A2Storage.Instance.SelectedSuitableFilter];
         }
@@ -233,8 +289,8 @@ namespace HydroVisionFW.ViewModel
             A2Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
             A2Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
-            A2Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
-            A2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 36;
+            A2Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 14;
+            A2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 25;
 
             A2Storage.Instance.m = FilterCount;
             A2Storage.Instance.w = FiltrationSpeed;
