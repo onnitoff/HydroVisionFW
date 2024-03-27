@@ -42,7 +42,7 @@ namespace HydroVisionFW.Services.DataRepository
             {
                 return await (from first in context.ExchangeCapacityAndReagentConsumption
                               join second in context.BrandUseIon on first.IdBrandUseIon equals second.Id
-                              join third in context.WaterConsumptionForOwnNeeds on first.IdBrandUseIon equals third.IdBrandUseIon
+                              join third in context.WaterConsumptionForOwnNeeds on first.Id equals third.Id
                               where first.IdIonFiltersNames == id
                               select new BrandOfIonModel
                               {

@@ -45,6 +45,7 @@
         <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumption_BrandUseIon" />
         <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumption_IonFiltersNames" />
         <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumption_NameReagent" />
+        <EntityTypeShape EntityType="WaterModel.ExchangeCapacityAndReagentConsumptionSimplified" Width="1.5" PointX="13.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

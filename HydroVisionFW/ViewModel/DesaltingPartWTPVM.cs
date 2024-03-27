@@ -302,6 +302,31 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
+        #region LeftBtnAndDoubleH2Command
+        /// <summary>Нажатие левой кнопки по H2</summary>
+        public ICommand LeftBtnH2Command { get; }
+        private void OnLeftBtnH2Command(object obj)
+        {
+            IsHiddenFilterProperty = true;
+            IsHiddenCationProperty = true;
+            IsHiddenAnionProperty = false;
+
+            FillTextBoxH2();
+
+        }
+
+        /// <summary>Нажатие дабл левой кнопки по H2</summary>
+        public ICommand LeftDoubleBtnH2Command { get; }
+        private void OnLeftDoubleBtnH2Command(object obj)
+        {
+            DataStorage.Instance.ViewModel = 3;
+            EquipmentWindow mixed = new EquipmentWindow();
+            mixed.Show();
+            mixed.Closed += H2Window_Closed;
+        }
+
+        #endregion
+
         #endregion
 
 
@@ -319,9 +344,63 @@ namespace HydroVisionDesign.ViewModel
             LeftBtnA2Command = new RelayCommand(OnLeftBtnA2Command);
             LeftDoubleBtnA2Command = new RelayCommand(OnLeftDoubleBtnA2Command);
 
+            LeftBtnH2Command = new RelayCommand(OnLeftBtnH2Command);
+            LeftDoubleBtnH2Command = new RelayCommand(OnLeftDoubleBtnH2Command);
+
             #endregion
 
         }
+
+
+
+  
+
+
+
+        #region MAF
+        /// <summary>Вызов метода после закрытия MAFWindow</summary>
+        private void MAFWindow_Closed(object sender, EventArgs e)
+        {
+            CalcMAF calcMAF = new CalcMAF();
+            calcMAF.Calculations();
+            FillTextBoxMAF();
+
+        }
+
+
+        /// <summary>Заполнение данными из MAFStorage свойств textBox</summary>
+        private void FillTextBoxMAF()
+        {
+            FiltrationArea = MAFStorage.Instance.F;
+            FiltrationSpeed = MAFStorage.Instance.w;
+            WaterConsumptionPerFilter = DataStorage.Instance.PerfomanceWTP;
+            FiltrationAreaOfEachFilter = MAFStorage.Instance.f_p;
+            DesignFilterDiameter = MAFStorage.Instance.d_p;
+            FilterArea = MAFStorage.Instance.f_ct;
+            FilterCycleDuration = MAFStorage.Instance.T_FAA;
+            NumberOfRegenerationsPerDay = MAFStorage.Instance.n;
+
+            VolumeOfIonExchangeMaterialsInOneFilter = MAFStorage.Instance.V_vl;
+            VolumeOfIonExchangeMaterialsInOneFilterCationOrAnion = MAFStorage.Instance.V_vlK;
+            VolumeOfIonExchangeMaterialsInGroupFilter = MAFStorage.Instance.SumV_vl;
+            VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion = MAFStorage.Instance.SumV_vlK;
+
+            WaterConsumptionForOwnNeedsCation = MAFStorage.Instance.g_cnK;
+            ConsumptionOfChemicalReagentsCation = MAFStorage.Instance.G_100pK;
+            TechnicalProductConsumptionCation = MAFStorage.Instance.G_texK;
+            DailyConsumptionOfChemicalReagentCation = MAFStorage.Instance.G_cutK;
+
+            WaterConsumptionForOwnNeedsAnion = MAFStorage.Instance.g_cnA;
+            ConsumptionOfChemicalReagentsAnion = MAFStorage.Instance.G_100pA;
+            TechnicalProductConsumptionAnion = MAFStorage.Instance.G_texA;
+            DailyConsumptionOfChemicalReagentAnion = MAFStorage.Instance.G_cutA;
+
+            WaterConsumptionForNextGroupOfFilters = MAFStorage.Instance.Q_br;
+        }
+
+        #endregion
+
+        #region A2
 
         /// <summary>Вызов метода после закрытия A2Window</summary>
         private void A2Window_Closed(object sender, EventArgs e)
@@ -357,43 +436,43 @@ namespace HydroVisionDesign.ViewModel
             WaterConsumptionForNextGroupOfFilters = A2Storage.Instance.Q_br;
         }
 
+        #endregion
 
+        #region H2
 
-        #region MAF
-        /// <summary>Вызов метода после закрытия MAFWindow</summary>
-        private void MAFWindow_Closed(object sender, EventArgs e)
+        /// <summary>Вызов метода после закрытия H2Window</summary>
+        private void H2Window_Closed(object sender, EventArgs e)
         {
-            CalcMAF calcMAF = new CalcMAF();
-            calcMAF.Calculations();
-            FillTextBoxMAF();
+            CalcH2 calc = new CalcH2();
+            calc.Calculations();
+            FillTextBoxH2();
+
 
         }
 
-
-        /// <summary>Заполнение данными из MAFStorage свойств textBox</summary>
-        private void FillTextBoxMAF()
+        /// <summary>Заполнение данными из H2Storage свойств textBox</summary>
+        private void FillTextBoxH2()
         {
-            FiltrationArea = MAFStorage.Instance.F;
-            FiltrationSpeed = MAFStorage.Instance.w;
-            WaterConsumptionPerFilter = DataStorage.Instance.PerfomanceWTP;
-            FiltrationAreaOfEachFilter = MAFStorage.Instance.f_p;
-            DesignFilterDiameter = MAFStorage.Instance.d_p;
-            FilterArea = MAFStorage.Instance.f_ct;
-            FilterCycleDuration = MAFStorage.Instance.T_FAA;
-            NumberOfRegenerationsPerDay = MAFStorage.Instance.n;
-            VolumeOfIonExchangeMaterialsInOneFilter = MAFStorage.Instance.V_vl;
-            VolumeOfIonExchangeMaterialsInOneFilterCationOrAnion = MAFStorage.Instance.V_vlK;
-            VolumeOfIonExchangeMaterialsInGroupFilter = MAFStorage.Instance.SumV_vl;
-            VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion = MAFStorage.Instance.SumV_vlK;
-            WaterConsumptionForOwnNeedsCation = MAFStorage.Instance.g_cnK;
-            ConsumptionOfChemicalReagentsCation = MAFStorage.Instance.G_100pK;
-            TechnicalProductConsumptionCation = MAFStorage.Instance.G_texK;
-            DailyConsumptionOfChemicalReagentCation = MAFStorage.Instance.G_cutK;
-            WaterConsumptionForOwnNeedsAnion = MAFStorage.Instance.g_cnA;
-            ConsumptionOfChemicalReagentsAnion = MAFStorage.Instance.G_100pA;
-            TechnicalProductConsumptionAnion = MAFStorage.Instance.G_texA;
-            DailyConsumptionOfChemicalReagentAnion = MAFStorage.Instance.G_cutA;
-            WaterConsumptionForNextGroupOfFilters = MAFStorage.Instance.Q_br;
+            FiltrationArea = H2Storage.Instance.F;
+            FiltrationSpeed = H2Storage.Instance.w;
+            WaterConsumptionPerFilter = H2Storage.Instance.Q_br;
+            FiltrationAreaOfEachFilter = H2Storage.Instance.f_p;
+            DesignFilterDiameter = H2Storage.Instance.d_p;
+            FilterArea = H2Storage.Instance.f_ct;
+            FilterCycleDuration = H2Storage.Instance.T_FAA;
+            NumberOfRegenerationsPerDay = H2Storage.Instance.n;
+
+            VolumeOfIonExchangeMaterialsInOneFilter = H2Storage.Instance.V_vl;
+            VolumeOfIonExchangeMaterialsInOneFilterCationOrAnion = H2Storage.Instance.V_vlK;
+            VolumeOfIonExchangeMaterialsInGroupFilter = H2Storage.Instance.SumV_vl;
+            VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion = H2Storage.Instance.SumV_vlK;
+
+            WaterConsumptionForOwnNeedsCation = H2Storage.Instance.g_cnK;
+            ConsumptionOfChemicalReagentsCation = H2Storage.Instance.G_100pK;
+            TechnicalProductConsumptionCation = H2Storage.Instance.G_texK;
+            DailyConsumptionOfChemicalReagentCation = H2Storage.Instance.G_cutK;
+
+            WaterConsumptionForNextGroupOfFilters = H2Storage.Instance.Q_br;
         }
 
         #endregion

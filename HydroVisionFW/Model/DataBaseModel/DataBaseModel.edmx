@@ -142,6 +142,19 @@
           <Property Name="SpecificConsumptionFirst" Type="decimal" Precision="10" Scale="1" Nullable="false" />
           <Property Name="SpecificConsumptionSecond" Type="decimal" Precision="10" Scale="1" Nullable="false" />
         </EntityType>
+        <EntityType Name="ExchangeCapacityAndReagentConsumptionSimplified">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdIonFiltersNames" Type="int" Nullable="false" />
+          <Property Name="IdBrandUseIon" Type="int" Nullable="false" />
+          <Property Name="WorkingExchangeCapacityMin" Type="int" Nullable="false" />
+          <Property Name="WorkingExchangeCapacityMax" Type="int" />
+          <Property Name="IdNameReagent" Type="int" Nullable="false" />
+          <Property Name="SpecificConsumptionMin" Type="int" Nullable="false" />
+          <Property Name="SpecificConsumptionMax" Type="int" />
+        </EntityType>
         <EntityType Name="Filters">
           <Key>
             <PropertyRef Name="Id" />
@@ -430,6 +443,7 @@
           <EntitySet Name="EfficiencyMinAxialPumps" EntityType="Self.EfficiencyMinAxialPumps" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExchangeCapacityAndReagentConsumption" EntityType="Self.ExchangeCapacityAndReagentConsumption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExchangeCapacityAndReagentConsumptionFSD" EntityType="Self.ExchangeCapacityAndReagentConsumptionFSD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeCapacityAndReagentConsumptionSimplified" EntityType="Self.ExchangeCapacityAndReagentConsumptionSimplified" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Filters" EntityType="Self.Filters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FilterType" EntityType="Self.FilterType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ForWithClarifiers" EntityType="Self.ForWithClarifiers" Schema="dbo" store:Type="Tables" />
@@ -742,6 +756,7 @@
             <End Role="NameReagent" EntitySet="NameReagent" />
             <End Role="ExchangeCapacityAndReagentConsumption" EntitySet="ExchangeCapacityAndReagentConsumption" />
           </AssociationSet>
+          <EntitySet Name="ExchangeCapacityAndReagentConsumptionSimplified" EntityType="WaterModel.ExchangeCapacityAndReagentConsumptionSimplified" />
         </EntityContainer>
         <EntityType Name="FuelOilConsumption">
           <Key>
@@ -1043,6 +1058,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ExchangeCapacityAndReagentConsumptionSimplified">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdIonFiltersNames" Type="Int32" Nullable="false" />
+          <Property Name="IdBrandUseIon" Type="Int32" Nullable="false" />
+          <Property Name="WorkingExchangeCapacityMin" Type="Int32" Nullable="false" />
+          <Property Name="WorkingExchangeCapacityMax" Type="Int32" />
+          <Property Name="IdNameReagent" Type="Int32" Nullable="false" />
+          <Property Name="SpecificConsumptionMin" Type="Int32" Nullable="false" />
+          <Property Name="SpecificConsumptionMax" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1306,6 +1334,20 @@
           <EntitySetMapping Name="ExchangeCapacityAndReagentConsumption">
             <EntityTypeMapping TypeName="WaterModel.ExchangeCapacityAndReagentConsumption">
               <MappingFragment StoreEntitySet="ExchangeCapacityAndReagentConsumption">
+                <ScalarProperty Name="SpecificConsumptionMax" ColumnName="SpecificConsumptionMax" />
+                <ScalarProperty Name="SpecificConsumptionMin" ColumnName="SpecificConsumptionMin" />
+                <ScalarProperty Name="IdNameReagent" ColumnName="IdNameReagent" />
+                <ScalarProperty Name="WorkingExchangeCapacityMax" ColumnName="WorkingExchangeCapacityMax" />
+                <ScalarProperty Name="WorkingExchangeCapacityMin" ColumnName="WorkingExchangeCapacityMin" />
+                <ScalarProperty Name="IdBrandUseIon" ColumnName="IdBrandUseIon" />
+                <ScalarProperty Name="IdIonFiltersNames" ColumnName="IdIonFiltersNames" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeCapacityAndReagentConsumptionSimplified">
+            <EntityTypeMapping TypeName="WaterModel.ExchangeCapacityAndReagentConsumptionSimplified">
+              <MappingFragment StoreEntitySet="ExchangeCapacityAndReagentConsumptionSimplified">
                 <ScalarProperty Name="SpecificConsumptionMax" ColumnName="SpecificConsumptionMax" />
                 <ScalarProperty Name="SpecificConsumptionMin" ColumnName="SpecificConsumptionMin" />
                 <ScalarProperty Name="IdNameReagent" ColumnName="IdNameReagent" />
