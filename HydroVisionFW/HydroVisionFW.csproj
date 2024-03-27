@@ -71,36 +71,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\BrandOfIonModel.cs" />
-    <Compile Include="Model\DataBaseModel\ApplyingFilter.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\AxialPumps.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\Boilers.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\BrandAndPerfomanceClarifiers.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\BrandUseIon.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\Calciners.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\CentrifugalPumps.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\Clarifiers.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\CoolingTowers.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\CoolingWaterFlowOnTurbine.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\DataBaseModel\DataBaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,64 +86,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataBaseModel\EfficiencyMinAxialPumps.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\ExchangeCapacityAndReagentConsumption.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\ExchangeCapacityAndReagentConsumptionFSD.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\ExchangeCapacityAndReagentConsumptionSimplified.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\Filters.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\FilterType.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\ForWithClarifiers.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\FrequencyRotationPumps.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\FuelOilConsumption.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\IonFiltersNames.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\NameReagent.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\OperatingPressure.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\sysdiagrams.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\TypeOfBoilers.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\WaterConsumptionForOwnNeeds.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DataBaseModel\WaterConsumptionForOwnNeedsFSD.cs">
-      <DependentUpon>DataBaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\FilterModel.cs" />
     <Compile Include="Model\FuelModel.cs" />
     <Compile Include="Model\WaterIndicatorModel.cs" />
+    <Compile Include="Services\Calculations\CalcA1.cs" />
     <Compile Include="Services\Calculations\CalcA2.cs" />
+    <Compile Include="Services\Calculations\CalcA2Simplified.cs" />
+    <Compile Include="Services\Calculations\CalcH1.cs" />
     <Compile Include="Services\Calculations\CalcH2.cs" />
     <Compile Include="Services\Calculations\CalcMAF.cs" />
     <Compile Include="Services\Calculations\Calculations.cs" />
     <Compile Include="Services\DataRepository\DataRepository.cs" />
+    <Compile Include="Services\DataStorages\A1Storage.cs" />
     <Compile Include="Services\DataStorages\A2Storage.cs" />
+    <Compile Include="Services\DataStorages\A2StorageSimplifed.cs" />
     <Compile Include="Services\DataStorages\DataStorage.cs" />
+    <Compile Include="Services\DataStorages\H1Storage.cs" />
     <Compile Include="Services\DataStorages\H2Storage.cs" />
     <Compile Include="Services\DataStorages\MAFStorage.cs" />
     <Compile Include="Services\TestValues\Values.cs" />

@@ -38,19 +38,8 @@
                 <ColumnDefinition Width="290"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="/Resources\Images\Filter_A1.png"
-                   Height="110"
-                   Width="110"
-                   Grid.Column="0" Margin="209,243,391,247">
-                <Image.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
-                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
-                </Image.InputBindings>
-            </Image>
-
-
-
-
+            <!--MAF_IMAGE-->
+            
             <Image Source="/Resources/Images/Filter_MA.png"
                    Height="100"
                    Width="100"
@@ -60,6 +49,8 @@
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnMAFCommand}"/>
                 </Image.InputBindings>
             </Image>
+            
+            <!--A2_IMAGE-->
 
             <Image Source="/Resources/Images/Filter_A2.png"
                    Height="100"
@@ -70,6 +61,8 @@
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
                 </Image.InputBindings>
             </Image>
+            
+            <!--H2_IMAGE-->
 
             <Image Source="/Resources/Images/Filter_H2.png"
                    Height="100"
@@ -78,6 +71,30 @@
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
+                </Image.InputBindings>
+            </Image>
+            
+            <!--A1_IMAGE-->
+            
+            <Image Source="/Resources/Images/Filter_A1.png"
+                   Height="100"
+                   Width="100"
+                   Grid.Column="0" Margin="282,250,328,250">
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
+                </Image.InputBindings>
+            </Image>
+
+            <!--H1_IMAGE-->
+
+            <Image Source="/Resources/Images/Filter_H1.png"
+                   Height="100"
+                   Width="100"
+                   Grid.Column="0" Margin="190,250,420,250">
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
                 </Image.InputBindings>
             </Image>
 

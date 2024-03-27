@@ -144,9 +144,28 @@ namespace HydroVisionFW.ViewModel
                         RecordParamToStorage_A2();
                     }
                     break;
+                // открыт H2
                 case 3:
                     {
                         RecordParamToStorage_H2();
+                    }
+                    break;
+                // открыт A1
+                case 4:
+                    {
+                        RecordParamToStorage_A1();
+                    }
+                    break;
+                // открыт H1
+                case 5:
+                    {
+                        RecordParamToStorage_H1();
+                    }
+                    break;
+                // открыт А2Simplifed
+                case 6:
+                    {
+
                     }
                     break;
                 default:
@@ -198,6 +217,28 @@ namespace HydroVisionFW.ViewModel
                         IsHiddenH2Scheme = true;
                         LoadProperty_H2();
                         GetComboBox_H2();
+                    }
+                    break;
+                // открыт A1
+                case 4:
+                    {
+                        IsHiddenA1Scheme = true;
+                        LoadProperty_A1();
+                        GetComboBox_A1();
+                    }
+                    break;
+                // открыт H1
+                case 5:
+                    {
+                        IsHiddenH1Scheme = true;
+                        LoadProperty_H1();
+                        GetComboBox_H1();
+                    }
+                    break;
+                // открыт А2Simplifed
+                case 6:
+                    {
+
                     }
                     break;
                 default:
@@ -302,8 +343,8 @@ namespace HydroVisionFW.ViewModel
             A2Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
             A2Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
-            A2Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 14;
-            A2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 25;
+            A2Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 10;
+            A2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 24;
 
             A2Storage.Instance.m = FilterCount;
             A2Storage.Instance.w = FiltrationSpeed;
@@ -354,10 +395,112 @@ namespace HydroVisionFW.ViewModel
             H2Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
             H2Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 6;
-            H2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 25;
+            H2Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 24;
 
             H2Storage.Instance.m = FilterCount;
             H2Storage.Instance.w = FiltrationSpeed;
+        }
+
+        #endregion
+
+        #region A1
+
+        private void LoadProperty_A1()
+        {
+            CalcA1 calc = new CalcA1();
+            calc.CaclFirstProperty();
+            _DesignDiameter = A1Storage.Instance.f_p;
+            _FilterCount = A1Storage.Instance.m;
+            _FiltrationSpeed = A1Storage.Instance.w;
+
+        }
+
+        private void GetComboBox_A1()
+        {
+            DataRepository data = new DataRepository();
+            int idBrand = 7;
+            int idFilter = 4;
+
+            // обращение к бд марка ионита
+            Task.Run(async () =>
+            {
+                BrandOfIonItems = await data.GetBrandIonAsync(idBrand);
+            }).Wait();
+            SelectedBrandOfIon = BrandOfIonItems[A1Storage.Instance.SelectedBrandOfIon - 1];
+
+            // обращение к бд фильтры
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterAsync(idFilter);
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[A1Storage.Instance.SelectedSuitableFilter];
+        }
+
+        private void RecordParamToStorage_A1()
+        {
+            A1Storage.Instance.e_pA = SelectedBrandOfIon.WorkingExchangeCapacity;
+            A1Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionFirst;
+            A1Storage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
+
+            A1Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
+            A1Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+
+            A1Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 8;
+            A1Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 14;
+
+            A1Storage.Instance.m = FilterCount;
+            A1Storage.Instance.w = FiltrationSpeed;
+        }
+
+        #endregion
+
+        #region H1
+
+        private void LoadProperty_H1()
+        {
+            CalcH1 calc = new CalcH1();
+            calc.CaclFirstProperty();
+            _DesignDiameter = H1Storage.Instance.f_p;
+            _FilterCount = H1Storage.Instance.m;
+            _FiltrationSpeed = H1Storage.Instance.w;
+
+        }
+
+        private void GetComboBox_H1()
+        {
+            DataRepository data = new DataRepository();
+            int idBrand = 4;
+            int idFilter = 4;
+
+            // обращение к бд марка ионита
+            Task.Run(async () =>
+            {
+                BrandOfIonItems = await data.GetBrandIonAsync(idBrand);
+            }).Wait();
+            SelectedBrandOfIon = BrandOfIonItems[H1Storage.Instance.SelectedBrandOfIon - 1];
+
+            // обращение к бд фильтры
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterAsync(idFilter);
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[H1Storage.Instance.SelectedSuitableFilter];
+        }
+
+        private void RecordParamToStorage_H1()
+        {
+            H1Storage.Instance.e_pK = SelectedBrandOfIon.WorkingExchangeCapacity;
+            H1Storage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
+            H1Storage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
+
+            H1Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;
+            H1Storage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+
+            H1Storage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 4;
+            H1Storage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 14;
+
+            H1Storage.Instance.m = FilterCount;
+            H1Storage.Instance.w = FiltrationSpeed;
         }
 
         #endregion
