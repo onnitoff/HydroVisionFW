@@ -19,6 +19,7 @@ namespace HydroVisionFW.Model.DataBaseModel
         {
             this.ExchangeCapacityAndReagentConsumptionFSD = new HashSet<ExchangeCapacityAndReagentConsumptionFSD>();
             this.ExchangeCapacityAndReagentConsumptionFSD1 = new HashSet<ExchangeCapacityAndReagentConsumptionFSD>();
+            this.ExchangeCapacityAndReagentConsumption = new HashSet<ExchangeCapacityAndReagentConsumption>();
         }
     
         public int Id { get; set; }
@@ -28,5 +29,7 @@ namespace HydroVisionFW.Model.DataBaseModel
         public virtual ICollection<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExchangeCapacityAndReagentConsumption> ExchangeCapacityAndReagentConsumption { get; set; }
     }
 }

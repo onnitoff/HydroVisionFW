@@ -48,5 +48,7 @@ namespace HydroVisionFW.Model.DataBaseModel
         public virtual DbSet<NameReagent> NameReagent { get; set; }
         public virtual DbSet<OperatingPressure> OperatingPressure { get; set; }
         public virtual DbSet<WaterConsumptionForOwnNeedsFSD> WaterConsumptionForOwnNeedsFSD { get; set; }
+        public virtual DbSet<WaterConsumptionForOwnNeeds> WaterConsumptionForOwnNeeds { get; set; }
+        public virtual DbSet<ExchangeCapacityAndReagentConsumption> ExchangeCapacityAndReagentConsumption { get; set; }
     }
 }

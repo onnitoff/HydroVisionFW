@@ -92,7 +92,7 @@ namespace HydroVisionFW.ViewModel
                 // открыт А2
                 case 2:
                     {
-
+                        RecordParamToStorage_A2();
                     }
                     break;
                 default:
@@ -135,7 +135,6 @@ namespace HydroVisionFW.ViewModel
                     {
                         LoadProperty_A2();
                         GetComboBox_A2();
-                        RecordParamToStorage_A2();
                         MessageBox.Show("A2");
                     }
                     break;
@@ -213,9 +212,9 @@ namespace HydroVisionFW.ViewModel
             // обращение к бд марка ионита
             Task.Run(async () =>
             {
-                BrandOfIonItems = await data.GetBrandIonMAFAsync();
+                BrandOfIonItems = await data.GetBrandIonA2Async();
             }).Wait();
-            SelectedBrandOfIon = BrandOfIonItems[A2Storage.Instance.SelectedBrandOfIon - 1];
+            SelectedBrandOfIon = BrandOfIonItems[A2Storage.Instance.SelectedBrandOfIon];
 
             // обращение к бд фильтры
             Task.Run(async () =>
@@ -228,7 +227,7 @@ namespace HydroVisionFW.ViewModel
         private void RecordParamToStorage_A2()
         {
             A2Storage.Instance.e_pA = SelectedBrandOfIon.WorkingExchangeCapacity;
-            A2Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionSecond;
+            A2Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionFirst;
             A2Storage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
             A2Storage.Instance.d_ct = SelectedSuitableFilter.Diameter / 1000;

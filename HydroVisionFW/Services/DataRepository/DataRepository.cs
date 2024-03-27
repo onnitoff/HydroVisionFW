@@ -11,6 +11,7 @@ namespace HydroVisionFW.Services.DataRepository
 {
     internal class DataRepository
     {
+        #region MAF
         /// <summary>обращение к бд и вытягивание брендов ионитов ФСД</summary>
         /// <returns>List BrandOfIonModel</returns>
         public async Task<List<BrandOfIonModel>> GetBrandIonMAFAsync()
@@ -33,7 +34,6 @@ namespace HydroVisionFW.Services.DataRepository
             }
         }
 
-       
         /// <summary>обращение к бд и вытягивание список фильтров ФСД</summary>
         /// <returns>List FilterModel</returns>
         public async Task<List<FilterModel>> GetFilterMAAsync()
@@ -56,5 +56,32 @@ namespace HydroVisionFW.Services.DataRepository
 
             }
         }
+
+        #endregion
+
+        #region A2
+
+        /// <summary>обращение к бд и вытягивание брендов ионитов А2</summary>
+        /// <returns>List BrandOfIonModel</returns>
+        public async Task<List<BrandOfIonModel>> GetBrandIonA2Async()
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.ExchangeCapacityAndReagentConsumption
+                              join second in context.BrandUseIon on first.IdBrandUseIon equals second.Id
+                              join third in context.WaterConsumptionForOwnNeeds on first.IdBrandUseIon equals third.IdBrandUseIon
+                              where first.IdIonFiltersNames == 9
+                              select new BrandOfIonModel
+                              {
+                                  Id = first.Id,
+                                  Name = second.Name,
+                                  WorkingExchangeCapacity = first.WorkingExchangeCapacityMin,
+                                  SpecificConsumptionFirst = first.SpecificConsumptionMin,
+                                  GeneralWaterConsumptionAnion = (double)third.GeneralWaterConsumption
+                              }).ToListAsync();
+            }
+        }
+        #endregion
+
     }
 }

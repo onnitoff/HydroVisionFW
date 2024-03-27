@@ -119,6 +119,9 @@
     <Compile Include="Model\DataBaseModel\EfficiencyMinAxialPumps.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataBaseModel\ExchangeCapacityAndReagentConsumption.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataBaseModel\ExchangeCapacityAndReagentConsumptionFSD.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
@@ -150,6 +153,9 @@
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBaseModel\TypeOfBoilers.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataBaseModel\WaterConsumptionForOwnNeeds.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBaseModel\WaterConsumptionForOwnNeedsFSD.cs">

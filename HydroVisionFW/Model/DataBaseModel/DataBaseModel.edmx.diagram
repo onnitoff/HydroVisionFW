@@ -21,7 +21,7 @@
         <AssociationConnector Association="WaterModel.FK_Boilers_TypeOfBoilers" ManuallyRouted="false" />
         <AssociationConnector Association="WaterModel.FK_Filters_FilterType" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WaterModel.FuelOilConsumption" Width="1.5" PointX="10.375" PointY="0.75" />
-        <EntityTypeShape EntityType="WaterModel.AxialPumps" Width="1.5" PointX="5.75" PointY="10.75" />
+        <EntityTypeShape EntityType="WaterModel.AxialPumps" Width="1.5" PointX="11.75" PointY="10.75" />
         <EntityTypeShape EntityType="WaterModel.BrandUseIon" Width="1.5" PointX="0.75" PointY="15.125" />
         <EntityTypeShape EntityType="WaterModel.CentrifugalPumps" Width="1.5" PointX="10.75" PointY="3.75" />
         <EntityTypeShape EntityType="WaterModel.EfficiencyMinAxialPumps" Width="1.5" PointX="7.75" PointY="10.75" />
@@ -38,6 +38,13 @@
         <AssociationConnector Association="WaterModel.FK_WaterConsumptionForOwnNeedsFSD_BrandUseIon" />
         <AssociationConnector Association="WaterModel.FK_Filters_OperatingPressure" />
         <AssociationConnector Association="WaterModel.FK_WaterConsumptionForOwnNeedsFSD_IonFiltersNames" />
+        <EntityTypeShape EntityType="WaterModel.WaterConsumptionForOwnNeeds" Width="1.5" PointX="6" PointY="15.625" />
+        <AssociationConnector Association="WaterModel.FK_WaterConsumptionForOwnNeeds_BrandUseIon" />
+        <AssociationConnector Association="WaterModel.FK_WaterConsumptionForOwnNeeds_IonFiltersNames" />
+        <EntityTypeShape EntityType="WaterModel.ExchangeCapacityAndReagentConsumption" Width="1.5" PointX="5.25" PointY="11.375" />
+        <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumption_BrandUseIon" />
+        <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumption_IonFiltersNames" />
+        <AssociationConnector Association="WaterModel.FK_ExchangeCapacityAndReagentConsumption_NameReagent" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
