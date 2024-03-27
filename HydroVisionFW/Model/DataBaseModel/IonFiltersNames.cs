@@ -17,10 +17,11 @@ namespace HydroVisionFW.Model.DataBaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public IonFiltersNames()
         {
-            this.ExchangeCapacityAndReagentConsumptionFSD = new HashSet<ExchangeCapacityAndReagentConsumptionFSD>();
-            this.WaterConsumptionForOwnNeedsFSD = new HashSet<WaterConsumptionForOwnNeedsFSD>();
-            this.WaterConsumptionForOwnNeeds = new HashSet<WaterConsumptionForOwnNeeds>();
             this.ExchangeCapacityAndReagentConsumption = new HashSet<ExchangeCapacityAndReagentConsumption>();
+            this.ExchangeCapacityAndReagentConsumptionFSD = new HashSet<ExchangeCapacityAndReagentConsumptionFSD>();
+            this.ExchangeCapacityAndReagentConsumptionSimplified = new HashSet<ExchangeCapacityAndReagentConsumptionSimplified>();
+            this.WaterConsumptionForOwnNeeds = new HashSet<WaterConsumptionForOwnNeeds>();
+            this.WaterConsumptionForOwnNeedsFSD = new HashSet<WaterConsumptionForOwnNeedsFSD>();
         }
     
         public int Id { get; set; }
@@ -28,12 +29,14 @@ namespace HydroVisionFW.Model.DataBaseModel
         public string Designation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExchangeCapacityAndReagentConsumption> ExchangeCapacityAndReagentConsumption { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WaterConsumptionForOwnNeedsFSD> WaterConsumptionForOwnNeedsFSD { get; set; }
+        public virtual ICollection<ExchangeCapacityAndReagentConsumptionSimplified> ExchangeCapacityAndReagentConsumptionSimplified { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WaterConsumptionForOwnNeeds> WaterConsumptionForOwnNeeds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExchangeCapacityAndReagentConsumption> ExchangeCapacityAndReagentConsumption { get; set; }
+        public virtual ICollection<WaterConsumptionForOwnNeedsFSD> WaterConsumptionForOwnNeedsFSD { get; set; }
     }
 }

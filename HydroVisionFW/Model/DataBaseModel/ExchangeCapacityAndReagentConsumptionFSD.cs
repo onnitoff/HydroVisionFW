@@ -26,6 +26,5 @@ namespace HydroVisionFW.Model.DataBaseModel
         public virtual BrandUseIon BrandUseIon { get; set; }
         public virtual IonFiltersNames IonFiltersNames { get; set; }
         public virtual NameReagent NameReagent { get; set; }
-        public virtual NameReagent NameReagent1 { get; set; }
     }
 }

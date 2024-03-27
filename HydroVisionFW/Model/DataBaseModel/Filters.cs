@@ -15,13 +15,13 @@ namespace HydroVisionFW.Model.DataBaseModel
     public partial class Filters
     {
         public int Id { get; set; }
-        public string Cipheer { get; set; }
-        public int IdOperatingPressure { get; set; }
-        public int Diameter { get; set; }
-        public Nullable<int> IonExchangerLayerHieght { get; set; }
-        public Nullable<int> FilterPerfomance { get; set; }
         public int IdApplyingFilters { get; set; }
         public Nullable<int> IdFilterTypes { get; set; }
+        public string Cipheer { get; set; }
+        public Nullable<int> IdOperatingPressure { get; set; }
+        public int Diameter { get; set; }
+        public Nullable<int> FilterLoadHeight { get; set; }
+        public Nullable<int> WaterConsumption { get; set; }
     
         public virtual ApplyingFilter ApplyingFilter { get; set; }
         public virtual FilterType FilterType { get; set; }

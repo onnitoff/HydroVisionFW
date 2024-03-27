@@ -26,30 +26,30 @@ namespace HydroVisionFW.Model.DataBaseModel
         }
     
         public virtual DbSet<ApplyingFilter> ApplyingFilter { get; set; }
+        public virtual DbSet<AxialPumps> AxialPumps { get; set; }
         public virtual DbSet<Boilers> Boilers { get; set; }
         public virtual DbSet<BrandAndPerfomanceClarifiers> BrandAndPerfomanceClarifiers { get; set; }
+        public virtual DbSet<BrandUseIon> BrandUseIon { get; set; }
         public virtual DbSet<Calciners> Calciners { get; set; }
+        public virtual DbSet<CentrifugalPumps> CentrifugalPumps { get; set; }
         public virtual DbSet<Clarifiers> Clarifiers { get; set; }
         public virtual DbSet<CoolingTowers> CoolingTowers { get; set; }
         public virtual DbSet<CoolingWaterFlowOnTurbine> CoolingWaterFlowOnTurbine { get; set; }
+        public virtual DbSet<EfficiencyMinAxialPumps> EfficiencyMinAxialPumps { get; set; }
+        public virtual DbSet<ExchangeCapacityAndReagentConsumption> ExchangeCapacityAndReagentConsumption { get; set; }
+        public virtual DbSet<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD { get; set; }
+        public virtual DbSet<ExchangeCapacityAndReagentConsumptionSimplified> ExchangeCapacityAndReagentConsumptionSimplified { get; set; }
         public virtual DbSet<Filters> Filters { get; set; }
         public virtual DbSet<FilterType> FilterType { get; set; }
         public virtual DbSet<ForWithClarifiers> ForWithClarifiers { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TypeOfBoilers> TypeOfBoilers { get; set; }
-        public virtual DbSet<FuelOilConsumption> FuelOilConsumption { get; set; }
-        public virtual DbSet<AxialPumps> AxialPumps { get; set; }
-        public virtual DbSet<BrandUseIon> BrandUseIon { get; set; }
-        public virtual DbSet<CentrifugalPumps> CentrifugalPumps { get; set; }
-        public virtual DbSet<EfficiencyMinAxialPumps> EfficiencyMinAxialPumps { get; set; }
-        public virtual DbSet<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD { get; set; }
         public virtual DbSet<FrequencyRotationPumps> FrequencyRotationPumps { get; set; }
+        public virtual DbSet<FuelOilConsumption> FuelOilConsumption { get; set; }
         public virtual DbSet<IonFiltersNames> IonFiltersNames { get; set; }
         public virtual DbSet<NameReagent> NameReagent { get; set; }
         public virtual DbSet<OperatingPressure> OperatingPressure { get; set; }
-        public virtual DbSet<WaterConsumptionForOwnNeedsFSD> WaterConsumptionForOwnNeedsFSD { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TypeOfBoilers> TypeOfBoilers { get; set; }
         public virtual DbSet<WaterConsumptionForOwnNeeds> WaterConsumptionForOwnNeeds { get; set; }
-        public virtual DbSet<ExchangeCapacityAndReagentConsumption> ExchangeCapacityAndReagentConsumption { get; set; }
-        public virtual DbSet<ExchangeCapacityAndReagentConsumptionSimplified> ExchangeCapacityAndReagentConsumptionSimplified { get; set; }
+        public virtual DbSet<WaterConsumptionForOwnNeedsFSD> WaterConsumptionForOwnNeedsFSD { get; set; }
     }
 }

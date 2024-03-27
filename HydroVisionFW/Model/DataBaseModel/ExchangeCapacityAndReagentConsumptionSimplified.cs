@@ -22,5 +22,9 @@ namespace HydroVisionFW.Model.DataBaseModel
         public int IdNameReagent { get; set; }
         public int SpecificConsumptionMin { get; set; }
         public Nullable<int> SpecificConsumptionMax { get; set; }
+    
+        public virtual BrandUseIon BrandUseIon { get; set; }
+        public virtual IonFiltersNames IonFiltersNames { get; set; }
+        public virtual NameReagent NameReagent { get; set; }
     }
 }

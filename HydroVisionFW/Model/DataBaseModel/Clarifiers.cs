@@ -20,5 +20,8 @@ namespace HydroVisionFW.Model.DataBaseModel
         public int Perfomance { get; set; }
         public int Diameter { get; set; }
         public int Height { get; set; }
+    
+        public virtual BrandAndPerfomanceClarifiers BrandAndPerfomanceClarifiers { get; set; }
+        public virtual ForWithClarifiers ForWithClarifiers { get; set; }
     }
 }

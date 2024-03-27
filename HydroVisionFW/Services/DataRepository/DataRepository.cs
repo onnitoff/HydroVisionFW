@@ -27,8 +27,8 @@ namespace HydroVisionFW.Services.DataRepository
                                   Name = first.Cipheer,
                                   OperatingPressure = (double)third.OperatingPressure1,
                                   Diameter = first.Diameter,
-                                  IonExchangerLayerHieght = (int)first.IonExchangerLayerHieght,
-                                  FilterPerfomance = (int)first.FilterPerfomance
+                                  IonExchangerLayerHieght = (int)first.FilterLoadHeight,
+                                  //FilterPerfomance = (int)first.FilterPerfomance
                               }).ToListAsync();
 
             }

@@ -27,5 +27,8 @@ namespace HydroVisionFW.Model.DataBaseModel
         public Nullable<int> PowerConsumptionMax { get; set; }
         public int IdEfficiencyMin { get; set; }
         public Nullable<decimal> EfficiencyMax { get; set; }
+    
+        public virtual EfficiencyMinAxialPumps EfficiencyMinAxialPumps { get; set; }
+        public virtual FrequencyRotationPumps FrequencyRotationPumps { get; set; }
     }
 }

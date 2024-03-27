@@ -293,7 +293,7 @@ namespace HydroVisionFW.ViewModel
             MAFStorage.Instance.h = SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
             MAFStorage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
-            MAFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 36;
+            MAFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 35;
 
             MAFStorage.Instance.m = FilterCount;
             MAFStorage.Instance.w = FiltrationSpeed;

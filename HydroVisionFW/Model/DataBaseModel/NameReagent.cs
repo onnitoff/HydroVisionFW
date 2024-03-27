@@ -17,19 +17,19 @@ namespace HydroVisionFW.Model.DataBaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NameReagent()
         {
-            this.ExchangeCapacityAndReagentConsumptionFSD = new HashSet<ExchangeCapacityAndReagentConsumptionFSD>();
-            this.ExchangeCapacityAndReagentConsumptionFSD1 = new HashSet<ExchangeCapacityAndReagentConsumptionFSD>();
             this.ExchangeCapacityAndReagentConsumption = new HashSet<ExchangeCapacityAndReagentConsumption>();
+            this.ExchangeCapacityAndReagentConsumptionFSD = new HashSet<ExchangeCapacityAndReagentConsumptionFSD>();
+            this.ExchangeCapacityAndReagentConsumptionSimplified = new HashSet<ExchangeCapacityAndReagentConsumptionSimplified>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExchangeCapacityAndReagentConsumption> ExchangeCapacityAndReagentConsumption { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExchangeCapacityAndReagentConsumptionFSD> ExchangeCapacityAndReagentConsumptionFSD1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExchangeCapacityAndReagentConsumption> ExchangeCapacityAndReagentConsumption { get; set; }
+        public virtual ICollection<ExchangeCapacityAndReagentConsumptionSimplified> ExchangeCapacityAndReagentConsumptionSimplified { get; set; }
     }
 }
