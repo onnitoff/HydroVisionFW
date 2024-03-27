@@ -21,7 +21,7 @@ namespace HydroVisionFW.Services.Calculations
 
 
             A2Storage.Instance.f_ct = filters.FilterArea(A2Storage.Instance.d_ct);
-            A2Storage.Instance.T_FAA = filters.FilterCycleDurationForThreeStage(A2Storage.Instance.f_ct, A2Storage.Instance.m, A2Storage.Instance.h, MAFStorage.Instance.Q_br);
+            A2Storage.Instance.T_FAA = filters.FilterCycleDurationForSimpleAndTwoStage(A2Storage.Instance.f_ct, A2Storage.Instance.h, A2Storage.Instance.e_pA, A2Storage.Instance.m, MAFStorage.Instance.Q_br, DataStorage.Instance.AnionOnSecondStageFilter);
             A2Storage.Instance.n = filters.NumberOfRegenerationsPerDay(A2Storage.Instance.T_FAA, t);
             A2Storage.Instance.V_vl = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilter(A2Storage.Instance.f_ct, A2Storage.Instance.h);
             //A2Storage.Instance.V_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilterCationAndAnion(A2Storage.Instance.V_vl);

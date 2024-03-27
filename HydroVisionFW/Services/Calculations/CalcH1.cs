@@ -1,4 +1,5 @@
-﻿using HydroVisionFW.Services.DataStorages;
+﻿using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Services.DataStorages;
 using MathWater;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace HydroVisionFW.Services.Calculations
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
 
             H1Storage.Instance.f_ct = filters.FilterArea(H1Storage.Instance.d_ct);
-            H1Storage.Instance.T_FAA = filters.FilterCycleDurationForThreeStage(H1Storage.Instance.f_ct, H1Storage.Instance.m, H1Storage.Instance.h, A1Storage.Instance.Q_br);
+            H1Storage.Instance.T_FAA = filters.FilterCycleDurationForSimpleAndTwoStage(H1Storage.Instance.f_ct, H1Storage.Instance.h, H1Storage.Instance.e_pK, H1Storage.Instance.m, A1Storage.Instance.Q_br, DataStorage.Instance.CationOnFirstStageFilter);
             H1Storage.Instance.n = filters.NumberOfRegenerationsPerDay(H1Storage.Instance.T_FAA, t);
             H1Storage.Instance.V_vl = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilter(H1Storage.Instance.f_ct, H1Storage.Instance.h);
             //H1Storage.Instance.V_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilterCationAndAnion(H1Storage.Instance.V_vl);
