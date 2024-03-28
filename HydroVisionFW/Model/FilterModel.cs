@@ -13,6 +13,6 @@ namespace HydroVisionFW.Model
         public double OperatingPressure { get; set; }
         public int Diameter { get; set; }
         public int IonExchangerLayerHieght { get; set; }
-        public int FilterPerfomance { get; set; }
+        //public int FilterPerfomance { get; set; }
     }
 }

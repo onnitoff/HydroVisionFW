@@ -1,6 +1,7 @@
 ﻿using HydroVisionDesign.Infrastructure.Base;
 using HydroVisionDesign.Services.Calculations;
 using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Services.DataStorages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,14 +71,14 @@ namespace HydroVisionDesign.ViewModel
         /// <summary>Заполнение textBox</summary>
         private void FillingTextBox()
         {
-            InternalLosses = $"q_внутр = 2% * D * n = 2% * {DataStorage.Instance.BoilerPerfomanceFirst} * {DataStorage.Instance.NumberOfBoilersFirst} + " +
-                $"{DataStorage.Instance.DesaltedWaterSupplyFirst} = {DataStorage.Instance.InternalLosses} т/ч";
+            InternalLosses = $"q_внутр = 2% * D * n = 2% * {DataStorage.Instance.BoilerPerfomanceFirst} * {BoilerStorage.Instance.NumberOfBoilersFirst} + " +
+                $"{BoilerStorage.Instance.DesaltedWaterSupplyFirst} = {BoilerStorage.Instance.InternalLosses} т/ч";
 
-            Stock = $"q_зап = {DataStorage.Instance.DesaltedWaterSupplyFirst} т/ч";
+            Stock = $"q_зап = {BoilerStorage.Instance.DesaltedWaterSupplyFirst} т/ч";
 
-            PerfomanceWTPToFeedMainCycle = $"q_внутр + q_зап = {DataStorage.Instance.InternalLosses} + {DataStorage.Instance.DesaltedWaterSupplyFirst} = {DataStorage.Instance.PerfomanceWTPForIES} т/ч";
+            PerfomanceWTPToFeedMainCycle = $"q_внутр + q_зап = {BoilerStorage.Instance.InternalLosses} + {BoilerStorage.Instance.DesaltedWaterSupplyFirst} = {BoilerStorage.Instance.PerfomanceWTPForIES} т/ч";
 
-            PerfomanceWTPToFeedHeatingNetwork = $"2% * G_св = 2% * {DataStorage.Instance.WaterConsumptionForNetworkHeaters} = {DataStorage.Instance.PerfomanceWTPForHeatingSystem} т/ч";
+            PerfomanceWTPToFeedHeatingNetwork = $"2% * G_св = 2% * {BoilerStorage.Instance.WaterConsumptionForNetworkHeaters} = {BoilerStorage.Instance.PerfomanceWTPForHeatingSystem} т/ч";
         }
     }
 }

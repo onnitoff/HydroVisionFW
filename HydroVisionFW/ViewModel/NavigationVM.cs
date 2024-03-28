@@ -2,6 +2,7 @@
 using HydroVisionDesign.Infrastructure.Commands;
 using HydroVisionDesign.Services.Calculations;
 using HydroVisionDesign.Services.TestValues;
+using HydroVisionFW.Services.Calculations;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -60,9 +61,10 @@ namespace HydroVisionDesign.ViewModel
         public NavigationVM()
         {
             Values values = new Values();
-            Calculations calculations = new Calculations();
-            calculations.RecalculationOfQualityIndicators();
-            calculations.CalculationOfWTPPerformance();
+            Calculations calc = new Calculations();
+            calc.RecalculationOfQualityIndicators();
+            CalcBoiler calcBoiler = new CalcBoiler();
+            calcBoiler.CalculationOfWTPPerformance();
             WaterQualityCommand = new RelayCommand(WaterQuality);
             PerfomanceCommand = new RelayCommand(Perfomance);
             DesaltingPartCommand = new RelayCommand(DesaltingPart);

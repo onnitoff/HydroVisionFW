@@ -15,6 +15,8 @@ using HydroVisionFW.Model.DataBaseModel;
 using HydroVisionFW.Model;
 using System.Threading;
 using System.Data.Entity;
+using HydroVisionFW.Services.DataStorages;
+using HydroVisionFW.Services.Calculations;
 
 namespace HydroVisionDesign.ViewModel
 {
@@ -133,7 +135,7 @@ namespace HydroVisionDesign.ViewModel
 
         #region Оборудование
 
-        private double _ElectricPower = DataStorage.Instance.ElectricPower;
+        private double _ElectricPower = BoilerStorage.Instance.ElectricPower;
 
         /// <summary>Свойство textBox Электрическая мощность</summary>
         public double ElectricPower
@@ -142,7 +144,7 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _ElectricPower, value);
         }
 
-        private int _NumberOfBoilersFirst = DataStorage.Instance.NumberOfBoilersFirst;
+        private int _NumberOfBoilersFirst = BoilerStorage.Instance.NumberOfBoilersFirst;
 
         /// <summary>Свойство textBox Количество котлов</summary>
         public int NumberOfBoilersFirst
@@ -151,7 +153,7 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _NumberOfBoilersFirst, value);
         }
 
-        private int _NumberOfBoilersSecond = DataStorage.Instance.NumberOfBoilersSecond;
+        private int _NumberOfBoilersSecond = BoilerStorage.Instance.NumberOfBoilersSecond;
 
         /// <summary>Свойство textBox Количество котлов</summary>
         public int NumberOfBoilersSecond
@@ -160,7 +162,7 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _NumberOfBoilersSecond, value);
         }
 
-        private int _NumberOfTurbinesFirst = DataStorage.Instance.NumberOfTurbinesFirst;
+        private int _NumberOfTurbinesFirst = BoilerStorage.Instance.NumberOfTurbinesFirst;
 
         /// <summary>Свойство textBox Количество турбин</summary>
         public int NumberOfTurbinesFirst
@@ -169,7 +171,7 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _NumberOfTurbinesFirst, value);
         }
 
-        private int _NumberOfTurbinesSecond = DataStorage.Instance.NumberOfTurbinesSecond;
+        private int _NumberOfTurbinesSecond = BoilerStorage.Instance.NumberOfTurbinesSecond;
 
         /// <summary>Свойство textBox Количество турбин</summary>
         public int NumberOfTurbinesSecond
@@ -178,7 +180,7 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _NumberOfTurbinesSecond, value);
         }
 
-        private double _VacationCouple = DataStorage.Instance.VacationCouple;
+        private double _VacationCouple = BoilerStorage.Instance.VacationCouple;
 
         /// <summary>Свойство textBox Отпуск пара</summary>
         public double VacationCouple
@@ -187,7 +189,7 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _VacationCouple, value);
         }
 
-        private double _Losses = DataStorage.Instance.Losses;
+        private double _Losses = BoilerStorage.Instance.Losses;
 
         /// <summary>Свойство textBox Потери</summary>
         public double Losses
@@ -196,7 +198,7 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _Losses, value);
         }
 
-        private double _BlowdownLosses = DataStorage.Instance.BlowdownLosses;
+        private double _BlowdownLosses = BoilerStorage.Instance.BlowdownLosses;
 
         /// <summary>Свойство textBox Потери с продувкой</summary>
         public double BlowdownLosses
@@ -289,14 +291,14 @@ namespace HydroVisionDesign.ViewModel
             Calculations calculations = new Calculations();
             calculations.RecalculationOfQualityIndicators();
 
-            DataStorage.Instance.ElectricPower = ElectricPower;
-            DataStorage.Instance.NumberOfBoilersFirst = NumberOfBoilersFirst;
-            DataStorage.Instance.NumberOfBoilersSecond = NumberOfBoilersSecond;
-            DataStorage.Instance.NumberOfTurbinesFirst = NumberOfTurbinesFirst;
-            DataStorage.Instance.NumberOfTurbinesSecond = NumberOfTurbinesSecond;
-            DataStorage.Instance.VacationCouple = VacationCouple;
-            DataStorage.Instance.Losses = Losses;
-            DataStorage.Instance.BlowdownLosses = BlowdownLosses;
+            BoilerStorage.Instance.ElectricPower = ElectricPower;
+            BoilerStorage.Instance.NumberOfBoilersFirst = NumberOfBoilersFirst;
+            BoilerStorage.Instance.NumberOfBoilersSecond = NumberOfBoilersSecond;
+            BoilerStorage.Instance.NumberOfTurbinesFirst = NumberOfTurbinesFirst;
+            BoilerStorage.Instance.NumberOfTurbinesSecond = NumberOfTurbinesSecond;
+            BoilerStorage.Instance.VacationCouple = VacationCouple;
+            BoilerStorage.Instance.Losses = Losses;
+            BoilerStorage.Instance.BlowdownLosses = BlowdownLosses;
             // запись из бд для котла
             DataStorage.Instance.SelectedBoilerFirstItem = SelectedBoilerFirstItem.Id;
             DataStorage.Instance.BoilerTypeFirst = SelectedBoilerFirstItem.Type;
@@ -316,8 +318,9 @@ namespace HydroVisionDesign.ViewModel
             DataStorage.Instance.WaterConsumptionSecond = (int)SelectedTurbineSecondItem.WaterConsumption;
 
             // запись для топлива
-            DataStorage.Instance.SelectedFuelItem = SelectedFuelItem.Id;
-            calculations.CalculationOfWTPPerformance();
+            DataStorage.Instance.SelectedFuelType = SelectedFuelItem.Id;
+            CalcBoiler calcBoiler = new CalcBoiler();
+            calcBoiler.CalculationOfWTPPerformance();
 
             
 
@@ -341,6 +344,8 @@ namespace HydroVisionDesign.ViewModel
             Task.Run(async () => await GetTurbineAsync());
             GetFuel();
         }
+
+
 
         /// <summary>Обращение к базе данных</summary>
         /// <returns>ObservableCollection коллекция котлов</returns>
@@ -392,7 +397,7 @@ namespace HydroVisionDesign.ViewModel
             FuelItems = new ObservableCollection<FuelModel>();
             FuelItems.Add(new FuelModel { Id = 1, Name = "Газ" });
             FuelItems.Add(new FuelModel { Id = 2, Name = "Мазут" });
-            SelectedFuelItem = FuelItems[DataStorage.Instance.SelectedFuelItem - 1];
+            SelectedFuelItem = FuelItems[DataStorage.Instance.SelectedFuelType - 1];
         }
     }
 }

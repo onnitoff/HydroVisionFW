@@ -27,15 +27,15 @@ namespace HydroVisionDesign.Services.TestValues
             DataStorage.Instance.PresenceOfCentralHeating = true ;
 
             //PerfomanceWTP
-            DataStorage.Instance.ElectricPower = 1000;
+            BoilerStorage.Instance.ElectricPower = 1000;
             //DataStorage.Instance.BoilerProductivity = 1000;
-            DataStorage.Instance.NumberOfBoilersFirst = 4;
+            BoilerStorage.Instance.NumberOfBoilersFirst = 4;
             //DataStorage.Instance.TurbineType = 8;
-            DataStorage.Instance.NumberOfTurbinesFirst = 4;
+            BoilerStorage.Instance.NumberOfTurbinesFirst = 4;
             //DataStorage.Instance.FuelType = 1;
-            DataStorage.Instance.VacationCouple = 0;
-            DataStorage.Instance.Losses = 0;
-            DataStorage.Instance.BlowdownLosses = 0;
+            BoilerStorage.Instance.VacationCouple = 0;
+            BoilerStorage.Instance.Losses = 0;
+            BoilerStorage.Instance.BlowdownLosses = 0;
 
 
             //MAF

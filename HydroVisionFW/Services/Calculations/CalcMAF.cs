@@ -20,7 +20,7 @@ namespace HydroVisionFW.Services.Calculations
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
 
             MAFStorage.Instance.f_ct = filters.FilterArea(MAFStorage.Instance.d_ct);
-            MAFStorage.Instance.T_FAA = filters.FilterCycleDurationForThreeStage(MAFStorage.Instance.f_ct, MAFStorage.Instance.m, MAFStorage.Instance.h, DataStorage.Instance.PerfomanceWTP);
+            MAFStorage.Instance.T_FAA = filters.FilterCycleDurationForThreeStage(MAFStorage.Instance.f_ct, MAFStorage.Instance.m, MAFStorage.Instance.h, BoilerStorage.Instance.PerfomanceWTP);
             MAFStorage.Instance.n = filters.NumberOfRegenerationsPerDay(MAFStorage.Instance.T_FAA, t);
             MAFStorage.Instance.V_vl = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilter(MAFStorage.Instance.f_ct, MAFStorage.Instance.h);
             MAFStorage.Instance.V_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilterCationAndAnion(MAFStorage.Instance.V_vl);
@@ -36,13 +36,13 @@ namespace HydroVisionFW.Services.Calculations
             MAFStorage.Instance.G_100pA = filters.ConsumptionOfChemicalReagentsForRegenerationOfOneFilter(MAFStorage.Instance.bA, MAFStorage.Instance.V_vl, MAFStorage.Instance.e_pA);
             MAFStorage.Instance.G_texA = filters.SpecificConsumptionOfChemicals(MAFStorage.Instance.G_100pA, MAFStorage.Instance.CA);
             MAFStorage.Instance.G_cutA = filters.SpecificConsumptionOfChemicalsPerDay(MAFStorage.Instance.G_texA, MAFStorage.Instance.n, MAFStorage.Instance.m);
-            MAFStorage.Instance.Q_br = filters.WaterConsumptionForTheNextGroupOfFiltersMAF(DataStorage.Instance.PerfomanceWTP, MAFStorage.Instance.g_cnK, MAFStorage.Instance.g_cnA);
+            MAFStorage.Instance.Q_br = filters.WaterConsumptionForTheNextGroupOfFiltersMAF(BoilerStorage.Instance.PerfomanceWTP, MAFStorage.Instance.g_cnK, MAFStorage.Instance.g_cnA);
         }  
         
         public void CaclFirstProperty()
         {
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
-            MAFStorage.Instance.F = filters.FiltrationArea(DataStorage.Instance.PerfomanceWTP, MAFStorage.Instance.w);
+            MAFStorage.Instance.F = filters.FiltrationArea(BoilerStorage.Instance.PerfomanceWTP, MAFStorage.Instance.w);
             MAFStorage.Instance.f_p = filters.RequiredFiltrationAreaOfEachFilter(MAFStorage.Instance.F, MAFStorage.Instance.m);
             MAFStorage.Instance.d_p = filters.FilterDiameter(MAFStorage.Instance.f_p);
         }

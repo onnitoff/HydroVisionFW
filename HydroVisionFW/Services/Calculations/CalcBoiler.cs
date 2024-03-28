@@ -1,4 +1,5 @@
 ﻿using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Model.DataBaseModel;
 using HydroVisionFW.Services.DataStorages;
 using MathWater;
 using System;
@@ -7,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Markup;
+using HydroVisionFW.Services.Calculations;
+using HydroVisionFW.Services.DataRepository;
+
 
 namespace HydroVisionFW.Services.Calculations
 {
@@ -20,15 +25,11 @@ namespace HydroVisionFW.Services.Calculations
             }
             if (BoilerStorage.Instance.NumberOfBoilersFirst > 0)
             {
-                CalculationOfWTPPerformanceFirst();
-            }
-            if (BoilerStorage.Instance.NumberOfBoilersSecond > 0 && BoilerStorage.Instance.NumberOfBoilersFirst > 0)
-            {
-
+                CalculationOfWTPPerformance();
             }
         }
 
-        public void CalculationOfWTPPerformanceFirst()
+        public void CalculationOfWTPPerformance()
         {
 
             WaterTreatmentPlantPerfomance perfomance = new WaterTreatmentPlantPerfomance();
@@ -51,11 +52,49 @@ namespace HydroVisionFW.Services.Calculations
                 BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(
                 BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
 
-            //to go
+            
+            if(DataStorage.Instance.SelectedFuelType == 2)
+            {
+                List<FuelOilConsumption> fuelOilConsumptions = new List<FuelOilConsumption>();
 
-            if (BoilerStorage.Instance.FuelOilConsumption != 0)
-                BoilerStorage.Instance.LossesInFuelOilProduction = perfomance.LossesInFuelOilProduction(
-                    BoilerStorage.Instance.FuelOilConsumption, BoilerStorage.Instance.NumberOfBoilersFirst);
+                DataRepository.DataRepository data = new DataRepository.DataRepository();
+                //обращение к бд марка ионита
+                Task.Run(async () =>
+                {
+                    fuelOilConsumptions = await data.GetFuelOilAsync();
+                }).Wait();
+
+                foreach (var item in fuelOilConsumptions)
+                {
+                    if (item.Perfomance <= DataStorage.Instance.BoilerPerfomanceFirst)
+                    {
+                        BoilerStorage.Instance.FuelOilConsumptionFirst = item.OilConsumption;
+                    }
+                    else
+                    {
+                        BoilerStorage.Instance.FuelOilConsumptionFirst = item.OilConsumption;
+                    }
+
+                    if (item.Perfomance <= DataStorage.Instance.BoilerPerfomanceSecond)
+                    {
+                        BoilerStorage.Instance.FuelOilConsumptionSecond = item.OilConsumption;
+                    }
+                    else
+                    {
+                        BoilerStorage.Instance.FuelOilConsumptionSecond = item.OilConsumption;
+                    }
+                }
+
+                if (BoilerStorage.Instance.FuelOilConsumptionFirst != 0 && BoilerStorage.Instance.FuelOilConsumptionSecond != 0)
+                    BoilerStorage.Instance.LossesInFuelOilProduction = perfomance.LossesInFuelOilProduction(
+                        BoilerStorage.Instance.FuelOilConsumptionFirst, BoilerStorage.Instance.NumberOfBoilersFirst, BoilerStorage.Instance.FuelOilConsumptionFirst, BoilerStorage.Instance.NumberOfBoilersFirst);
+
+
+            }
+
+            if()
+
+            
 
             BoilerStorage.Instance.PerfomanceWTPForIES = perfomance.ProductivityWTPForIES(
                 DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, BoilerStorage.Instance.DesaltedWaterSupplyFirst);

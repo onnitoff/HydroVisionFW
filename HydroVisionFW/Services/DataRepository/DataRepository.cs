@@ -11,6 +11,23 @@ namespace HydroVisionFW.Services.DataRepository
 {
     internal class DataRepository
     {
+        public DataRepository() { }
+        /// <summary>обращение к бд и вытягивание список расхода мазута на котел</summary>
+        /// <returns>List FuelOilConsumption</returns>
+        public async Task<List<FuelOilConsumption>> GetFuelOilAsync()
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.FuelOilConsumption
+                              select new FuelOilConsumption
+                              {
+                                  Id = first.Id,
+                                  Perfomance = first.Perfomance,
+                                  OilConsumption = first.OilConsumption
+                              }).ToListAsync();
+            }
+        }
+
         /// <summary>обращение к бд и вытягивание список фильтров</summary>
         /// <returns>List FilterModel</returns>
         public async Task<List<FilterModel>> GetFilterAsync(int id)
@@ -49,7 +66,7 @@ namespace HydroVisionFW.Services.DataRepository
                                   Id = first.Id,
                                   Name = second.Name,
                                   WorkingExchangeCapacity = first.WorkingExchangeCapacityMin,
-                                  SpecificConsumptionFirst = first.SpecificConsumptionMin,
+                                  SpecificConsumptionCation = first.SpecificConsumptionMin,
                                   GeneralWaterConsumptionAnion = (double)third.GeneralWaterConsumption
                               }).ToListAsync();
             }
@@ -70,8 +87,8 @@ namespace HydroVisionFW.Services.DataRepository
                                   Id = first.Id,
                                   Name = second.Name,
                                   WorkingExchangeCapacity = first.WorkingExchangeCapacity,
-                                  SpecificConsumptionFirst = (double)first.SpecificConsumptionFirst,
-                                  SpecificConsumptionSecond = (double)first.SpecificConsumptionSecond,
+                                  SpecificConsumptionCation = (double)first.SpecificConsumptionFirst,
+                                  SpecificConsumptionAnion = (double)first.SpecificConsumptionSecond,
                                   GeneralWaterConsumptionCation = (double)third.GeneralWaterConsumptionCation,
                                   GeneralWaterConsumptionAnion = (double)third.GeneralWaterConsumptionAnion
                               }).ToListAsync();

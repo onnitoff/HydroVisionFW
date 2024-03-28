@@ -410,7 +410,7 @@ namespace HydroVisionDesign.ViewModel
         {
             FiltrationArea = MAFStorage.Instance.F;
             FiltrationSpeed = MAFStorage.Instance.w;
-            WaterConsumptionPerFilter = DataStorage.Instance.PerfomanceWTP;
+            WaterConsumptionPerFilter = BoilerStorage.Instance.PerfomanceWTP;
             FiltrationAreaOfEachFilter = MAFStorage.Instance.f_p;
             DesignFilterDiameter = MAFStorage.Instance.d_p;
             FilterArea = MAFStorage.Instance.f_ct;

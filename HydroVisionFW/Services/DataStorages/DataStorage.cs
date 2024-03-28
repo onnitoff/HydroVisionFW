@@ -104,7 +104,7 @@ namespace HydroVisionDesign.Services.DataStorages
         public int SelectedTurbineSecondItem { get; set; } = 1;
 
         // для топлива
-        public int SelectedFuelItem { get; set; } = 1;
+        public int SelectedFuelType { get; set; } = 1;
 
         #endregion
 

@@ -282,11 +282,11 @@ namespace HydroVisionFW.ViewModel
 
         private void RecordParamToStorage_MAF()
         {
-            MAFStorage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
+            MAFStorage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionCation;
             MAFStorage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionCation;
             MAFStorage.Instance.e_pK = SelectedBrandOfIon.WorkingExchangeCapacity;
             MAFStorage.Instance.e_pA = SelectedBrandOfIon.WorkingExchangeCapacity;
-            MAFStorage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionSecond;
+            MAFStorage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionAnion;
             MAFStorage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
             MAFStorage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
@@ -337,7 +337,7 @@ namespace HydroVisionFW.ViewModel
         private void RecordParamToStorage_A2()
         {
             A2Storage.Instance.e_pA = SelectedBrandOfIon.WorkingExchangeCapacity;
-            A2Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionFirst;
+            A2Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionCation;
             A2Storage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
             A2Storage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
@@ -388,7 +388,7 @@ namespace HydroVisionFW.ViewModel
         private void RecordParamToStorage_H2()
         {
             H2Storage.Instance.e_pK = SelectedBrandOfIon.WorkingExchangeCapacity;
-            H2Storage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
+            H2Storage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionCation;
             H2Storage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
             H2Storage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
@@ -439,7 +439,7 @@ namespace HydroVisionFW.ViewModel
         private void RecordParamToStorage_A1()
         {
             A1Storage.Instance.e_pA = SelectedBrandOfIon.WorkingExchangeCapacity;
-            A1Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionFirst;
+            A1Storage.Instance.bA = SelectedBrandOfIon.SpecificConsumptionCation;
             A1Storage.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
             A1Storage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
@@ -490,7 +490,7 @@ namespace HydroVisionFW.ViewModel
         private void RecordParamToStorage_H1()
         {
             H1Storage.Instance.e_pK = SelectedBrandOfIon.WorkingExchangeCapacity;
-            H1Storage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionFirst;
+            H1Storage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionCation;
             H1Storage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
 
             H1Storage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;

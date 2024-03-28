@@ -43,7 +43,8 @@ namespace HydroVisionFW.Services.DataStorages
         public double ExternalLosses { get; set; } = 0;
         public double PurgingLosses { get; set; } = 0;
         public double LossesInFuelOilProduction { get; set; } = 0;
-        public double FuelOilConsumption { get; set; } = 0;
+        public double FuelOilConsumptionFirst { get; set; } = 0;
+        public double FuelOilConsumptionSecond { get; set; } = 0;
         public double PerfomanceWTPForTPP { get; set; } = 0;
 
         /// <summary>Для КЭС</summary>
