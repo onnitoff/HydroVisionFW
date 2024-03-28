@@ -312,11 +312,13 @@ namespace HydroVisionDesign.ViewModel
             DataStorage.Instance.SelectedTurbineFirstItem = SelectedTurbineFirstItem.Id;
             DataStorage.Instance.WaterConsumptionFirst = (int)SelectedTurbineFirstItem.WaterConsumption;
             DataStorage.Instance.TurbinePerfomanceFirst = (int)SelectedTurbineFirstItem.Perfomance;
+            DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst = (int)SelectedTurbineFirstItem.WaterConsumptionForNetworkHeaters;
             DataStorage.Instance.TurbineTypeSecond = SelectedTurbineFirstItem.TurbineType;
 
             DataStorage.Instance.TurbinePerfomanceSecond = (int)SelectedTurbineSecondItem.Perfomance;
             DataStorage.Instance.SelectedTurbineSecondItem = SelectedTurbineSecondItem.Id;
             DataStorage.Instance.WaterConsumptionSecond = (int)SelectedTurbineSecondItem.WaterConsumption;
+            DataStorage.Instance.WaterConsumptionForNetworkHeatersSecond = (int)SelectedTurbineSecondItem.WaterConsumptionForNetworkHeaters;
             DataStorage.Instance.TurbineTypeSecond = SelectedTurbineSecondItem.TurbineType;
 
             // запись для топлива

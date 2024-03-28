@@ -92,36 +92,36 @@ namespace HydroVisionFW.Services.Calculations
 
             }
 
-            if (DataStorage.Instance.TurbineTypeFirst == 1)
+            if(DataStorage.Instance.TurbineTypeFirst == 1 && DataStorage.Instance.TurbineTypeSecond == 1)
             {
-                BoilerStorage.Instance.PerfomanceWTPFirst = perfomance.ProductivityWTPForIES(
-                DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, BoilerStorage.Instance.DesaltedWaterSupplyFirst);
-            }
-            if (DataStorage.Instance.TurbineTypeSecond == 1)
-            {
-                BoilerStorage.Instance.PerfomanceWTPSecond = perfomance.ProductivityWTPForIES(
-                DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond, BoilerStorage.Instance.DesaltedWaterSupplySecond);
+                BoilerStorage.Instance.PerfomanceWTP = perfomance.ProductivityWTPForIES(
+                DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond, BoilerStorage.Instance.DesaltedWaterSupply);
+
             }
 
-            
+
+
 
 
             if (DataStorage.Instance.TurbineTypeFirst == 2 || DataStorage.Instance.TurbineTypeSecond == 2)
             {
                 BoilerStorage.Instance.PerfomanceWTP = perfomance.ProductivityWTPForTPP(
                 BoilerStorage.Instance.InternalLosses, BoilerStorage.Instance.ExternalLosses, BoilerStorage.Instance.PurgingLosses, BoilerStorage.Instance.LossesInFuelOilProduction,
-                BoilerStorage.Instance.DesaltedWaterSupplyFirst);
+                BoilerStorage.Instance.DesaltedWaterSupply);
             }
 
 
 
+            if (DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst > 0)
+            {
+                BoilerStorage.Instance.PerfomanceWTPForHeatingSystemFirst = perfomance.ProductivityWTPForHeatingSystem(DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst, BoilerStorage.Instance.NumberOfTurbinesFirst);
+            }
+            if (DataStorage.Instance.WaterConsumptionForNetworkHeatersSecond > 0)
+            {
+                BoilerStorage.Instance.PerfomanceWTPForHeatingSystemSecond = perfomance.ProductivityWTPForHeatingSystem(DataStorage.Instance.WaterConsumptionForNetworkHeatersSecond, BoilerStorage.Instance.NumberOfTurbinesSecond);
+            }
 
-
-
-
-
-            BoilerStorage.Instance.PerfomanceWTPForHeatingSystem = perfomance.ProductivityWTPForHeatingSystem(
-                BoilerStorage.Instance.WaterConsumptionForNetworkHeaters);
+            BoilerStorage.Instance.PerfomanceWTPForHeatingSystem = BoilerStorage.Instance.PerfomanceWTPForHeatingSystemFirst + BoilerStorage.Instance.PerfomanceWTPForHeatingSystemSecond;
 
         }
 
@@ -129,29 +129,29 @@ namespace HydroVisionFW.Services.Calculations
         {
             if (DataStorage.Instance.BoilerTypeFirst == 1)
             {
-                BoilerStorage.Instance.DesaltedWaterSupplyFirst = 25;
+                BoilerStorage.Instance.DesaltedWaterSupply = 25;
             }
             
             if(DataStorage.Instance.BoilerTypeSecond == 1)
             {
-                BoilerStorage.Instance.DesaltedWaterSupplyFirst = 25;
+                BoilerStorage.Instance.DesaltedWaterSupply = 25;
             }
 
             if (DataStorage.Instance.BoilerTypeFirst == 2)
             {
                 if (DataStorage.Instance.TurbinePerfomanceFirst <= 300)
                 {
-                    BoilerStorage.Instance.DesaltedWaterSupplyFirst = 25;
+                    BoilerStorage.Instance.DesaltedWaterSupply = 25;
                 }
 
                 if (DataStorage.Instance.TurbinePerfomanceFirst > 300 && DataStorage.Instance.TurbinePerfomanceFirst <= 500)
                 {
-                    BoilerStorage.Instance.DesaltedWaterSupplyFirst = 50;
+                    BoilerStorage.Instance.DesaltedWaterSupply = 50;
                 }
 
                 if (DataStorage.Instance.TurbinePerfomanceFirst > 800)
                 {
-                    BoilerStorage.Instance.DesaltedWaterSupplyFirst = 75;
+                    BoilerStorage.Instance.DesaltedWaterSupply = 75;
                 }
 
 

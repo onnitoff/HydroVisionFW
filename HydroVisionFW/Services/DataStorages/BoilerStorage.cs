@@ -34,7 +34,7 @@ namespace HydroVisionFW.Services.DataStorages
         public double VacationCouple { get; set; } = 0;
         public double Losses { get; set; } = 0;
         public double BlowdownLosses { get; set; } = 0;
-        public double DesaltedWaterSupplyFirst { get; set; } = 0;
+        public double DesaltedWaterSupply { get; set; } = 0;
         public double DesaltedWaterSupplySecond { get; set; } = 0;
         public double WaterConsumptionForNetworkHeaters { get; set; } = 0;
 
@@ -51,12 +51,16 @@ namespace HydroVisionFW.Services.DataStorages
         public double PerfomanceWTPForIES { get; set; } = 0;
 
         /// <summary>Для тепловых сетей</summary>
-        public double PerfomanceWTPForHeatingSystem { get; set; } = 0;
+
 
         public double PerfomanceWTPFirst { get; set; } = 0;
         public double PerfomanceWTPSecond { get; set; } = 0;
+        public double PerfomanceWTPForHeatingSystemFirst { get; set; } = 0;
+        public double PerfomanceWTPForHeatingSystemSecond { get; set; } = 0;
 
         public double PerfomanceWTP { get; set; } = 0;
+        public double PerfomanceWTPForHeatingSystem { get; set; } = 0;
+
         public double PerfomanceOF { get; set; } = 0;
 
         #endregion
