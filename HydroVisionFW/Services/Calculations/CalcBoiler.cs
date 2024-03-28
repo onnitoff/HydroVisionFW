@@ -25,13 +25,15 @@ namespace HydroVisionFW.Services.Calculations
             }
             if (BoilerStorage.Instance.NumberOfBoilersFirst > 0)
             {
+                
                 CalculationOfWTPPerformance();
             }
         }
 
         public void CalculationOfWTPPerformance()
         {
-
+            DesaltingScheme desalting = new DesaltingScheme();
+            desalting.IsDesaltingScheme();
             WaterTreatmentPlantPerfomance perfomance = new WaterTreatmentPlantPerfomance();
             DesaltedWaterSupplyCalc();
 
@@ -132,7 +134,7 @@ namespace HydroVisionFW.Services.Calculations
                 BoilerStorage.Instance.DesaltedWaterSupply = 25;
             }
             
-            if(DataStorage.Instance.BoilerTypeSecond == 1)
+            if(DataStorage.Instance.BoilerTypeSecond == 1 && BoilerStorage.Instance.NumberOfBoilersSecond > 0)
             {
                 BoilerStorage.Instance.DesaltedWaterSupply = 25;
             }

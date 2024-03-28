@@ -79,8 +79,6 @@ namespace HydroVisionDesign.Services.DataStorages
         public string DesaltingScheme { get; set; } = String.Empty;
 
 
-        public bool PresenceOfOnceThroughBoilers { get; set; } = false;
-        public bool PresenceOfCentralHeating { get; set; } = false;
 
 
         #endregion

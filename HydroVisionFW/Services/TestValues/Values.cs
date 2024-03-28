@@ -23,8 +23,6 @@ namespace HydroVisionDesign.Services.TestValues
             DataStorage.Instance.OverallHardness = 3.08;
             DataStorage.Instance.DryResidue = 244;
             DataStorage.Instance.Oxidability = 13.2;
-            DataStorage.Instance.PresenceOfOnceThroughBoilers = true ;
-            DataStorage.Instance.PresenceOfCentralHeating = true ;
 
             //PerfomanceWTP
             BoilerStorage.Instance.ElectricPower = 1000;

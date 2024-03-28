@@ -49,6 +49,58 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _IsHiddenFilterProperty, value);
         }
 
+        #region иконки оборудования
+
+        private bool _IsHiddenH1Image = false;
+        /// <summary>Свойство для скрытия иконки Н1/summary>
+        public bool IsHiddenH1Image
+        {
+            get => _IsHiddenH1Image;
+            set => Set(ref _IsHiddenH1Image, value);
+        }
+
+        private bool _IsHiddenA1Image = false;
+        /// <summary>Свойство для скрытия иконки A1/summary>
+        public bool IsHiddenA1Image
+        {
+            get => _IsHiddenA1Image;
+            set => Set(ref _IsHiddenA1Image, value);
+        }
+
+        private bool _IsHiddenH2Image = false;
+        /// <summary>Свойство для скрытия иконки Н2/summary>
+        public bool IsHiddenH2Image
+        {
+            get => _IsHiddenH2Image;
+            set => Set(ref _IsHiddenH2Image, value);
+        }
+
+        private bool _IsHiddenA2Image = false;
+        /// <summary>Свойство для скрытия иконки A2/summary>
+        public bool IsHiddenA2Image
+        {
+            get => _IsHiddenA2Image;
+            set => Set(ref _IsHiddenA2Image, value);
+        }
+
+        private bool _IsHiddenMAImage = false;
+        /// <summary>Свойство для скрытия иконки ФСД/summary>
+        public bool IsHiddenMAImage
+        {
+            get => _IsHiddenMAImage;
+            set => Set(ref _IsHiddenMAImage, value);
+        }
+
+        private bool _IsHiddenNaImage = false;
+        /// <summary>Свойство для скрытия иконки Na/summary>
+        public bool IsHiddenNaImage
+        {
+            get => _IsHiddenNaImage;
+            set => Set(ref _IsHiddenNaImage, value);
+        }
+
+        #endregion
+
         #endregion
 
         #region Свойство textBox 
@@ -386,6 +438,28 @@ namespace HydroVisionDesign.ViewModel
 
             #endregion
 
+            if (DataStorage.Instance.DesaltingScheme == "three-stage")
+            {
+                _IsHiddenH1Image = true;
+                _IsHiddenH2Image = true;
+                _IsHiddenA1Image = true;
+                _IsHiddenA2Image = true;
+                _IsHiddenMAImage = true;
+            }
+
+            if (DataStorage.Instance.DesaltingScheme == "two-stage")
+            {
+                _IsHiddenH1Image = true;
+                _IsHiddenH2Image = true;
+                _IsHiddenA1Image = true;
+                _IsHiddenA2Image = true;
+            }
+
+            if (DataStorage.Instance.DesaltingScheme == "simplified")
+            {
+                _IsHiddenH1Image = true;
+                _IsHiddenH2Image = true;
+            }
         }
 
 

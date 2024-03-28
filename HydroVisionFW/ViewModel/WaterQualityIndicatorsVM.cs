@@ -422,7 +422,7 @@ namespace HydroVisionDesign.ViewModel
                     break;
             }
 
-            if (DataStorage.Instance.PresenceOfCentralHeating)
+            if (true)
             {
                 IsHiddenCentralHeating = true;
                 NaCationOnFilter = $"ΣU_Na = Жо_ост = {DataStorage.Instance.NaCationOnFilter.ToString("0.000")} мг-экв/дм3";
