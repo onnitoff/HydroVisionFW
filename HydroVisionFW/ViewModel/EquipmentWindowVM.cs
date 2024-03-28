@@ -67,6 +67,22 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _IsHiddenH1Scheme, value);
         }
 
+        private bool _IsHiddenA2SimplifedScheme = false;
+        /// <summary>Свойство для сокрытия схемы A2Simplifed</summary>
+        public bool IsHiddenA2SimplifiedScheme
+        {
+            get => _IsHiddenA2SimplifedScheme;
+            set => Set(ref _IsHiddenA2SimplifedScheme, value);
+        }
+
+        private bool _IsHiddenNaScheme = false;
+        /// <summary>Свойство для сокрытия схемы Na</summary>
+        public bool IsHiddenNaScheme
+        {
+            get => _IsHiddenNaScheme;
+            set => Set(ref _IsHiddenNaScheme, value);
+        }
+
         #endregion
 
         #region textBox Prop
@@ -119,7 +135,6 @@ namespace HydroVisionFW.ViewModel
 
         #endregion
 
-
         #region Команды
 
         #region ApplyBtnCommand
@@ -165,13 +180,18 @@ namespace HydroVisionFW.ViewModel
                 // открыт А2Simplifed
                 case 6:
                     {
-
+                        RecordParamToStorage_A2Simplifed();
+                    }
+                    break;
+                // открыт Na
+                case 7:
+                    {
+                        RecordParamToStorage_Na();
                     }
                     break;
                 default:
                     break;
             }
-
 
             Window activeWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             activeWindow?.Close();
@@ -235,10 +255,20 @@ namespace HydroVisionFW.ViewModel
                         GetComboBox_H1();
                     }
                     break;
-                // открыт А2Simplifed
+                // открыт А2Simplified
                 case 6:
                     {
-
+                        IsHiddenA2SimplifiedScheme = true;
+                        LoadProperty_A2Simplified();
+                        GetComboBox_A2Simplified();
+                    }
+                    break;
+                // открыт Na
+                case 7:
+                    {
+                        IsHiddenNaScheme = true;
+                        LoadProperty_Na();
+                        GetComboBox_Na();
                     }
                     break;
                 default:
@@ -348,6 +378,57 @@ namespace HydroVisionFW.ViewModel
 
             A2Storage.Instance.m = FilterCount;
             A2Storage.Instance.w = FiltrationSpeed;
+        }
+
+        #endregion
+
+        #region A2Simplified
+
+        private void LoadProperty_A2Simplified()
+        {
+            CalcA2Simplified calc = new CalcA2Simplified();
+            calc.CaclFirstProperty();
+            _DesignDiameter = A2StorageSimplified.Instance.f_p;
+            _FilterCount = A2StorageSimplified.Instance.m;
+            _FiltrationSpeed = A2StorageSimplified.Instance.w;
+
+        }
+
+        private void GetComboBox_A2Simplified()
+        {
+            DataRepository data = new DataRepository();
+            int idBrand = 8;
+            int idFilter = 5;
+
+            // обращение к бд марка ионита
+            Task.Run(async () =>
+            {
+                BrandOfIonItems = await data.GetBrandIonA2SimplifiedAsync(idBrand);
+            }).Wait();
+            SelectedBrandOfIon = BrandOfIonItems[A2StorageSimplified.Instance.SelectedBrandOfIon - 1];
+
+            // обращение к бд фильтры
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterAsync(idFilter);
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[A2StorageSimplified.Instance.SelectedSuitableFilter];
+        }
+
+        private void RecordParamToStorage_A2Simplifed()
+        {
+            A2StorageSimplified.Instance.e_pA = SelectedBrandOfIon.WorkingExchangeCapacity;
+            A2StorageSimplified.Instance.bA = SelectedBrandOfIon.SpecificConsumptionCation;
+            A2StorageSimplified.Instance.P_iA = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
+
+            A2StorageSimplified.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
+            A2StorageSimplified.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+
+            A2StorageSimplified.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 6;
+            A2StorageSimplified.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 24;
+
+            A2StorageSimplified.Instance.m = FilterCount;
+            A2StorageSimplified.Instance.w = FiltrationSpeed;
         }
 
         #endregion
@@ -501,6 +582,57 @@ namespace HydroVisionFW.ViewModel
 
             H1Storage.Instance.m = FilterCount;
             H1Storage.Instance.w = FiltrationSpeed;
+        }
+
+        #endregion
+
+        #region Na
+
+        private void LoadProperty_Na()
+        {
+            CalcNa calc = new CalcNa();
+            calc.CaclFirstProperty();
+            _DesignDiameter = NaStorage.Instance.f_p;
+            _FilterCount = NaStorage.Instance.m;
+            _FiltrationSpeed = NaStorage.Instance.w;
+
+        }
+
+        private void GetComboBox_Na()
+        {
+            DataRepository data = new DataRepository();
+            int idBrand = 1;
+            int idFilter = 4;
+
+            // обращение к бд марка ионита
+            Task.Run(async () =>
+            {
+                BrandOfIonItems = await data.GetBrandIonAsync(idBrand);
+            }).Wait();
+            SelectedBrandOfIon = BrandOfIonItems[H1Storage.Instance.SelectedBrandOfIon - 1];
+
+            // обращение к бд фильтры
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterAsync(idFilter);
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[H1Storage.Instance.SelectedSuitableFilter];
+        }
+
+        private void RecordParamToStorage_Na()
+        {
+            NaStorage.Instance.e_pK = SelectedBrandOfIon.WorkingExchangeCapacity;
+            NaStorage.Instance.bK = SelectedBrandOfIon.SpecificConsumptionCation;
+            NaStorage.Instance.P_iK = SelectedBrandOfIon.GeneralWaterConsumptionAnion;
+
+            NaStorage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
+            NaStorage.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+
+            NaStorage.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
+            NaStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 14;
+
+            NaStorage.Instance.m = FilterCount;
+            NaStorage.Instance.w = FiltrationSpeed;
         }
 
         #endregion

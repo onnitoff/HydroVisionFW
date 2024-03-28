@@ -72,6 +72,27 @@ namespace HydroVisionFW.Services.DataRepository
             }
         }
 
+        /// <summary>обращение к бд и вытягивание брендов ионитов А2упр фильтров</summary>
+        /// <returns>List BrandOfIonModel</returns>
+        public async Task<List<BrandOfIonModel>> GetBrandIonA2SimplifiedAsync(int id)
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.ExchangeCapacityAndReagentConsumptionSimplified
+                              join second in context.BrandUseIon on first.IdBrandUseIon equals second.Id
+                              join third in context.WaterConsumptionForOwnNeeds on first.IdIonFiltersNames equals third.IdNameIonFilter + 1
+                              where first.IdIonFiltersNames == id
+                              select new BrandOfIonModel
+                              {
+                                  Id = first.Id,
+                                  Name = second.Name,
+                                  WorkingExchangeCapacity = first.WorkingExchangeCapacityMin,
+                                  SpecificConsumptionCation = first.SpecificConsumptionMin,
+                                  GeneralWaterConsumptionAnion = (double)third.GeneralWaterConsumption
+                              }).ToListAsync();
+            }
+        }
+
         #region MAF
         /// <summary>обращение к бд и вытягивание брендов ионитов ФСД</summary>
         /// <returns>List BrandOfIonModel</returns>

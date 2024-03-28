@@ -90,18 +90,12 @@ namespace HydroVisionDesign.Services.Calculations
 
             if (DataStorage.Instance.SumOfStrongAcidAnions < 2 && DataStorage.Instance.BoilerTypeFirst == 1 && DataStorage.Instance.BoilerTypeSecond == 1) // упрощенная схема
             {
-                //DataStorage.Instance.DesaltingScheme = "simplified";
                 DataStorage.Instance.AnionOnSecondStageFilterSimplified = recalculationOfWaterIndicators.AnionOnSimplifiedSecondStageFilters(
                     DataStorage.Instance.ConcentrationSO, DataStorage.Instance.Final_Cl, DataStorage.Instance.Final_NO, DataStorage.Instance.K_Al_Fe,
                     DataStorage.Instance.SilicicAcidConcentration, DataStorage.Instance.ConcentrationCOBeforeDecarbonizer);
             }
             else if (DataStorage.Instance.SumOfStrongAcidAnions < 5) // двухступенчатая схема
             {
-                if (DataStorage.Instance.BoilerTypeFirst == 2 && DataStorage.Instance.BoilerTypeSecond == 2)
-                    DataStorage.Instance.DesaltingScheme = "three-stage";
-                else
-                    DataStorage.Instance.DesaltingScheme = "two-stage";
-
                 DataStorage.Instance.AnionOnFirstStageFilter = recalculationOfWaterIndicators.AnionOnFirstStageFilters(
                     DataStorage.Instance.ConcentrationSO, DataStorage.Instance.Final_Cl, DataStorage.Instance.Final_NO, DataStorage.Instance.K_Al_Fe);
                 DataStorage.Instance.AnionOnSecondStageFilter = recalculationOfWaterIndicators.AnionOnSecondStageFilters(

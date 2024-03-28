@@ -180,7 +180,7 @@
     <Compile Include="Services\DataRepository\DataRepository.cs" />
     <Compile Include="Services\DataStorages\A1Storage.cs" />
     <Compile Include="Services\DataStorages\A2Storage.cs" />
-    <Compile Include="Services\DataStorages\A2StorageSimplifed.cs" />
+    <Compile Include="Services\DataStorages\A2StorageSimplified.cs" />
     <Compile Include="Services\DataStorages\BoilerStorage.cs" />
     <Compile Include="Services\DataStorages\DataStorage.cs" />
     <Compile Include="Services\DataStorages\H1Storage.cs" />

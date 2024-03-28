@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace HydroVisionFW.Services.DataStorages
 {
-    internal class A2StorageSimplifed
+    internal class A2StorageSimplified
     {
-        private static A2StorageSimplifed instance;
-        private A2StorageSimplifed() { }
+        private static A2StorageSimplified instance;
+        private A2StorageSimplified() { }
 
-        public static A2StorageSimplifed Instance
+        public static A2StorageSimplified Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new A2StorageSimplifed();
+                    instance = new A2StorageSimplified();
                 }
                 return instance;
             }
         }
 
-        /// <summary>Переменные A2</summary>
-        #region Filter_A2
+        /// <summary>Переменные A2Simplified</summary>
+        #region Filter_A2Simplified
 
         public double F { get; set; }
         public double w { get; set; }
@@ -50,6 +50,7 @@ namespace HydroVisionFW.Services.DataStorages
         public double CA { get; set; }
         public double G_cutA { get; set; }
 
+        public double Q_br_input { get; set; }
         public double Q_br { get; set; }
 
 

@@ -91,6 +91,14 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _IsHiddenMAImage, value);
         }
 
+        private bool _IsHiddenA2SimplifiedImage = false;
+        /// <summary>Свойство для скрытия иконки A2Simplified/summary>
+        public bool IsHiddenA2SimplifiedImage
+        {
+            get => _IsHiddenA2SimplifiedImage;
+            set => Set(ref _IsHiddenA2SimplifiedImage, value);
+        }
+
         private bool _IsHiddenNaImage = false;
         /// <summary>Свойство для скрытия иконки Na/summary>
         public bool IsHiddenNaImage
@@ -337,6 +345,31 @@ namespace HydroVisionDesign.ViewModel
         }
         #endregion
 
+        #region LeftBtnAndDoubleA2SimplifiedCommand
+
+        /// <summary>Нажатие левой кнопки по A2упр</summary>
+        public ICommand LeftBtnA2SimplifiedCommand { get; }
+        private void OnLeftBtnA2SimplifiedCommand(object obj)
+        {
+            IsHiddenFilterProperty = true;
+            IsHiddenCationProperty = false;
+            IsHiddenAnionProperty = true;
+
+            FillTextBoxA2Simplified();
+
+        }
+
+        /// <summary>Нажатие дабл левой кнопки по A2упр</summary>
+        public ICommand LeftDoubleBtnA2SimplifiedCommand { get; }
+        private void OnLeftDoubleBtnA2SimplifiedCommand(object obj)
+        {
+            DataStorage.Instance.ViewModel = 6;
+            EquipmentWindow mixed = new EquipmentWindow();
+            mixed.Show();
+            mixed.Closed += A2SimplifiedWindow_Closed;
+        }
+        #endregion
+
         #region LeftBtnAndDoubleH2Command
 
         /// <summary>Нажатие левой кнопки по H2</summary>
@@ -412,6 +445,32 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
+        #region LeftBtnAndDoubleNaCommand
+
+        /// <summary>Нажатие левой кнопки по Na</summary>
+        public ICommand LeftBtnNaCommand { get; }
+        private void OnLeftBtnNaCommand(object obj)
+        {
+            IsHiddenFilterProperty = true;
+            IsHiddenCationProperty = true;
+            IsHiddenAnionProperty = false;
+
+            FillTextBoxNa();
+
+        }
+
+        /// <summary>Нажатие дабл левой кнопки по Na</summary>
+        public ICommand LeftDoubleBtnNaCommand { get; }
+        private void OnLeftDoubleBtnNaCommand(object obj)
+        {
+            DataStorage.Instance.ViewModel = 7;
+            EquipmentWindow mixed = new EquipmentWindow();
+            mixed.Show();
+            mixed.Closed += NaWindow_Closed;
+        }
+
+        #endregion
+
         #endregion
 
 
@@ -427,6 +486,9 @@ namespace HydroVisionDesign.ViewModel
             LeftBtnA2Command = new RelayCommand(OnLeftBtnA2Command);
             LeftDoubleBtnA2Command = new RelayCommand(OnLeftDoubleBtnA2Command);
 
+            LeftBtnA2SimplifiedCommand = new RelayCommand(OnLeftBtnA2SimplifiedCommand);
+            LeftDoubleBtnA2SimplifiedCommand = new RelayCommand(OnLeftDoubleBtnA2SimplifiedCommand);
+
             LeftBtnH2Command = new RelayCommand(OnLeftBtnH2Command);
             LeftDoubleBtnH2Command = new RelayCommand(OnLeftDoubleBtnH2Command);
 
@@ -435,6 +497,9 @@ namespace HydroVisionDesign.ViewModel
 
             LeftBtnH1Command = new RelayCommand(OnLeftBtnH1Command);
             LeftDoubleBtnH1Command = new RelayCommand(OnLeftDoubleBtnH1Command);
+
+            LeftBtnNaCommand = new RelayCommand(OnLeftBtnNaCommand);
+            LeftDoubleBtnNaCommand = new RelayCommand(OnLeftDoubleBtnNaCommand);
 
             #endregion
 
@@ -549,6 +614,44 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
+        #region A2Simplified
+
+        /// <summary>Вызов метода после закрытия A2SimplifiedWindow</summary>
+        private void A2SimplifiedWindow_Closed(object sender, EventArgs e)
+        {
+            CalcA2Simplified calc = new CalcA2Simplified();
+            calc.Calculations();
+            FillTextBoxA2Simplified();
+
+
+        }
+
+        /// <summary>Заполнение данными из A2StorageSimplified свойств textBox</summary>
+        private void FillTextBoxA2Simplified()
+        {
+            FiltrationArea = A2StorageSimplified.Instance.F;
+            FiltrationSpeed = A2StorageSimplified.Instance.w;
+            WaterConsumptionPerFilter = A2StorageSimplified.Instance.Q_br_input;
+            FiltrationAreaOfEachFilter = A2StorageSimplified.Instance.f_p;
+            DesignFilterDiameter = A2StorageSimplified.Instance.d_p;
+            FilterArea = A2StorageSimplified.Instance.f_ct;
+            FilterCycleDuration = A2StorageSimplified.Instance.T_FAA;
+            NumberOfRegenerationsPerDay = A2StorageSimplified.Instance.n;
+            VolumeOfIonExchangeMaterialsInOneFilter = A2StorageSimplified.Instance.V_vl;
+            VolumeOfIonExchangeMaterialsInOneFilterCationOrAnion = A2StorageSimplified.Instance.V_vlK;
+            VolumeOfIonExchangeMaterialsInGroupFilter = A2StorageSimplified.Instance.SumV_vl;
+            VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion = A2StorageSimplified.Instance.SumV_vlK;
+
+            WaterConsumptionForOwnNeedsAnion = A2StorageSimplified.Instance.g_cnA;
+            ConsumptionOfChemicalReagentsAnion = A2StorageSimplified.Instance.G_100pA;
+            TechnicalProductConsumptionAnion = A2StorageSimplified.Instance.G_texA;
+            DailyConsumptionOfChemicalReagentAnion = A2StorageSimplified.Instance.G_cutA;
+
+            WaterConsumptionForNextGroupOfFilters = A2StorageSimplified.Instance.Q_br;
+        }
+
+        #endregion
+
         #region H2
 
         /// <summary>Вызов метода после закрытия H2Window</summary>
@@ -626,7 +729,7 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
-        #region H2
+        #region H1
 
         /// <summary>Вызов метода после закрытия H1Window</summary>
         private void H1Window_Closed(object sender, EventArgs e)
@@ -651,9 +754,7 @@ namespace HydroVisionDesign.ViewModel
             NumberOfRegenerationsPerDay = H1Storage.Instance.n;
 
             VolumeOfIonExchangeMaterialsInOneFilter = H1Storage.Instance.V_vl;
-            VolumeOfIonExchangeMaterialsInOneFilterCationOrAnion = H1Storage.Instance.V_vlK;
             VolumeOfIonExchangeMaterialsInGroupFilter = H1Storage.Instance.SumV_vl;
-            VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion = H1Storage.Instance.SumV_vlK;
 
             WaterConsumptionForOwnNeedsCation = H1Storage.Instance.g_cnK;
             ConsumptionOfChemicalReagentsCation = H1Storage.Instance.G_100pK;
@@ -661,6 +762,43 @@ namespace HydroVisionDesign.ViewModel
             DailyConsumptionOfChemicalReagentCation = H1Storage.Instance.G_cutK;
 
             WaterConsumptionForNextGroupOfFilters = H1Storage.Instance.Q_br;
+        }
+
+        #endregion
+
+        #region Na
+
+        /// <summary>Вызов метода после закрытия NaWindow</summary>
+        private void NaWindow_Closed(object sender, EventArgs e)
+        {
+            CalcNa calc = new CalcNa();
+            calc.Calculations();
+            FillTextBoxNa();
+
+
+        }
+
+        /// <summary>Заполнение данными из NaStorage свойств textBox</summary>
+        private void FillTextBoxNa()
+        {
+            FiltrationArea = NaStorage.Instance.F;
+            FiltrationSpeed = NaStorage.Instance.w;
+            WaterConsumptionPerFilter = BoilerStorage.Instance.PerfomanceWTPForHeatingSystem;
+            FiltrationAreaOfEachFilter = NaStorage.Instance.f_p;
+            DesignFilterDiameter = NaStorage.Instance.d_p;
+            FilterArea = NaStorage.Instance.f_ct;
+            FilterCycleDuration = NaStorage.Instance.T_FAA;
+            NumberOfRegenerationsPerDay = NaStorage.Instance.n;
+
+            VolumeOfIonExchangeMaterialsInOneFilter = NaStorage.Instance.V_vl;
+            VolumeOfIonExchangeMaterialsInGroupFilter = NaStorage.Instance.SumV_vl;
+
+            WaterConsumptionForOwnNeedsCation = NaStorage.Instance.g_cnK;
+            ConsumptionOfChemicalReagentsCation = NaStorage.Instance.G_100pK;
+            TechnicalProductConsumptionCation = NaStorage.Instance.G_texK;
+            DailyConsumptionOfChemicalReagentCation = NaStorage.Instance.G_cutK;
+
+            WaterConsumptionForNextGroupOfFilters = NaStorage.Instance.Q_br;
         }
 
         #endregion
