@@ -112,64 +112,6 @@ namespace HydroVisionDesign.Services.Calculations
                 DataStorage.Instance.OverallHardness);
         }
 
-        public void CalculationOfWTPPerformance()
-        {
-            WaterTreatmentPlantPerfomance perfomance = new WaterTreatmentPlantPerfomance();
-            DesaltedWaterSupplyCalc();
-
-            DataStorage.Instance.InternalLosses = perfomance.InternalLosses(
-                DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst);
-
-            if (DataStorage.Instance.Losses != 0)
-                DataStorage.Instance.ExternalLosses = perfomance.ExternalLosses(
-                DataStorage.Instance.Losses, DataStorage.Instance.VacationCouple);
-
-            if(DataStorage.Instance.BlowdownLosses != 0)
-                DataStorage.Instance.PurgingLosses = perfomance.PurgingLosses(
-                DataStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst);
-            
-            if(DataStorage.Instance.FuelOilConsumption != 0)
-            DataStorage.Instance.LossesInFuelOilProduction = perfomance.LossesInFuelOilProduction(
-                DataStorage.Instance.FuelOilConsumption, DataStorage.Instance.NumberOfBoilersFirst);
-
-            DataStorage.Instance.PerfomanceWTPForIES = perfomance.ProductivityWTPForIES(
-                DataStorage.Instance.BoilerPerfomanceFirst, DataStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.DesaltedWaterSupplyFirst);
-
-            DataStorage.Instance.PerfomanceWTPForTPP = perfomance.ProductivityWTPForTPP(
-                DataStorage.Instance.InternalLosses, DataStorage.Instance.ExternalLosses, DataStorage.Instance.PurgingLosses, DataStorage.Instance.LossesInFuelOilProduction,
-                DataStorage.Instance.DesaltedWaterSupplyFirst);
-
-            DataStorage.Instance.PerfomanceWTPForHeatingSystem = perfomance.ProductivityWTPForHeatingSystem(
-                DataStorage.Instance.WaterConsumptionForNetworkHeaters);
-
-            DataStorage.Instance.PerfomanceWTP = DataStorage.Instance.PerfomanceWTPForTPP;
-        }
-
-        private void DesaltedWaterSupplyCalc()
-        {
-            if (DataStorage.Instance.BoilerTypeFirst == 1)
-            {
-                DataStorage.Instance.DesaltedWaterSupplyFirst = 25;
-            }
-
-            if (DataStorage.Instance.BoilerTypeFirst == 2)
-            {
-                if(DataStorage.Instance.TurbinePerfomanceFirst <= 300)
-                {
-                    DataStorage.Instance.DesaltedWaterSupplyFirst = 25;
-                }
-
-                if(DataStorage.Instance.TurbinePerfomanceFirst > 300 && DataStorage.Instance.TurbinePerfomanceFirst <= 500)
-                {
-                    DataStorage.Instance.DesaltedWaterSupplyFirst = 50;
-                }
-
-                if(DataStorage.Instance.TurbinePerfomanceFirst > 800)
-                {
-                    DataStorage.Instance.DesaltedWaterSupplyFirst = 75;
-                }
-            }
-
-        }
+        
     }
 }
