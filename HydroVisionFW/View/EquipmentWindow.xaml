@@ -76,7 +76,7 @@
             <Grid x:Name="A2Simplified" 
                   Visibility="{Binding IsHiddenA2SimplifiedScheme, 
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
-                <Image Source="/Resources/Images/Filter_A2.png"   
+                <Image Source="/Resources/Images/Filter_A2Simplified.png"   
                         Height="182" 
                         Width="120" 
                         HorizontalAlignment="Center" 
@@ -87,7 +87,7 @@
             <Grid x:Name="Na" 
                   Visibility="{Binding IsHiddenNaScheme, 
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
-                <Image Source="/Resources/Images/Filter_H2.png"   
+                <Image Source="/Resources/Images/Filter_Na.png"   
                        Height="182" 
                        Width="120" 
                        HorizontalAlignment="Center" 

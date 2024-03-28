@@ -510,6 +510,7 @@ namespace HydroVisionDesign.ViewModel
                 _IsHiddenA1Image = true;
                 _IsHiddenA2Image = true;
                 _IsHiddenMAImage = true;
+                _IsHiddenNaImage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "two-stage")
@@ -518,12 +519,14 @@ namespace HydroVisionDesign.ViewModel
                 _IsHiddenH2Image = true;
                 _IsHiddenA1Image = true;
                 _IsHiddenA2Image = true;
+                _IsHiddenNaImage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "simplified")
             {
                 _IsHiddenH1Image = true;
                 _IsHiddenH2Image = true;
+                _IsHiddenA2SimplifiedImage = true;
             }
         }
 

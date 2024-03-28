@@ -424,7 +424,7 @@ namespace HydroVisionFW.ViewModel
             A2StorageSimplified.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
             A2StorageSimplified.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
-            A2StorageSimplified.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id - 6;
+            A2StorageSimplified.Instance.SelectedBrandOfIon = SelectedBrandOfIon.Id;
             A2StorageSimplified.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 24;
 
             A2StorageSimplified.Instance.m = FilterCount;

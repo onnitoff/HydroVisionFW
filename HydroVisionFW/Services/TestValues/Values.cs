@@ -71,6 +71,18 @@ namespace HydroVisionDesign.Services.TestValues
 
             H1Storage.Instance.CK = 75;
 
+            //Na
+            NaStorage.Instance.m = 3;
+            NaStorage.Instance.w = 30;
+
+            NaStorage.Instance.CK = 95;
+
+            //A2Simplified
+            A2StorageSimplified.Instance.m = 3;
+            A2StorageSimplified.Instance.w = 20;
+
+            A2StorageSimplified.Instance.CA = 42;
+
 
         }
     }
