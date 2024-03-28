@@ -50,6 +50,7 @@ namespace HydroVisionFW.Services.DataStorages
         public double CA { get; set; }
         public double G_cutA { get; set; }
 
+        public double Q_br_input { get; set; }
         public double Q_br { get; set; }
 
 

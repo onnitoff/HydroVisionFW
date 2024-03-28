@@ -19,7 +19,7 @@ namespace HydroVisionFW.Services.Calculations
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
 
             H1Storage.Instance.f_ct = filters.FilterArea(H1Storage.Instance.d_ct);
-            H1Storage.Instance.T_FAA = filters.FilterCycleDurationForSimpleAndTwoStage(H1Storage.Instance.f_ct, H1Storage.Instance.h, H1Storage.Instance.e_pK, H1Storage.Instance.m, A1Storage.Instance.Q_br, DataStorage.Instance.CationOnFirstStageFilter);
+            H1Storage.Instance.T_FAA = filters.FilterCycleDurationForSimpleAndTwoStage(H1Storage.Instance.f_ct, H1Storage.Instance.h, H1Storage.Instance.e_pK, H1Storage.Instance.m, H1Storage.Instance.Q_br_input, DataStorage.Instance.CationOnFirstStageFilter);
             H1Storage.Instance.n = filters.NumberOfRegenerationsPerDay(H1Storage.Instance.T_FAA, t);
             H1Storage.Instance.V_vl = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilter(H1Storage.Instance.f_ct, H1Storage.Instance.h);
             //H1Storage.Instance.V_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilterCationAndAnion(H1Storage.Instance.V_vl);
@@ -30,14 +30,18 @@ namespace HydroVisionFW.Services.Calculations
             H1Storage.Instance.G_100pK = filters.ConsumptionOfChemicalReagentsForRegenerationOfOneFilter(H1Storage.Instance.bK, H1Storage.Instance.V_vl, H1Storage.Instance.e_pK);
             H1Storage.Instance.G_texK = filters.SpecificConsumptionOfChemicals(H1Storage.Instance.G_100pK, H1Storage.Instance.CK);
             H1Storage.Instance.G_cutK = filters.SpecificConsumptionOfChemicalsPerDay(H1Storage.Instance.G_texK, H1Storage.Instance.n, H1Storage.Instance.m);
-            H1Storage.Instance.Q_br = filters.WaterConsumptionForTheNextGroupOfFilters(A1Storage.Instance.Q_br, H1Storage.Instance.g_cnK);
+            H1Storage.Instance.Q_br = filters.WaterConsumptionForTheNextGroupOfFilters(H1Storage.Instance.Q_br_input, H1Storage.Instance.g_cnK);
 
         }
 
         public void CaclFirstProperty()
         {
+            if (DataStorage.Instance.DesaltingScheme == "simplified")
+                H1Storage.Instance.Q_br_input = H1Storage.Instance.Q_br;
+            else
+                H1Storage.Instance.Q_br_input = A1Storage.Instance.Q_br;
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
-            H1Storage.Instance.F = filters.FiltrationArea(A1Storage.Instance.Q_br, H1Storage.Instance.w);
+            H1Storage.Instance.F = filters.FiltrationArea(H1Storage.Instance.Q_br_input, H1Storage.Instance.w);
             H1Storage.Instance.f_p = filters.RequiredFiltrationAreaOfEachFilter(H1Storage.Instance.F, H1Storage.Instance.m);
             H1Storage.Instance.d_p = filters.FilterDiameter(H1Storage.Instance.f_p);
         }

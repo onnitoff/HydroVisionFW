@@ -476,6 +476,12 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM() 
         {
+            _IsHiddenH1Image = true;
+            _IsHiddenH2Image = true;
+            _IsHiddenA1Image = true;
+            _IsHiddenA2Image = true;
+            _IsHiddenMAImage = true;
+            _IsHiddenNaImage = true;
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
@@ -596,7 +602,7 @@ namespace HydroVisionDesign.ViewModel
         {
             FiltrationArea = A2Storage.Instance.F;
             FiltrationSpeed = A2Storage.Instance.w;
-            WaterConsumptionPerFilter = MAFStorage.Instance.Q_br;
+            WaterConsumptionPerFilter = A2Storage.Instance.Q_br_input;
             FiltrationAreaOfEachFilter = A2Storage.Instance.f_p;
             DesignFilterDiameter = A2Storage.Instance.d_p;
             FilterArea = A2Storage.Instance.f_ct;
@@ -672,7 +678,7 @@ namespace HydroVisionDesign.ViewModel
         {
             FiltrationArea = H2Storage.Instance.F;
             FiltrationSpeed = H2Storage.Instance.w;
-            WaterConsumptionPerFilter = A2Storage.Instance.Q_br;
+            WaterConsumptionPerFilter = H2Storage.Instance.Q_br_input;
             FiltrationAreaOfEachFilter = H2Storage.Instance.f_p;
             DesignFilterDiameter = H2Storage.Instance.d_p;
             FilterArea = H2Storage.Instance.f_ct;
@@ -711,7 +717,7 @@ namespace HydroVisionDesign.ViewModel
         {
             FiltrationArea = A1Storage.Instance.F;
             FiltrationSpeed = A1Storage.Instance.w;
-            WaterConsumptionPerFilter = H2Storage.Instance.Q_br;
+            WaterConsumptionPerFilter = A1Storage.Instance.Q_br_input;
             FiltrationAreaOfEachFilter = A1Storage.Instance.f_p;
             DesignFilterDiameter = A1Storage.Instance.d_p;
             FilterArea = A1Storage.Instance.f_ct;
@@ -749,7 +755,7 @@ namespace HydroVisionDesign.ViewModel
         {
             FiltrationArea = H1Storage.Instance.F;
             FiltrationSpeed = H1Storage.Instance.w;
-            WaterConsumptionPerFilter = A1Storage.Instance.Q_br;
+            WaterConsumptionPerFilter = H1Storage.Instance.Q_br_input;
             FiltrationAreaOfEachFilter = H1Storage.Instance.f_p;
             DesignFilterDiameter = H1Storage.Instance.d_p;
             FilterArea = H1Storage.Instance.f_ct;
