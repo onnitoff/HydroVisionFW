@@ -53,6 +53,9 @@ namespace HydroVisionFW.Services.DataStorages
         /// <summary>Для тепловых сетей</summary>
         public double PerfomanceWTPForHeatingSystem { get; set; } = 0;
 
+        public double PerfomanceWTPFirst { get; set; } = 0;
+        public double PerfomanceWTPSecond { get; set; } = 0;
+
         public double PerfomanceWTP { get; set; } = 0;
         public double PerfomanceOF { get; set; } = 0;
 

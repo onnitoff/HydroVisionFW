@@ -92,21 +92,37 @@ namespace HydroVisionFW.Services.Calculations
 
             }
 
-            if()
+            if (DataStorage.Instance.TurbineTypeFirst == 1)
+            {
+                BoilerStorage.Instance.PerfomanceWTPFirst = perfomance.ProductivityWTPForIES(
+                DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, BoilerStorage.Instance.DesaltedWaterSupplyFirst);
+            }
+            if (DataStorage.Instance.TurbineTypeSecond == 1)
+            {
+                BoilerStorage.Instance.PerfomanceWTPSecond = perfomance.ProductivityWTPForIES(
+                DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond, BoilerStorage.Instance.DesaltedWaterSupplySecond);
+            }
 
             
 
-            BoilerStorage.Instance.PerfomanceWTPForIES = perfomance.ProductivityWTPForIES(
-                DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, BoilerStorage.Instance.DesaltedWaterSupplyFirst);
 
-            BoilerStorage.Instance.PerfomanceWTPForTPP = perfomance.ProductivityWTPForTPP(
+            if (DataStorage.Instance.TurbineTypeFirst == 2 || DataStorage.Instance.TurbineTypeSecond == 2)
+            {
+                BoilerStorage.Instance.PerfomanceWTP = perfomance.ProductivityWTPForTPP(
                 BoilerStorage.Instance.InternalLosses, BoilerStorage.Instance.ExternalLosses, BoilerStorage.Instance.PurgingLosses, BoilerStorage.Instance.LossesInFuelOilProduction,
                 BoilerStorage.Instance.DesaltedWaterSupplyFirst);
+            }
+
+
+
+
+
+
+
 
             BoilerStorage.Instance.PerfomanceWTPForHeatingSystem = perfomance.ProductivityWTPForHeatingSystem(
                 BoilerStorage.Instance.WaterConsumptionForNetworkHeaters);
 
-            BoilerStorage.Instance.PerfomanceWTP = BoilerStorage.Instance.PerfomanceWTPForTPP;
         }
 
         private void DesaltedWaterSupplyCalc()

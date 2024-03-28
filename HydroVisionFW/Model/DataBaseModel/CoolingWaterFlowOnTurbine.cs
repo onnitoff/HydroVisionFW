@@ -15,8 +15,10 @@ namespace HydroVisionFW.Model.DataBaseModel
     public partial class CoolingWaterFlowOnTurbine
     {
         public int Id { get; set; }
-        public string TurbineType { get; set; }
-        public Nullable<int> WaterConsumption { get; set; }
-        public Nullable<int> Perfomance { get; set; }
+        public string TurbineName { get; set; }
+        public int WaterConsumption { get; set; }
+        public int Perfomance { get; set; }
+        public int TurbineType { get; set; }
+        public Nullable<int> WaterConsumptionForNetworkHeaters { get; set; }
     }
 }

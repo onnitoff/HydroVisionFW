@@ -76,13 +76,13 @@
 
         <TextBlock HorizontalAlignment="Left" Margin="300,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Тип турбины"></TextBlock>
         <ComboBox ItemsSource="{Binding Path=TubineItems}"
-                  DisplayMemberPath="TurbineType"
+                  DisplayMemberPath="TurbineName"
                   SelectedValuePath="Id"
                   SelectedItem="{Binding Path=SelectedTurbineFirstItem}"
                   HorizontalAlignment="Left" Margin="451,113,0,0" VerticalAlignment="Top" Width="120"/>
 
         <ComboBox ItemsSource="{Binding TubineItems}"
-                  DisplayMemberPath="TurbineType"
+                  DisplayMemberPath="TurbineName"
                   SelectedValuePath="Id"
                   SelectedItem="{Binding SelectedTurbineSecondItem}"
                   HorizontalAlignment="Left" Margin="591,115,0,0" VerticalAlignment="Top" Width="120"/>

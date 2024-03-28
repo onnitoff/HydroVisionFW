@@ -98,10 +98,16 @@ namespace HydroVisionDesign.Services.DataStorages
         // для турбины
         public int WaterConsumptionFirst { get; set; } = 0;
         public int TurbinePerfomanceFirst {  get; set; } = 0;
-        public int TurbinePerfomanceSecond { get; set; } = 0;
+        public int TurbineTypeFirst { get; set; } = 2;
+        public int WaterConsumptionForNetworkHeatersFirst { get; set; } = 0;
         public int SelectedTurbineFirstItem { get; set; } = 1;
+
         public int WaterConsumptionSecond { get; set; } = 0;
+        public int TurbinePerfomanceSecond { get; set; } = 0;
+        public int TurbineTypeSecond { get; set; } = 2;
+        public int WaterConsumptionForNetworkHeatersSecond { get; set; } = 0;
         public int SelectedTurbineSecondItem { get; set; } = 1;
+
 
         // для топлива
         public int SelectedFuelType { get; set; } = 1;

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище WaterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище WaterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplyingFilter">
           <Key>
             <PropertyRef Name="Id" />
@@ -105,9 +105,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TurbineType" Type="nvarchar" MaxLength="20" />
-          <Property Name="WaterConsumption" Type="int" />
-          <Property Name="Perfomance" Type="int" />
+          <Property Name="TurbineName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WaterConsumption" Type="int" Nullable="false" />
+          <Property Name="Perfomance" Type="int" Nullable="false" />
+          <Property Name="TurbineType" Type="int" Nullable="false" />
+          <Property Name="WaterConsumptionForNetworkHeaters" Type="int" />
         </EntityType>
         <EntityType Name="EfficiencyMinAxialPumps">
           <Key>
@@ -625,8 +627,7 @@
             <End Role="WaterConsumptionForOwnNeedsFSD" EntitySet="WaterConsumptionForOwnNeedsFSD" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WaterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -742,9 +743,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TurbineType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="WaterConsumption" Type="Int32" />
-          <Property Name="Perfomance" Type="Int32" />
+          <Property Name="TurbineName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WaterConsumption" Type="Int32" Nullable="false" />
+          <Property Name="Perfomance" Type="Int32" Nullable="false" />
+          <Property Name="TurbineType" Type="Int32" Nullable="false" />
+          <Property Name="WaterConsumptionForNetworkHeaters" Type="Int32" />
         </EntityType>
         <EntityType Name="EfficiencyMinAxialPumps">
           <Key>
@@ -1405,10 +1408,12 @@
           <EntitySetMapping Name="CoolingWaterFlowOnTurbine">
             <EntityTypeMapping TypeName="WaterModel.CoolingWaterFlowOnTurbine">
               <MappingFragment StoreEntitySet="CoolingWaterFlowOnTurbine">
+                <ScalarProperty Name="WaterConsumptionForNetworkHeaters" ColumnName="WaterConsumptionForNetworkHeaters" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TurbineType" ColumnName="TurbineType" />
+                <ScalarProperty Name="TurbineName" ColumnName="TurbineName" />
                 <ScalarProperty Name="WaterConsumption" ColumnName="WaterConsumption" />
                 <ScalarProperty Name="Perfomance" ColumnName="Perfomance" />
+                <ScalarProperty Name="TurbineType" ColumnName="TurbineType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
