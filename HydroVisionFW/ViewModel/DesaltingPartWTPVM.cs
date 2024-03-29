@@ -21,6 +21,14 @@ namespace HydroVisionDesign.ViewModel
     {
         #region Свойство Hidden
 
+        private bool _IsHiddenMain = false;
+        /// <summary>Свойство для скрытия главного Grid</summary>
+        public bool IsHiddenMain
+        {
+            get => _IsHiddenMain;
+            set => Set(ref _IsHiddenMain, value);
+        }
+
         #region блоки
 
         private bool _IsHiddenCationProperty = false;
@@ -506,13 +514,7 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM() 
         {
-            _IsHiddenH1Image = true;
-            _IsHiddenH2Image = true;
-            _IsHiddenA1Image = true;
-            _IsHiddenA2Image = true;
-            _IsHiddenMAImage = true;
-            _IsHiddenNaImage = true;
-            _IsHiddenThreeStage = true;
+
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
@@ -542,29 +544,17 @@ namespace HydroVisionDesign.ViewModel
 
             if (DataStorage.Instance.DesaltingScheme == "three-stage")
             {
-                _IsHiddenH1Image = true;
-                _IsHiddenH2Image = true;
-                _IsHiddenA1Image = true;
-                _IsHiddenA2Image = true;
-                _IsHiddenMAImage = true;
-                _IsHiddenNaImage = true;
                 _IsHiddenThreeStage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "two-stage")
             {
-                _IsHiddenH1Image = true;
-                _IsHiddenH2Image = true;
-                _IsHiddenA1Image = true;
-                _IsHiddenA2Image = true;
-                _IsHiddenNaImage = true;
+                _IsHiddenTwoStage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "simplified")
             {
-                _IsHiddenH1Image = true;
-                _IsHiddenH2Image = true;
-                _IsHiddenA2SimplifiedImage = true;
+                _IsHiddenSimplified = true;
             }
         }
 

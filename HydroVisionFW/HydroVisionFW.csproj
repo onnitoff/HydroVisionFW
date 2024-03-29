@@ -349,6 +349,8 @@
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
       <LastGenOutput>DataBaseModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\Tank.png" />
+    <Resource Include="Resources\Images\Decarbonizer.png" />
     <Resource Include="Resources\Images\Clarifier.png" />
     <Resource Include="Resources\Images\Filter_Clarifier.png" />
     <Resource Include="Resources\Images\Filter_MA.png" />

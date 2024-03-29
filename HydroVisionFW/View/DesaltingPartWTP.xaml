@@ -27,7 +27,8 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Border>
-        <Grid>
+        <Grid Visibility="{Binding IsHiddenMain,
+              Converter = {StaticResource BooleanToVisibilityConverter}}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonDown">
                     <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
@@ -51,8 +52,7 @@
                        Height="100"
                        Width="100"
                        Grid.Column="0" Margin="612,251,-2,249"
-                       Visibility="{Binding IsHiddenMAImage, 
-                       Converter = {StaticResource BooleanToVisibilityConverter}}">
+                       >
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnMAFCommand}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnMAFCommand}"/>
@@ -64,9 +64,7 @@
                 <Image Source="/Resources/Images/Filter_A2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="521,249,89,251"
-                       Visibility="{Binding IsHiddenA2Image, 
-                       Converter = {StaticResource BooleanToVisibilityConverter}}">
+                       Grid.Column="0" Margin="528,254,82,246">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
@@ -78,9 +76,7 @@
                 <Image Source="/Resources/Images/Filter_H2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="447,249,163,251"
-                       Visibility="{Binding IsHiddenH2Image, 
-                       Converter = {StaticResource BooleanToVisibilityConverter}}">
+                       Grid.Column="0" Margin="447,249,163,251">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
@@ -92,9 +88,7 @@
                 <Image Source="/Resources/Images/Filter_A1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="265,252,345,248"
-                       Visibility="{Binding IsHiddenA1Image, 
-                       Converter = {StaticResource BooleanToVisibilityConverter}}">
+                       Grid.Column="0" Margin="265,252,345,248">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
@@ -106,85 +100,190 @@
                 <Image Source="/Resources/Images/Filter_H1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="190,250,420,250"
-                       Visibility="{Binding IsHiddenH1Image, 
-                   Converter = {StaticResource BooleanToVisibilityConverter}}">
+                       Grid.Column="0" Margin="190,250,420,250">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
                     </Image.InputBindings>
                 </Image>
 
-                <!--Filter_Clarifier_IMAGE-->
-
-                <Image Source="/Resources/Images/Filter_Clarifier.png"
-                       Height="100"
-                       Width="100"
-                       Grid.Column="0" Margin="92,245,518,255">
-                    <Image.InputBindings>
-                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
-                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
-                    </Image.InputBindings>
-                </Image>
-
-
-                <!--Clarifier_IMAGE-->
-
-                <Image Source="/Resources/Images/Clarifier.png"
-                       Height="100"
-                       Width="100"
-                       Grid.Column="0" Margin="7,190,603,310">
-                    <Image.InputBindings>
-                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
-                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
-                    </Image.InputBindings>
-                </Image>
+                
 
             </Grid>
 
             <!--two_stage-->
 
             <Grid Grid.Column="0"
-                  x:Name="two_stage">
+                  x:Name="two_stage"
+                  Visibility="{Binding IsHiddenTwoStage,
+                   Converter = {StaticResource BooleanToVisibilityConverter}}">
+                <!--A2_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_A2.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="528,254,82,246">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
+                    </Image.InputBindings>
+                </Image>
+
+                <!--H2_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_H2.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="447,249,163,251">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
+                    </Image.InputBindings>
+                </Image>
+
+                <!--A1_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_A1.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="265,252,345,248">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
+                    </Image.InputBindings>
+                </Image>
+
+                <!--H1_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_H1.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="190,250,420,250">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
+                    </Image.InputBindings>
+                </Image>
 
             </Grid>
 
             <!--simplified-->
 
             <Grid Grid.Column="0"
-                  x:Name="simplified">
+                  x:Name="simplified"
+                  Visibility="{Binding IsHiddenSimplified,
+                  Converter = {StaticResource BooleanToVisibilityConverter}}">
+
+                <!--A2Simplified_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_A2Simplified.png"
+                   Height="100"
+                   Width="100"
+                   Grid.Column="0" Margin="534,250,76,250">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2SimplifiedCommand}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2SimplifiedCommand}"/>
+                    </Image.InputBindings>
+                </Image>
+
+                <!--H2_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_H2.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="447,249,163,251">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
+                    </Image.InputBindings>
+                </Image>
+
+
+                <!--H1_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_H1.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="190,250,420,250">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
+                    </Image.InputBindings>
+                </Image>
 
             </Grid>
 
 
 
-            <!--A2Simplified_IMAGE-->
-
-            <Image Source="/Resources/Images/Filter_A2Simplified.png"
-                   Height="100"
-                   Width="100"
-                   Grid.Column="0" Margin="534,250,76,250"
-                   Visibility="{Binding IsHiddenA2SimplifiedImage, 
-                   Converter = {StaticResource BooleanToVisibilityConverter}}">
-                <Image.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2SimplifiedCommand}"/>
-                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2SimplifiedCommand}"/>
-                </Image.InputBindings>
-            </Image>
 
             <!--Na_IMAGE-->
 
             <Image Source="/Resources/Images/Filter_Na.png"
                    Height="100"
                    Width="100"
-                   Grid.Column="0" Margin="185,380,425,120"
-                   Visibility="{Binding IsHiddenNaImage, 
-                   Converter = {StaticResource BooleanToVisibilityConverter}}">
+                   Grid.Column="0" Margin="185,380,425,120">
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnNaCommand}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnNaCommand}"/>
                 </Image.InputBindings>
             </Image>
+
+            <!--Filter_Clarifier_IMAGE-->
+
+            <Image Source="/Resources/Images/Filter_Clarifier.png"
+                   Height="100"
+                   Width="100"
+                   Grid.Column="0" Margin="111,251,499,249">
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
+                </Image.InputBindings>
+            </Image>
+
+            <!--Tank_IMAGE-->
+
+            <Image Source="/Resources/Images/Tank.png"
+                   Height="100"
+                   Width="100"
+                   Grid.Column="0" Margin="121,124,489,376"/>
+
+            <!--Clarifier_IMAGE-->
+
+            <Image Source="/Resources/Images/Clarifier.png"
+                   Height="150"
+                   Width="150"
+                   Grid.Column="0" Margin="-12,124,572,326">
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
+                </Image.InputBindings>
+            </Image>
+
+            <!--Decatbonizer_IMAGE-->
+
+            <Image Source="/Resources/Images/Decarbonizer.png"
+                       Height="150"
+                       Width="150"
+                       Grid.Column="0" Margin="348,175,212,275">
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
+                </Image.InputBindings>
+            </Image>
+
+            <!--Tank_IMAGE-->
+
+            <Image Source="/Resources/Images/Tank.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="287,419,323,81"/>
+
+            <!--Tank_IMAGE-->
+
+            <Image Source="/Resources/Images/Tank.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="575,407,35,93"/>
 
             <GroupBox Header="Свойства"
                       Grid.Column="1">
