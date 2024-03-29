@@ -38,16 +38,21 @@
                 <ColumnDefinition Width="290"/>
             </Grid.ColumnDefinitions>
 
+
+            <!--three_stage-->
+
             <Grid Grid.Column="0"
-                  x:Name="three_stage">
+                  x:Name="three_stage"
+                  Visibility="{Binding IsHiddenThreeStage,
+                  Converter = {StaticResource BooleanToVisibilityConverter}}">
                 <!--MAF_IMAGE-->
 
                 <Image Source="/Resources/Images/Filter_MA.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="615,243,285,257"
-                       Visibility="{Binding IsHiddenA2Image, 
-                       Converter = {StaticResource BooleanToVisibilityConverter}}" Grid.ColumnSpan="2">
+                       Grid.Column="0" Margin="612,251,-2,249"
+                       Visibility="{Binding IsHiddenMAImage, 
+                       Converter = {StaticResource BooleanToVisibilityConverter}}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnMAFCommand}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnMAFCommand}"/>
@@ -59,7 +64,7 @@
                 <Image Source="/Resources/Images/Filter_A2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="525,251,85,249"
+                       Grid.Column="0" Margin="521,249,89,251"
                        Visibility="{Binding IsHiddenA2Image, 
                        Converter = {StaticResource BooleanToVisibilityConverter}}">
                     <Image.InputBindings>
@@ -110,9 +115,48 @@
                     </Image.InputBindings>
                 </Image>
 
+                <!--Filter_Clarifier_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_Clarifier.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="92,245,518,255">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
+                    </Image.InputBindings>
+                </Image>
+
+
+                <!--Clarifier_IMAGE-->
+
+                <Image Source="/Resources/Images/Clarifier.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="7,190,603,310">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
+                    </Image.InputBindings>
+                </Image>
+
             </Grid>
 
-            
+            <!--two_stage-->
+
+            <Grid Grid.Column="0"
+                  x:Name="two_stage">
+
+            </Grid>
+
+            <!--simplified-->
+
+            <Grid Grid.Column="0"
+                  x:Name="simplified">
+
+            </Grid>
+
+
 
             <!--A2Simplified_IMAGE-->
 
@@ -133,7 +177,7 @@
             <Image Source="/Resources/Images/Filter_Na.png"
                    Height="100"
                    Width="100"
-                   Grid.Column="0" Margin="590,409,20,91"
+                   Grid.Column="0" Margin="185,380,425,120"
                    Visibility="{Binding IsHiddenNaImage, 
                    Converter = {StaticResource BooleanToVisibilityConverter}}">
                 <Image.InputBindings>

@@ -109,6 +109,36 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
+        #region тип схемы
+
+        private bool _IsHiddenThreeStage = false;
+        /// <summary>Свойство для скрытия трехступенчатой схемы/summary>
+        public bool IsHiddenThreeStage
+        {
+            get => _IsHiddenThreeStage;
+            set => Set(ref _IsHiddenThreeStage, value);
+        }
+
+        private bool _IsHiddenTwoStage = false;
+        /// <summary>Свойство для скрытия двухступенчатой схемы/summary>
+        public bool IsHiddenTwoStage
+        {
+            get => _IsHiddenTwoStage;
+            set => Set(ref _IsHiddenTwoStage, value);
+        }
+
+        private bool _IsHiddenSimplified = false;
+        /// <summary>Свойство для скрытия упрощенной схемы/summary>
+        public bool IsHiddenSimplified
+        {
+            get => _IsHiddenSimplified;
+            set => Set(ref _IsHiddenSimplified, value);
+        }
+
+
+
+        #endregion
+
         #endregion
 
         #region Свойство textBox 
@@ -482,6 +512,7 @@ namespace HydroVisionDesign.ViewModel
             _IsHiddenA2Image = true;
             _IsHiddenMAImage = true;
             _IsHiddenNaImage = true;
+            _IsHiddenThreeStage = true;
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
@@ -517,6 +548,7 @@ namespace HydroVisionDesign.ViewModel
                 _IsHiddenA2Image = true;
                 _IsHiddenMAImage = true;
                 _IsHiddenNaImage = true;
+                _IsHiddenThreeStage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "two-stage")

@@ -329,14 +329,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Filter_MA.png" />
-    <Resource Include="Resources\Images\Decarbones.png" />
     <Resource Include="Resources\Images\Filter_A1.png" />
     <Resource Include="Resources\Images\Filter_A2.png" />
     <Resource Include="Resources\Images\Filter_H1.png" />
     <Resource Include="Resources\Images\Filter_H2.png" />
-    <Resource Include="Resources\Images\OF.png" />
-    <Resource Include="Resources\Images\OV.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -353,6 +349,9 @@
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
       <LastGenOutput>DataBaseModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\Clarifier.png" />
+    <Resource Include="Resources\Images\Filter_Clarifier.png" />
+    <Resource Include="Resources\Images\Filter_MA.png" />
     <Resource Include="Resources\Images\Filter_Na.png" />
     <Resource Include="Resources\Images\Filter_A2Simplified.png" />
   </ItemGroup>
