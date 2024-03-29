@@ -6,8 +6,8 @@
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="600"
-             d:DesignWidth="1000"
+             d:DesignHeight="795"
+             d:DesignWidth="1296"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:DesaltingPartWTPVM/>
@@ -19,7 +19,7 @@
     <Grid>
         <Border >
             <Border.Background>
-                <SolidColorBrush Color="#FF7654"/>
+                <SolidColorBrush Color="#F5F5DC"/>
             </Border.Background>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -38,6 +38,39 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="290"/>
             </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="-52,95,0,0">
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M190,130 L218, 130"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M218,178 L218, 206 L255, 206"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M280,206 L290, 206 L290, 270 L320, 270"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M370, 270 L390, 270 L390 400"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M390 490 L390 515 L440 515 L440 410 L458 410"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M390, 270 L390, 230 L440, 230 L440, 255"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M440, 350 L440, 370 L478, 370 L478, 230 L515, 230 L515, 260"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M515, 350 L515, 370 L560 370 L560 150 L585 150 L585 170"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M580 268 L580 290 L608 290"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M629 290 L663 290 L663 230 L703, 230 L703 260"/>
+
+
+            </Grid>
 
 
             <!--three_stage-->
@@ -51,7 +84,7 @@
                 <Image Source="/Resources/Images/Filter_MA.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="612,251,-2,249"
+                       Grid.Column="0" Margin="620,250,0,250"
                        >
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnMAFCommand}"/>
@@ -64,7 +97,7 @@
                 <Image Source="/Resources/Images/Filter_A2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="528,254,82,246">
+                       Grid.Column="0" Margin="528,250,80,250">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
@@ -76,7 +109,7 @@
                 <Image Source="/Resources/Images/Filter_H2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="447,249,163,251">
+                       Grid.Column="0" Margin="447,250,150,250">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
@@ -88,7 +121,7 @@
                 <Image Source="/Resources/Images/Filter_A1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="265,252,345,248">
+                       Grid.Column="0" Margin="265,250,345,250">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
@@ -107,7 +140,16 @@
                     </Image.InputBindings>
                 </Image>
 
-                
+                <Grid Grid.Column="0" Margin="-52,95,0,0">
+
+                    <Path Stroke="Blue" StrokeThickness="5"
+                          Data="M779 350 L779 370 L825 370 L825 230 L865 230 L865 255"/>
+
+                    <Path Stroke="Blue" StrokeThickness="5"
+                          Data="M865 350 L865 412 L883 412"/>
+                </Grid>
+
+
 
             </Grid>
 
@@ -117,12 +159,13 @@
                   x:Name="two_stage"
                   Visibility="{Binding IsHiddenTwoStage,
                    Converter = {StaticResource BooleanToVisibilityConverter}}">
+                
                 <!--A2_IMAGE-->
 
                 <Image Source="/Resources/Images/Filter_A2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="528,254,82,246">
+                       Grid.Column="0" Margin="528,250,80,250">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
@@ -134,7 +177,7 @@
                 <Image Source="/Resources/Images/Filter_H2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="447,249,163,251">
+                       Grid.Column="0" Margin="447,250,150,250">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
@@ -146,7 +189,7 @@
                 <Image Source="/Resources/Images/Filter_A1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="265,252,345,248">
+                       Grid.Column="0" Margin="265,250,345,250">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
@@ -165,6 +208,13 @@
                     </Image.InputBindings>
                 </Image>
 
+                <Grid Grid.Column="0" Margin="-52,95,0,0">
+                    <Path Stroke="Blue" StrokeThickness="5"
+                          Data="M703 352 L703 370 L741 370 L741 230 L779 230 L779 255"/>
+                    <Path Stroke="Blue" StrokeThickness="5"
+                          Data="M779 352 L779 410 L883 410"/>
+                    
+                </Grid>
             </Grid>
 
             <!--simplified-->
@@ -179,25 +229,12 @@
                 <Image Source="/Resources/Images/Filter_A2Simplified.png"
                    Height="100"
                    Width="100"
-                   Grid.Column="0" Margin="534,250,76,250">
+                   Grid.Column="0" Margin="447,250,150,250">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2SimplifiedCommand}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2SimplifiedCommand}"/>
                     </Image.InputBindings>
                 </Image>
-
-                <!--H2_IMAGE-->
-
-                <Image Source="/Resources/Images/Filter_H2.png"
-                       Height="100"
-                       Width="100"
-                       Grid.Column="0" Margin="447,249,163,251">
-                    <Image.InputBindings>
-                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
-                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
-                    </Image.InputBindings>
-                </Image>
-
 
                 <!--H1_IMAGE-->
 
@@ -211,6 +248,24 @@
                     </Image.InputBindings>
                 </Image>
 
+                <!--H2_IMAGE-->
+
+                <Image Source="/Resources/Images/Filter_H2.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="265,250,345,250">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
+                    </Image.InputBindings>
+                </Image>
+
+                <Grid Grid.Column="0" Margin="-52,95,0,0">
+
+                    <Path Stroke="Blue" StrokeThickness="5"
+                          Data="M704 352 L704 412 L865 412 L883 412"/>
+                </Grid>
+
             </Grid>
 
 
@@ -221,7 +276,7 @@
             <Image Source="/Resources/Images/Filter_Na.png"
                    Height="100"
                    Width="100"
-                   Grid.Column="0" Margin="185,380,425,120">
+                   Grid.Column="0" Margin="0,388,330,100">
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnNaCommand}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnNaCommand}"/>
@@ -233,7 +288,7 @@
             <Image Source="/Resources/Images/Filter_Clarifier.png"
                    Height="100"
                    Width="100"
-                   Grid.Column="0" Margin="111,251,499,249">
+                   Grid.Column="0" Margin="0,250,430,250">
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
@@ -245,14 +300,14 @@
             <Image Source="/Resources/Images/Tank.png"
                    Height="100"
                    Width="100"
-                   Grid.Column="0" Margin="121,124,489,376"/>
+                   Grid.Column="0" Margin="0,120,580,380"/>
 
             <!--Clarifier_IMAGE-->
 
             <Image Source="/Resources/Images/Clarifier.png"
                    Height="150"
                    Width="150"
-                   Grid.Column="0" Margin="-12,124,572,326">
+                   Grid.Column="0" Margin="0,120,800,330">
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
@@ -264,7 +319,7 @@
             <Image Source="/Resources/Images/Decarbonizer.png"
                        Height="150"
                        Width="150"
-                       Grid.Column="0" Margin="348,175,212,275">
+                       Grid.Column="0" Margin="150,100,0,250">
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
@@ -276,14 +331,14 @@
             <Image Source="/Resources/Images/Tank.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="287,419,323,81"/>
+                       Grid.Column="0" Margin="0,300,100,0"/>
 
             <!--Tank_IMAGE-->
 
             <Image Source="/Resources/Images/Tank.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="575,407,35,93"/>
+                       Grid.Column="0" Margin="750,300,0,0"/>
 
             <GroupBox Header="Свойства"
                       Grid.Column="1">

@@ -544,16 +544,19 @@ namespace HydroVisionDesign.ViewModel
 
             if (DataStorage.Instance.DesaltingScheme == "three-stage")
             {
+                _IsHiddenMain = true;
                 _IsHiddenThreeStage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "two-stage")
             {
+                _IsHiddenMain = true;
                 _IsHiddenTwoStage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "simplified")
             {
+                _IsHiddenMain = true;
                 _IsHiddenSimplified = true;
             }
         }

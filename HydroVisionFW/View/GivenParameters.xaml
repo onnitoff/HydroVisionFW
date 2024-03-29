@@ -11,7 +11,7 @@
     <UserControl.DataContext>
         <vm:GivenParametersVM/>
     </UserControl.DataContext>
-    <Grid Background="White">
+    <Grid Background="#F5F5DC">
         <TextBlock HorizontalAlignment="Left" Margin="21,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Показатели качества исходной воды"/></TextBlock>
 
         <TextBlock HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" Text="Na+K" VerticalAlignment="Top"/>
