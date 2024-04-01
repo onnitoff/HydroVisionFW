@@ -30,7 +30,7 @@ namespace HydroVisionFW.Services.Calculations
             NaStorage.Instance.G_cutK = filters.SpecificConsumptionOfChemicalsPerDay(NaStorage.Instance.G_texK, NaStorage.Instance.n, NaStorage.Instance.m);
             NaStorage.Instance.Q_br = filters.WaterConsumptionForTheNextGroupOfFilters(BoilerStorage.Instance.PerfomanceWTPForHeatingSystem, NaStorage.Instance.g_cnK);
 
-            BoilerStorage.Instance.PerfomanceOF = NaStorage.Instance.Q_br + H1Storage.Instance.Q_br;
+            //BoilerStorage.Instance.PerfomanceOF = NaStorage.Instance.Q_br + H1Storage.Instance.Q_br;
         }
 
         public void CaclFirstProperty()
