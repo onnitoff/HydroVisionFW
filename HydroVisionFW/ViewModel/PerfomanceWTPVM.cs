@@ -78,7 +78,7 @@ namespace HydroVisionDesign.ViewModel
 
             PerfomanceWTPToFeedMainCycle = $"Q_впу = q_внутр + q_зап = {BoilerStorage.Instance.InternalLosses} + {BoilerStorage.Instance.DesaltedWaterSupply} = {BoilerStorage.Instance.PerfomanceWTP} т/ч";
 
-            PerfomanceWTPToFeedHeatingNetwork = $"Q_впуУм = 2% * G_св = 2% * {DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst} = {BoilerStorage.Instance.PerfomanceWTPForHeatingSystem} т/ч";
+            PerfomanceWTPToFeedHeatingNetwork = $"Q_впуУм = 2% * G_св = 2% * {DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst + DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst} = {BoilerStorage.Instance.PerfomanceWTPForHeatingSystem} т/ч";
         }
     }
 }

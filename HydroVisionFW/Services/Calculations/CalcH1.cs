@@ -37,7 +37,7 @@ namespace HydroVisionFW.Services.Calculations
         public void CaclFirstProperty()
         {
             if (DataStorage.Instance.DesaltingScheme == "simplified")
-                H1Storage.Instance.Q_br_input = H1Storage.Instance.Q_br;
+                H1Storage.Instance.Q_br_input = H2Storage.Instance.Q_br;
             else
                 H1Storage.Instance.Q_br_input = A1Storage.Instance.Q_br;
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();

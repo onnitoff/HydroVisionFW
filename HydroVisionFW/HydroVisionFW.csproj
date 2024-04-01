@@ -192,7 +192,6 @@
     <Compile Include="ViewModel\CirculationPumpsVM.cs" />
     <Compile Include="ViewModel\CoolingSystemVM.cs" />
     <Compile Include="ViewModel\DesaltingPartWTPVM.cs" />
-    <Compile Include="ViewModel\FilterA1WindowVM.cs" />
     <Compile Include="ViewModel\GivenParametersVM.cs" />
     <Compile Include="ViewModel\EquipmentWindowVM.cs" />
     <Compile Include="ViewModel\NavigationVM.cs" />
@@ -206,9 +205,6 @@
     </Compile>
     <Compile Include="View\DesaltingPartWTP.xaml.cs">
       <DependentUpon>DesaltingPartWTP.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\FilterA1Window.xaml.cs">
-      <DependentUpon>FilterA1Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\GivenParameters.xaml.cs">
       <DependentUpon>GivenParameters.xaml</DependentUpon>
@@ -260,10 +256,6 @@
     <Page Include="View\DesaltingPartWTP.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\FilterA1Window.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GivenParameters.xaml">
       <Generator>MSBuild:Compile</Generator>
