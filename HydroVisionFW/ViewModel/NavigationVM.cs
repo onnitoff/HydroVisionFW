@@ -61,7 +61,7 @@ namespace HydroVisionDesign.ViewModel
         #endregion
         public NavigationVM()
         {
-            Values values = new Values();
+           // Values values = new Values();
             Calculations calc = new Calculations();
             calc.RecalculationOfQualityIndicators();
             CalcBoiler calcBoiler = new CalcBoiler();

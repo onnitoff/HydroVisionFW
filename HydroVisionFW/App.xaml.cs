@@ -1,4 +1,5 @@
 ﻿using HydroVisionDesign.Services.DataStorages;
+using HydroVisionDesign.Services.TestValues;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,6 +20,7 @@ namespace HydroVisionFW
             /// <summary>Определение константых значений</summary>
             DataStorage.Instance.ExcessLime = 0.35;
             DataStorage.Instance.ConcentrationCOBeforeDecarbonizer = 0.136;
+            Values values = new Values();
         }
     }
 }
