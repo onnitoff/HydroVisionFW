@@ -15,7 +15,13 @@ namespace HydroVisionFW.Services.Calculations
 
         public void Calculations()
         {
+
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
+            BFStorage.Instance.i = 12;
+            BFStorage.Instance.t_vzr = 8;
+            BFStorage.Instance.t_otm = 10;
+            BFStorage.Instance.n = 2;
+
 
             BFStorage.Instance.f_ct = filters.FilterArea(BFStorage.Instance.d_ct);
             BFStorage.Instance.g_vzr = filters.WaterConsumptionForLooseningWashing(BFStorage.Instance.i, BFStorage.Instance.f_ct, BFStorage.Instance.t_vzr);

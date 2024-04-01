@@ -83,6 +83,14 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _IsHiddenNaScheme, value);
         }
 
+        private bool _IsHiddenBFScheme = false;
+        /// <summary>Свойство для сокрытия схемы Na</summary>
+        public bool IsHiddenBFScheme
+        {
+            get => _IsHiddenBFScheme;
+            set => Set(ref _IsHiddenBFScheme, value);
+        }
+
         #endregion
 
         #region textBox Prop
@@ -189,6 +197,12 @@ namespace HydroVisionFW.ViewModel
                         RecordParamToStorage_Na();
                     }
                     break;
+                // открыт BF
+                case 8:
+                    {
+                        RecordParamToStorage_BF();
+                    }
+                    break;
                 default:
                     break;
             }
@@ -269,6 +283,13 @@ namespace HydroVisionFW.ViewModel
                         IsHiddenNaScheme = true;
                         LoadProperty_Na();
                         GetComboBox_Na();
+                    }
+                    break;
+                case 8:
+                    {
+                        IsHiddenBFScheme = true;
+                        LoadProperty_BF();
+                        GetComboBox_BF();
                     }
                     break;
                 default:
@@ -633,6 +654,44 @@ namespace HydroVisionFW.ViewModel
 
             NaStorage.Instance.m = FilterCount;
             NaStorage.Instance.w = FiltrationSpeed;
+        }
+
+        #endregion
+
+        #region BF
+
+        private void LoadProperty_BF()
+        {
+            CalcBF calc = new CalcBF();
+            calc.CaclFirstProperty();
+            _DesignDiameter = BFStorage.Instance.f_p;
+            _FilterCount = BFStorage.Instance.m;
+            _FiltrationSpeed = BFStorage.Instance.w;
+
+        }
+
+        private void GetComboBox_BF()
+        {
+            DataRepository data = new DataRepository();
+            int idFilter = 1;
+
+            // обращение к бд фильтры
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterAsync(idFilter);
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[H1Storage.Instance.SelectedSuitableFilter];
+        }
+
+        private void RecordParamToStorage_BF()
+        {
+            BFStorage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
+            BFStorage.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
+
+            BFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id;
+
+            BFStorage.Instance.m = FilterCount;
+            BFStorage.Instance.w = FiltrationSpeed;
         }
 
         #endregion

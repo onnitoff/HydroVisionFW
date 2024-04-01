@@ -96,6 +96,18 @@
             </Grid>
 
 
+            <Grid x:Name="BF" 
+                  Visibility="{Binding IsHiddenBFScheme, 
+                  Converter = {StaticResource BooleanToVisibilityConverter}}">
+                <Image Source="/Resources/Images/Filter_Clarifier.png"
+                       Height="182" 
+                       Width="120" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Top" 
+                       Margin="0,126,0,0"/>
+            </Grid>
+
+
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Language="ru-ru" Text="Расчетный"/><Run Text=" диаметр"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
             <TextBox HorizontalAlignment="Left" Margin="152,44,0,0" VerticalAlignment="Top" Width="62"
                      Text="{Binding Path=DesignDiameter}"/>

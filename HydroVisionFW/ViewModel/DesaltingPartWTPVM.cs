@@ -509,6 +509,32 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
+        #region LeftBtnAndDoubleBFCommand
+
+        /// <summary>Нажатие левой кнопки по BF</summary>
+        public ICommand LeftBtnBFCommand { get; }
+        private void OnLeftBtnBFCommand(object obj)
+        {
+            IsHiddenFilterProperty = true;
+            IsHiddenCationProperty = true;
+            IsHiddenAnionProperty = false;
+
+            FillTextBoxBF();
+
+        }
+
+        /// <summary>Нажатие дабл левой кнопки по BF</summary>
+        public ICommand LeftDoubleBtnBFCommand { get; }
+        private void OnLeftDoubleBtnBFCommand(object obj)
+        {
+            DataStorage.Instance.ViewModel = 8;
+            EquipmentWindow mixed = new EquipmentWindow();
+            mixed.Show();
+            mixed.Closed += BFWindow_Closed;
+        }
+
+        #endregion
+
         #endregion
 
 
@@ -539,6 +565,9 @@ namespace HydroVisionDesign.ViewModel
 
             LeftBtnNaCommand = new RelayCommand(OnLeftBtnNaCommand);
             LeftDoubleBtnNaCommand = new RelayCommand(OnLeftDoubleBtnNaCommand);
+
+            LeftBtnBFCommand = new RelayCommand(OnLeftBtnBFCommand);
+            LeftDoubleBtnBFCommand = new RelayCommand(OnLeftDoubleBtnBFCommand);
 
             #endregion
 
@@ -833,6 +862,47 @@ namespace HydroVisionDesign.ViewModel
             DailyConsumptionOfChemicalReagentCation = NaStorage.Instance.G_cutK;
 
             WaterConsumptionForNextGroupOfFilters = NaStorage.Instance.Q_br;
+        }
+
+        #endregion
+
+        #region Na
+
+        /// <summary>Вызов метода после закрытия BFWindow</summary>
+        private void BFWindow_Closed(object sender, EventArgs e)
+        {
+            CalcBF calc = new CalcBF();
+            calc.Calculations();
+            if (BFStorage.Instance.w_m1 > BFStorage.Instance.w)
+            {
+                MessageBox.Show($"Действительная скорость фильтрования w = {BFStorage.Instance.w_m1} м/ч, что больше чем теоритическая скорость w_0 = {BFStorage.Instance.w} м/ч \n Добавьте еще как минимум 1 фильтр!");
+            }
+            FillTextBoxBF();
+
+
+        }
+
+        /// <summary>Заполнение данными из BFStorage свойств textBox</summary>
+        private void FillTextBoxBF()
+        {
+            FiltrationArea = BFStorage.Instance.F;
+            FiltrationSpeed = BFStorage.Instance.w;
+            WaterConsumptionPerFilter = BoilerStorage.Instance.PerfomanceWTPForHeatingSystem;
+            FiltrationAreaOfEachFilter = BFStorage.Instance.f_p;
+            DesignFilterDiameter = BFStorage.Instance.d_p;
+            FilterArea = BFStorage.Instance.f_ct;
+            //FilterCycleDuration = BFStorage.Instance.T_FAA;
+            NumberOfRegenerationsPerDay = BFStorage.Instance.n;
+
+           // VolumeOfIonExchangeMaterialsInOneFilter = NaStorage.Instance.V_vl;
+            VolumeOfIonExchangeMaterialsInGroupFilter = BFStorage.Instance.SumV_vl;
+
+           // WaterConsumptionForOwnNeedsCation = BFStorage.Instance.g_cnK;
+           // ConsumptionOfChemicalReagentsCation = NaStorage.Instance.G_100pK;
+           // TechnicalProductConsumptionCation = NaStorage.Instance.G_texK;
+           // DailyConsumptionOfChemicalReagentCation = NaStorage.Instance.G_cutK;
+
+            WaterConsumptionForNextGroupOfFilters = BFStorage.Instance.Q_br;
         }
 
         #endregion

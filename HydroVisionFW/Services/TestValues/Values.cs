@@ -83,6 +83,11 @@ namespace HydroVisionDesign.Services.TestValues
 
             A2StorageSimplified.Instance.CA = 42;
 
+            //BF
+            BFStorage.Instance.m = 12;
+            BFStorage.Instance.w = 10;
+
+
 
         }
     }
