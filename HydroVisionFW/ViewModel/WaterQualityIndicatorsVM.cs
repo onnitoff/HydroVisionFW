@@ -422,21 +422,15 @@ namespace HydroVisionDesign.ViewModel
                     break;
             }
 
-            if (true)
+            if (DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst == 0 && DataStorage.Instance.WaterConsumptionForNetworkHeatersSecond == 0)
+            {
+                IsHiddenCentralHeating = false;   
+            }
+            else
             {
                 IsHiddenCentralHeating = true;
                 NaCationOnFilter = $"ΣU_Na = Жо_ост = {DataStorage.Instance.NaCationOnFilter.ToString("0.000")} мг-экв/дм3";
             }
-            else
-                IsHiddenCentralHeating = false;
-
-
-
-
-
-
-
-
         }
     }
 }

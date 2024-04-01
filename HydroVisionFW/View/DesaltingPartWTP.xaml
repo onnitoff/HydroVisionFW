@@ -309,8 +309,8 @@
                    Width="150"
                    Grid.Column="0" Margin="0,120,800,330">
                 <Image.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
-                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnClarifierCommand}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnClarifierCommand}"/>
                 </Image.InputBindings>
             </Image>
 

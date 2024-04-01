@@ -535,6 +535,32 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
+        #region LeftBtnAndDoubleClarifierCommand
+
+        /// <summary>Нажатие левой кнопки по Clarifier</summary>
+        public ICommand LeftBtnClarifierCommand { get; }
+        private void OnLeftBtnClarifierCommand(object obj)
+        {
+            IsHiddenFilterProperty = true;
+            IsHiddenCationProperty = true;
+            IsHiddenAnionProperty = false;
+
+            FillTextBoxClarifier();
+
+        }
+
+        /// <summary>Нажатие дабл левой кнопки по Clarifier</summary>
+        public ICommand LeftDoubleBtnClarifierCommand { get; }
+        private void OnLeftDoubleBtnClarifierCommand(object obj)
+        {
+            DataStorage.Instance.ViewModel = 9;
+            EquipmentWindow mixed = new EquipmentWindow();
+            mixed.Show();
+            mixed.Closed += ClarifierWindow_Closed;
+        }
+
+        #endregion
+
         #endregion
 
 
@@ -568,6 +594,9 @@ namespace HydroVisionDesign.ViewModel
 
             LeftBtnBFCommand = new RelayCommand(OnLeftBtnBFCommand);
             LeftDoubleBtnBFCommand = new RelayCommand(OnLeftDoubleBtnBFCommand);
+
+            LeftBtnClarifierCommand = new RelayCommand(OnLeftBtnClarifierCommand);
+            LeftDoubleBtnClarifierCommand = new RelayCommand(OnLeftDoubleBtnClarifierCommand);
 
             #endregion
 
@@ -903,6 +932,26 @@ namespace HydroVisionDesign.ViewModel
            // DailyConsumptionOfChemicalReagentCation = NaStorage.Instance.G_cutK;
 
             WaterConsumptionForNextGroupOfFilters = BFStorage.Instance.Q_br;
+        }
+
+        #endregion
+
+        #region Clarifier
+
+        /// <summary>Вызов метода после закрытия ClarifierWindow</summary>
+        private void ClarifierWindow_Closed(object sender, EventArgs e)
+        {
+            CalcClarifier calc = new CalcClarifier();
+            calc.Calculations();
+            FillTextBoxClarifier();
+
+
+        }
+
+        /// <summary>Заполнение данными из ClarifierStorage свойств textBox</summary>
+        private void FillTextBoxClarifier()
+        {
+
         }
 
         #endregion

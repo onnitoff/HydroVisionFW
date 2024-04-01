@@ -84,11 +84,19 @@ namespace HydroVisionFW.ViewModel
         }
 
         private bool _IsHiddenBFScheme = false;
-        /// <summary>Свойство для сокрытия схемы Na</summary>
+        /// <summary>Свойство для сокрытия схемы BF</summary>
         public bool IsHiddenBFScheme
         {
             get => _IsHiddenBFScheme;
             set => Set(ref _IsHiddenBFScheme, value);
+        }
+
+        private bool _IsHiddenClarifierScheme = false;
+        /// <summary>Свойство для сокрытия схемы Clarifier</summary>
+        public bool IsHiddenClarifierScheme
+        {
+            get => _IsHiddenClarifierScheme;
+            set => Set(ref _IsHiddenClarifierScheme, value);
         }
 
         #endregion
@@ -146,7 +154,7 @@ namespace HydroVisionFW.ViewModel
         #region Команды
 
         #region ApplyBtnCommand
-        /// <summary>Кнопка очистки всех textBox</summary>
+        /// <summary>Кнопка нажатия на принять</summary>
         public ICommand ApplyBtnCommand { get; }
         private void OnApplyBtnCommand(object obj)
         {
@@ -203,6 +211,12 @@ namespace HydroVisionFW.ViewModel
                         RecordParamToStorage_BF();
                     }
                     break;
+                // открыт Clarifier
+                case 9:
+                    {
+                        RecordParamToStorage_Clarifier();
+                    }
+                    break;
                 default:
                     break;
             }
@@ -220,9 +234,6 @@ namespace HydroVisionFW.ViewModel
             #region Команды
             ApplyBtnCommand = new RelayCommand(OnApplyBtnCommand);
             #endregion
-
-
-
 
             switch (DataStorage.Instance.ViewModel)
             {
@@ -291,6 +302,14 @@ namespace HydroVisionFW.ViewModel
                         IsHiddenBFScheme = true;
                         LoadProperty_BF();
                         GetComboBox_BF();
+                    }
+                    break;
+                // открыт Clarifier
+                case 9:
+                    {
+                        IsHiddenClarifierScheme = true;
+                        LoadProperty_Clarifier();
+                        GetComboBox_Clarifier();
                     }
                     break;
                 default:
@@ -693,6 +712,35 @@ namespace HydroVisionFW.ViewModel
 
             BFStorage.Instance.m = FilterCount;
             BFStorage.Instance.w = FiltrationSpeed;
+        }
+
+        #endregion
+
+        #region Clarifier
+
+        private void LoadProperty_Clarifier()
+        {
+            CalcClarifier calc = new CalcClarifier();
+            calc.CaclFirstProperty();
+            _DesignDiameter = ClarifierStorage.Instance.v_ocv;
+        }
+
+        private void GetComboBox_Clarifier()
+        {
+            DataRepository data = new DataRepository();
+            int idFilter = 1;
+
+            // обращение к бд фильтры
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterBFAsync(idFilter);
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[BFStorage.Instance.SelectedSuitableFilter];
+        }
+
+        private void RecordParamToStorage_Clarifier()
+        {
+            ClarifierStorage.Instance.m = FilterCount;
         }
 
         #endregion
