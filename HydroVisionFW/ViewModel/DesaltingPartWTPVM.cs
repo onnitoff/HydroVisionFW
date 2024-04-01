@@ -866,7 +866,7 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
-        #region Na
+        #region BF
 
         /// <summary>Вызов метода после закрытия BFWindow</summary>
         private void BFWindow_Closed(object sender, EventArgs e)

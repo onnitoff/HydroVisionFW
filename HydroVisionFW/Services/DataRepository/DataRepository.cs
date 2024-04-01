@@ -44,8 +44,7 @@ namespace HydroVisionFW.Services.DataRepository
                                   Name = first.Cipheer,
                                   OperatingPressure = (double)third.OperatingPressure1,
                                   Diameter = first.Diameter,
-                                  IonExchangerLayerHieght = (int)first.FilterLoadHeight,
-                                  //FilterPerfomance = (int)first.FilterPerfomance
+                                  IonExchangerLayerHieght = (int)first.FilterLoadHeight
                               }).ToListAsync();
 
             }
@@ -90,6 +89,28 @@ namespace HydroVisionFW.Services.DataRepository
                                   SpecificConsumptionCation = first.SpecificConsumptionMin,
                                   GeneralWaterConsumptionAnion = (double)third.GeneralWaterConsumption
                               }).ToListAsync();
+            }
+        }
+
+        /// <summary>обращение к бд и вытягивание список фильтров ОФ</summary>
+        /// <returns>List FilterModel</returns>
+        public async Task<List<FilterModel>> GetFilterBFAsync(int id)
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.Filters
+                              join second in context.FilterType on first.IdFilterTypes equals second.Id
+                              join third in context.OperatingPressure on first.IdOperatingPressure equals third.Id
+                              where first.IdApplyingFilters == id
+                              select new FilterModel
+                              {
+                                  Id = first.Id,
+                                  Name = first.Cipheer,
+                                  OperatingPressure = (double)third.OperatingPressure1,
+                                  Diameter = first.Diameter,
+                                  IonExchangerLayerHieght = (int)first.FilterLoadHeight
+                              }).ToListAsync();
+
             }
         }
 

@@ -285,6 +285,7 @@ namespace HydroVisionFW.ViewModel
                         GetComboBox_Na();
                     }
                     break;
+                // открыт BF
                 case 8:
                     {
                         IsHiddenBFScheme = true;
@@ -678,9 +679,9 @@ namespace HydroVisionFW.ViewModel
             // обращение к бд фильтры
             Task.Run(async () =>
             {
-                SuitableFilter = await data.GetFilterAsync(idFilter);
+                SuitableFilter = await data.GetFilterBFAsync(idFilter);
             }).Wait();
-            SelectedSuitableFilter = SuitableFilter[H1Storage.Instance.SelectedSuitableFilter];
+            SelectedSuitableFilter = SuitableFilter[BFStorage.Instance.SelectedSuitableFilter];
         }
 
         private void RecordParamToStorage_BF()
@@ -688,7 +689,7 @@ namespace HydroVisionFW.ViewModel
             BFStorage.Instance.d_ct = (double)SelectedSuitableFilter.Diameter / 1000;
             BFStorage.Instance.h = (double)SelectedSuitableFilter.IonExchangerLayerHieght / 1000;
 
-            BFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id;
+            BFStorage.Instance.SelectedSuitableFilter = SelectedSuitableFilter.Id - 1;
 
             BFStorage.Instance.m = FilterCount;
             BFStorage.Instance.w = FiltrationSpeed;
