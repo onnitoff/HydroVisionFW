@@ -343,7 +343,7 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 1;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += MAFWindow_Closed;
         }
 
@@ -378,7 +378,7 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 2;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += A2Window_Closed;
         }
         #endregion
@@ -403,7 +403,7 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 6;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += A2SimplifiedWindow_Closed;
         }
         #endregion
@@ -428,7 +428,7 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 3;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += H2Window_Closed;
         }
 
@@ -452,7 +452,7 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 4;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += A1Window_Closed;
         }
         #endregion
@@ -477,7 +477,7 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 5;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += H1Window_Closed;
         }
 
@@ -503,7 +503,7 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 7;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += NaWindow_Closed;
         }
 
@@ -529,7 +529,7 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 8;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += BFWindow_Closed;
         }
 
@@ -555,8 +555,34 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 9;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.Show();
+            mixed.ShowDialog();
             mixed.Closed += ClarifierWindow_Closed;
+        }
+
+        #endregion
+
+        #region LeftBtnAndDoubleDecarbonizerCommand
+
+        /// <summary>Нажатие левой кнопки по Decarbonizer</summary>
+        public ICommand LeftBtnDecarbonizerCommand { get; }
+        private void OnLeftBtnDecarbonizerCommand(object obj)
+        {
+            IsHiddenFilterProperty = true;
+            IsHiddenCationProperty = true;
+            IsHiddenAnionProperty = false;
+
+            FillTextBoxDecarbonizer();
+
+        }
+
+        /// <summary>Нажатие дабл левой кнопки по Decarbonizer</summary>
+        public ICommand LeftDoubleBtnDecarbonizerCommand { get; }
+        private void OnLeftDoubleBtnDecarbonizerCommand(object obj)
+        {
+            DataStorage.Instance.ViewModel = 10;
+            EquipmentWindow mixed = new EquipmentWindow();
+            mixed.ShowDialog();
+            mixed.Closed += DecarbonizerWindow_Closed;
         }
 
         #endregion
@@ -598,6 +624,9 @@ namespace HydroVisionDesign.ViewModel
             LeftBtnClarifierCommand = new RelayCommand(OnLeftBtnClarifierCommand);
             LeftDoubleBtnClarifierCommand = new RelayCommand(OnLeftDoubleBtnClarifierCommand);
 
+            LeftBtnDecarbonizerCommand = new RelayCommand(OnLeftBtnDecarbonizerCommand);
+            LeftDoubleBtnDecarbonizerCommand = new RelayCommand(OnLeftDoubleBtnDecarbonizerCommand);
+
             #endregion
 
             if (DataStorage.Instance.DesaltingScheme == "three-stage")
@@ -618,12 +647,6 @@ namespace HydroVisionDesign.ViewModel
                 _IsHiddenSimplified = true;
             }
         }
-
-
-
-  
-
-
 
         #region MAF
         /// <summary>Вызов метода после закрытия MAFWindow</summary>
@@ -950,6 +973,24 @@ namespace HydroVisionDesign.ViewModel
 
         /// <summary>Заполнение данными из ClarifierStorage свойств textBox</summary>
         private void FillTextBoxClarifier()
+        {
+
+        }
+
+        #endregion
+
+        #region Decarbonizer
+
+        /// <summary>Вызов метода после закрытия DecarbonizerWindow</summary>
+        private void DecarbonizerWindow_Closed(object sender, EventArgs e)
+        {
+            CalcDecarbonizer calc = new CalcDecarbonizer();
+            calc.Calculations();
+            FillTextBoxDecarbonizer();
+        }
+
+        /// <summary>Заполнение данными из DecarbonizerStorage свойств textBox</summary>
+        private void FillTextBoxDecarbonizer()
         {
 
         }

@@ -99,6 +99,14 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _IsHiddenClarifierScheme, value);
         }
 
+        private bool _IsHiddenDecarbonizerScheme = false;
+        /// <summary>Свойство для сокрытия схемы Decarbonizer</summary>
+        public bool IsHiddenDecarbonizerScheme
+        {
+            get => _IsHiddenDecarbonizerScheme;
+            set => Set(ref _IsHiddenDecarbonizerScheme, value);
+        }
+
         #endregion
 
         #region textBox Prop
@@ -217,6 +225,12 @@ namespace HydroVisionFW.ViewModel
                         RecordParamToStorage_Clarifier();
                     }
                     break;
+                // открыт Decarbonizer
+                case 10:
+                    {
+                        RecordParamToStorage_Decarbonizer();
+                    }
+                    break;
                 default:
                     break;
             }
@@ -239,7 +253,6 @@ namespace HydroVisionFW.ViewModel
             {
                 case 0:
                     break;
-
                 // открыт ФСД
                 case 1:
                     {
@@ -310,6 +323,14 @@ namespace HydroVisionFW.ViewModel
                         IsHiddenClarifierScheme = true;
                         LoadProperty_Clarifier();
                         GetComboBox_Clarifier();
+                    }
+                    break;
+                // открыт Decarbonizer
+                case 10:
+                    {
+                        IsHiddenDecarbonizerScheme = true;
+                        LoadProperty_Decarbonizer();
+                        GetComboBox_Decarbonizer();
                     }
                     break;
                 default:
@@ -745,6 +766,34 @@ namespace HydroVisionFW.ViewModel
 
         #endregion
 
+        #region Decarbonizer
+
+        private void LoadProperty_Decarbonizer()
+        {
+            CalcDecarbonizer calc = new CalcDecarbonizer();
+            calc.CaclFirstProperty();
+            _DesignDiameter = 123;
+        }
+
+        private void GetComboBox_Decarbonizer()
+        {
+            DataRepository data = new DataRepository();
+            int idFilter = 1;
+
+            // обращение к бд декарбонизаторы
+            Task.Run(async () =>
+            {
+                SuitableFilter = await data.GetFilterBFAsync(idFilter);
+            }).Wait();
+            SelectedSuitableFilter = SuitableFilter[BFStorage.Instance.SelectedSuitableFilter];
+        }
+
+        private void RecordParamToStorage_Decarbonizer()
+        {
+            DecarbonizerStorage.Instance.m = FilterCount;
+        }
+
+        #endregion
 
     }
 }
