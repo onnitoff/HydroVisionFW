@@ -290,6 +290,7 @@ namespace HydroVisionDesign.ViewModel
             DataStorage.Instance.OverallHardness = OverallHardness;
             Calculations calculations = new Calculations();
             calculations.RecalculationOfQualityIndicators();
+            calculations.CalculationOfOtherQualityIndicators();
 
             BoilerStorage.Instance.ElectricPower = ElectricPower;
             BoilerStorage.Instance.NumberOfBoilersFirst = NumberOfBoilersFirst;

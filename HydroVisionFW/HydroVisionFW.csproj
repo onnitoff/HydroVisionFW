@@ -173,6 +173,7 @@
     <Compile Include="Services\Calculations\CalcBF.cs" />
     <Compile Include="Services\Calculations\CalcBoiler.cs" />
     <Compile Include="Services\Calculations\CalcClarifier.cs" />
+    <Compile Include="Services\Calculations\CalcDecarbonizer.cs" />
     <Compile Include="Services\Calculations\CalcH1.cs" />
     <Compile Include="Services\Calculations\CalcH2.cs" />
     <Compile Include="Services\Calculations\CalcMAF.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Services\DataStorages\BoilerStorage.cs" />
     <Compile Include="Services\DataStorages\ClarifierStorage.cs" />
     <Compile Include="Services\DataStorages\DataStorage.cs" />
+    <Compile Include="Services\DataStorages\DecarbonizerStorage.cs" />
     <Compile Include="Services\DataStorages\H1Storage.cs" />
     <Compile Include="Services\DataStorages\H2Storage.cs" />
     <Compile Include="Services\DataStorages\MAFStorage.cs" />
