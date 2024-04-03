@@ -117,7 +117,7 @@
                 <TextBox HorizontalAlignment="Left" Margin="156,242,0,0" VerticalAlignment="Top" Width="62"
                          Text="{Binding Path=FiltrationSpeed}"/>
 
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="29,286,0,0"><Run Text="Выбрать подходящий фил"/><Run Language="ru-ru" Text="ьтр"/><Run Text=" "/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="18,289,0,0"><Run Text="Выбрать подходящий фил"/><Run Language="ru-ru" Text="ьтр"/><Run Text=" "/></TextBlock>
                 <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"
                           ItemsSource="{Binding Path=SuitableFilter}"
                           DisplayMemberPath="Name"
@@ -207,6 +207,10 @@
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        Margin="0,126,0,0"/>
+                <TextBlock TextWrapping="Wrap" 
+                           Margin="506,132,38,112"><Run Text="Вода на "/><Run Language="ru-ru" Text="осветлительные фильтры"/></TextBlock>
+                <TextBlock TextWrapping="Wrap" 
+                           Margin="283,100,261,144"><Run Language="ru-ru" Text="Исходная вода"/></TextBlock>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Text="Емкость каждого осветителя"/><Run Language="ru-ru" Text=":"/></TextBlock>
                 <TextBox HorizontalAlignment="Left" Margin="182,43,0,0" VerticalAlignment="Top" Width="62"
                          Text="{Binding Path=DesignDiameter}"/>
@@ -250,7 +254,24 @@
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        Margin="0,126,0,0"/>
-                
+                <TextBlock Text="Вода из первой ступени" TextWrapping="Wrap" 
+                           Margin="182,90,362,154"/>
+                <TextBlock Text="Сжатый воздух" TextWrapping="Wrap" 
+                           Margin="508,137,36,107"/>
+                <TextBlock Text="Вода на вторую ступень" TextWrapping="Wrap" 
+                           Margin="509,249,35,-5"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="14,50,0,0"><Run Language="ru-ru" Text="Расчетный"/><Run Text=" диаметр"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="142,175,0,0" VerticalAlignment="Top" Width="62"
+                     Text="{Binding Path=DesignDiameter}"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="12,174,0,0"><Run Text="Количество фильтров:"/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="135,50,0,0" VerticalAlignment="Top" Width="62"
+                     Text="{Binding Path=FilterCount}"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,286,0,0"><Run Text="Выбрать п"/><Run Language="ru-ru" Text="одходящий декарбонизтор"/><Run Text=" "/></TextBlock>
+                <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"
+                      ItemsSource="{Binding Path=SuitableFilter}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"
+                      SelectedItem="{Binding SelectedSuitableFilter}"/>
                 <Grid Margin="0 0 0 0">
 
                     <Path Stroke="Aqua" StrokeThickness="3"
@@ -262,11 +283,17 @@
                           Data="M320,100 L360,100 L360,138"/>
                     <Path Stroke="Blue" StrokeThickness="3"
                           Data="M387,179 L387,195"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M352,236 L352,258 L379,258"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M400,258 L500,258"/>
 
                     <Path Stroke="White" StrokeThickness="3"
                           Data="M320,95 L320,105"/>
                     <Path Stroke="White" StrokeThickness="3"
                           Data="M500,142 L500,152"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M500,263 L500,253"/>
 
                 </Grid>
 
