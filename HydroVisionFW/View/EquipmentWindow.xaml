@@ -11,7 +11,7 @@
     <Window.DataContext>
         <vm:EquipmentWindowVM/>
     </Window.DataContext>
-    
+
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
@@ -65,7 +65,7 @@
             <Grid x:Name="H1" 
                   Visibility="{Binding IsHiddenH1Scheme, 
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
-                 <Image Source="/Resources/Images/Filter_H1.png"   
+                <Image Source="/Resources/Images/Filter_H1.png"   
                         Height="182" 
                         Width="120" 
                         HorizontalAlignment="Center" 
@@ -95,6 +95,7 @@
                        Margin="0,126,0,0"/>
             </Grid>
 
+            <!--BF Block-->
 
             <Grid x:Name="BF" 
                   Visibility="{Binding IsHiddenBFScheme, 
@@ -105,7 +106,98 @@
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        Margin="0,126,0,0"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Language="ru-ru" Text="Расчетный"/><Run Text=" диаметр"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="152,44,0,0" VerticalAlignment="Top" Width="62"
+                         Text="{Binding Path=DesignDiameter}"/>
+
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="15,73,0,0"><Run Text="Количество фильтров:"/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="150,74,0,0" VerticalAlignment="Top" Width="62"
+                         Text="{Binding Path=FilterCount}"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="19,240,0,0"><Run Language="ru-ru" Text="Скорость фильтрации"/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="156,242,0,0" VerticalAlignment="Top" Width="62"
+                         Text="{Binding Path=FiltrationSpeed}"/>
+
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="29,286,0,0"><Run Text="Выбрать подходящий фил"/><Run Language="ru-ru" Text="ьтр"/><Run Text=" "/></TextBlock>
+                <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"
+                          ItemsSource="{Binding Path=SuitableFilter}"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Id"
+                          SelectedItem="{Binding SelectedSuitableFilter}"/>
+
+                <TextBlock Text="Сжатый воздух" TextWrapping="Wrap" 
+                           Margin="511,236,33,8"/>
+                <TextBlock Text="Вода на Н1" TextWrapping="Wrap" 
+                           Margin="542,165,22,85"/>
+                <TextBlock Text="Промывочная вода" TextWrapping="Wrap" 
+                           Margin="511,89,-27,134"/>
+                <TextBlock Text="Дренаж" TextWrapping="Wrap" 
+                           Margin="235,235,275,11"/>
+                <TextBlock Text="Вода из осветлителей" TextWrapping="Wrap" 
+                           Margin="266,99,73,-14"/>
+                <Grid Margin="-8 0 0 0">
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                      Data="M320,173 L345, 173"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                      Data="M300,173 L280, 173 L280,120"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                      Data="M300,168 L320, 178 L320, 168 L300, 178 L300, 168 L320, 178"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                      Data="M275,120 L285,120"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                      Data="M332,174 L332, 193 L320, 193"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                      Data="M300,188 L320, 198 L320, 188 L300, 198 L300, 188 L320, 198"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                      Data="M300, 193 L250, 193"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                      Data="M345,167 L332, 167 L332,153 L320,153"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                      Data="M300, 153 L250, 153 L250, 230"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                      Data="M245,230 L255,230"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                      Data="M300,148 L320, 158 L320, 148 L300, 158 L300, 148 L320, 158"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                      Data="M453,173 L480, 173"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                      Data="M500,173 L540, 173"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                      Data="M540,168 L540, 178"/>
+
+                    <Path Stroke="Black" StrokeThickness="2"
+                      Data="M480,168 L500 178 L500, 168 L480,178 L480,168 L500,178"/>
+
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                      Data="M465,172 L465,153 L480,153"/>
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                      Data="M500,153 L520,153 L520, 113"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                      Data="M515,113 L525,113"/>
+
+                    <Path Stroke="Black" StrokeThickness="2"
+                      Data="M480,148 L500 158 L500, 148 L480,158 L480,148 L500,158"/>
+
+                    <Path Stroke="Aqua" StrokeThickness="3"
+                      Data="M465,172 L465,193 L480,193"/>
+                    <Path Stroke="Aqua" StrokeThickness="3"
+                      Data="M500,193 L520,193 L520,230"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                      Data="M515,230 L525,230"/>
+
+                    <Path Stroke="Black" StrokeThickness="2"
+                      Data="M480,188 L500 198 L500, 188 L480,198 L480,188 L500,198"/>
+                </Grid>
+
+
+
             </Grid>
+            
+            <!--Clarifier Block-->
+            
 
             <Grid x:Name="Clarifier" 
                   Visibility="{Binding IsHiddenClarifierScheme, 
@@ -116,6 +208,7 @@
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        Margin="0,126,0,0"/>
+                
             </Grid>
 
             <Grid x:Name="Decarbonizer" 
@@ -129,32 +222,39 @@
                        Margin="0,126,0,0"/>
             </Grid>
 
+            <!--Property filters-->
+            <Grid Visibility="{Binding IsHiddenPropFilter,
+                Converter={StaticResource BooleanToVisibilityConverter}}">
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Language="ru-ru" Text="Расчетный"/><Run Text=" диаметр"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
-            <TextBox HorizontalAlignment="Left" Margin="152,44,0,0" VerticalAlignment="Top" Width="62"
+
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Language="ru-ru" Text="Расчетный"/><Run Text=" диаметр"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="152,44,0,0" VerticalAlignment="Top" Width="62"
                      Text="{Binding Path=DesignDiameter}"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="15,73,0,0"><Run Text="Количество фильтров:"/><LineBreak/><Run/></TextBlock>
-            <TextBox HorizontalAlignment="Left" Margin="150,74,0,0" VerticalAlignment="Top" Width="62"
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="15,73,0,0"><Run Text="Количество фильтров:"/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="150,74,0,0" VerticalAlignment="Top" Width="62"
                      Text="{Binding Path=FilterCount}"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="16,114,0,0"><Run Text="Выбрать "/><Run Text="марку"/><Run Text=" "/><Run Language="ru-ru" Text="применяемого ионита"/><Run Text=" "/></TextBlock>
-            <ComboBox HorizontalAlignment="Left" Margin="16,135,0,0" VerticalAlignment="Top" Width="163"
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="16,114,0,0"><Run Text="Выбрать "/><Run Text="марку"/><Run Text=" "/><Run Language="ru-ru" Text="применяемого ионита"/><Run Text=" "/></TextBlock>
+                <ComboBox HorizontalAlignment="Left" Margin="16,135,0,0" VerticalAlignment="Top" Width="163"
                       ItemsSource="{Binding Path=BrandOfIonItems}"
                       DisplayMemberPath="Name"
                       SelectedValuePath="Id"
                       SelectedItem="{Binding SelectedBrandOfIon}"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="19,240,0,0"><Run Language="ru-ru" Text="Скорость фильтрации"/></TextBlock>
-            <TextBox HorizontalAlignment="Left" Margin="156,242,0,0" VerticalAlignment="Top" Width="62"
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="19,240,0,0"><Run Language="ru-ru" Text="Скорость фильтрации"/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="156,242,0,0" VerticalAlignment="Top" Width="62"
                      Text="{Binding Path=FiltrationSpeed}"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="29,286,0,0"><Run Text="Выбрать подходящий фил"/><Run Language="ru-ru" Text="ьтр"/><Run Text=" "/></TextBlock>
-            <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="29,286,0,0"><Run Text="Выбрать подходящий фил"/><Run Language="ru-ru" Text="ьтр"/><Run Text=" "/></TextBlock>
+                <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"
                       ItemsSource="{Binding Path=SuitableFilter}"
                       DisplayMemberPath="Name"
                       SelectedValuePath="Id"
                       SelectedItem="{Binding SelectedSuitableFilter}"/>
+            </Grid>
+
+
             <Button Content="Применить"  Height="50" Margin="0,365,0, 0"
                     Command="{Binding ApplyBtnCommand}"/>
         </Grid>

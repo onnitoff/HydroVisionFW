@@ -107,6 +107,38 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _IsHiddenDecarbonizerScheme, value);
         }
 
+        private bool _IsHiddenPropFilter = false;
+        /// <summary>Свойство для сокрытия свойств фильтров</summary>
+        public bool IsHiddenPropFilter
+        {
+            get => _IsHiddenPropFilter;
+            set => Set(ref _IsHiddenPropFilter, value);
+        }
+
+        private bool _IsHiddenPropBF = false;
+        /// <summary>Свойство для сокрытия свойств ОФ <summary>
+        public bool IsHiddenPropBF
+        {
+            get => _IsHiddenPropBF;
+            set => Set(ref _IsHiddenPropBF, value);
+        }
+
+        private bool _IsHiddenPropClarifier = false;
+        /// <summary>Свойство для сокрытия свойств Осветлителя <summary>
+        public bool IsHiddenPropClarifier
+        {
+            get => _IsHiddenPropClarifier;
+            set => Set(ref _IsHiddenPropClarifier, value);
+        }
+
+        private bool _IsHiddenPropDecarbonizer = false;
+        /// <summary>Свойство для сокрытия свойств Декарбонизатор <summary>
+        public bool IsHiddenPropDecarbonizer
+        {
+            get => _IsHiddenPropDecarbonizer;
+            set => Set(ref _IsHiddenPropDecarbonizer, value);
+        }
+
         #endregion
 
         #region textBox Prop
@@ -245,6 +277,8 @@ namespace HydroVisionFW.ViewModel
 
         public EquipmentWindowVM()
         {
+            IsHiddenClarifierScheme = true;
+            IsHiddenPropClarifier = true;
             #region Команды
             ApplyBtnCommand = new RelayCommand(OnApplyBtnCommand);
             #endregion
@@ -257,6 +291,7 @@ namespace HydroVisionFW.ViewModel
                 case 1:
                     {
                         IsHiddenMAScheme = true;
+                        IsHiddenPropFilter = true;
                         LoadAndCalcProperty_MAF();
                         GetComboBox_MAF();
                     }
@@ -265,6 +300,7 @@ namespace HydroVisionFW.ViewModel
                 case 2:
                     {
                         IsHiddenA2Scheme = true;
+                        IsHiddenPropFilter = true;
                         LoadProperty_A2();
                         GetComboBox_A2();
                     }
@@ -273,6 +309,7 @@ namespace HydroVisionFW.ViewModel
                 case 3:
                     {
                         IsHiddenH2Scheme = true;
+                        IsHiddenPropFilter = true;
                         LoadProperty_H2();
                         GetComboBox_H2();
                     }
@@ -281,6 +318,7 @@ namespace HydroVisionFW.ViewModel
                 case 4:
                     {
                         IsHiddenA1Scheme = true;
+                        IsHiddenPropFilter = true;
                         LoadProperty_A1();
                         GetComboBox_A1();
                     }
@@ -289,6 +327,7 @@ namespace HydroVisionFW.ViewModel
                 case 5:
                     {
                         IsHiddenH1Scheme = true;
+                        IsHiddenPropFilter = true;
                         LoadProperty_H1();
                         GetComboBox_H1();
                     }
@@ -297,6 +336,7 @@ namespace HydroVisionFW.ViewModel
                 case 6:
                     {
                         IsHiddenA2SimplifiedScheme = true;
+                        IsHiddenPropFilter = true;
                         LoadProperty_A2Simplified();
                         GetComboBox_A2Simplified();
                     }
@@ -305,14 +345,16 @@ namespace HydroVisionFW.ViewModel
                 case 7:
                     {
                         IsHiddenNaScheme = true;
+                        IsHiddenPropFilter = true;
                         LoadProperty_Na();
                         GetComboBox_Na();
                     }
                     break;
-                // открыт BF
+                    // открыт BF
                 case 8:
                     {
                         IsHiddenBFScheme = true;
+                        IsHiddenPropBF = true;
                         LoadProperty_BF();
                         GetComboBox_BF();
                     }
@@ -321,6 +363,7 @@ namespace HydroVisionFW.ViewModel
                 case 9:
                     {
                         IsHiddenClarifierScheme = true;
+                        IsHiddenPropClarifier = true;
                         LoadProperty_Clarifier();
                         GetComboBox_Clarifier();
                     }
@@ -329,6 +372,7 @@ namespace HydroVisionFW.ViewModel
                 case 10:
                     {
                         IsHiddenDecarbonizerScheme = true;
+                        IsHiddenPropDecarbonizer = true;
                         LoadProperty_Decarbonizer();
                         GetComboBox_Decarbonizer();
                     }
