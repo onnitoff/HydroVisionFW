@@ -197,8 +197,7 @@
             </Grid>
             
             <!--Clarifier Block-->
-            
-
+        
             <Grid x:Name="Clarifier" 
                   Visibility="{Binding IsHiddenClarifierScheme, 
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
@@ -208,9 +207,40 @@
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        Margin="0,126,0,0"/>
-                
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,42,0,0"><Run Text="Емкость каждого осветителя"/><Run Language="ru-ru" Text=":"/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="182,43,0,0" VerticalAlignment="Top" Width="62"
+                         Text="{Binding Path=DesignDiameter}"/>
+
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="15,73,0,0"><Run Text="Количество "/><Run Language="ru-ru" Text="осветлителей"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="177,74,0,0" VerticalAlignment="Top" Width="62"
+                         Text="{Binding Path=FilterCount}"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="29,286,0,0"><Run Text="Выбрать подходящий "/><Run Language="ru-ru" Text="осветлитель"/><Run Text=" "/></TextBlock>
+                <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"
+                          ItemsSource="{Binding Path=SuitableFilter}"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Id"
+                          SelectedItem="{Binding SelectedSuitableFilter}"/>
+
+                <Grid Margin="0 0 0 0">
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M452,140 L500,140"/>
+                    
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M320,120 L320,300 L390,300"/>
+
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M315,120 L325,120"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M500,135 L500,145"/>
+
+                </Grid>
+
+
             </Grid>
 
+            <!--Decarbonizer Block-->
+            
             <Grid x:Name="Decarbonizer" 
                   Visibility="{Binding IsHiddenDecarbonizerScheme, 
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
@@ -220,6 +250,26 @@
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        Margin="0,126,0,0"/>
+                
+                <Grid Margin="0 0 0 0">
+
+                    <Path Stroke="Aqua" StrokeThickness="3"
+                          Data="M457,147 L500,147"/>
+                    <Path Stroke="Aqua" StrokeThickness="3"
+                          Data="M428,147 L436,147"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M320,100 L360,100 L360,138"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M387,179 L387,195"/>
+
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M320,95 L320,105"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M500,142 L500,152"/>
+
+                </Grid>
+
             </Grid>
 
             <!--Property filters-->

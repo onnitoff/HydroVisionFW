@@ -277,8 +277,8 @@ namespace HydroVisionFW.ViewModel
 
         public EquipmentWindowVM()
         {
-            IsHiddenClarifierScheme = true;
-            IsHiddenPropClarifier = true;
+            IsHiddenDecarbonizerScheme = true;
+            IsHiddenPropDecarbonizer = true;
             #region Команды
             ApplyBtnCommand = new RelayCommand(OnApplyBtnCommand);
             #endregion
