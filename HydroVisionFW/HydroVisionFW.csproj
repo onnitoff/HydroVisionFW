@@ -165,6 +165,7 @@
     <Compile Include="Model\DataBaseModel\WaterConsumptionForOwnNeedsFSD.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DecarbonizerModel.cs" />
     <Compile Include="Model\FilterModel.cs" />
     <Compile Include="Model\FuelModel.cs" />
     <Compile Include="Model\WaterIndicatorModel.cs" />

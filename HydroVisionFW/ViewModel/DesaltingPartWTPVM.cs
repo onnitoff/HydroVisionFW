@@ -343,8 +343,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 1;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += MAFWindow_Closed;
+            mixed.ShowDialog();
         }
 
         #endregion
@@ -378,8 +378,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 2;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += A2Window_Closed;
+            mixed.ShowDialog();
         }
         #endregion
 
@@ -403,8 +403,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 6;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += A2SimplifiedWindow_Closed;
+            mixed.ShowDialog();
         }
         #endregion
 
@@ -428,8 +428,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 3;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += H2Window_Closed;
+            mixed.ShowDialog();
         }
 
         #endregion
@@ -452,8 +452,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 4;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += A1Window_Closed;
+            mixed.ShowDialog();
         }
         #endregion
 
@@ -477,8 +477,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 5;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += H1Window_Closed;
+            mixed.ShowDialog();
         }
 
         #endregion
@@ -503,8 +503,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 7;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += NaWindow_Closed;
+            mixed.ShowDialog();
         }
 
         #endregion
@@ -529,8 +529,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 8;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += BFWindow_Closed;
+            mixed.ShowDialog();
         }
 
         #endregion
@@ -555,8 +555,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 9;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += ClarifierWindow_Closed;
+            mixed.ShowDialog();
         }
 
         #endregion
@@ -581,8 +581,8 @@ namespace HydroVisionDesign.ViewModel
         {
             DataStorage.Instance.ViewModel = 10;
             EquipmentWindow mixed = new EquipmentWindow();
-            mixed.ShowDialog();
             mixed.Closed += DecarbonizerWindow_Closed;
+            mixed.ShowDialog();
         }
 
         #endregion
