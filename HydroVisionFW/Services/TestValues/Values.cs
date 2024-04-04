@@ -89,7 +89,11 @@ namespace HydroVisionDesign.Services.TestValues
 
             //Clarifier
             ClarifierStorage.Instance.m = 2;
-            //BFStorage.Instance.w = 10;
+            ClarifierStorage.Instance.t = 1;
+            ClarifierStorage.Instance.E_k = 57.02;
+            ClarifierStorage.Instance.C = 88.5;
+            ClarifierStorage.Instance.d_PAA = 1;
+
 
 
 

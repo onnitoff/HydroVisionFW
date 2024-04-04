@@ -22,7 +22,7 @@ namespace HydroVisionFW.Services.Calculations
             DecarbonizerCalculation decarbonizer = new DecarbonizerCalculation();
             DecarbonizerStorage.Instance.W_b_oct = decarbonizer.CarbonateAlkalinity(DataStorage.Instance.ExcessLime);
             DecarbonizerStorage.Instance.W_k_oct = decarbonizer.BicarbonateAlkalinity(DataStorage.Instance.ResidualHardnessCarbonate, DataStorage.Instance.ExcessLime);
-            DecarbonizerStorage.Instance.C_CO_vx = decarbonizer.ConcentrationCO2BeforeTheDecarbonizer(DecarbonizerStorage.Instance.W_b_oct, DecarbonizerStorage.Instance.W_k_oct);
+            DecarbonizerStorage.Instance.C_CO_vx = decarbonizer.ConcentrationCO2BeforeTheDecarbonizerWithFe(DecarbonizerStorage.Instance.W_b_oct, DecarbonizerStorage.Instance.W_k_oct);
 
             if (DataStorage.Instance.DesaltingScheme == "simplified")
                 DecarbonizerStorage.Instance.Q_d_input = A2StorageSimplified.Instance.Q_br;
