@@ -71,6 +71,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\BrandOfIonModel.cs" />
+    <Compile Include="Model\ClarifierModel.cs" />
     <Compile Include="Model\DataBaseModel\ApplyingFilter.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>

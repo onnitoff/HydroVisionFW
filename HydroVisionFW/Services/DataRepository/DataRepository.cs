@@ -114,6 +114,28 @@ namespace HydroVisionFW.Services.DataRepository
             }
         }
 
+        /// <summary>обращение к бд и вытягивание список осветлителей</summary>
+        /// <returns>List ClarifierModel</returns>
+        public async Task<List<ClarifierModel>> GetClarifierAsync(int id)
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.Clarifiers
+                              join second in context.BrandAndPerfomanceClarifiers on first.IdBrand equals second.Id
+                              where first.IdForWith == id
+                              select new ClarifierModel
+                              {
+                                  Id = first.Id,
+                                  Name = second.Brand,
+                                  Volume = second.Volume,
+                                  Perfomance = first.Perfomance,
+                                  Diameter = first.Diameter,
+                                  Height = first.Height
+                              }).ToListAsync();
+
+            }
+        }
+
         #region MAF
         /// <summary>обращение к бд и вытягивание брендов ионитов ФСД</summary>
         /// <returns>List BrandOfIonModel</returns>

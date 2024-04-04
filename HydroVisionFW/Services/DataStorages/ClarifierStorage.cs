@@ -26,7 +26,7 @@ namespace HydroVisionFW.Services.DataStorages
         #region Clarifier
         public double v_ocv { get; set; }
         public double t {  get; set; }
-        public double m { get; set; }
+        public int m { get; set; }
         public double G_k { get; set; }
         public double E_k { get; set; }
         public double G_k_tex { get; set; }
@@ -42,7 +42,7 @@ namespace HydroVisionFW.Services.DataStorages
         #region DB
 
         public int SelectedBrandOfIon { get; set; } = 1;
-        public int SelectedSuitableFilter { get; set; } = 0;
+        public int SelectedSuitableClarifier { get; set; } = 0;
         #endregion
     }
 }

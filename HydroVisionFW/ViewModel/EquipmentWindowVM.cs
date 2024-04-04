@@ -189,6 +189,17 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _SelectedSuitableFilter, value);
         }
 
+        /// <summary>Коллекция для ComboBox Осветлитель</summary>
+        public List<ClarifierModel> SuitableClarifier { get; set; }
+
+        private ClarifierModel _SelectedSuitableClarifier;
+        /// <summary>Свойство для Select ComboBox Осветлитель</summary>
+        public ClarifierModel SelectedSuitableClarifier
+        {
+            get => _SelectedSuitableClarifier;
+            set => Set(ref _SelectedSuitableClarifier, value);
+        }
+
         #endregion
 
         #region Команды
@@ -786,23 +797,25 @@ namespace HydroVisionFW.ViewModel
             CalcClarifier calc = new CalcClarifier();
             calc.CaclFirstProperty();
             _DesignDiameter = ClarifierStorage.Instance.v_ocv;
+            _FilterCount = ClarifierStorage.Instance.m;
         }
 
         private void GetComboBox_Clarifier()
         {
             DataRepository data = new DataRepository();
-            int idFilter = 1;
+            int idClarifier = 1;
 
             // обращение к бд фильтры
             Task.Run(async () =>
             {
-                SuitableFilter = await data.GetFilterBFAsync(idFilter);
+                SuitableClarifier = await data.GetClarifierAsync(idClarifier);
             }).Wait();
-            SelectedSuitableFilter = SuitableFilter[BFStorage.Instance.SelectedSuitableFilter];
+            SelectedSuitableClarifier = SuitableClarifier[ClarifierStorage.Instance.SelectedSuitableClarifier];
         }
 
         private void RecordParamToStorage_Clarifier()
         {
+            ClarifierStorage.Instance.SelectedSuitableClarifier = SelectedSuitableClarifier.Id - 1;
             ClarifierStorage.Instance.m = FilterCount;
         }
 

@@ -87,6 +87,10 @@ namespace HydroVisionDesign.Services.TestValues
             BFStorage.Instance.m = 12;
             BFStorage.Instance.w = 10;
 
+            //Clarifier
+            ClarifierStorage.Instance.m = 2;
+            //BFStorage.Instance.w = 10;
+
 
 
         }
