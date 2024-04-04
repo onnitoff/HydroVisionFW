@@ -143,6 +143,14 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _IsHiddenSimplified, value);
         }
 
+        private bool _IsHiddenNa = false;
+        /// <summary>Свойство для скрытия Na схемы/summary>
+        public bool IsHiddenNa
+        {
+            get => _IsHiddenNa;
+            set => Set(ref _IsHiddenNa, value);
+        }
+
 
 
         #endregion
@@ -645,6 +653,15 @@ namespace HydroVisionDesign.ViewModel
             {
                 _IsHiddenMain = true;
                 _IsHiddenSimplified = true;
+            }
+
+            if (BoilerStorage.Instance.PerfomanceWTPForHeatingSystem == 0)
+            {
+                _IsHiddenNa = false;
+            }
+            else 
+            { 
+                _IsHiddenNa = true; 
             }
         }
 

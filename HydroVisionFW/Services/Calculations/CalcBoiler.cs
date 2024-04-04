@@ -118,10 +118,12 @@ namespace HydroVisionFW.Services.Calculations
             {
                 BoilerStorage.Instance.PerfomanceWTPForHeatingSystemFirst = perfomance.ProductivityWTPForHeatingSystem(DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst, BoilerStorage.Instance.NumberOfTurbinesFirst);
             }
+            else BoilerStorage.Instance.PerfomanceWTPForHeatingSystemFirst = 0;
             if (DataStorage.Instance.WaterConsumptionForNetworkHeatersSecond > 0)
             {
                 BoilerStorage.Instance.PerfomanceWTPForHeatingSystemSecond = perfomance.ProductivityWTPForHeatingSystem(DataStorage.Instance.WaterConsumptionForNetworkHeatersSecond, BoilerStorage.Instance.NumberOfTurbinesSecond);
             }
+            else BoilerStorage.Instance.PerfomanceWTPForHeatingSystemSecond = 0;
 
             BoilerStorage.Instance.PerfomanceWTPForHeatingSystem = BoilerStorage.Instance.PerfomanceWTPForHeatingSystemFirst + BoilerStorage.Instance.PerfomanceWTPForHeatingSystemSecond;
 

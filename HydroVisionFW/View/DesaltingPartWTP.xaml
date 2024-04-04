@@ -17,27 +17,30 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
     <Grid>
-        <Border >
-            <Border.Background>
-                <SolidColorBrush Color="#F5F5DC"/>
-            </Border.Background>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseLeftButtonDown">
-                    <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Border>
+
         <Grid Visibility="{Binding IsHiddenMain,
               Converter = {StaticResource BooleanToVisibilityConverter}}">
-            <i:Interaction.Triggers>
+            <!--<i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonDown">
                     <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
                 </i:EventTrigger>
-            </i:Interaction.Triggers>
+            </i:Interaction.Triggers>-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="290"/>
             </Grid.ColumnDefinitions>
+            <Border>
+                <Border.Background>
+                    <SolidColorBrush Color="#F5F5DC"/>
+                </Border.Background>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Border>
+            <!--Lines-->
+            
             <Grid Grid.Column="0" Margin="-52,95,0,0">
                 <Path Stroke="Blue" StrokeThickness="5"
                       Data="M190,130 L218, 130"/>
@@ -48,14 +51,10 @@
                 <Path Stroke="Blue" StrokeThickness="5"
                       Data="M280,206 L290, 206 L290, 270 L320, 270"/>
 
-                <Path Stroke="Blue" StrokeThickness="5"
-                      Data="M370, 270 L390, 270 L390 400"/>
+
 
                 <Path Stroke="Blue" StrokeThickness="5"
-                      Data="M390 490 L390 515 L440 515 L440 410 L458 410"/>
-
-                <Path Stroke="Blue" StrokeThickness="5"
-                      Data="M390, 270 L390, 230 L440, 230 L440, 255"/>
+                      Data="M370,270 L390,270 L390,230 L440,230 L440,255"/>
 
                 <Path Stroke="Blue" StrokeThickness="5"
                       Data="M440, 350 L440, 370 L478, 370 L478, 230 L515, 230 L515, 260"/>
@@ -159,7 +158,7 @@
                   x:Name="two_stage"
                   Visibility="{Binding IsHiddenTwoStage,
                    Converter = {StaticResource BooleanToVisibilityConverter}}">
-                
+
                 <!--A2_IMAGE-->
 
                 <Image Source="/Resources/Images/Filter_A2.png"
@@ -213,7 +212,7 @@
                           Data="M703 352 L703 370 L741 370 L741 230 L779 230 L779 255"/>
                     <Path Stroke="Blue" StrokeThickness="5"
                           Data="M779 352 L779 410 L883 410"/>
-                    
+
                 </Grid>
             </Grid>
 
@@ -269,19 +268,34 @@
             </Grid>
 
 
+            <!--Na_scheme-->
+            <Grid Visibility="{Binding IsHiddenNa,
+                  Converter = {StaticResource BooleanToVisibilityConverter}}"
+                  Margin="-52,95,0,0">
+                <!--Na_IMAGE-->
 
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M370, 270 L390, 270 L390 400"/>
 
-            <!--Na_IMAGE-->
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M390 490 L390 515 L440 515 L440 410 L458 410"/>
+                <Image Source="/Resources/Images/Filter_Na.png"
+                       Height="100"
+                       Width="100"
+                        Grid.Column="0" Margin="52,293,330,100">
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnNaCommand}"/>
+                        <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnNaCommand}"/>
+                    </Image.InputBindings>
+                </Image>
+                <!--Tank_IMAGE-->
 
-            <Image Source="/Resources/Images/Filter_Na.png"
-                   Height="100"
-                   Width="100"
-                   Grid.Column="0" Margin="0,388,330,100">
-                <Image.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnNaCommand}"/>
-                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnNaCommand}"/>
-                </Image.InputBindings>
-            </Image>
+                <Image Source="/Resources/Images/Tank.png"
+                       Height="100"
+                       Width="100"
+                       Grid.Column="0" Margin="52,205,100,0"/>
+            </Grid>
+
 
             <!--Filter_Clarifier_IMAGE-->
 
@@ -331,15 +345,15 @@
             <Image Source="/Resources/Images/Tank.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="0,300,100,0"/>
-
-            <!--Tank_IMAGE-->
-
-            <Image Source="/Resources/Images/Tank.png"
-                       Height="100"
-                       Width="100"
                        Grid.Column="0" Margin="750,300,0,0"/>
 
+            <Grid Grid.Column="1">
+                <Border>
+                    <Border.Background>
+                        <SolidColorBrush Color="#F5F5DC"/>
+                    </Border.Background>
+                </Border>
+            </Grid>
             <GroupBox Header="Свойства"
                       Grid.Column="1">
                 <Grid x:Name="FilterProperty" 
@@ -558,8 +572,5 @@
             </GroupBox>
 
         </Grid>
-
-
-
     </Grid>
 </UserControl>
