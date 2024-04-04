@@ -36,26 +36,31 @@ namespace HydroVisionFW.Services.Calculations
             desalting.IsDesaltingScheme();
             WaterTreatmentPlantPerfomance perfomance = new WaterTreatmentPlantPerfomance();
             DesaltedWaterSupplyCalc();
+            string str;
 
-            BoilerStorage.Instance.InternalLosses = perfomance.InternalLosses(
-                DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
+            if (DataStorage.Instance.BoilerPerfomanceFirst != 0 && DataStorage.Instance.BoilerPerfomanceSecond == 0)
+                BoilerStorage.Instance.InternalLosses = perfomance.InternalLosses(DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst);
+            if (DataStorage.Instance.BoilerPerfomanceSecond != 0 && DataStorage.Instance.BoilerPerfomanceFirst == 0)
+                BoilerStorage.Instance.InternalLosses = perfomance.InternalLosses(DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
+            if (DataStorage.Instance.BoilerPerfomanceFirst != 0 && DataStorage.Instance.BoilerPerfomanceSecond != 0)
+                BoilerStorage.Instance.InternalLosses = perfomance.InternalLosses(DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst,
+                                                        DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
 
             if (BoilerStorage.Instance.Losses != 0)
-                BoilerStorage.Instance.ExternalLosses = perfomance.ExternalLosses(
-                BoilerStorage.Instance.Losses, BoilerStorage.Instance.VacationCouple);
+                BoilerStorage.Instance.ExternalLosses = perfomance.ExternalLosses(BoilerStorage.Instance.Losses, BoilerStorage.Instance.VacationCouple);
 
             if (BoilerStorage.Instance.BlowdownLosses != 0 && DataStorage.Instance.BoilerTypeFirst == 1 && DataStorage.Instance.BoilerTypeSecond != 1)
-                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(
-                BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst);
-            if (BoilerStorage.Instance.BlowdownLosses != 0 && DataStorage.Instance.BoilerTypeFirst == 1 && DataStorage.Instance.BoilerTypeSecond == 1)
-                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(
-                BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
+                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceFirst,
+                                                       BoilerStorage.Instance.NumberOfBoilersFirst);
             if (BoilerStorage.Instance.BlowdownLosses != 0 && DataStorage.Instance.BoilerTypeSecond == 1 && DataStorage.Instance.BoilerTypeFirst != 1)
-                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(
-                BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
+                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceSecond,
+                                                       BoilerStorage.Instance.NumberOfBoilersSecond);
+            if (BoilerStorage.Instance.BlowdownLosses != 0 && DataStorage.Instance.BoilerTypeFirst == 1 && DataStorage.Instance.BoilerTypeSecond == 1)
+                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceFirst,
+                                                       BoilerStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
 
-            
-            if(DataStorage.Instance.SelectedFuelType == 2)
+
+            if (DataStorage.Instance.SelectedFuelType == 2)
             {
                 List<FuelOilConsumption> fuelOilConsumptions = new List<FuelOilConsumption>();
 
@@ -88,41 +93,33 @@ namespace HydroVisionFW.Services.Calculations
                 }
 
                 if (BoilerStorage.Instance.FuelOilConsumptionFirst != 0 && BoilerStorage.Instance.FuelOilConsumptionSecond != 0)
-                    BoilerStorage.Instance.LossesInFuelOilProduction = perfomance.LossesInFuelOilProduction(
-                        BoilerStorage.Instance.FuelOilConsumptionFirst, BoilerStorage.Instance.NumberOfBoilersFirst, BoilerStorage.Instance.FuelOilConsumptionFirst, BoilerStorage.Instance.NumberOfBoilersFirst);
-
-
+                    BoilerStorage.Instance.LossesInFuelOilProduction = perfomance.LossesInFuelOilProduction(BoilerStorage.Instance.FuelOilConsumptionFirst, BoilerStorage.Instance.NumberOfBoilersFirst,
+                                                                       BoilerStorage.Instance.FuelOilConsumptionFirst, BoilerStorage.Instance.NumberOfBoilersFirst);
             }
+            
 
-            if(DataStorage.Instance.TurbineTypeFirst == 1 && DataStorage.Instance.TurbineTypeSecond == 1)
+            if (BoilerStorage.Instance.NumberOfBoilersSecond == 0)
             {
-                BoilerStorage.Instance.PerfomanceWTP = perfomance.ProductivityWTPForIES(
-                DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond, BoilerStorage.Instance.DesaltedWaterSupply);
-
+                if (DataStorage.Instance.TurbineTypeFirst == 1)
+                    BoilerStorage.Instance.PerfomanceWTP = perfomance.ProductivityWTPForIES(DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, BoilerStorage.Instance.DesaltedWaterSupply);
             }
-
-
-
-
+            if (BoilerStorage.Instance.NumberOfBoilersSecond != 0)
+            {
+                if (DataStorage.Instance.TurbineTypeFirst == 1 && DataStorage.Instance.TurbineTypeSecond == 1)
+                    BoilerStorage.Instance.PerfomanceWTP = perfomance.ProductivityWTPForIES(DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.BoilerPerfomanceSecond, 
+                                                           BoilerStorage.Instance.NumberOfBoilersSecond, BoilerStorage.Instance.DesaltedWaterSupply);
+            }
 
             if (DataStorage.Instance.TurbineTypeFirst == 2 || DataStorage.Instance.TurbineTypeSecond == 2)
-            {
-                BoilerStorage.Instance.PerfomanceWTP = perfomance.ProductivityWTPForTPP(
-                BoilerStorage.Instance.InternalLosses, BoilerStorage.Instance.ExternalLosses, BoilerStorage.Instance.PurgingLosses, BoilerStorage.Instance.LossesInFuelOilProduction,
-                BoilerStorage.Instance.DesaltedWaterSupply);
-            }
-
+                    BoilerStorage.Instance.PerfomanceWTP = perfomance.ProductivityWTPForTPP(BoilerStorage.Instance.InternalLosses, BoilerStorage.Instance.ExternalLosses,
+                                                           BoilerStorage.Instance.PurgingLosses, BoilerStorage.Instance.LossesInFuelOilProduction, BoilerStorage.Instance.DesaltedWaterSupply);
 
 
             if (DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst > 0)
-            {
                 BoilerStorage.Instance.PerfomanceWTPForHeatingSystemFirst = perfomance.ProductivityWTPForHeatingSystem(DataStorage.Instance.WaterConsumptionForNetworkHeatersFirst, BoilerStorage.Instance.NumberOfTurbinesFirst);
-            }
             else BoilerStorage.Instance.PerfomanceWTPForHeatingSystemFirst = 0;
             if (DataStorage.Instance.WaterConsumptionForNetworkHeatersSecond > 0)
-            {
                 BoilerStorage.Instance.PerfomanceWTPForHeatingSystemSecond = perfomance.ProductivityWTPForHeatingSystem(DataStorage.Instance.WaterConsumptionForNetworkHeatersSecond, BoilerStorage.Instance.NumberOfTurbinesSecond);
-            }
             else BoilerStorage.Instance.PerfomanceWTPForHeatingSystemSecond = 0;
 
             BoilerStorage.Instance.PerfomanceWTPForHeatingSystem = BoilerStorage.Instance.PerfomanceWTPForHeatingSystemFirst + BoilerStorage.Instance.PerfomanceWTPForHeatingSystemSecond;
