@@ -16,7 +16,12 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    <Grid>
+    <Grid >
+        <Border>
+            <Border.Background>
+                <SolidColorBrush Color="BlanchedAlmond"/>
+            </Border.Background>
+        </Border>
 
         <Grid Visibility="{Binding IsHiddenMain,
               Converter = {StaticResource BooleanToVisibilityConverter}}">
@@ -350,7 +355,7 @@
             <Grid Grid.Column="1">
                 <Border>
                     <Border.Background>
-                        <SolidColorBrush Color="#F5F5DC"/>
+                        <SolidColorBrush Color="MediumPurple"/>
                     </Border.Background>
                 </Border>
             </Grid>
