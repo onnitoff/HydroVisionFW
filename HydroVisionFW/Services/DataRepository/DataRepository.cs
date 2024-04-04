@@ -110,7 +110,6 @@ namespace HydroVisionFW.Services.DataRepository
                                   Diameter = first.Diameter,
                                   IonExchangerLayerHieght = (int)first.FilterLoadHeight
                               }).ToListAsync();
-
             }
         }
 
@@ -132,7 +131,24 @@ namespace HydroVisionFW.Services.DataRepository
                                   Diameter = first.Diameter,
                                   Height = first.Height
                               }).ToListAsync();
+            }
+        }
 
+        /// <summary>обращение к бд и вытягивание список декарбонизаторов</summary>
+        /// <returns>List DecarbonizerModel</returns>
+        public async Task<List<DecarbonizerModel>> GetDecarbonizerAsync()
+        {
+            using (var context = new WaterContext())
+            {
+                return await (from first in context.Calciners
+                              select new DecarbonizerModel
+                              {
+                                  Id = first.Id,
+                                  Perfomance = first.Performance,
+                                  Diameter = first.Diameter,
+                                  CrossAreaSections = (double)first.CrossAreaSections,
+                                  AirFlow = first.AirFlow
+                              }).ToListAsync();
             }
         }
 

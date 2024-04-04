@@ -255,24 +255,17 @@
                        VerticalAlignment="Top" 
                        Margin="0,126,0,0"/>
                 <TextBlock Text="Вода из первой ступени" TextWrapping="Wrap" 
-                           Margin="182,90,362,154"/>
+                           Margin="165,92,379,152"/>
                 <TextBlock Text="Сжатый воздух" TextWrapping="Wrap" 
                            Margin="508,137,36,107"/>
                 <TextBlock Text="Вода на вторую ступень" TextWrapping="Wrap" 
                            Margin="509,249,35,-5"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="14,50,0,0"><Run Language="ru-ru" Text="Расчетный"/><Run Text=" диаметр"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
-                <TextBox HorizontalAlignment="Left" Margin="142,175,0,0" VerticalAlignment="Top" Width="62"
-                     Text="{Binding Path=DesignDiameter}"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="12,174,0,0"><Run Text="Количество фильтров:"/><LineBreak/><Run/></TextBlock>
-                <TextBox HorizontalAlignment="Left" Margin="135,50,0,0" VerticalAlignment="Top" Width="62"
+
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="11,291,0,0"><Run Text="Количество"/><Run Text=" декар"/><Run Language="ru-ru" Text="бонизаторов"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
+                <TextBox HorizontalAlignment="Left" Margin="195,292,0,0" VerticalAlignment="Top" Width="62"
                      Text="{Binding Path=FilterCount}"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" RenderTransformOrigin="0.637,0.373" Margin="15,286,0,0"><Run Text="Выбрать п"/><Run Language="ru-ru" Text="одходящий декарбонизтор"/><Run Text=" "/></TextBlock>
-                <ComboBox HorizontalAlignment="Left" Margin="19,308,0,0" VerticalAlignment="Top" Width="163"
-                      ItemsSource="{Binding Path=SuitableFilter}"
-                      DisplayMemberPath="Name"
-                      SelectedValuePath="Id"
-                      SelectedItem="{Binding SelectedSuitableFilter}"/>
-                <Grid Margin="0 0 0 0">
+       
+                <Grid Margin="-8 0 0 0">
 
                     <Path Stroke="Aqua" StrokeThickness="3"
                           Data="M457,147 L500,147"/>

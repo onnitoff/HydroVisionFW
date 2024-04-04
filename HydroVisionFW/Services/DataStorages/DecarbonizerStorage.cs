@@ -45,6 +45,11 @@ namespace HydroVisionFW.Services.DataStorages
         public double h_nac { get; set; }
         public double Q_vozd { get; set; }
 
+        public int Perfomance { get; set; }
+        public int Diameter { get; set; }
+        public double CrossAreaSections { get; set; }
+        public int AirFlow { get; set; }
+
 
 
         #endregion

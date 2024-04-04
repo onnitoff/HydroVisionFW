@@ -321,8 +321,8 @@
                        Width="150"
                        Grid.Column="0" Margin="150,100,0,250">
                 <Image.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
-                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnDecarbonizerCommand}"/>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnDecarbonizerCommand}"/>
                 </Image.InputBindings>
             </Image>
 

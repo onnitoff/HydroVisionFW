@@ -200,6 +200,8 @@ namespace HydroVisionFW.ViewModel
             set => Set(ref _SelectedSuitableClarifier, value);
         }
 
+
+
         #endregion
 
         #region Команды
@@ -822,7 +824,7 @@ namespace HydroVisionFW.ViewModel
             ClarifierStorage.Instance.Perfomance = SelectedSuitableClarifier.Perfomance;
             ClarifierStorage.Instance.Diameter = SelectedSuitableClarifier.Diameter;
             ClarifierStorage.Instance.Height = SelectedSuitableClarifier.Height;
-    }
+        }
 
         #endregion
 
@@ -832,26 +834,18 @@ namespace HydroVisionFW.ViewModel
         {
             CalcDecarbonizer calc = new CalcDecarbonizer();
             calc.CaclFirstProperty();
-            _DesignDiameter = 123;
         }
 
         private void GetComboBox_Decarbonizer()
         {
-            DataRepository data = new DataRepository();
-            int idFilter = 1;
+   
 
-            // обращение к бд декарбонизаторы
-            Task.Run(async () =>
-            {
-                SuitableFilter = await data.GetFilterBFAsync(idFilter);
-            }).Wait();
-            SelectedSuitableFilter = SuitableFilter[BFStorage.Instance.SelectedSuitableFilter];
         }
 
         private void RecordParamToStorage_Decarbonizer()
         {
             DecarbonizerStorage.Instance.m = FilterCount;
-        }
+    }
 
         #endregion
 

@@ -1,4 +1,6 @@
 ﻿using HydroVisionDesign.Services.DataStorages;
+using HydroVisionFW.Model;
+using HydroVisionFW.Services.DataRepository;
 using HydroVisionFW.Services.DataStorages;
 using MathWater;
 using System;
@@ -12,6 +14,12 @@ namespace HydroVisionFW.Services.Calculations
     internal class CalcDecarbonizer
     {
         public CalcDecarbonizer() { }
+        /// <summary>Коллекция для вывода Декарбонизторов</summary>
+        public List<DecarbonizerModel> SuitableDecarbonizer { get; set; }
+
+        private DecarbonizerModel _SelectedSuitableDecarbonizer;
+        /// <summary>Свойство для Select Декарбонизатор</summary>
+        public DecarbonizerModel SelectedSuitableDecarbonizer { get; set; }
 
         public void Calculations()
         {
@@ -34,6 +42,25 @@ namespace HydroVisionFW.Services.Calculations
             DecarbonizerStorage.Instance.d_d = decarbonizer.CalcinerDiameter(DecarbonizerStorage.Instance.f_d);
             DecarbonizerStorage.Instance.h_nac = decarbonizer.RaschigRingAttachmentHeight(DecarbonizerStorage.Instance.V_nac, DecarbonizerStorage.Instance.f_d);
             DecarbonizerStorage.Instance.Q_vozd = decarbonizer.AirConsumptionForWaterDecarbonization(DecarbonizerStorage.Instance.Q_d);
+
+
+            DataRepository.DataRepository data = new DataRepository.DataRepository();
+            // обращение к бд декарбонизаторы
+            Task.Run(async () =>
+            {
+                SuitableDecarbonizer = await data.GetDecarbonizerAsync();
+            }).Wait();
+
+            foreach (var item in SuitableDecarbonizer)
+            {
+                if (item.Diameter > DecarbonizerStorage.Instance.d_d)
+                {
+                    DecarbonizerStorage.Instance.Perfomance = item.Perfomance;
+                    DecarbonizerStorage.Instance.Diameter = item.Diameter;
+                    DecarbonizerStorage.Instance.CrossAreaSections = item.CrossAreaSections;
+                    DecarbonizerStorage.Instance.AirFlow = item.AirFlow;
+                }
+            }
 
 
 
