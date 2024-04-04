@@ -23,6 +23,7 @@ namespace HydroVisionFW.Services.Calculations
             ClarifierStorage.Instance.G_PAA = clarifiers.ConsumptionOfPolyacrylamidePerDay(BFStorage.Instance.Q_br, ClarifierStorage.Instance.d_PAA);
             ClarifierStorage.Instance.d_izv = clarifiers.DoseOfLime(DataStorage.Instance.OverallHardness, DataStorage.Instance.Final_Mg, DataStorage.Instance.K_Al_Fe, DataStorage.Instance.ExcessLime);
             ClarifierStorage.Instance.G_izv = clarifiers.ConsumptionLime(BFStorage.Instance.Q_br, ClarifierStorage.Instance.d_izv);
+
         }
 
         public void CaclFirstProperty()

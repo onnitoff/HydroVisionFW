@@ -35,6 +35,11 @@ namespace HydroVisionFW.Services.DataStorages
         public double d_PAA { get; set; }
         public double G_izv { get; set; }
         public double d_izv { get; set; }
+        public string Name { get; set; }
+        public int Volume { get; set; }
+        public int Perfomance { get; set; }
+        public int Diameter { get; set; }
+        public int Height { get; set; }
 
         #endregion
 

@@ -817,7 +817,12 @@ namespace HydroVisionFW.ViewModel
         {
             ClarifierStorage.Instance.SelectedSuitableClarifier = SelectedSuitableClarifier.Id - 1;
             ClarifierStorage.Instance.m = FilterCount;
-        }
+            ClarifierStorage.Instance.Name = SelectedSuitableClarifier.Name;
+            ClarifierStorage.Instance.Volume = SelectedSuitableClarifier.Volume;
+            ClarifierStorage.Instance.Perfomance = SelectedSuitableClarifier.Perfomance;
+            ClarifierStorage.Instance.Diameter = SelectedSuitableClarifier.Diameter;
+            ClarifierStorage.Instance.Height = SelectedSuitableClarifier.Height;
+    }
 
         #endregion
 
