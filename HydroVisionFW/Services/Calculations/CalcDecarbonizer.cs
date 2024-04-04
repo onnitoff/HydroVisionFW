@@ -17,10 +17,6 @@ namespace HydroVisionFW.Services.Calculations
         /// <summary>Коллекция для вывода Декарбонизторов</summary>
         public List<DecarbonizerModel> SuitableDecarbonizer { get; set; }
 
-        private DecarbonizerModel _SelectedSuitableDecarbonizer;
-        /// <summary>Свойство для Select Декарбонизатор</summary>
-        public DecarbonizerModel SelectedSuitableDecarbonizer { get; set; }
-
         public void Calculations()
         {
             DecarbonizerCalculation decarbonizer = new DecarbonizerCalculation();
@@ -61,10 +57,6 @@ namespace HydroVisionFW.Services.Calculations
                     DecarbonizerStorage.Instance.AirFlow = item.AirFlow;
                 }
             }
-
-
-
-
         }
 
         public void CaclFirstProperty()
