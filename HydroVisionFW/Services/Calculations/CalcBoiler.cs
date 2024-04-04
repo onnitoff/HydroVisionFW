@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Markup;
 using HydroVisionFW.Services.Calculations;
 using HydroVisionFW.Services.DataRepository;
+using HydroVisionFW.Model;
 
 
 namespace HydroVisionFW.Services.Calculations
@@ -36,7 +37,6 @@ namespace HydroVisionFW.Services.Calculations
             desalting.IsDesaltingScheme();
             WaterTreatmentPlantPerfomance perfomance = new WaterTreatmentPlantPerfomance();
             DesaltedWaterSupplyCalc();
-            string str;
 
             if (DataStorage.Instance.BoilerPerfomanceFirst != 0 && DataStorage.Instance.BoilerPerfomanceSecond == 0)
                 BoilerStorage.Instance.InternalLosses = perfomance.InternalLosses(DataStorage.Instance.BoilerPerfomanceFirst, BoilerStorage.Instance.NumberOfBoilersFirst);
@@ -62,7 +62,7 @@ namespace HydroVisionFW.Services.Calculations
 
             if (DataStorage.Instance.SelectedFuelType == 2)
             {
-                List<FuelOilConsumption> fuelOilConsumptions = new List<FuelOilConsumption>();
+                List<FuelModel> fuelOilConsumptions = new List<FuelModel>();
 
                 DataRepository.DataRepository data = new DataRepository.DataRepository();
                 //обращение к бд марка ионита
@@ -94,7 +94,7 @@ namespace HydroVisionFW.Services.Calculations
 
                 if (BoilerStorage.Instance.FuelOilConsumptionFirst != 0 && BoilerStorage.Instance.FuelOilConsumptionSecond != 0)
                     BoilerStorage.Instance.LossesInFuelOilProduction = perfomance.LossesInFuelOilProduction(BoilerStorage.Instance.FuelOilConsumptionFirst, BoilerStorage.Instance.NumberOfBoilersFirst,
-                                                                       BoilerStorage.Instance.FuelOilConsumptionFirst, BoilerStorage.Instance.NumberOfBoilersFirst);
+                                                                       BoilerStorage.Instance.FuelOilConsumptionSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
             }
             
 

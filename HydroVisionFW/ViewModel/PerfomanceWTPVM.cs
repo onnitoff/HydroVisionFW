@@ -180,7 +180,7 @@ namespace HydroVisionDesign.ViewModel
             if (BoilerStorage.Instance.FuelOilConsumptionFirst != 0 && BoilerStorage.Instance.FuelOilConsumptionSecond != 0)
             {
                 FuelOilLosses = $"q_мх = 0.15 * B1 * n1 + B2 * n2 = 0.15 * {BoilerStorage.Instance.FuelOilConsumptionFirst} * {BoilerStorage.Instance.NumberOfBoilersFirst} + " +
-                                $"{BoilerStorage.Instance.FuelOilConsumptionFirst} * {BoilerStorage.Instance.NumberOfBoilersFirst} = {BoilerStorage.Instance.LossesInFuelOilProduction}";
+                                $"{BoilerStorage.Instance.FuelOilConsumptionSecond} * {BoilerStorage.Instance.NumberOfBoilersSecond} = {BoilerStorage.Instance.LossesInFuelOilProduction} т/ч";
                 IsHiddenFuelOil = true;
             }
 

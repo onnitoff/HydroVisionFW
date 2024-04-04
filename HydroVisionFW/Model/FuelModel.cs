@@ -10,5 +10,7 @@ namespace HydroVisionFW.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public double Perfomance { get; set; }
+        public double OilConsumption { get; set; }
     }
 }

@@ -14,15 +14,14 @@ namespace HydroVisionFW.Services.DataRepository
         public DataRepository() { }
         /// <summary>обращение к бд и вытягивание список расхода мазута на котел</summary>
         /// <returns>List FuelOilConsumption</returns>
-        public async Task<List<FuelOilConsumption>> GetFuelOilAsync()
+        public async Task<List<FuelModel>> GetFuelOilAsync()
         {
             using (var context = new WaterContext())
             {
                 return await (from first in context.FuelOilConsumption
-                              select new FuelOilConsumption
+                              select new FuelModel
                               {
                                   Id = first.Id,
-                                  Perfomance = first.Perfomance,
                                   OilConsumption = first.OilConsumption
                               }).ToListAsync();
             }
