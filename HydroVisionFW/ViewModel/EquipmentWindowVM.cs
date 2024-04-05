@@ -726,14 +726,14 @@ namespace HydroVisionFW.ViewModel
             {
                 BrandOfIonItems = await data.GetBrandIonAsync(idBrand);
             }).Wait();
-            SelectedBrandOfIon = BrandOfIonItems[H1Storage.Instance.SelectedBrandOfIon - 1];
+            SelectedBrandOfIon = BrandOfIonItems[NaStorage.Instance.SelectedBrandOfIon - 1];
 
             // обращение к бд фильтры
             Task.Run(async () =>
             {
                 SuitableFilter = await data.GetFilterAsync(idFilter);
             }).Wait();
-            SelectedSuitableFilter = SuitableFilter[H1Storage.Instance.SelectedSuitableFilter];
+            SelectedSuitableFilter = SuitableFilter[NaStorage.Instance.SelectedSuitableFilter];
         }
 
         private void RecordParamToStorage_Na()
@@ -760,7 +760,7 @@ namespace HydroVisionFW.ViewModel
         {
             CalcBF calc = new CalcBF();
             calc.CaclFirstProperty();
-            _DesignDiameter = BFStorage.Instance.f_p;
+            _DesignDiameter = BFStorage.Instance.d_p;
             _FilterCount = BFStorage.Instance.m;
             _FiltrationSpeed = BFStorage.Instance.w;
 

@@ -94,6 +94,10 @@ namespace HydroVisionDesign.Services.TestValues
             ClarifierStorage.Instance.C = 88.5;
             ClarifierStorage.Instance.d_PAA = 1;
 
+            //Decarbonizer
+            DecarbonizerStorage.Instance.C_CO_oct = 6;
+
+
 
 
 

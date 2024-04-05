@@ -95,6 +95,13 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _IsHiddenClarifierProp, value);
         }
 
+        private bool _IsHiddenDecarbonizerProp = false;
+        /// <summary>Свойство для скрытия свойства Декарбонизатора</summary>
+        public bool IsHiddenDecarbonizerProp
+        {
+            get => _IsHiddenDecarbonizerProp;
+            set => Set(ref _IsHiddenDecarbonizerProp, value);
+        }
 
         #endregion
 
@@ -472,9 +479,103 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _ProportionOfLime, value);
         }
 
+        private double _ConcentrationCO2BeforeTheDecarbonizer;
+        /// <summary>Свойство для Концентрация СО2 перед Д</summary>
+        public double ConcentrationCO2BeforeTheDecarbonizer
+        {
+            get => _ConcentrationCO2BeforeTheDecarbonizer;
+            set => Set(ref _ConcentrationCO2BeforeTheDecarbonizer, value);
+        }
+
+        private double _ResidualBicarbonateAlkalinity;
+        /// <summary>Свойство для Бикарбонатная щелочность ост</summary>
+        public double ResidualBicarbonateAlkalinity
+        {
+            get => _ResidualBicarbonateAlkalinity;
+            set => Set(ref _ResidualBicarbonateAlkalinity, value);
+        }
+
+        private double _ResidualCarbonateAlkalinity;
+        /// <summary>Свойство для Карбонатная щелочность ост</summary>
+        public double ResidualCarbonateAlkalinity
+        {
+            get => _ResidualCarbonateAlkalinity;
+            set => Set(ref _ResidualCarbonateAlkalinity, value);
+        }
+
+        private double _CalculatedCapacityInCalciner;
+        /// <summary>Свойство для Расчетная производительность в Д</summary>
+        public double CalculatedCapacityInCalciner
+        {
+            get => _CalculatedCapacityInCalciner;
+            set => Set(ref _CalculatedCapacityInCalciner, value);
+        }
+
+        private double _AmountOfCO2RemovedInTheDecarbonizer;
+        /// <summary>Свойство для Количество CO2 удаленного в Д</summary>
+        public double AmountOfCO2RemovedInTheDecarbonizer
+        {
+            get => _AmountOfCO2RemovedInTheDecarbonizer;
+            set => Set(ref _AmountOfCO2RemovedInTheDecarbonizer, value);
+        }
+
+        private double _DesorptionArea;
+        /// <summary>Свойство для Площадь десорбции</summary>
+        public double DesorptionArea
+        {
+            get => _DesorptionArea;
+            set => Set(ref _DesorptionArea, value);
+        }
+
+        private double _NozzleArea;
+        /// <summary>Свойство для Площадь насадки</summary>
+        public double NozzleArea
+        {
+            get => _NozzleArea;
+            set => Set(ref _NozzleArea, value);
+        }
+
+        private double _NozzleVolume;
+        /// <summary>Свойство для Обьем насадки</summary>
+        public double NozzleVolume
+        {
+            get => _NozzleVolume;
+            set => Set(ref _NozzleVolume, value);
+        }
+
+        private double _CrossSectionalArea;
+        /// <summary>Свойство для Площадь поперечного сечения Д</summary>
+        public double CrossSectionalArea
+        {
+            get => _CrossSectionalArea;
+            set => Set(ref _CrossSectionalArea, value);
+        }
+
+        private double _CalcinerDiameter;
+        /// <summary>Свойство для Диаметр декарбонизатора</summary>
+        public double CalcinerDiameter
+        {
+            get => _CalcinerDiameter;
+            set => Set(ref _CalcinerDiameter, value);
+        }
+
+        private double _RaschigRingAttachmentHeight;
+        /// <summary>Свойство для Высота насадки колец Рашига</summary>
+        public double RaschigRingAttachmentHeight
+        {
+            get => _RaschigRingAttachmentHeight;
+            set => Set(ref _RaschigRingAttachmentHeight, value);
+        }
+
+        private double _AirConsumptionForWaterDecarbonization;
+        /// <summary>Свойство для Расход воздуха на Д</summary>
+        public double AirConsumptionForWaterDecarbonization
+        {
+            get => _AirConsumptionForWaterDecarbonization;
+            set => Set(ref _AirConsumptionForWaterDecarbonization, value);
+        }
+
         #endregion
-
-
 
         #region Команды
 
@@ -488,6 +589,9 @@ namespace HydroVisionDesign.ViewModel
             IsHiddenVolumeOfIonForIonFilterProperty = false;
             IsHiddenCationProperty = true;
             IsHiddenAnionProperty = true;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxMAF();
@@ -519,12 +623,15 @@ namespace HydroVisionDesign.ViewModel
         /// <summary>Нажатие левой кнопки по A2</summary>
         public ICommand LeftBtnA2Command { get; }
         private void OnLeftBtnA2Command(object obj)
-        {
+        { 
             IsHiddenFilterProperty = true;
             IsHiddenVolumeOfIonForMAFProperty = false;
             IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = true;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxA2();
@@ -552,6 +659,9 @@ namespace HydroVisionDesign.ViewModel
             IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = true;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxA2Simplified();
@@ -579,6 +689,9 @@ namespace HydroVisionDesign.ViewModel
             IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = true;
             IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxH2();
@@ -606,6 +719,9 @@ namespace HydroVisionDesign.ViewModel
             IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = true;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxA1();
@@ -633,6 +749,9 @@ namespace HydroVisionDesign.ViewModel
             IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = true;
             IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxH1();
@@ -661,6 +780,9 @@ namespace HydroVisionDesign.ViewModel
             IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = true;
             IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxNa();
@@ -684,12 +806,14 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftBtnBFCommand { get; }
         private void OnLeftBtnBFCommand(object obj)
         {
-            IsHiddenClarificationFilterProp = true;
             IsHiddenFilterProperty = false;
             IsHiddenVolumeOfIonForMAFProperty = false;
             IsHiddenVolumeOfIonForIonFilterProperty = false;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = true;
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxBF();
@@ -713,17 +837,16 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftBtnClarifierCommand { get; }
         private void OnLeftBtnClarifierCommand(object obj)
         {
-            IsHiddenClarifierProp = true;
-            IsHiddenClarificationFilterProp = false;
             IsHiddenFilterProperty = false;
             IsHiddenVolumeOfIonForMAFProperty = false;
             IsHiddenVolumeOfIonForIonFilterProperty = false;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = true;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = false;
-
             FillTextBoxClarifier();
-
         }
 
         /// <summary>Нажатие дабл левой кнопки по Clarifier</summary>
@@ -744,13 +867,14 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftBtnDecarbonizerCommand { get; }
         private void OnLeftBtnDecarbonizerCommand(object obj)
         {
-            IsHiddenClarifierProp = false;
-            IsHiddenClarificationFilterProp = false;
             IsHiddenFilterProperty = false;
             IsHiddenVolumeOfIonForMAFProperty = false;
             IsHiddenVolumeOfIonForIonFilterProperty = false;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = true;
+            IsHiddenClarificationFilterProp = false;
             IsHiddenWaterFlowToTheNextStage = false;
 
             FillTextBoxDecarbonizer();
@@ -771,10 +895,8 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
-
         public DesaltingPartWTPVM() 
         {
-            IsHiddenMain = true;
 
             #region Команды
 
@@ -967,8 +1089,6 @@ namespace HydroVisionDesign.ViewModel
             CalcH2 calc = new CalcH2();
             calc.Calculations();
             FillTextBoxH2();
-
-
         }
 
         /// <summary>Заполнение данными из H2Storage свойств textBox</summary>
@@ -1006,8 +1126,6 @@ namespace HydroVisionDesign.ViewModel
             CalcA1 calc = new CalcA1();
             calc.Calculations();
             FillTextBoxA1();
-
-
         }
 
         /// <summary>Заполнение данными из A1Storage свойств textBox</summary>
@@ -1044,8 +1162,6 @@ namespace HydroVisionDesign.ViewModel
             CalcH1 calc = new CalcH1();
             calc.Calculations();
             FillTextBoxH1();
-
-
         }
 
         /// <summary>Заполнение данными из H1Storage свойств textBox</summary>
@@ -1081,8 +1197,6 @@ namespace HydroVisionDesign.ViewModel
             CalcNa calc = new CalcNa();
             calc.Calculations();
             FillTextBoxNa();
-
-
         }
 
         /// <summary>Заполнение данными из NaStorage свойств textBox</summary>
@@ -1122,8 +1236,6 @@ namespace HydroVisionDesign.ViewModel
                 MessageBox.Show($"Действительная скорость фильтрования w = {BFStorage.Instance.w_m1} м/ч, что больше чем теоритическая скорость w_0 = {BFStorage.Instance.w} м/ч \n Добавьте еще как минимум 1 фильтр!");
             }
             FillTextBoxBF();
-
-
         }
 
         /// <summary>Заполнение данными из BFStorage свойств textBox</summary>
@@ -1131,16 +1243,15 @@ namespace HydroVisionDesign.ViewModel
         {
             FiltrationArea = BFStorage.Instance.F;
             FiltrationSpeed = BFStorage.Instance.w;
-            WaterConsumptionPerFilter = BoilerStorage.Instance.PerfomanceWTPForHeatingSystem;
+            WaterConsumptionPerFilter = BFStorage.Instance.Q_bf_input;
             FiltrationAreaOfEachFilter = BFStorage.Instance.f_p;
             DesignFilterDiameter = BFStorage.Instance.d_p;
             FilterArea = BFStorage.Instance.f_ct;
 
-            NumberOfRegenerationsPerDay = BFStorage.Instance.n;
-
-
-            VolumeOfIonExchangeMaterialsInGroupFilter = BFStorage.Instance.SumV_vl;
-
+            WaterConsumptionForLooseningWashes = BFStorage.Instance.g_vzr;
+            WaterConsumptionForWashingBF = BFStorage.Instance.g_otm;
+            HourlyWaterConsumptionForRinsing = BFStorage.Instance.g_0;
+            ActualFiltrationSpeed = BFStorage.Instance.w_m1;
 
             WaterConsumptionForNextGroupOfFilters = BFStorage.Instance.Q_br;
         }
@@ -1155,14 +1266,21 @@ namespace HydroVisionDesign.ViewModel
             CalcClarifier calc = new CalcClarifier();
             calc.Calculations();
             FillTextBoxClarifier();
-
-
         }
 
         /// <summary>Заполнение данными из ClarifierStorage свойств textBox</summary>
         private void FillTextBoxClarifier()
         {
-
+            CapacityOfEachClarifier = ClarifierStorage.Instance.v_ocv;
+            WaterConsumptionPerFilter = BFStorage.Instance.Q_br;
+            CoagulantConsumption = ClarifierStorage.Instance.G_k;
+            AnhydrousCoagulantEquivalent = ClarifierStorage.Instance.E_k;
+            CoagulantDose = DataStorage.Instance.K_Al_Fe;
+            ConsumptionOfTechnicalCoagulantPerDay = ClarifierStorage.Instance.G_k_tex;
+            CoagulantPercentage = ClarifierStorage.Instance.C;
+            PolyacrylamideConsumptionPerDay = ClarifierStorage.Instance.G_PAA;
+            LimeConsumption = ClarifierStorage.Instance.G_izv;
+            ProportionOfLime = ClarifierStorage.Instance.d_izv;
         }
 
         #endregion
@@ -1180,7 +1298,18 @@ namespace HydroVisionDesign.ViewModel
         /// <summary>Заполнение данными из DecarbonizerStorage свойств textBox</summary>
         private void FillTextBoxDecarbonizer()
         {
-
+            ConcentrationCO2BeforeTheDecarbonizer = DecarbonizerStorage.Instance.C_CO_vx;
+            ResidualBicarbonateAlkalinity = DecarbonizerStorage.Instance.W_b_oct;
+            ResidualCarbonateAlkalinity = DecarbonizerStorage.Instance.W_k_oct;
+            CalculatedCapacityInCalciner = DecarbonizerStorage.Instance.Q_d;
+            AmountOfCO2RemovedInTheDecarbonizer = DecarbonizerStorage.Instance.b_CO;
+            DesorptionArea = DecarbonizerStorage.Instance.F_dec;
+            NozzleArea = DecarbonizerStorage.Instance.F_nac;
+            NozzleVolume = DecarbonizerStorage.Instance.V_nac;
+            CrossSectionalArea = DecarbonizerStorage.Instance.f_d;
+            CalcinerDiameter = DecarbonizerStorage.Instance.d_d;
+            RaschigRingAttachmentHeight = DecarbonizerStorage.Instance.h_nac;
+            AirConsumptionForWaterDecarbonization = DecarbonizerStorage.Instance.Q_vozd;
         }
 
         #endregion
