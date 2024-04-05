@@ -12,7 +12,8 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
         WindowState="Maximized"
-        Background="Transparent">
+        Background="Transparent"
+        Icon="/Resources/Images/Icon.ico">
     <Window.DataContext>
         <vm:NavigationVM/>
     </Window.DataContext>
