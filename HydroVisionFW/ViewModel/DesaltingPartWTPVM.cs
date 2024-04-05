@@ -47,15 +47,39 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _IsHiddenAnionProperty, value);
         }
 
-        #endregion
-
         private bool _IsHiddenFilterProperty = false;
-        /// <summary>Свойство для скрытия свойств ФСД</summary>
+        /// <summary>Свойство для скрытия свойств фильтра</summary>
         public bool IsHiddenFilterProperty
         {
             get => _IsHiddenFilterProperty;
             set => Set(ref _IsHiddenFilterProperty, value);
         }
+
+        private bool _IsHiddenVolumeOfIonForMAFProperty = false;
+        /// <summary>Свойство для скрытия свойств ФСД</summary>
+        public bool IsHiddenVolumeOfIonForMAFProperty
+        {
+            get => _IsHiddenVolumeOfIonForMAFProperty;
+            set => Set(ref _IsHiddenVolumeOfIonForMAFProperty, value);
+        }
+
+        private bool _IsHiddenVolumeOfIonForIonFilterProperty = false;
+        /// <summary>Свойство для скрытия свойств ионитных фильтров</summary>
+        public bool IsHiddenVolumeOfIonForIonFilterProperty
+        {
+            get => _IsHiddenVolumeOfIonForIonFilterProperty;
+            set => Set(ref _IsHiddenVolumeOfIonForIonFilterProperty, value);
+        }
+
+        private bool _IsHiddenWaterFlowToTheNextStage = false;
+        /// <summary>Свойство для скрытия свойства расхода воды на след ступень</summary>
+        public bool IsHiddenWaterFlowToTheNextStage
+        {
+            get => _IsHiddenWaterFlowToTheNextStage;
+            set => Set(ref _IsHiddenWaterFlowToTheNextStage, value);
+        }
+
+        #endregion
 
         #region иконки оборудования
 
@@ -339,8 +363,11 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnMAFCommand(object obj)
         {
             IsHiddenFilterProperty = true;
+            IsHiddenVolumeOfIonForMAFProperty = true;
+            IsHiddenVolumeOfIonForIonFilterProperty = false;
             IsHiddenCationProperty = true;
             IsHiddenAnionProperty = true;
+            IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxMAF();
         }
@@ -373,11 +400,13 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnA2Command(object obj)
         {
             IsHiddenFilterProperty = true;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = true;
+            IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxA2();
-
         }
 
         /// <summary>Нажатие дабл левой кнопки по A2</summary>
@@ -398,11 +427,13 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnA2SimplifiedCommand(object obj)
         {
             IsHiddenFilterProperty = true;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = true;
+            IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxA2Simplified();
-
         }
 
         /// <summary>Нажатие дабл левой кнопки по A2упр</summary>
@@ -423,11 +454,13 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnH2Command(object obj)
         {
             IsHiddenFilterProperty = true;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = true;
             IsHiddenAnionProperty = false;
+            IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxH2();
-
         }
 
         /// <summary>Нажатие дабл левой кнопки по H2</summary>
@@ -448,8 +481,11 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnA1Command(object obj)
         {
             IsHiddenFilterProperty = true;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = false;
             IsHiddenAnionProperty = true;
+            IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxA1();
         }
@@ -472,11 +508,13 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnH1Command(object obj)
         {
             IsHiddenFilterProperty = true;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = true;
             IsHiddenAnionProperty = false;
+            IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxH1();
-
         }
 
         /// <summary>Нажатие дабл левой кнопки по H2</summary>
@@ -500,6 +538,13 @@ namespace HydroVisionDesign.ViewModel
             IsHiddenFilterProperty = true;
             IsHiddenCationProperty = true;
             IsHiddenAnionProperty = false;
+
+            IsHiddenFilterProperty = true;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = true;
+            IsHiddenCationProperty = true;
+            IsHiddenAnionProperty = false;
+            IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxNa();
 
@@ -600,7 +645,6 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM() 
         {
-
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
