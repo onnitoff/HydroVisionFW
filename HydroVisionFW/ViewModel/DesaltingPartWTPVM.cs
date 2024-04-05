@@ -351,6 +351,39 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _WaterConsumptionForNextGroupOfFilters, value);
         }
 
+        private double _WaterConsumptionForLooseningWashes;
+        /// <summary>Свойство для Расход воды на взрых промывку</summary>
+        public double WaterConsumptionForLooseningWashes
+        {
+            get => _WaterConsumptionForLooseningWashes;
+            set => Set(ref _WaterConsumptionForLooseningWashes, value);
+        }
+
+        private double _WaterConsumptionForWashingBF;
+        /// <summary>Свойство для Расход воды на отмывку ОФ</summary>
+        public double WaterConsumptionForWashingBF
+        {
+            get => _WaterConsumptionForWashingBF;
+            set => Set(ref _WaterConsumptionForWashingBF, value);
+        }
+
+        private double _HourlyWaterConsumptionForRinsing;
+        /// <summary>Свойство для Часовой расход воды на промывку</summary>
+        public double HourlyWaterConsumptionForRinsing
+        {
+            get => _HourlyWaterConsumptionForRinsing;
+            set => Set(ref _HourlyWaterConsumptionForRinsing, value);
+        }
+
+        private double _ActualFiltrationSpeed;
+        /// <summary>Свойство для Действительная скорость фильтров</summary>
+        public double ActualFiltrationSpeed
+        {
+            get => _ActualFiltrationSpeed;
+            set => Set(ref _ActualFiltrationSpeed, value);
+        }
+
+
         #endregion
 
 
@@ -645,6 +678,8 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM() 
         {
+            IsHiddenMain = true;
+
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
@@ -683,29 +718,29 @@ namespace HydroVisionDesign.ViewModel
 
             if (DataStorage.Instance.DesaltingScheme == "three-stage")
             {
-                _IsHiddenMain = true;
-                _IsHiddenThreeStage = true;
+                IsHiddenMain = true;
+                IsHiddenThreeStage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "two-stage")
             {
-                _IsHiddenMain = true;
-                _IsHiddenTwoStage = true;
+                IsHiddenMain = true;
+                IsHiddenTwoStage = true;
             }
 
             if (DataStorage.Instance.DesaltingScheme == "simplified")
             {
-                _IsHiddenMain = true;
-                _IsHiddenSimplified = true;
+                IsHiddenMain = true;
+                IsHiddenSimplified = true;
             }
 
             if (BoilerStorage.Instance.PerfomanceWTPForHeatingSystem == 0)
             {
-                _IsHiddenNa = false;
+                IsHiddenNa = false;
             }
             else 
             { 
-                _IsHiddenNa = true; 
+                IsHiddenNa = true; 
             }
         }
 

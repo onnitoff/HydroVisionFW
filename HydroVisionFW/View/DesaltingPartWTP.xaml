@@ -352,6 +352,7 @@
                        Width="100"
                        Grid.Column="0" Margin="750,300,0,0"/>
 
+            <!--Prop-->
             <Grid Grid.Column="1">
                 <Border>
                     <Border.Background>
@@ -424,7 +425,6 @@
                     <TextBlock Grid.Column="2"  Grid.Row="7" Text="" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                 </Grid>
-
 
                     <!--VolumeOfIonMAF-->
                     <Grid Visibility="{Binding IsHiddenVolumeOfIonForMAFProperty, 
@@ -575,7 +575,80 @@
                         <TextBlock Grid.Column="2"  Grid.Row="5" Text="кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
 
+                    <!--BF-->
+                    <Grid Visibility="{Binding IsHiddenClarificationFilterProp, 
+                          Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
 
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Площадь фильтрования" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="0" Margin="2"
+                                 Text="{Binding FiltrationArea}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="0" Text="м2" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Скорость фильтрования" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" Margin="2"
+                                 Text="{Binding FiltrationSpeed}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="1" Text="м/с" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Расход воды на фильтр" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="2" Margin="2"
+                                 Text="{Binding WaterConsumptionPerFilter}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="2" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="Площадь фильтр. каждого ф." Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="3" Margin="2"
+                                 Text="{Binding FiltrationAreaOfEachFilter}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="3" Text="м2" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="Расчетный диаметр фильтра" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="4" Margin="2"
+                                 Text="{Binding DesignFilterDiameter}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="4" Text="м" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="5" Text="Площадь фильтра" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="5" Margin="2"
+                                 Text="{Binding FilterArea}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="5" Text="м2" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="7" Text="Расход воды на взрых промывку" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="7" Margin="2"
+                                 Text="{Binding WaterConsumptionForLooseningWashes}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="7" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="8" Text="Расход воды на отмывку ОФ" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="8" Margin="2"
+                                 Text="{Binding WaterConsumptionForWashingBF}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="8" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        
+                        <TextBlock Grid.Column="0" Grid.Row="9" Text="Часовой расход воды на промывку" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="9" Margin="2"
+                                 Text="{Binding HourlyWaterConsumptionForRinsing}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="9" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="10" Text="Действительная скорость фильтров" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="10" Margin="2"
+                                 Text="{Binding ActualFiltrationSpeed}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="10" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <!--WaterFlowToNextStage-->
                     <Grid Grid.ColumnSpan="3" Grid.Row="12"
                           Visibility="{Binding IsHiddenWaterFlowToTheNextStage, 
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
@@ -593,6 +666,7 @@
                                  Text="{Binding WaterConsumptionForNextGroupOfFilters}"/>
                         <TextBlock Grid.Column="2"  Grid.Row="24" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
+
 
 
 
