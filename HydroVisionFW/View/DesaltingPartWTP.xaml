@@ -648,6 +648,81 @@
                         <TextBlock Grid.Column="2"  Grid.Row="10" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
 
+                    <!--Clarifier-->
+                    <Grid Visibility="{Binding IsHiddenClarifierProp, 
+                          Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Емкость каждого из осветлителей" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="0" Margin="2"
+                                 Text="{Binding CapacityOfEachClarifier}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="0" Text="м3" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Полная производительность ВПУ" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" Margin="2"
+                                 Text="{Binding WaterConsumptionPerFilter}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="1" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="Расход коагулянта" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="3" Margin="2"
+                                 Text="{Binding CoagulantConsumption}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="3" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="Эквивалент безводного коагулянта" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="4" Margin="2"
+                                 Text="{Binding AnhydrousCoagulantEquivalent}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="4" Text="" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="5" Text="Доза коагулянта" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="5" Margin="2"
+                                 Text="{Binding CoagulantDose}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="5" Text="мг/кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="7" Text="Расход тех коагулянта в сутки" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="7" Margin="2"
+                                 Text="{Binding ConsumptionOfTechnicalCoagulantPerDay}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="7" Text="кг/сут" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="8" Text="Процентное содержание коагулянта" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="8" Margin="2"
+                                 Text="{Binding CoagulantPercentage}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="8" Text="%" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="10" Text="Расход ПАА в сутки" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="10" Margin="2"
+                                 Text="{Binding PolyacrylamideConsumptionPerDay}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="10" Text="г/сут" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="11" Text="Расход извести" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="11" Margin="2"
+                                 Text="{Binding LimeConsumption}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="11" Text="кг/сут" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="12" Text="Доля извести" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="12" Margin="2"
+                                 Text="{Binding ProportionOfLime}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="12" Text="мг/кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+
                     <!--WaterFlowToNextStage-->
                     <Grid Grid.ColumnSpan="3" Grid.Row="12"
                           Visibility="{Binding IsHiddenWaterFlowToTheNextStage, 

@@ -79,6 +79,23 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _IsHiddenWaterFlowToTheNextStage, value);
         }
 
+        private bool _IsHiddenClarificationFilterProp = false;
+        /// <summary>Свойство для скрытия свойства ОФ</summary>
+        public bool IsHiddenClarificationFilterProp
+        {
+            get => _IsHiddenClarificationFilterProp;
+            set => Set(ref _IsHiddenClarificationFilterProp, value);
+        }
+
+        private bool _IsHiddenClarifierProp = false;
+        /// <summary>Свойство для скрытия свойства Осветлителя</summary>
+        public bool IsHiddenClarifierProp
+        {
+            get => _IsHiddenClarifierProp;
+            set => Set(ref _IsHiddenClarifierProp, value);
+        }
+
+
         #endregion
 
         #region иконки оборудования
@@ -383,6 +400,77 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _ActualFiltrationSpeed, value);
         }
 
+        private double _CapacityOfEachClarifier;
+        /// <summary>Свойство для Емкость каждого из осветлителей</summary>
+        public double CapacityOfEachClarifier
+        {
+            get => _CapacityOfEachClarifier;
+            set => Set(ref _CapacityOfEachClarifier, value);
+        }
+
+        private double _CoagulantConsumption;
+        /// <summary>Свойство для Расход коагулянта</summary>
+        public double CoagulantConsumption
+        {
+            get => _CoagulantConsumption;
+            set => Set(ref _CoagulantConsumption, value);
+        }
+
+        private double _AnhydrousCoagulantEquivalent;
+        /// <summary>Свойство для Эквивалент безводного коагулянта</summary>
+        public double AnhydrousCoagulantEquivalent
+        {
+            get => _AnhydrousCoagulantEquivalent;
+            set => Set(ref _AnhydrousCoagulantEquivalent, value);
+        }
+
+        private double _CoagulantDose;
+        /// <summary>Свойство для Доза коагулянта</summary>
+        public double CoagulantDose
+        {
+            get => _CoagulantDose;
+            set => Set(ref _CoagulantDose, value);
+        }
+
+        private double _ConsumptionOfTechnicalCoagulantPerDay;
+        /// <summary>Свойство для Расход тех коагулянта в сутки</summary>
+        public double ConsumptionOfTechnicalCoagulantPerDay
+        {
+            get => _ConsumptionOfTechnicalCoagulantPerDay;
+            set => Set(ref _ConsumptionOfTechnicalCoagulantPerDay, value);
+        }
+
+        private double _CoagulantPercentage;
+        /// <summary>Свойство для Процентное содержание коагулянта</summary>
+        public double CoagulantPercentage
+        {
+            get => _CoagulantPercentage;
+            set => Set(ref _CoagulantPercentage, value);
+        }
+
+        private double _PolyacrylamideConsumptionPerDay;
+        /// <summary>Свойство для Расход ПАА в сутки</summary>
+        public double PolyacrylamideConsumptionPerDay
+        {
+            get => _PolyacrylamideConsumptionPerDay;
+            set => Set(ref _PolyacrylamideConsumptionPerDay, value);
+        }
+
+        private double _LimeConsumption;
+        /// <summary>Свойство для Расход извести</summary>
+        public double LimeConsumption
+        {
+            get => _LimeConsumption;
+            set => Set(ref _LimeConsumption, value);
+        }
+
+        private double _ProportionOfLime;
+        /// <summary>Свойство для Доля извести</summary>
+        public double ProportionOfLime
+        {
+            get => _ProportionOfLime;
+            set => Set(ref _ProportionOfLime, value);
+        }
 
         #endregion
 
@@ -569,10 +657,6 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnNaCommand(object obj)
         {
             IsHiddenFilterProperty = true;
-            IsHiddenCationProperty = true;
-            IsHiddenAnionProperty = false;
-
-            IsHiddenFilterProperty = true;
             IsHiddenVolumeOfIonForMAFProperty = false;
             IsHiddenVolumeOfIonForIonFilterProperty = true;
             IsHiddenCationProperty = true;
@@ -580,7 +664,6 @@ namespace HydroVisionDesign.ViewModel
             IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxNa();
-
         }
 
         /// <summary>Нажатие дабл левой кнопки по Na</summary>
@@ -601,12 +684,15 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftBtnBFCommand { get; }
         private void OnLeftBtnBFCommand(object obj)
         {
-            IsHiddenFilterProperty = true;
-            IsHiddenCationProperty = true;
+            IsHiddenClarificationFilterProp = true;
+            IsHiddenFilterProperty = false;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = false;
+            IsHiddenCationProperty = false;
             IsHiddenAnionProperty = false;
+            IsHiddenWaterFlowToTheNextStage = true;
 
             FillTextBoxBF();
-
         }
 
         /// <summary>Нажатие дабл левой кнопки по BF</summary>
@@ -627,9 +713,14 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftBtnClarifierCommand { get; }
         private void OnLeftBtnClarifierCommand(object obj)
         {
-            IsHiddenFilterProperty = true;
-            IsHiddenCationProperty = true;
+            IsHiddenClarifierProp = true;
+            IsHiddenClarificationFilterProp = false;
+            IsHiddenFilterProperty = false;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = false;
+            IsHiddenCationProperty = false;
             IsHiddenAnionProperty = false;
+            IsHiddenWaterFlowToTheNextStage = false;
 
             FillTextBoxClarifier();
 
@@ -653,9 +744,14 @@ namespace HydroVisionDesign.ViewModel
         public ICommand LeftBtnDecarbonizerCommand { get; }
         private void OnLeftBtnDecarbonizerCommand(object obj)
         {
-            IsHiddenFilterProperty = true;
-            IsHiddenCationProperty = true;
+            IsHiddenClarifierProp = false;
+            IsHiddenClarificationFilterProp = false;
+            IsHiddenFilterProperty = false;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = false;
+            IsHiddenCationProperty = false;
             IsHiddenAnionProperty = false;
+            IsHiddenWaterFlowToTheNextStage = false;
 
             FillTextBoxDecarbonizer();
 
@@ -1039,16 +1135,12 @@ namespace HydroVisionDesign.ViewModel
             FiltrationAreaOfEachFilter = BFStorage.Instance.f_p;
             DesignFilterDiameter = BFStorage.Instance.d_p;
             FilterArea = BFStorage.Instance.f_ct;
-            //FilterCycleDuration = BFStorage.Instance.T_FAA;
+
             NumberOfRegenerationsPerDay = BFStorage.Instance.n;
 
-           // VolumeOfIonExchangeMaterialsInOneFilter = NaStorage.Instance.V_vl;
+
             VolumeOfIonExchangeMaterialsInGroupFilter = BFStorage.Instance.SumV_vl;
 
-           // WaterConsumptionForOwnNeedsCation = BFStorage.Instance.g_cnK;
-           // ConsumptionOfChemicalReagentsCation = NaStorage.Instance.G_100pK;
-           // TechnicalProductConsumptionCation = NaStorage.Instance.G_texK;
-           // DailyConsumptionOfChemicalReagentCation = NaStorage.Instance.G_cutK;
 
             WaterConsumptionForNextGroupOfFilters = BFStorage.Instance.Q_br;
         }
