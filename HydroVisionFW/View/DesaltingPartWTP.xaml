@@ -723,6 +723,94 @@
                         <TextBlock Grid.Column="2"  Grid.Row="12" Text="мг/кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
 
+                    <!--Decarbonizer-->
+                    <Grid Visibility="{Binding IsHiddenDecarbonizerProp, 
+                          Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Концентрация СО2 перед Д" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="0" Margin="2"
+                                 Text="{Binding ConcentrationCO2BeforeTheDecarbonizer}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="0" Text="мг/кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Бикарбонатная щелочность ост" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" Margin="2"
+                                 Text="{Binding ResidualBicarbonateAlkalinity}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="1" Text="мг/кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Карбонатная щелочность ост" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="2" Margin="2"
+                                 Text="{Binding ResidualCarbonateAlkalinity}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="2" Text="мг/кг" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="Расчетная производительность в Д" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="4" Margin="2"
+                                 Text="{Binding CalculatedCapacityInCalciner}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="4" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="6" Text="Количество CO2 удаленного в Д" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="6" Margin="2"
+                                 Text="{Binding AmountOfCO2RemovedInTheDecarbonizer}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="6" Text="кг/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="7" Text="Площадь десорбции" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="7" Margin="2"
+                                 Text="{Binding DesorptionArea}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="7" Text="кг/сут" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="9" Text="Площадь насадки" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="9" Margin="2"
+                                 Text="{Binding NozzleArea}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="9" Text="м2" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="10" Text="Обьем насадки" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="10" Margin="2"
+                                 Text="{Binding NozzleVolume}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="10" Text="м3" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="11" Text="Площадь поперечного сечения Д" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="11" Margin="2"
+                                 Text="{Binding CrossSectionalArea}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="11" Text="м2" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="13" Text="Диаметр декарбонизатора" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="13" Margin="2"
+                                 Text="{Binding CalcinerDiameter}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="13" Text="м" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        
+                        <TextBlock Grid.Column="0" Grid.Row="14" Text="Высота насадки колец Рашига" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="14" Margin="2"
+                                 Text="{Binding RaschigRingAttachmentHeight}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="14" Text="м" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="0" Grid.Row="15" Text="Расход воздуха на Д" Margin="5,0,0,0"/>
+                        <TextBox Grid.Column="1" Grid.Row="15" Margin="2"
+                                 Text="{Binding AirConsumptionForWaterDecarbonization}"/>
+                        <TextBlock Grid.Column="2"  Grid.Row="12" Text="м3/ч" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+
                     <!--WaterFlowToNextStage-->
                     <Grid Grid.ColumnSpan="3" Grid.Row="12"
                           Visibility="{Binding IsHiddenWaterFlowToTheNextStage, 
