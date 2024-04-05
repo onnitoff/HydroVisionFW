@@ -6,16 +6,16 @@
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="600" 
-             d:DesignWidth="660"
+             d:DesignWidth="1000"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:CoolingSystemVM/>
     </UserControl.DataContext>
     
     <Grid>
-        <Border CornerRadius="0,20,20,0">
+        <Border>
             <Border.Background>
-                <SolidColorBrush Color="#FF2121"/>
+                <SolidColorBrush Color="#efd2d2"/>
             </Border.Background>
         </Border>
     </Grid>

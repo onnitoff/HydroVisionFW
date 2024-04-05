@@ -18,7 +18,8 @@
     <Grid>
         <Border>
             <Border.Background>
-                <SolidColorBrush Color="DarkOliveGreen"/>
+                <!--<ImageBrush ImageSource="D:\ДИПЛОМ ПОИС\app\HydroVisionFW\HydroVisionFW\Resources\Images\deed28215032899dd3dcfc5b85c48843.jpg"/>-->
+                <SolidColorBrush Color="#d3d3d3"/>
             </Border.Background>
         </Border>
 

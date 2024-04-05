@@ -19,7 +19,7 @@
     <Grid>
         <Border>
             <Border.Background>
-                <SolidColorBrush Color="BlanchedAlmond"/>
+                <SolidColorBrush Color="#eaead3"/>
             </Border.Background>
         </Border>
         <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="20,20,20,20" TextWrapping="Wrap" Text="Расчет производительности ВПУ для подпитки основного цикла" VerticalAlignment="Top"/>

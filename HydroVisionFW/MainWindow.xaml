@@ -17,13 +17,13 @@
         <vm:NavigationVM/>
     </Window.DataContext>
     <Grid>
-        <!--// Window Border //-->
+        <!--Window Border-->
 
-        <Border Background="#212529" />
+        <Border Background="#212529"/>
 
         <Grid>
 
-            <!--// Base Grid //-->
+            <!--Base Grid-->
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="240" />
@@ -34,7 +34,7 @@
 
             <Grid Grid.Column="0" 
                   HorizontalAlignment="Left">
-                <Border Background="#272B2F" />
+                <Border Background="#272B2F"/>
 
                 <StackPanel>
 

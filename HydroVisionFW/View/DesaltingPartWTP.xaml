@@ -359,7 +359,7 @@
             <Grid Grid.Column="1">
                 <Border>
                     <Border.Background>
-                        <SolidColorBrush Color="MediumPurple"/>
+                        <SolidColorBrush Color="#A9A9A9"/>
                     </Border.Background>
                 </Border>
             </Grid>

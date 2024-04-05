@@ -6,15 +6,16 @@
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="600" 
-             d:DesignWidth="660"
+             d:DesignWidth="1000"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:CirculationPumpsVM/>
     </UserControl.DataContext>
     <Grid>
-        <Border CornerRadius="0,20,20,0">
+        <Border>
             <Border.Background>
-                <SolidColorBrush Color="Aqua"/>
+                <ImageBrush ImageSource="D:\ДИПЛОМ ПОИС\app\HydroVisionFW\HydroVisionFW\Resources\Images\deed28215032899dd3dcfc5b85c48843.jpg"/>
+                <!--<SolidColorBrush Color="#d2efe8"/>-->
             </Border.Background>
         </Border>
 
