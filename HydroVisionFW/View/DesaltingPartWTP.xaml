@@ -71,9 +71,7 @@
                       Data="M580 268 L580 290 L608 290"/>
 
                 <Path Stroke="Blue" StrokeThickness="5"
-                      Data="M629 290 L663 290 L663 230 L703, 230 L703 260"/>
-
-
+                      Data="M629 290 L663 290 L663 230 L704, 230 L704 260"/>
             </Grid>
 
 
@@ -83,8 +81,21 @@
                   x:Name="three_stage"
                   Visibility="{Binding IsHiddenThreeStage,
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
-                <!--MAF_IMAGE-->
 
+                <Grid Grid.Column="0" Margin="-52,95,0,0">
+
+                    <Path Stroke="Blue" StrokeThickness="5"
+                          Data="M703 350 L703 370 L741 370 L741 230 L779 230 L779 255"/>
+
+                    <Path Stroke="Blue" StrokeThickness="5"
+                          Data="M779 350 L779 370 L825 370 L825 230 L865 230 L865 255"/>
+
+                    <Path Stroke="Blue" StrokeThickness="5"
+                          Data="M865 350 L865 412 L883 412"/>
+                </Grid>
+                
+                <!--MAF_IMAGE-->
+                
                 <Image Source="/Resources/Images/Filter_MA.png"
                        Height="100"
                        Width="100"
@@ -144,14 +155,6 @@
                     </Image.InputBindings>
                 </Image>
 
-                <Grid Grid.Column="0" Margin="-52,95,0,0">
-
-                    <Path Stroke="Blue" StrokeThickness="5"
-                          Data="M779 350 L779 370 L825 370 L825 230 L865 230 L865 255"/>
-
-                    <Path Stroke="Blue" StrokeThickness="5"
-                          Data="M865 350 L865 412 L883 412"/>
-                </Grid>
 
 
 
