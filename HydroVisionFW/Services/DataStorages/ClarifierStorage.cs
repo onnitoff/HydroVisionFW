@@ -42,12 +42,5 @@ namespace HydroVisionFW.Services.DataStorages
         public int Height { get; set; }
 
         #endregion
-
-
-        #region DB
-
-        public int SelectedBrandOfIon { get; set; } = 1;
-        public int SelectedSuitableClarifier { get; set; } = 0;
-        #endregion
     }
 }
