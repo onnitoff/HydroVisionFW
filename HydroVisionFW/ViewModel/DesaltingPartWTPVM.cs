@@ -969,8 +969,6 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM() 
         {
-            IsHiddenMain = true;
-            IsHiddenClarifierProp = true;
 
             #region Команды
 
