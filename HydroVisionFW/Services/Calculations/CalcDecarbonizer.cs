@@ -22,7 +22,7 @@ namespace HydroVisionFW.Services.Calculations
             DecarbonizerCalculation decarbonizer = new DecarbonizerCalculation();
             DecarbonizerStorage.Instance.W_b_oct = decarbonizer.CarbonateAlkalinity(DataStorage.Instance.ExcessLime);
             DecarbonizerStorage.Instance.W_k_oct = decarbonizer.BicarbonateAlkalinity(DataStorage.Instance.ResidualHardnessCarbonate, DataStorage.Instance.ExcessLime);
-            DecarbonizerStorage.Instance.C_CO_vx = decarbonizer.ConcentrationCO2BeforeTheDecarbonizerWithFe(DecarbonizerStorage.Instance.W_b_oct, DecarbonizerStorage.Instance.W_k_oct);
+            DecarbonizerStorage.Instance.C_CO_vx = decarbonizer.ConcentrationCO2BeforeTheDecarbonizerWithFe(DecarbonizerStorage.Instance.W_k_oct, DecarbonizerStorage.Instance.W_b_oct);
 
             if (DataStorage.Instance.DesaltingScheme == "simplified")
                 DecarbonizerStorage.Instance.Q_d_input = A2StorageSimplified.Instance.Q_br;
@@ -49,12 +49,13 @@ namespace HydroVisionFW.Services.Calculations
 
             foreach (var item in SuitableDecarbonizer)
             {
-                if (item.Diameter > DecarbonizerStorage.Instance.d_d)
+                if (item.Diameter > DecarbonizerStorage.Instance.d_d * 1000)
                 {
                     DecarbonizerStorage.Instance.Perfomance = item.Perfomance;
                     DecarbonizerStorage.Instance.Diameter = item.Diameter;
                     DecarbonizerStorage.Instance.CrossAreaSections = item.CrossAreaSections;
                     DecarbonizerStorage.Instance.AirFlow = item.AirFlow;
+                    return;
                 }
             }
         }

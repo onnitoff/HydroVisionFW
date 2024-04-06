@@ -96,6 +96,10 @@ namespace HydroVisionDesign.Services.TestValues
 
             //Decarbonizer
             DecarbonizerStorage.Instance.C_CO_oct = 6;
+            DecarbonizerStorage.Instance.K_j = 0.5;
+            DecarbonizerStorage.Instance.deltaC_CO = 0.015;
+            DecarbonizerStorage.Instance.f_kp = 206;
+            DecarbonizerStorage.Instance.b = 60;
 
 
 
