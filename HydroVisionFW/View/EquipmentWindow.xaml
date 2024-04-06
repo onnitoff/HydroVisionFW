@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:HydroVisionFW.ViewModel"
         mc:Ignorable="d"
-        Title="EquipmentWindow" Height="450" Width="800"
+        Title="Свойства" Height="450" Width="800"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="/Resources/Images/Icon.ico">
     <Window.DataContext>
         <vm:EquipmentWindowVM/>
     </Window.DataContext>

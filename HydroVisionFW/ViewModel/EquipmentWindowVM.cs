@@ -804,26 +804,12 @@ namespace HydroVisionFW.ViewModel
 
         private void GetComboBox_Clarifier()
         {
-            DataRepository data = new DataRepository();
-            int idClarifier = 1;
 
-            // обращение к бд фильтры
-            Task.Run(async () =>
-            {
-                SuitableClarifier = await data.GetClarifierAsync(idClarifier);
-            }).Wait();
-            SelectedSuitableClarifier = SuitableClarifier[ClarifierStorage.Instance.SelectedSuitableClarifier];
         }
 
         private void RecordParamToStorage_Clarifier()
         {
-            ClarifierStorage.Instance.SelectedSuitableClarifier = SelectedSuitableClarifier.Id - 1;
             ClarifierStorage.Instance.m = FilterCount;
-            ClarifierStorage.Instance.Name = SelectedSuitableClarifier.Name;
-            ClarifierStorage.Instance.Volume = SelectedSuitableClarifier.Volume;
-            ClarifierStorage.Instance.Perfomance = SelectedSuitableClarifier.Perfomance;
-            ClarifierStorage.Instance.Diameter = SelectedSuitableClarifier.Diameter;
-            ClarifierStorage.Instance.Height = SelectedSuitableClarifier.Height;
         }
 
         #endregion

@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
         xmlns:Menu="clr-namespace:HydroVisionDesign.Infrastructure.Elements"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="HydroVisionPro" 
         Height="450" 
         Width="900"
         WindowStartupLocation="CenterScreen"

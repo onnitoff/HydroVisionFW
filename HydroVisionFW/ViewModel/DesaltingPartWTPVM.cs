@@ -479,6 +479,46 @@ namespace HydroVisionDesign.ViewModel
             set => Set(ref _ProportionOfLime, value);
         }
 
+        private string _ClarifierBrand;
+        /// <summary>Свойство для Бренд</summary>
+        public string ClarifierBrand
+        {
+            get => _ClarifierBrand;
+            set => Set(ref _ClarifierBrand, value);
+        }
+
+        private double _ClarifierPerformance;
+        /// <summary>Свойство для Производительность</summary>
+        public double ClarifierPerformance
+        {
+            get => _ClarifierPerformance;
+            set => Set(ref _ClarifierPerformance, value);
+        }
+
+        private double _GeometricVolumeOfClarifier;
+        /// <summary>Свойство для Обьем</summary>
+        public double GeometricVolumeOfClarifier
+        {
+            get => _GeometricVolumeOfClarifier;
+            set => Set(ref _GeometricVolumeOfClarifier, value);
+        }
+
+        private double _ClarifierDiameter;
+        /// <summary>Свойство для Диаметр</summary>
+        public double ClarifierDiameter
+        {
+            get => _ClarifierDiameter;
+            set => Set(ref _ClarifierDiameter, value);
+        }
+
+        private double _ClarifierHeight;
+        /// <summary>Свойство для Высота</summary>
+        public double ClarifierHeight
+        {
+            get => _ClarifierHeight;
+            set => Set(ref _ClarifierHeight, value);
+        }
+
         private double _ConcentrationCO2BeforeTheDecarbonizer;
         /// <summary>Свойство для Концентрация СО2 перед Д</summary>
         public double ConcentrationCO2BeforeTheDecarbonizer
@@ -573,6 +613,38 @@ namespace HydroVisionDesign.ViewModel
         {
             get => _AirConsumptionForWaterDecarbonization;
             set => Set(ref _AirConsumptionForWaterDecarbonization, value);
+        }
+
+        private double _DecarbonizerPerfomance;
+        /// <summary>Свойство для Производительность Д по таблице</summary>
+        public double DecarbonizerPerfomance
+        {
+            get => _DecarbonizerPerfomance;
+            set => Set(ref _DecarbonizerPerfomance, value);
+        }
+
+        private double _DecarbonizerDiameter;
+        /// <summary>Свойство для Диаметер Д по таблице</summary>
+        public double DecarbonizerDiameter
+        {
+            get => _DecarbonizerDiameter;
+            set => Set(ref _DecarbonizerDiameter, value);
+        }
+
+        private double _DecarbonizerCrossAreaSection;
+        /// <summary>Свойство для Площадь поперечного сечения Д по таблице</summary>
+        public double DecarbonizerCrossAreaSection
+        {
+            get => _DecarbonizerCrossAreaSection;
+            set => Set(ref _DecarbonizerCrossAreaSection, value);
+        }
+
+        private double _DecarbonizerAirFlow;
+        /// <summary>Свойство для Расход воздуха Д по таблице</summary>
+        public double DecarbonizerAirFlow
+        {
+            get => _DecarbonizerAirFlow;
+            set => Set(ref _DecarbonizerAirFlow, value);
         }
 
         #endregion
@@ -897,6 +969,9 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM() 
         {
+            IsHiddenMain = true;
+            IsHiddenClarifierProp = true;
+
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
@@ -1280,6 +1355,11 @@ namespace HydroVisionDesign.ViewModel
             PolyacrylamideConsumptionPerDay = ClarifierStorage.Instance.G_PAA;
             LimeConsumption = ClarifierStorage.Instance.G_izv;
             ProportionOfLime = ClarifierStorage.Instance.d_izv;
+            ClarifierBrand = ClarifierStorage.Instance.Name;
+            ClarifierPerformance = ClarifierStorage.Instance.Perfomance;
+            GeometricVolumeOfClarifier = ClarifierStorage.Instance.Volume;
+            ClarifierDiameter = ClarifierStorage.Instance.Diameter;
+            ClarifierHeight = ClarifierStorage.Instance.Height;
         }
 
         #endregion
@@ -1309,6 +1389,10 @@ namespace HydroVisionDesign.ViewModel
             CalcinerDiameter = DecarbonizerStorage.Instance.d_d;
             RaschigRingAttachmentHeight = DecarbonizerStorage.Instance.h_nac;
             AirConsumptionForWaterDecarbonization = DecarbonizerStorage.Instance.Q_vozd;
+            DecarbonizerPerfomance = DecarbonizerStorage.Instance.Perfomance;
+            DecarbonizerDiameter = DecarbonizerStorage.Instance.Diameter;
+            DecarbonizerCrossAreaSection = DecarbonizerStorage.Instance.CrossAreaSections;
+            DecarbonizerAirFlow = DecarbonizerStorage.Instance.AirFlow;
         }
 
         #endregion
