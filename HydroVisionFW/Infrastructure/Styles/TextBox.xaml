@@ -42,7 +42,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#e0e0e0"/>
+                <Setter Property="Background" Value="#060644"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
                 <Setter Property="BorderBrush" Value="#007acc"/>
