@@ -142,12 +142,12 @@ namespace HydroVisionDesign.ViewModel
         /// <summary>Заполнение textBox</summary>
         private void FillingTextBox()
         {
-            if (DataStorage.Instance.BoilerPerfomanceFirst != 0 && DataStorage.Instance.BoilerPerfomanceSecond == 0)
+            if (BoilerStorage.Instance.NumberOfBoilersFirst != 0 && BoilerStorage.Instance.NumberOfBoilersSecond == 0)
                 InternalLosses = $"q_внутр = 2% * D * n = 2% * {DataStorage.Instance.BoilerPerfomanceFirst} * {BoilerStorage.Instance.NumberOfBoilersFirst} = {BoilerStorage.Instance.InternalLosses} т/ч";
-            if (DataStorage.Instance.BoilerPerfomanceSecond != 0 && DataStorage.Instance.BoilerPerfomanceFirst == 0)
+            if (BoilerStorage.Instance.NumberOfBoilersSecond != 0 && BoilerStorage.Instance.NumberOfBoilersFirst == 0)
                 InternalLosses = $"q_внутр = 2% * D * n = 2% * {DataStorage.Instance.BoilerPerfomanceSecond} * {BoilerStorage.Instance.NumberOfBoilersSecond} = {BoilerStorage.Instance.InternalLosses} т/ч";
-            if(DataStorage.Instance.BoilerPerfomanceFirst != 0 && DataStorage.Instance.BoilerPerfomanceSecond != 0)
-                InternalLosses = $"q_внутр = 2% * (D1 * n1 + D2 * n2 = 2% * {DataStorage.Instance.BoilerPerfomanceSecond} * {BoilerStorage.Instance.NumberOfBoilersSecond} + " +
+            if(BoilerStorage.Instance.NumberOfBoilersFirst != 0 && BoilerStorage.Instance.NumberOfBoilersSecond != 0)
+                InternalLosses = $"q_внутр = 2% * (D1 * n1 + D2 * n2 = 2% * {DataStorage.Instance.BoilerPerfomanceFirst} * {BoilerStorage.Instance.NumberOfBoilersFirst} + " +
                                  $"{DataStorage.Instance.BoilerPerfomanceSecond} * {BoilerStorage.Instance.NumberOfBoilersSecond} = {BoilerStorage.Instance.InternalLosses} т/ч";
 
             Stock = $"q_зап = {BoilerStorage.Instance.DesaltedWaterSupply} т/ч";
