@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="Infrastructure/Styles/Button.xaml"/>
                 <ResourceDictionary Source="Infrastructure/Styles/Page.xaml"/>
                 <ResourceDictionary Source="Infrastructure/Styles/Text.xaml"/>
+                <ResourceDictionary Source="Infrastructure/Styles/TextBox.xaml"/>
                 <ResourceDictionary Source="Infrastructure/DataTemplates/DataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

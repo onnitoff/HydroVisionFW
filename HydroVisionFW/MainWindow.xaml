@@ -39,11 +39,21 @@
 
                 <StackPanel>
 
+                    <!--GivenParam-->
+
+                    <Menu:Btn Style="{StaticResource BtnStyle}"
+                              Command="{Binding GivenParamCommand}" VerticalAlignment="Bottom"
+                              IsChecked="True">
+                        <Grid>
+                            <TextBlock Text="Задать параметры"
+                                       Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:Btn>
+
                     <!--WaterQualityIndicators-->
 
                     <Menu:Btn Style="{StaticResource BtnStyle}"
-                              Command="{Binding Path=WaterQualityCommand}"
-                              IsChecked="True">
+                              Command="{Binding Path=WaterQualityCommand}">
                         <Grid>
                             <TextBlock Text="Показатели качества воды"
                                        Style="{StaticResource Text_Style}"/>
@@ -87,16 +97,6 @@
                         <Grid>
                             <TextBlock Text="Циркуляционные насосы"
                                        Style="{StaticResource Text_Style}"/>
-                        </Grid>
-                    </Menu:Btn>
-                    
-                    <!--GivenParam-->
-                    
-                    <Menu:Btn Style="{StaticResource BtnStyle}"
-                              Command="{Binding GivenParamCommand}" VerticalAlignment="Bottom">
-                        <Grid>
-                            <TextBlock Text="Задать параметры"
-                            Style="{StaticResource Text_Style}"/>
                         </Grid>
                     </Menu:Btn>
 

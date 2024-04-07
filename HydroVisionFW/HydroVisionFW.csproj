@@ -248,6 +248,10 @@
     <Compile Include="Infrastructure\Base\ViewModelBase.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
     <Compile Include="Infrastructure\Elements\Btn.cs" />
+    <Page Include="Infrastructure\Styles\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -348,6 +352,7 @@
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
       <LastGenOutput>DataBaseModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\BG_GivenParam.png" />
     <Resource Include="Resources\Images\Icon.ico" />
     <Resource Include="Resources\Images\deed28215032899dd3dcfc5b85c48843.jpg" />
     <Resource Include="Resources\Images\Tank.png" />

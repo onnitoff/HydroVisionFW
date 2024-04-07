@@ -74,7 +74,7 @@ namespace HydroVisionDesign.ViewModel
             GivenParamCommand = new RelayCommand(GivenParam);
 
             // Начальное окно
-            CurrentView = new WaterQualityIndicatorsVM();
+            CurrentView = new GivenParametersVM();
         }
 
 
