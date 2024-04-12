@@ -12,7 +12,7 @@
         <Setter Property="HorizontalAlignment"
                 Value="Left" />
         <Setter Property="Foreground"
-                Value="#DBDBDB" />
+                Value="#FFF" />
         <Setter Property="FontSize" 
                 Value="12" />
         <Setter Property="Margin"
@@ -29,7 +29,7 @@
         <Setter Property="HorizontalAlignment"
             Value="Left" />
         <Setter Property="Foreground"
-            Value="#FFFFFF" />
+            Value="Black" />
         <Setter Property="FontSize" 
             Value="18" />
         <Setter Property="Margin"
@@ -46,7 +46,7 @@
         <Setter Property="HorizontalAlignment"
         Value="Left" />
         <Setter Property="Foreground"
-        Value="#FFFFFF" />
+        Value="Black" />
         <Setter Property="FontSize" 
         Value="12" />
         <Setter Property="Margin"
@@ -63,7 +63,7 @@ TargetType="TextBlock">
         <Setter Property="HorizontalAlignment"
      Value="Left" />
         <Setter Property="Foreground"
-     Value="#FFFFFF" />
+     Value="Black" />
         <Setter Property="FontSize" 
      Value="26" />
         <Setter Property="Margin"
