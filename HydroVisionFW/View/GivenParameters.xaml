@@ -4,10 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="1050" 
+             d:DesignHeight="1350" 
              d:DesignWidth="1200"
-             Style="{StaticResource Page_Style}">
+             Style="{StaticResource Page_Style}"
+             TextElement.Foreground="Black"
+     TextElement.FontWeight="DemiBold"
+     TextElement.FontSize="14"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}">
     <UserControl.DataContext>
         <vm:GivenParametersVM/>
     </UserControl.DataContext>
@@ -15,229 +23,233 @@
         <Grid.Resources>
             <Style TargetType="TextBlock"
                BasedOn="{StaticResource TextBase}"/>
-            <Style TargetType="TextBox"
-                   BasedOn="{StaticResource TBoxBase}"/>
-            <Style TargetType="ComboBox"
+            <!--<Style TargetType="TextBox"
+                   BasedOn="{StaticResource TBoxBase}"/>-->
+            <!--<Style TargetType="ComboBox"
                    BasedOn="{StaticResource  CBoxBase}"/>
             <Style TargetType="ComboBoxItem"
-                   BasedOn="{StaticResource CBoxItemBase}"/>
+                   BasedOn="{StaticResource CBoxItemBase}"/>-->
         </Grid.Resources>
         <Border>
             <Border.Background>
                 <ImageBrush ImageSource="/Resources/Images/BG_GivenParam.png"/>
             </Border.Background>
         </Border>
-        <StackPanel>
-            <!--Header-->
-            <StackPanel Width="370">
-                <TextBlock Style="{StaticResource Text_Title}"
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!--Header-->
+                <StackPanel Width="370">
+                    <TextBlock Style="{StaticResource Text_Title}"
                            HorizontalAlignment="Center" 
                            TextWrapping="Wrap"
                            TextAlignment="Center"
                            VerticalAlignment="Top"
                            Text="Исходные показателей качества воды"
                            Margin="0 20"/>
-        </StackPanel>
-           
-            <!--FirstRow-->
-            <StackPanel Orientation="Horizontal"
+                </StackPanel>
+
+                <!--FirstRow-->
+                <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     Margin="10">
-                 <!--Block Na+K-->
-                <StackPanel Height="90" Width="150" 
+                    <!--Block Na+K-->
+                    <StackPanel Height="90" Width="150" 
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Margin="40 0">
-                    <TextBlock Text="Na+K"
+                        <TextBlock Text="Na+K"
                        TextWrapping="Wrap"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
                        Margin="0 0 0 5"/>
-                    <TextBlock Style="{StaticResource Text_Unit}" 
+                        <TextBlock Style="{StaticResource Text_Unit}" 
                        TextWrapping="Wrap" 
                        Text="{Binding UnitOfMeasurement}" 
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
                        Margin="0 0 0 15"/>
-                    <TextBox x:Name="Na" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Na}" VerticalAlignment="Top" Width="95"/>
-                </StackPanel>
+                        <TextBox x:Name="Na" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Na}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
 
-                <!--Block SO4-->
-                <StackPanel Height="90" Width="150"
+                    <!--Block SO4-->
+                    <StackPanel Height="90" Width="150"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Margin="40 0">
-                    <TextBlock Text="SO4"
+                        <TextBlock Text="SO4"
                        TextWrapping="Wrap"  
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 5"/>
-                    <TextBlock Style="{StaticResource Text_Unit}"
+                        <TextBlock Style="{StaticResource Text_Unit}"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Top"
                        TextWrapping="Wrap" 
                        Text="{Binding Path=UnitOfMeasurement}" 
                        Margin="0 0 0 15"/>
-                    <TextBox x:Name="SO" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=SO}" VerticalAlignment="Top" Width="95"/>
-                </StackPanel>
+                        <TextBox x:Name="SO" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding Path=SO}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
 
-                <!--Block Cl-->
-                <StackPanel Height="90" Width="150"
+                    <!--Block Cl-->
+                    <StackPanel Height="90" Width="150"
                     Margin="40 0">
-                    <TextBlock Text="Cl" 
+                        <TextBlock Text="Cl" 
                        HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 5"/>
-                    <TextBlock Style="{StaticResource Text_Unit}"
+                        <TextBlock Style="{StaticResource Text_Unit}"
                        HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        Text="{Binding Path=UnitOfMeasurement}" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 15"/>
-                    <TextBox x:Name="Cl" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Cl}" VerticalAlignment="Top" Width="95"/>
+                        <TextBox x:Name="Cl" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Cl}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
 
-            <!--SecondRow-->
-            <StackPanel Orientation="Horizontal"
+                <!--SecondRow-->
+                <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     Margin="10">
-        <!--Block SiO2+SiO3-->
-        <StackPanel Height="90" Width="150"
+                    <!--Block SiO2+SiO3-->
+                    <StackPanel Height="90" Width="150"
                     Margin="40 0">
-            <TextBlock Text="SiO2+SiO3"
+                        <TextBlock Text="SiO2+SiO3"
                        HorizontalAlignment="Left"
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 5"/>
-            <TextBlock Style="{StaticResource Text_Unit}"
+                        <TextBlock Style="{StaticResource Text_Unit}"
                        HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        Text="{Binding Path=UnitOfMeasurement}" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 15"/>
-            <TextBox x:Name="SiO" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=SiO}" VerticalAlignment="Top" Width="95"/>
-        </StackPanel>
+                        <TextBox x:Name="SiO" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=SiO}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
 
-        <!--Block DryResidue-->
-        <StackPanel Height="90" Width="150"
+                    <!--Block DryResidue-->
+                    <StackPanel Height="90" Width="150"
                     Margin="40 0">
-            <TextBlock Text="Сухой остаток"
+                        <TextBlock Text="Сухой остаток"
                        HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 5"/>
-            <TextBlock Style="{StaticResource Text_Unit}"
+                        <TextBlock Style="{StaticResource Text_Unit}"
                        HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        Text="{Binding Path=UnitOfMeasurement}" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 15"/>
-            <TextBox x:Name="DryResidue" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=DryResidue}" VerticalAlignment="Top" Width="95"/>
-        </StackPanel>
+                        <TextBox x:Name="DryResidue" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=DryResidue}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
 
-        <!--Block Oxidability-->
-        <StackPanel Height="90" Width="150"
+                    <!--Block Oxidability-->
+                    <StackPanel Height="90" Width="150"
                     Margin="40 0">
-            <TextBlock  Text="Окисляеомсть"
+                        <TextBlock  Text="Окисляеомсть"
                         HorizontalAlignment="Left" 
                         TextWrapping="Wrap" 
                         VerticalAlignment="Top" 
                         Margin="0 0 0 5"/>
-            <TextBlock Style="{StaticResource Text_Unit}"
+                        <TextBlock Style="{StaticResource Text_Unit}"
                        HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        Text="{Binding Path=UnitOfMeasurement}" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 15"/>
-            <TextBox x:Name="Oxidability" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Oxidability}" VerticalAlignment="Top" Width="95"/>
-        </StackPanel>
-            </StackPanel>
+                        <TextBox x:Name="Oxidability" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Oxidability}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
+                </StackPanel>
 
-            <!--Third-->
-            <StackPanel Orientation="Horizontal"
+                <!--Third-->
+                <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     Margin="10">
 
-                <!--Block Alkalinity-->
-                <StackPanel Height="90" Width="150"
+                    <!--Block Alkalinity-->
+                    <StackPanel Height="90" Width="150"
                      Margin="40 0">
-                    <TextBlock Text="Щелочность"
+                        <TextBlock Text="Щелочность"
                        HorizontalAlignment="Left"
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 5"/>
-                    <TextBlock Style="{StaticResource Text_Unit}"
+                        <TextBlock Style="{StaticResource Text_Unit}"
                        HorizontalAlignment="Left"  
                        TextWrapping="Wrap" 
                        Text="мг-экв/дм3" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 15"/>
-                    <TextBox x:Name="HCO" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=HCO}" VerticalAlignment="Top" Width="95"/>
-                </StackPanel>
+                        <TextBox x:Name="HCO" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=HCO}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
 
-                <!--Block OverallHardness-->
-                <StackPanel Height="90" Width="150"
+                    <!--Block OverallHardness-->
+                    <StackPanel Height="90" Width="150"
                      Margin="40 0">
-                    <TextBlock Text="Жесткость общая" 
+                        <TextBlock Text="Жесткость общая" 
                        HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 5"/>
-                    <TextBlock Style="{StaticResource Text_Unit}"
+                        <TextBlock Style="{StaticResource Text_Unit}"
                        HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        Text="мг-экв/дм3" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 15"/>
-                    <TextBox x:Name="OverallHardness" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=OverallHardness}" VerticalAlignment="Top" Width="95"/>
+                        <TextBox x:Name="OverallHardness" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=OverallHardness}" VerticalAlignment="Top" Width="95"/>
 
-                </StackPanel>
+                    </StackPanel>
 
-                <!--Block CalciumHardness-->
-                <StackPanel Height="90" Width="150"
+                    <!--Block CalciumHardness-->
+                    <StackPanel Height="90" Width="150"
                      Margin="40 0">
-                    <TextBlock HorizontalAlignment="Left" 
+                        <TextBlock HorizontalAlignment="Left" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top"
                        Text="Жесткость Ca"
                         Margin="0 0 0 5"/>
-                    <TextBlock Style="{StaticResource Text_Unit}"
+                        <TextBlock Style="{StaticResource Text_Unit}"
                        HorizontalAlignment="Left"  
                        TextWrapping="Wrap" 
                        Text="мг-экв/дм3" 
                        VerticalAlignment="Top"
                        Margin="0 0 0 15"/>
-                    <TextBox x:Name="Ca" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Ca}" VerticalAlignment="Top" Width="95"/>
+                        <TextBox x:Name="Ca" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=Ca}" VerticalAlignment="Top" Width="95"/>
 
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
 
-            <!--Header-->
-            <StackPanel Width="370">
-                <TextBlock Style="{StaticResource Text_Title}"
+                <!--Header-->
+                <StackPanel Width="370">
+                    <TextBlock Style="{StaticResource Text_Title}"
                    HorizontalAlignment="Center" 
                    TextWrapping="Wrap"
                    TextAlignment="Center"
                    VerticalAlignment="Top"
                    Text="Используемое оборудование"
                    Margin="0 20"/>
-            </StackPanel>
+                </StackPanel>
 
-            <!--<StackPanel>
-                <TextBlock HorizontalAlignment="Center"
+                <!--Title BoilerSelect-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
                            TextWrapping="Wrap" 
                            VerticalAlignment="Top"
                            TextAlignment="Center"
                            Text="Выбрать котел"/>
-            </StackPanel>-->
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal"
+                <!--Boiler-->
+                <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
-                    Margin="10">
-                
-                <ComboBox ItemsSource="{Binding Path=BoilerItems}"
+                    Margin="10 10 10 20">
+
+                    <ComboBox ItemsSource="{Binding Path=BoilerItems}"
                            DisplayMemberPath="Name"
                            SelectedValuePath="Id"
                            SelectedItem="{Binding Path=SelectedBoilerFirstItem}"
@@ -246,7 +258,7 @@
                            Width="250"
                            Margin="20 0"/>
 
-                <ComboBox ItemsSource="{Binding BoilerItems}"
+                    <ComboBox ItemsSource="{Binding BoilerItems}"
                           DisplayMemberPath="Name"
                           SelectedValuePath="Id"
                           SelectedItem="{Binding SelectedBoilerSecondItem}"
@@ -254,71 +266,218 @@
                           VerticalAlignment="Top" 
                           Width="250"
                           Margin="20 0"/>
-            </StackPanel>
-            
-            
+                </StackPanel>
 
-        </StackPanel>
+                <!--Title BoilerNumber-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Top"
+                        TextAlignment="Center"
+                        Text="Количество котлов"/>
+                </StackPanel>
 
-        <TextBlock HorizontalAlignment="Left" Margin="497,748,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Электрическая мощность"></TextBlock>
-        <TextBox x:Name="ElectricPower" HorizontalAlignment="Left" Margin="680,747,0,0" TextWrapping="Wrap" Text="{Binding Path=ElectricPower}" VerticalAlignment="Top" Width="95"/>
-        <TextBlock HorizontalAlignment="Left" Margin="790,747,0,0" TextWrapping="Wrap" Text="МВт" VerticalAlignment="Top"/>
+                <!--BoilerNumber-->
+                <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="10 10 10 20">
+                    <TextBox x:Name="NumberOfBoilers" HorizontalAlignment="Left"
+                         TextWrapping="Wrap" 
+                         Text="{Binding Path=NumberOfBoilersFirst}" 
+                         VerticalAlignment="Top" 
+                         Width="95"
+                         Margin="20 0"/>
+                    <TextBox x:Name="NumberOfBoilers_Копировать" HorizontalAlignment="Left"
+                         TextWrapping="Wrap" Text="{Binding Path=NumberOfBoilersSecond}" 
+                         VerticalAlignment="Top" 
+                         Width="95"
+                         Margin="20 0"/>
+                </StackPanel>
 
-        
+                <!--Title SelectTurbine-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top"
+                           TextAlignment="Center"
+                           Text="Выбрать турбину"/>
+                </StackPanel>
 
-        <TextBlock HorizontalAlignment="Left" Margin="502,821,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Количество котлов"></TextBlock>
-        <TextBox x:Name="NumberOfBoilers" HorizontalAlignment="Left" Margin="693,827,0,0" TextWrapping="Wrap" Text="{Binding Path=NumberOfBoilersFirst}" VerticalAlignment="Top" Width="95"/>
-        <TextBlock HorizontalAlignment="Left" Margin="935,831,0,0" TextWrapping="Wrap" Text="шт" VerticalAlignment="Top"/>
+                <!--Turbine-->
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="10 10 10 20">
 
-        <TextBox x:Name="NumberOfBoilers_Копировать" HorizontalAlignment="Left" Margin="835,829,0,0" TextWrapping="Wrap" Text="{Binding Path=NumberOfBoilersSecond}" VerticalAlignment="Top" Width="95"/>
-        <TextBlock HorizontalAlignment="Left" Margin="806,825,0,0" TextWrapping="Wrap" Text="шт" VerticalAlignment="Top"/>
+                    <ComboBox ItemsSource="{Binding Path=TubineItems}"
+                            DisplayMemberPath="TurbineName"
+                            SelectedValuePath="Id"
+                            SelectedItem="{Binding Path=SelectedTurbineFirstItem}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" 
+                            Width="250"
+                            Margin="20 0"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="54,729,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Тип турбины"></TextBlock>
-        <ComboBox ItemsSource="{Binding Path=TubineItems}"
-                  DisplayMemberPath="TurbineName"
-                  SelectedValuePath="Id"
-                  SelectedItem="{Binding Path=SelectedTurbineFirstItem}"
-                  HorizontalAlignment="Left" Margin="191,728,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox ItemsSource="{Binding TubineItems}"
+                            DisplayMemberPath="TurbineName"
+                            SelectedValuePath="Id"
+                            SelectedItem="{Binding SelectedTurbineSecondItem}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" 
+                            Width="250"
+                            Margin="20 0"/>
+                </StackPanel>
 
-        <ComboBox ItemsSource="{Binding TubineItems}"
-                  DisplayMemberPath="TurbineName"
-                  SelectedValuePath="Id"
-                  SelectedItem="{Binding SelectedTurbineSecondItem}"
-                  HorizontalAlignment="Left" Margin="331,735,0,0" VerticalAlignment="Top" Width="120"/>
+                <!--Title TubineNumber-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                            TextWrapping="Wrap" 
+                            VerticalAlignment="Top"
+                            TextAlignment="Center"
+                            Text="Количество турбин"/>
+                </StackPanel>
 
-        <TextBlock HorizontalAlignment="Left" Margin="65,764,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Количество "/><Run Language="ru-ru" Text="турбин"/></TextBlock>
-        <TextBox x:Name="NumberOfTurbines" HorizontalAlignment="Left" Margin="182,771,0,0" TextWrapping="Wrap" Text="{Binding Path=NumberOfTurbinesFirst}" VerticalAlignment="Top" Width="95"/>
-        <TextBlock HorizontalAlignment="Left" Margin="292,773,0,0" TextWrapping="Wrap" Text="шт" VerticalAlignment="Top"/>
+                <!--TurbineNumber-->
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="10 10 10 20">
+                    <TextBox x:Name="NumberOfTurbines" HorizontalAlignment="Left"
+                        TextWrapping="Wrap" 
+                        Text="{Binding Path=NumberOfTurbinesFirst}" 
+                        VerticalAlignment="Top" 
+                        Width="95"
+                        Margin="20 0"/>
+                    <TextBox x:Name="NumberOfTurbines_Копировать" HorizontalAlignment="Left"
+                        TextWrapping="Wrap" Text="{Binding Path=NumberOfTurbinesSecond}" 
+                        VerticalAlignment="Top" 
+                        Width="95"
+                        Margin="20 0"/>
+                </StackPanel>
 
-        <TextBox x:Name="NumberOfTurbines_Копировать" HorizontalAlignment="Left" Margin="338,769,0,0" TextWrapping="Wrap" Text="{Binding NumberOfTurbinesSecond}" VerticalAlignment="Top" Width="95"/>
-        <TextBlock HorizontalAlignment="Left" Margin="444,772,0,0" TextWrapping="Wrap" Text="шт" VerticalAlignment="Top"/>
+                <!--Title Fuel-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top"
+                           TextAlignment="Center"
+                           Text="Тип топилва"/>
+                </StackPanel>
 
-        <!--убрать этот блок на рефакторинге-->
-        <TextBlock HorizontalAlignment="Left" Margin="76,811,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Тип топлива"></TextBlock>
-        <ComboBox ItemsSource="{Binding Path=FuelItems}"
+                <!--FuelType-->
+                <StackPanel Orientation="Horizontal"
+             HorizontalAlignment="Center"
+             Margin="10 10 10 20">
+
+                    <ComboBox ItemsSource="{Binding Path=FuelItems}"
                   DisplayMemberPath="Name"
                   SelectedValuePath="Id"
                   SelectedItem="{Binding Path=SelectedFuelItem}"
-                  HorizontalAlignment="Left" Margin="189,812,0,0" VerticalAlignment="Top" Width="120"/>
+                  HorizontalAlignment="Left" 
+                          VerticalAlignment="Top" 
+                          Width="100"
+                          Margin="20 0"/>
+                </StackPanel>
 
-        <TextBlock HorizontalAlignment="Left" Margin="100,856,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Отпуск пара"></TextBlock>
-        <TextBox x:Name="VacationCouple" HorizontalAlignment="Left" Margin="250,856,0,0" TextWrapping="Wrap" Text="{Binding Path=VacationCouple}" VerticalAlignment="Top" Width="95"/>
-        <TextBlock HorizontalAlignment="Left" Margin="350,856,0,0" TextWrapping="Wrap" Text="т/ч" VerticalAlignment="Top"/>
+                <!--FourthRow-->
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="10">
+                    <!--Block ElectricPower-->
+                    <StackPanel Height="90" Width="220" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="40 0">
+                        <TextBlock Text="Электрическая мощность"
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="0 0 0 5"/>
+                        <TextBlock Style="{StaticResource Text_Unit}" 
+                               TextWrapping="Wrap" 
+                               Text="МВт" 
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="0 0 0 15"/>
+                        <TextBox x:Name="ElectricPower" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding ElectricPower}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
 
-        <TextBlock HorizontalAlignment="Left" Margin="67,905,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Потери"></TextBlock>
-        <TextBox x:Name="Losses" HorizontalAlignment="Left" Margin="217,905,0,0" TextWrapping="Wrap" Text="{Binding Path=Losses}" VerticalAlignment="Top" Width="95"/>
-        <TextBlock HorizontalAlignment="Left" Margin="317,905,0,0" TextWrapping="Wrap" Text="т/ч" VerticalAlignment="Top"/>
+                    <!--Block VacationCouple-->
+                    <StackPanel Height="90" Width="220"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Margin="40 0">
+                        <TextBlock Text="Отпуск пара"
+                              TextWrapping="Wrap"  
+                              HorizontalAlignment="Left" 
+                              VerticalAlignment="Top"
+                              Margin="0 0 0 5"/>
+                        <TextBlock Style="{StaticResource Text_Unit}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                TextWrapping="Wrap" 
+                                Text="т/ч" 
+                                Margin="0 0 0 15"/>
+                        <TextBox x:Name="VacationCouple" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding VacationCouple}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
+                </StackPanel>
 
-        <TextBlock HorizontalAlignment="Left" Margin="93,943,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Потери с продувкой"></TextBlock>
-        <TextBox x:Name="BlowdownLosses" HorizontalAlignment="Left" Margin="243,943,0,0" TextWrapping="Wrap" Text="{Binding Path=BlowdownLosses}" VerticalAlignment="Top" Width="95"/>
-        <TextBlock HorizontalAlignment="Left" Margin="375,949,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="%"/></TextBlock>
+                <!--FifthRow-->
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="10 10 10 100">
+                    <!--Block Losses-->
+                    <StackPanel Height="90" Width="220" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="40 0">
+                        <TextBlock Text="Потери"
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="0 0 0 5"/>
+                        <TextBlock Style="{StaticResource Text_Unit}" 
+                               TextWrapping="Wrap" 
+                               Text="МВт" 
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="0 0 0 15"/>
+                        <TextBox x:Name="Losses" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Losses}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
+
+                    <!--Block VacationCouple-->
+                    <StackPanel Height="90" Width="220"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Margin="40 0">
+                        <TextBlock Text="Потери с продувкой"
+                              TextWrapping="Wrap"  
+                              HorizontalAlignment="Left" 
+                              VerticalAlignment="Top"
+                              Margin="0 0 0 5"/>
+                        <TextBlock Style="{StaticResource Text_Unit}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                TextWrapping="Wrap" 
+                                Text="%" 
+                                Margin="0 0 0 15"/>
+                        <TextBox x:Name="BlowdownLosses" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding BlowdownLosses}" VerticalAlignment="Top" Width="95"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
 
         <Button Command="{Binding Path=ClearTextBoxCommand}" 
-                Style="{StaticResource BtnBase}"
-                Content="Очисить" HorizontalAlignment="Left" Margin="50,270,0,0" VerticalAlignment="Bottom" Width="300" Height="50"/>
+                Content="Очисить" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom" 
+                Width="300" Height="50"
+                Margin="50"/>
         <Button Command="{Binding Path=ApplyCommand}" 
-                Style="{StaticResource BtnBase}"
-                Content="Применить" HorizontalAlignment="Right" Margin="0,270,50,0" VerticalAlignment="Bottom" Width="300" Height="50"/>
+                Content="Применить" 
+                HorizontalAlignment="Right"  
+                VerticalAlignment="Bottom" 
+                Width="300" Height="50"
+                Margin="50"/>
 
 
 
