@@ -56,8 +56,6 @@
                 <Path Stroke="Blue" StrokeThickness="5"
                       Data="M280,206 L290, 206 L290, 270 L320, 270"/>
 
-
-
                 <Path Stroke="Blue" StrokeThickness="5"
                       Data="M370,270 L390,270 L390,230 L440,230 L440,255"/>
 

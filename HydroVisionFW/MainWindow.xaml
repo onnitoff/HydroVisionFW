@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
         xmlns:Menu="clr-namespace:HydroVisionDesign.Infrastructure.Elements"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="HydroVisionPro" 
         Height="450" 
@@ -21,26 +22,21 @@
         <!--Window Border-->
 
         <Border Background="#212529"/>
-
         <Grid>
-
+            
             <!--Base Grid-->
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="240" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!--Navigation Panel-->
-
             <Grid Grid.Column="0" 
                   HorizontalAlignment="Left">
                 <Border Background="#272B2F"/>
-
                 <StackPanel>
 
                     <!--GivenParam-->
-
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding GivenParamCommand}" VerticalAlignment="Bottom"
                               IsChecked="True">
@@ -51,7 +47,6 @@
                     </Menu:Btn>
 
                     <!--WaterQualityIndicators-->
-
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=WaterQualityCommand}">
                         <Grid>
@@ -61,7 +56,6 @@
                     </Menu:Btn>
 
                     <!--PerfomanceWTP-->
-
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=PerfomanceCommand}">
                         <Grid>
@@ -71,7 +65,6 @@
                     </Menu:Btn>
 
                     <!--DesaltingPartWTP-->
-
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=DesaltingPartCommand}">
                         <Grid>
@@ -81,7 +74,6 @@
                     </Menu:Btn>
 
                     <!--CoolingSystem-->
-
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=CoolingSystemCommand}">
                         <Grid>
@@ -91,7 +83,6 @@
                     </Menu:Btn>
 
                     <!--CirculationPumps-->
-
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=CirculationPumpsCommand}">
                         <Grid>
@@ -101,14 +92,12 @@
                     </Menu:Btn>
 
                 </StackPanel>
-
             </Grid>
 
             <Grid Grid.Column="1">
                 <ContentControl x:Name="Pages"
                                 Content="{Binding CurrentView}"/>
             </Grid>
-
         </Grid>
     </Grid>
 </Window>

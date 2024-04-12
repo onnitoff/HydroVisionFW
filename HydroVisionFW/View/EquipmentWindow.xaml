@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:HydroVisionFW.ViewModel"
         mc:Ignorable="d"
-        Title="Свойства" Height="450" Width="800"
+        Title="Свойства оборудования" Height="450" Width="800"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/Images/Icon.ico">
@@ -17,7 +17,11 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
     <Grid>
-        <Grid Background="Bisque">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="177*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Background="Bisque" Grid.ColumnSpan="2">
 
             <Grid x:Name="MAF" 
                   Visibility="{Binding IsHiddenMAScheme, 
@@ -196,9 +200,9 @@
 
 
             </Grid>
-            
+
             <!--Clarifier Block-->
-        
+
             <Grid x:Name="Clarifier" 
                   Visibility="{Binding IsHiddenClarifierScheme, 
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
@@ -230,7 +234,7 @@
 
                     <Path Stroke="Blue" StrokeThickness="3"
                           Data="M452,140 L500,140"/>
-                    
+
                     <Path Stroke="Blue" StrokeThickness="3"
                           Data="M320,120 L320,300 L390,300"/>
 
@@ -245,7 +249,7 @@
             </Grid>
 
             <!--Decarbonizer Block-->
-            
+
             <Grid x:Name="Decarbonizer" 
                   Visibility="{Binding IsHiddenDecarbonizerScheme, 
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
@@ -265,7 +269,7 @@
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="15" Margin="11,291,0,0"><Run Text="Количество"/><Run Text=" декар"/><Run Language="ru-ru" Text="бонизаторов"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
                 <TextBox HorizontalAlignment="Left" Margin="195,292,0,0" VerticalAlignment="Top" Width="62"
                      Text="{Binding Path=FilterCount}"/>
-       
+
                 <Grid Margin="-8 0 0 0">
 
                     <Path Stroke="Aqua" StrokeThickness="3"
