@@ -22,7 +22,7 @@ namespace HydroVisionDesign.ViewModel
 {
     internal class GivenParametersVM : ViewModelBase
     {
-        #region Показатели воды
+        #region Свойства показателей воды
         private double _Ca = DataStorage.Instance.Final_Ca;
 
         /// <summary>Свойство textBox Ca</summary>
@@ -133,7 +133,7 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
-        #region Оборудование
+        #region Свойства оборудования
 
         private double _ElectricPower = BoilerStorage.Instance.ElectricPower;
 
@@ -251,9 +251,6 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
-
-
-
         #region Команды
         #region ClearTextBoxCommand
         /// <summary>Кнопка очистки всех textBox</summary>
@@ -364,7 +361,6 @@ namespace HydroVisionDesign.ViewModel
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         BoilerItems.Add(boiler);
-
                     });
                 });
                 if (BoilerItems.Count > 0)

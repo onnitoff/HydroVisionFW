@@ -73,7 +73,7 @@ namespace HydroVisionDesign.ViewModel
 
         public ObservableCollection<WaterIndicatorModel> WaterIndicators { get; set; }
 
-        #region Общие показатели воды
+       #region Общие показатели воды
 
         private string _TotalCationContent;
 

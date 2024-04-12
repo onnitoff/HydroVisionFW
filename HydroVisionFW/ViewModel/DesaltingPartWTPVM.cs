@@ -1085,8 +1085,6 @@ namespace HydroVisionDesign.ViewModel
             CalcA2 calcA2 = new CalcA2();
             calcA2.Calculations();
             FillTextBoxA2();
-
-
         }
 
         /// <summary>Заполнение данными из A2Storage свойств textBox</summary>
