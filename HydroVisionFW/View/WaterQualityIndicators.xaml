@@ -5,9 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="1450" 
-             d:DesignWidth="660"
-             Style="{StaticResource Page_Style}">
+             d:DesignHeight="1650" 
+             d:DesignWidth="1200"
+             Style="{StaticResource Page_Style}"
+                     TextElement.Foreground="Black"
+                     TextElement.FontWeight="DemiBold"
+                     TextElement.FontSize="14"
+                     TextOptions.TextFormattingMode="Ideal"
+                     TextOptions.TextRenderingMode="Auto"
+                      Background="{DynamicResource MaterialDesignPaper}"
+                      FontFamily="{DynamicResource MaterialDesignFont}">
     <UserControl.DataContext>
         <vm:WaterQualityIndicatorsVM/>
     </UserControl.DataContext>
@@ -18,13 +25,598 @@
     <Grid>
         <Border>
             <Border.Background>
-                <!--<ImageBrush ImageSource="D:\ДИПЛОМ ПОИС\app\HydroVisionFW\HydroVisionFW\Resources\Images\deed28215032899dd3dcfc5b85c48843.jpg"/>-->
-                <SolidColorBrush Color="#d3d3d3"/>
+                <ImageBrush ImageSource="/Resources/Images/BG_WaterQuality_2.png"/>
             </Border.Background>
         </Border>
-
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <DockPanel Margin="20">
+            <StackPanel Margin="20">
+                <!--Header-->
+                <StackPanel Width="370">
+                    <TextBlock Style="{StaticResource Text_Title}"
+                           HorizontalAlignment="Center" 
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           VerticalAlignment="Top"
+                           Text="Пересчет показателей качества воды"
+                           Margin="0 0 0 20"/>
+                </StackPanel>
+                
+                <!--DataGrid-->
+                <StackPanel>
+                    <DataGrid ItemsSource="{Binding Path=WaterIndicators}"
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            GridLinesVisibility="Vertical"
+                            VerticalGridLinesBrush="DarkGray"
+                            AlternatingRowBackground="LightGray"
+                            EnableRowVirtualization="True"
+                            IsReadOnly="True"
+                            HorizontalAlignment="Center"
+                              MaxWidth="700"
+                              MinWidth="400"
+                              Margin="0 0 0 20">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Показатель" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="мг/дм3" Binding="{Binding InitialUnit}" Width="*"/>
+                            <DataGridTextColumn Header="Эквивалент" Binding="{Binding Eq}" Width="*"/>
+                            <DataGridTextColumn Header="мг-экв/дм3" Binding="{Binding FinalUnit}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+
+                <!--Title TotalCationContent-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="Суммарное содержание катионов"/>
+                </StackPanel>
+
+                <!--TotalCationContent-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 10 10 20">
+                    <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=TotalCationContent}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                            IsReadOnly="True"/>
+                </StackPanel>
+
+                <!--Title TotalAnionContent-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="Суммарное содержание анионов"/>
+                </StackPanel>
+
+                <!--TotalAnionContent-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 10 10 20">
+                    <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=TotalAnionContent}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                             IsReadOnly="True"/>
+                </StackPanel>
+
+                <!--Title TotalAlkalinity-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="Общая щелочность поверхностных вод"/>
+                </StackPanel>
+
+                <!--TotalAlkalinity-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 10 10 20">
+                    <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=TotalAlkalinity}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                             IsReadOnly="True"/>
+                </StackPanel>
+
+                <!--Title NonCarbonateHardness-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                            TextWrapping="Wrap" 
+                            VerticalAlignment="Top"
+                            TextAlignment="Center"
+                            Text="Некарбонатная жесткость"/>
+                </StackPanel>
+
+                <!--NonCarbonateHardness-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 10 10 20">
+                    <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=NonCarbonateHardness}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                             IsReadOnly="True"/>
+                </StackPanel>
+
+                <!--Title SumOfStrongAcidAnions-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                            TextWrapping="Wrap" 
+                            VerticalAlignment="Top"
+                            TextAlignment="Center"
+                            Text="Сумма анионов сильных кислот"/>
+                </StackPanel>
+
+                <!--SumOfStrongAcidAnions-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 10 10 20">
+                    <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=SumOfStrongAcidAnions}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                             IsReadOnly="True"/>
+                </StackPanel>
+
+                <!--Hidden Al-->
+                <StackPanel Visibility="{Binding Path=IsHiddenAl, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    
+                    <!--Title ResidualHardnessCarbonate-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Top"
+                                    TextAlignment="Center"
+                                    Text="Жесткость карбонатная остаточная"/>
+                    </StackPanel>
+
+                    <!--ResidualHardnessCarbonate-->
+                    <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                                    TextWrapping="Wrap" 
+                                    Text="{Binding Path=ResidualHardnessCarbonate}" 
+                                    VerticalAlignment="Top" 
+                                    Width="Auto"
+                                    Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title ResidualHardnessNoCarbonate-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Top"
+                                    TextAlignment="Center"
+                                    Text="Жесткость некарбонатная остаточная"/>
+                    </StackPanel>
+
+                    <!--ResidualHardnessNoCarbonate-->
+                    <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                                    TextWrapping="Wrap"     
+                                    Text="{Binding Path=ResidualHardnessNoCarbonate}" 
+                                    VerticalAlignment="Top" 
+                                    Width="Auto"
+                                    Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title ResidualOverallHarndess-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Top"
+                                    TextAlignment="Center"
+                                    Text="Жесткость общая остаточная"/>
+                    </StackPanel>
+
+                    <!--ResidualOverallHarndess-->
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                                TextWrapping="Wrap" 
+                                Text="{Binding Path=ResidualOverallHarndess}" 
+                                VerticalAlignment="Top" 
+                                Width="Auto"
+                                Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title ResidualAlkalinity-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="Щелочность остаточная"/>
+                    </StackPanel>
+
+                    <!--ResidualAlkalinity-->
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                                TextWrapping="Wrap" 
+                                Text="{Binding Path=ResidualAlkalinity}" 
+                                VerticalAlignment="Top" 
+                                Width="Auto"
+                                Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title SilicicAcidConcentration-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="Концентрация кремниевой кислоты"/>
+                    </StackPanel>
+
+                    <!--SilicicAcidConcentration-->
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                                TextWrapping="Wrap" 
+                                Text="{Binding Path=SilicicAcidConcentration}" 
+                                VerticalAlignment="Top" 
+                                Width="Auto"
+                                Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+
+
+
+
+                </StackPanel>
+
+                <!--Hidden Fe-->
+                <StackPanel Visibility="{Binding IsHiddenFe, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                    <!--Title ResidualHardnessCarbonate-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     TextAlignment="Center"
+                     Text="Жесткость карбонатная остаточная"/>
+                    </StackPanel>
+
+                    <!--ResidualHardnessCarbonate-->
+                    <StackPanel Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                     TextWrapping="Wrap" 
+                     Text="{Binding Path=ResidualHardnessCarbonate}" 
+                     VerticalAlignment="Top" 
+                     Width="Auto"
+                     Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title ResidualHardnessNoCarbonate-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     TextAlignment="Center"
+                     Text="Жесткость некарбонатная остаточная"/>
+                    </StackPanel>
+
+                    <!--ResidualHardnessNoCarbonate-->
+                    <StackPanel Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                     TextWrapping="Wrap"     
+                     Text="{Binding Path=ResidualHardnessNoCarbonate}" 
+                     VerticalAlignment="Top" 
+                     Width="Auto"
+                     Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title ResidualOverallHarndess-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     TextAlignment="Center"
+                     Text="Жесткость общая остаточная"/>
+                    </StackPanel>
+
+                    <!--ResidualOverallHarndess-->
+                    <StackPanel Orientation="Horizontal"
+                 HorizontalAlignment="Center"
+                 Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                 TextWrapping="Wrap" 
+                 Text="{Binding Path=ResidualOverallHarndess}" 
+                 VerticalAlignment="Top" 
+                 Width="Auto"
+                 Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title ConcentrationSO-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top"
+                 TextAlignment="Center"
+                 Text="Концентрация сульфатов"/>
+                    </StackPanel>
+
+                    <!--ConcentrationSO-->
+                    <StackPanel Orientation="Horizontal"
+                 HorizontalAlignment="Center"
+                 Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                                TextWrapping="Wrap" 
+                                Text="{Binding Path=ConcentrationSO}" 
+                                VerticalAlignment="Top" 
+                                Width="Auto"
+                                Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title ResidualAlkalinity-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top"
+                 TextAlignment="Center"
+                 Text="Щелочность остаточная"/>
+                    </StackPanel>
+
+                    <!--ResidualAlkalinity-->
+                    <StackPanel Orientation="Horizontal"
+                 HorizontalAlignment="Center"
+                 Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                 TextWrapping="Wrap" 
+                 Text="{Binding Path=ResidualAlkalinity}" 
+                 VerticalAlignment="Top" 
+                 Width="Auto"
+                 Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title SilicicAcidConcentration-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top"
+                 TextAlignment="Center"
+                 Text="Концентрация кремниевой кислоты"/>
+                    </StackPanel>
+
+                    <!--SilicicAcidConcentration-->
+                    <StackPanel Orientation="Horizontal"
+                 HorizontalAlignment="Center"
+                 Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                 TextWrapping="Wrap" 
+                 Text="{Binding Path=SilicicAcidConcentration}" 
+                 VerticalAlignment="Top" 
+                 Width="Auto"
+                 Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+
+
+
+
+                </StackPanel>
+
+                <!--Header-->
+                <StackPanel Width="370">
+                    <TextBlock Style="{StaticResource Text_Title}"
+            HorizontalAlignment="Center" 
+            TextWrapping="Wrap"
+            TextAlignment="Center"
+            VerticalAlignment="Top"
+            Text="Пересчет показателей по ионообменной части схемы"
+            Margin="0 20"/>
+                </StackPanel>
+
+                <!--Title CationOnFirstStageFilter-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top"
+            TextAlignment="Center"
+            Text="На Н-фильтрах первой ступени катионы удаляются в количестве"/>
+                </StackPanel>
+
+                <!--CationOnFirstStageFilter-->
+                <StackPanel Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Margin="10 10 10 20">
+                    <TextBox HorizontalAlignment="Left"
+            TextWrapping="Wrap" 
+            Text="{Binding Path=CationOnFirstStageFilter}" 
+            VerticalAlignment="Top" 
+            Width="Auto"
+            Margin="20 0"
+                             IsReadOnly="True"/>
+                </StackPanel>
+
+                <!--Title CationOnSecondStageFilter-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="На Н-фильтрах второй ступени катионы удаляются в количестве"/>
+                </StackPanel>
+
+                <!--CationOnSecondStageFilter-->
+                <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10 10 10 20">
+                    <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=CationOnSecondStageFilter}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                             IsReadOnly="True"/>
+                </StackPanel>
+
+                <!--Title ConcentrationCOBeforeDecarbonizer-->
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="Количество CO2 после декарбонизатора"/>
+                </StackPanel>
+
+                <!--ConcentrationCOBeforeDecarbonizer-->
+                <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10 10 10 20">
+                    <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=ConcentrationCOBeforeDecarbonizer}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                             IsReadOnly="True"/>
+                </StackPanel>
+
+                <!--IsHiddenSimplified-->
+                <StackPanel Visibility="{Binding Path=IsHiddenSimplified, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                    <!--Title AnionOnSecondStageFilterSimplified-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="На А-фильтрах второй упрощенной ступени анионы удаляются в количестве"/>
+                    </StackPanel>
+
+                    <!--AnionOnSecondStageFilterSimplified-->
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=AnionOnSecondStageFilterSimplified}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <!--IsHiddenTwoStage-->
+                <StackPanel Visibility="{Binding Path=IsHiddenTwoStage, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                    <!--Title AnionOnFirstStageFilter-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="На А-фильтрах первой ступени анионы сильных кислот удаляются в количестве"/>
+                    </StackPanel>
+
+                    <!--AnionOnFirstStageFilter-->
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=AnionOnFirstStageFilter}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <!--Title AnionOnSecondStageFilter-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top"
+                               TextAlignment="Center"
+                               Text="На А-фильтрах второй ступени анионы слабых кислот и оставшийся после декарбонизатора CO2 удаляются в количестве"/>
+                    </StackPanel>
+
+                    <!--AnionOnSecondStageFilter-->
+                    <StackPanel Orientation="Horizontal"
+                               HorizontalAlignment="Center"
+                               Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                           TextWrapping="Wrap" 
+                           Text="{Binding Path=AnionOnSecondStageFilter}" 
+                           VerticalAlignment="Top" 
+                           Width="Auto"
+                           Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <!--IsHiddenSimplified-->
+                <StackPanel Visibility="{Binding Path=IsHiddenCentralHeating, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                    <!--Title NaCationOnFilter-->
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center"
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Top"
+                                TextAlignment="Center"
+                                Text="На Na-фильтрах катионы удаляются в количестве"/>
+                    </StackPanel>
+
+                    <!--NaCationOnFilter-->
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10 10 10 20">
+                        <TextBox HorizontalAlignment="Left"
+                            TextWrapping="Wrap" 
+                            Text="{Binding Path=NaCationOnFilter}" 
+                            VerticalAlignment="Top" 
+                            Width="Auto"
+                            Margin="20 0"
+                                 IsReadOnly="True"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--<DockPanel Margin="20">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -38,43 +630,10 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Пересчет показателей качества воды" VerticalAlignment="Top"/>
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding Path=WaterIndicators}"
-                            AutoGenerateColumns="False"
-                            CanUserAddRows="False"
-                            GridLinesVisibility="Vertical"
-                            VerticalGridLinesBrush="DarkGray"
-                            AlternatingRowBackground="LightGray"
-                            EnableRowVirtualization="True"
-                            IsReadOnly="True"
-                            HorizontalAlignment="Center">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Показатель" Binding="{Binding Name}" Width="*"/>
-                            <DataGridTextColumn Header="мг/дм3" Binding="{Binding InitialUnit}" Width="*"/>
-                            <DataGridTextColumn Header="Эквивалент" Binding="{Binding Eq}" Width="*"/>
-                            <DataGridTextColumn Header="мг-экв/дм3" Binding="{Binding FinalUnit}" Width="*"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <TextBlock Grid.Row="2" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Суммарное содержание катионов:" VerticalAlignment="Top"/>
-                    <TextBox Grid.Row="3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=TotalCationContent}" VerticalAlignment="Top" Width="500" Height="30"/>
 
-                    <TextBlock Grid.Row="4" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Суммарное содержание анионов:" VerticalAlignment="Top"/>
-                    <TextBox Grid.Row="5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=TotalAnionContent}" VerticalAlignment="Top" Width="500" Height="30"/>
-
-                    <TextBlock Grid.Row="6" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Общая щелочность поверхностных вод:" VerticalAlignment="Top"/>
-                    <TextBox Grid.Row="7" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=TotalAlkalinity}" VerticalAlignment="Top" Width="500" Height="30"/>
-
-                    <TextBlock Grid.Row="8" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Некарбонатная жесткость:" VerticalAlignment="Top"/>
-                    <TextBox Grid.Row="9" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=NonCarbonateHardness}" VerticalAlignment="Top" Width="500" Height="30"/>
-
-                    <TextBlock Grid.Row="10" HorizontalAlignment="Left" Margin="10,10,0,5" TextWrapping="Wrap" Text="Сумма анионов сильных кислот:" VerticalAlignment="Top"/>
-                    <TextBox Grid.Row="11" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Path=SumOfStrongAcidAnions}" VerticalAlignment="Top" Width="500" Height="30"/>
+                    
 
                     <StackPanel Grid.Row="12" Visibility="{Binding Path=IsHiddenAl, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <Grid>
@@ -205,8 +764,8 @@
 
                 </Grid>
 
-            </DockPanel>
-        </ScrollViewer>
+            </DockPanel>-->
+
         
         
     </Grid>

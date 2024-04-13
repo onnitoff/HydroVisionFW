@@ -687,6 +687,14 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnGridCommand(object obj)
         {
             IsHiddenFilterProperty = false;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = false;
+            IsHiddenCationProperty = false;
+            IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
+            IsHiddenWaterFlowToTheNextStage = false;
         }
         #endregion
 
@@ -967,9 +975,10 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
-        public DesaltingPartWTPVM() 
+        public DesaltingPartWTPVM()
         {
-
+            IsHiddenMain = true;
+            IsHiddenTwoStage = true;
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
@@ -1085,8 +1094,6 @@ namespace HydroVisionDesign.ViewModel
             CalcA2 calcA2 = new CalcA2();
             calcA2.Calculations();
             FillTextBoxA2();
-
-
         }
 
         /// <summary>Заполнение данными из A2Storage свойств textBox</summary>

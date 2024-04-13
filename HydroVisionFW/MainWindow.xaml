@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
         xmlns:Menu="clr-namespace:HydroVisionDesign.Infrastructure.Elements"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="HydroVisionPro" 
         Height="450" 
@@ -21,29 +22,33 @@
         <!--Window Border-->
 
         <Border Background="#212529"/>
-
         <Grid>
-
+            
             <!--Base Grid-->
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="240" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!--Navigation Panel-->
-
             <Grid Grid.Column="0" 
                   HorizontalAlignment="Left">
                 <Border Background="#272B2F"/>
-
                 <StackPanel>
 
-                    <!--WaterQualityIndicators-->
-
+                    <!--GivenParam-->
                     <Menu:Btn Style="{StaticResource BtnStyle}"
-                              Command="{Binding Path=WaterQualityCommand}"
+                              Command="{Binding GivenParamCommand}" VerticalAlignment="Bottom"
                               IsChecked="True">
+                        <Grid>
+                            <TextBlock Text="Задать параметры"
+                                       Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:Btn>
+
+                    <!--WaterQualityIndicators-->
+                    <Menu:Btn Style="{StaticResource BtnStyle}"
+                              Command="{Binding Path=WaterQualityCommand}">
                         <Grid>
                             <TextBlock Text="Показатели качества воды"
                                        Style="{StaticResource Text_Style}"/>
@@ -51,7 +56,6 @@
                     </Menu:Btn>
 
                     <!--PerfomanceWTP-->
-
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=PerfomanceCommand}">
                         <Grid>
@@ -61,7 +65,6 @@
                     </Menu:Btn>
 
                     <!--DesaltingPartWTP-->
-
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=DesaltingPartCommand}">
                         <Grid>
@@ -71,44 +74,30 @@
                     </Menu:Btn>
 
                     <!--CoolingSystem-->
-
-                    <Menu:Btn Style="{StaticResource BtnStyle}"
+                    <!--<Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=CoolingSystemCommand}">
                         <Grid>
                             <TextBlock Text="Система охлаждения"
                                        Style="{StaticResource Text_Style}"/>
                         </Grid>
-                    </Menu:Btn>
+                    </Menu:Btn>-->
 
-                    <!--CirculationPumps-->
-
+                    <!--CirculationPumps--><!--
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=CirculationPumpsCommand}">
                         <Grid>
                             <TextBlock Text="Циркуляционные насосы"
                                        Style="{StaticResource Text_Style}"/>
                         </Grid>
-                    </Menu:Btn>
-                    
-                    <!--GivenParam-->
-                    
-                    <Menu:Btn Style="{StaticResource BtnStyle}"
-                              Command="{Binding GivenParamCommand}" VerticalAlignment="Bottom">
-                        <Grid>
-                            <TextBlock Text="Задать параметры"
-                            Style="{StaticResource Text_Style}"/>
-                        </Grid>
-                    </Menu:Btn>
+                    </Menu:Btn>-->
 
                 </StackPanel>
-
             </Grid>
 
             <Grid Grid.Column="1">
                 <ContentControl x:Name="Pages"
                                 Content="{Binding CurrentView}"/>
             </Grid>
-
         </Grid>
     </Grid>
 </Window>

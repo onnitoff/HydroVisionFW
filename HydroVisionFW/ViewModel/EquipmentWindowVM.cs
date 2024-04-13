@@ -290,6 +290,7 @@ namespace HydroVisionFW.ViewModel
 
         public EquipmentWindowVM()
         {
+
             #region Команды
             ApplyBtnCommand = new RelayCommand(OnApplyBtnCommand);
             #endregion

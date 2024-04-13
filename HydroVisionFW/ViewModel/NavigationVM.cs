@@ -16,16 +16,8 @@ namespace HydroVisionDesign.ViewModel
 {
     internal class NavigationVM : ViewModelBase
     {
-		//private object _currentView;
-
-		//public object CurrentView
-		//{
-		//	get { return _currentView; }
-		//	set { _currentView = value; OnPropertyChanged(); }
-		//}
-
         private object _CurrentView;
-        /// <summary>Свойство для навигац</summary>
+        /// <summary>Свойство для навигации</summary>
         public object CurrentView
         {
             get => _CurrentView;
@@ -59,13 +51,12 @@ namespace HydroVisionDesign.ViewModel
         private void GivenParam(object obj) => CurrentView = new GivenParametersVM();
 
         #endregion
+
         public NavigationVM()
         {
-           // Values values = new Values();
             Calculations calc = new Calculations();
             calc.RecalculationOfQualityIndicators();
             CalcBoiler calcBoiler = new CalcBoiler();
-            //calcBoiler.CalculationOfWTPPerformance();
             WaterQualityCommand = new RelayCommand(WaterQuality);
             PerfomanceCommand = new RelayCommand(Perfomance);
             DesaltingPartCommand = new RelayCommand(DesaltingPart);
@@ -74,12 +65,7 @@ namespace HydroVisionDesign.ViewModel
             GivenParamCommand = new RelayCommand(GivenParam);
 
             // Начальное окно
-            CurrentView = new WaterQualityIndicatorsVM();
+            CurrentView = new GivenParametersVM();
         }
-
-
-
-
-
     }
 }

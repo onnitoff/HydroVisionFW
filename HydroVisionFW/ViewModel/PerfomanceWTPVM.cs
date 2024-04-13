@@ -187,13 +187,16 @@ namespace HydroVisionDesign.ViewModel
             if (BoilerStorage.Instance.NumberOfBoilersSecond == 0)
             {
                 if (DataStorage.Instance.TurbineTypeFirst == 1)
-                    PerfomanceWTPToFeedMainCycle = $"Q_впу = D * n + q_внутр + q_зап = {DataStorage.Instance.BoilerPerfomanceFirst} * {BoilerStorage.Instance.NumberOfBoilersFirst} + {BoilerStorage.Instance.DesaltedWaterSupply} = {BoilerStorage.Instance.PerfomanceWTP} т/ч";
+                    PerfomanceWTPToFeedMainCycle = $"Q_впу = D * n + q_внутр + q_зап = {DataStorage.Instance.BoilerPerfomanceFirst} * " +
+                        $"{BoilerStorage.Instance.NumberOfBoilersFirst} + {BoilerStorage.Instance.DesaltedWaterSupply} = {BoilerStorage.Instance.PerfomanceWTP} т/ч";
             }
             if (BoilerStorage.Instance.NumberOfBoilersSecond != 0)
             {
                 if (DataStorage.Instance.TurbineTypeFirst == 1 && DataStorage.Instance.TurbineTypeSecond == 1)
-                    PerfomanceWTPToFeedMainCycle = $"Q_впу = D1 * n1 + D2 * n2 + q_внутр + q_зап = {DataStorage.Instance.BoilerPerfomanceFirst} * {BoilerStorage.Instance.NumberOfBoilersFirst} +" +
-                        $"{DataStorage.Instance.BoilerPerfomanceSecond} * {BoilerStorage.Instance.NumberOfBoilersSecond} + {BoilerStorage.Instance.DesaltedWaterSupply} = {BoilerStorage.Instance.PerfomanceWTP} т/ч";
+                    PerfomanceWTPToFeedMainCycle = $"Q_впу = D1 * n1 + D2 * n2 + q_внутр + q_зап = {DataStorage.Instance.BoilerPerfomanceFirst} * " +
+                        $"{BoilerStorage.Instance.NumberOfBoilersFirst} + {DataStorage.Instance.BoilerPerfomanceSecond} * " +
+                        $"{BoilerStorage.Instance.NumberOfBoilersSecond} + {BoilerStorage.Instance.DesaltedWaterSupply} = " +
+                        $"{BoilerStorage.Instance.PerfomanceWTP} т/ч";
             }
 
             if (DataStorage.Instance.TurbineTypeFirst == 2 || DataStorage.Instance.TurbineTypeSecond == 2)
