@@ -687,6 +687,14 @@ namespace HydroVisionDesign.ViewModel
         private void OnLeftBtnGridCommand(object obj)
         {
             IsHiddenFilterProperty = false;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = false;
+            IsHiddenCationProperty = false;
+            IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
+            IsHiddenWaterFlowToTheNextStage = false;
         }
         #endregion
 
@@ -969,19 +977,6 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM()
         {
-            IsHiddenMain = true;
-            IsHiddenThreeStage = true;
-
-            IsHiddenFilterProperty = true;
-            IsHiddenVolumeOfIonForMAFProperty = false;
-            IsHiddenVolumeOfIonForIonFilterProperty = false;
-            IsHiddenCationProperty = false;
-            IsHiddenAnionProperty = false;
-            IsHiddenClarifierProp = false;
-            IsHiddenDecarbonizerProp = false;
-            IsHiddenClarificationFilterProp = false;
-            IsHiddenWaterFlowToTheNextStage = false;
-
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
