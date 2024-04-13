@@ -290,6 +290,9 @@ namespace HydroVisionFW.ViewModel
 
         public EquipmentWindowVM()
         {
+            IsHiddenBFScheme = true;
+            IsHiddenPropBF = true;
+
             #region Команды
             ApplyBtnCommand = new RelayCommand(OnApplyBtnCommand);
             #endregion

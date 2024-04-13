@@ -357,6 +357,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Resources\Images\BG_EquipmentWindow.png" />
     <Resource Include="Resources\Images\BG_DesaltingPart.png" />
     <Resource Include="Resources\Images\BG_Perfomance.png" />
     <Resource Include="Resources\Images\BG_WaterQuality_2.png" />
