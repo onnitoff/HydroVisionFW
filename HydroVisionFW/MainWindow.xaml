@@ -74,22 +74,22 @@
                     </Menu:Btn>
 
                     <!--CoolingSystem-->
-                    <Menu:Btn Style="{StaticResource BtnStyle}"
+                    <!--<Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=CoolingSystemCommand}">
                         <Grid>
                             <TextBlock Text="Система охлаждения"
                                        Style="{StaticResource Text_Style}"/>
                         </Grid>
-                    </Menu:Btn>
+                    </Menu:Btn>-->
 
-                    <!--CirculationPumps-->
+                    <!--CirculationPumps--><!--
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=CirculationPumpsCommand}">
                         <Grid>
                             <TextBlock Text="Циркуляционные насосы"
                                        Style="{StaticResource Text_Style}"/>
                         </Grid>
-                    </Menu:Btn>
+                    </Menu:Btn>-->
 
                 </StackPanel>
             </Grid>
