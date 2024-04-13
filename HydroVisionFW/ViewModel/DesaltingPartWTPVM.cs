@@ -977,6 +977,8 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM()
         {
+            IsHiddenMain = true;
+            IsHiddenTwoStage = true;
             #region Команды
 
             LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);

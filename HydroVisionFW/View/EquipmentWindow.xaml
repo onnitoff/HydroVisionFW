@@ -164,6 +164,85 @@ FontFamily="{DynamicResource MaterialDesignFont}">
                       HorizontalAlignment="Center" 
                       VerticalAlignment="Top" 
                       Margin="0,126,0,0"/>
+
+                <Grid Margin="-16 0 0 0">
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M409,115 L380, 115 L380, 100"/>
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M380, 80 L380 50 L300 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M375,100 L385, 100 L375 80 L385 80 L375 100 L385 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M300,45 L300, 55"/>
+
+                    <Path Stroke="LightGreen" StrokeThickness="3"
+                          Data="M409,115 L440, 115 L440, 100"/>
+                    <Path Stroke="LightGreen" StrokeThickness="3"
+                          Data="M440,80 L440, 50 L550 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M435,100 L445, 100 L435 80 L445 80 L435 100 L445 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,45 L550, 55"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M408,120 L530 120 L530, 220"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,126 L408, 100"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,80 L408, 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,100 L413, 100 L403 80 L413 80 L403 100 L413 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,50 L413,50"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 220 L530 250"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 270 L530 330"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M525,250 L535, 250 L525 270 L535 270 L525 250 L535 250"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M409,330 L440, 330"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M460,330 L550, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,325 L550,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M440,325 L460 335 L460, 325 L440,335 L440,325 L460,335"/>
+
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M409,330 L380, 330"/>
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M360,330 L280, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M280,325 L280,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M380,325 L360 335 L360, 325 L380,335 L380,325 L360,335"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,308 L408, 340"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,360 L408, 370"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,360 L413, 360 L403 340 L413 340 L403 360 L413 360"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,370 L413, 370"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="378,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Text="Вода из "/><Run Language="ru-ru" Text="Н2"/></TextBlock>
+                    <TextBlock Text="Раствор NaOH" HorizontalAlignment="Left" Margin="556,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="239,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Промывочная вода"/></TextBlock>
+                    <TextBlock Text="Взрыхляющая вода" Margin="257,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Text="Сжатый воздух" HorizontalAlignment="Left" Margin="556,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="420,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Вода на подпитку котлов или на ФСД"/></TextBlock>
+                </Grid>
+
             </Grid>
 
             <Grid x:Name="H2" 
@@ -175,6 +254,84 @@ FontFamily="{DynamicResource MaterialDesignFont}">
                       HorizontalAlignment="Center" 
                       VerticalAlignment="Top" 
                       Margin="0,126,0,0"/>
+
+                <Grid Margin="-16 0 0 0">
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M409,115 L380, 115 L380, 100"/>
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M380, 80 L380 50 L300 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M375,100 L385, 100 L375 80 L385 80 L375 100 L385 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M300,45 L300, 55"/>
+
+                    <Path Stroke="Red" StrokeThickness="3"
+                          Data="M409,115 L440, 115 L440, 100"/>
+                    <Path Stroke="Red" StrokeThickness="3"
+                          Data="M440,80 L440, 50 L550 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M435,100 L445, 100 L435 80 L445 80 L435 100 L445 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,45 L550, 55"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M408,120 L530 120 L530, 220"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,126 L408, 100"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,80 L408, 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,100 L413, 100 L403 80 L413 80 L403 100 L413 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,50 L413,50"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 220 L530 250"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 270 L530 330"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M525,250 L535, 250 L525 270 L535 270 L525 250 L535 250"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M409,330 L440, 330"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M460,330 L550, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,325 L550,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M440,325 L460 335 L460, 325 L440,335 L440,325 L460,335"/>
+
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M409,330 L380, 330"/>
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M360,330 L280, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M280,325 L280,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M380,325 L360 335 L360, 325 L380,335 L380,325 L360,335"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,308 L408, 340"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,360 L408, 370"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,360 L413, 360 L403 340 L413 340 L403 360 L413 360"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,370 L413, 370"/>
+                    <TextBlock Margin="355,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Предыдущей ступени"/></TextBlock>
+                    <TextBlock Text="Раствор H2SO4" HorizontalAlignment="Left" Margin="556,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="249,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Промывочная вода"/></TextBlock>
+                    <TextBlock Text="Взрыхляющая вода" Margin="257,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Text="Сжатый воздух" HorizontalAlignment="Left" Margin="556,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="420,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Вода на А2"/></TextBlock>
+                </Grid>
             </Grid>
 
             <Grid x:Name="A1" 
@@ -186,6 +343,86 @@ FontFamily="{DynamicResource MaterialDesignFont}">
                       HorizontalAlignment="Center" 
                       VerticalAlignment="Top" 
                       Margin="0,126,0,0"/>
+
+                <Grid Margin="-16 0 0 0">
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M409,115 L380, 115 L380, 100"/>
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M380, 80 L380 50 L300 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M375,100 L385, 100 L375 80 L385 80 L375 100 L385 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M300,45 L300, 55"/>
+
+                    <Path Stroke="LightGreen" StrokeThickness="3"
+                          Data="M409,115 L440, 115 L440, 100"/>
+                    <Path Stroke="LightGreen" StrokeThickness="3"
+                          Data="M440,80 L440, 50 L550 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M435,100 L445, 100 L435 80 L445 80 L435 100 L445 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,45 L550, 55"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M408,120 L530 120 L530, 220"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,126 L408, 100"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,80 L408, 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,100 L413, 100 L403 80 L413 80 L403 100 L413 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,50 L413,50"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 220 L530 250"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 270 L530 330"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M525,250 L535, 250 L525 270 L535 270 L525 250 L535 250"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M409,330 L440, 330"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M460,330 L550, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,325 L550,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M440,325 L460 335 L460, 325 L440,335 L440,325 L460,335"/>
+
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M409,330 L380, 330"/>
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M360,330 L280, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M280,325 L280,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M380,325 L360 335 L360, 325 L380,335 L380,325 L360,335"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,308 L408, 340"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,360 L408, 370"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,360 L413, 360 L403 340 L413 340 L403 360 L413 360"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,370 L413, 370"/>
+                    <TextBlock Margin="381,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Вода из "/><Run Text="H1"/></TextBlock>
+                    <TextBlock Text="Раствор NaOH" HorizontalAlignment="Left" Margin="556,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="249,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Промывочная вода"/></TextBlock>
+                    <TextBlock Text="Взрыхляющая вода" Margin="257,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Text="Сжатый воздух" HorizontalAlignment="Left" Margin="556,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="420,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Text="Вода "/><Run Language="ru-ru" Text="в декарбонизатор"/></TextBlock>
+                </Grid>
+
+
             </Grid>
 
             <Grid x:Name="H1" 
@@ -197,6 +434,84 @@ FontFamily="{DynamicResource MaterialDesignFont}">
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Top" 
                         Margin="0,126,0,0"/>
+
+                <Grid Margin="-16 0 0 0">
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M409,115 L380, 115 L380, 100"/>
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M380, 80 L380 50 L300 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M375,100 L385, 100 L375 80 L385 80 L375 100 L385 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M300,45 L300, 55"/>
+
+                    <Path Stroke="Red" StrokeThickness="3"
+                          Data="M409,115 L440, 115 L440, 100"/>
+                    <Path Stroke="Red" StrokeThickness="3"
+                          Data="M440,80 L440, 50 L550 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M435,100 L445, 100 L435 80 L445 80 L435 100 L445 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,45 L550, 55"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M408,120 L530 120 L530, 220"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,126 L408, 100"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,80 L408, 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,100 L413, 100 L403 80 L413 80 L403 100 L413 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,50 L413,50"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 220 L530 250"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 270 L530 330"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M525,250 L535, 250 L525 270 L535 270 L525 250 L535 250"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M409,330 L440, 330"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M460,330 L550, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,325 L550,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M440,325 L460 335 L460, 325 L440,335 L440,325 L460,335"/>
+
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M409,330 L380, 330"/>
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M360,330 L280, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M280,325 L280,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M380,325 L360 335 L360, 325 L380,335 L380,325 L360,335"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,308 L408, 340"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,360 L408, 370"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,360 L413, 360 L403 340 L413 340 L403 360 L413 360"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,370 L413, 370"/>
+                    <TextBlock Margin="336,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Из осветлительного фильтра"/></TextBlock>
+                    <TextBlock Text="Раствор H2SO4" HorizontalAlignment="Left" Margin="556,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="249,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Промывочная вода"/></TextBlock>
+                    <TextBlock Text="Взрыхляющая вода" Margin="257,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Text="Сжатый воздух" HorizontalAlignment="Left" Margin="556,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="420,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Text="Вода на "/><Run Language="ru-ru" Text="следующую ступень"/></TextBlock>
+                </Grid>
             </Grid>
 
             <Grid x:Name="A2Simplified" 
@@ -208,6 +523,84 @@ FontFamily="{DynamicResource MaterialDesignFont}">
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Top" 
                         Margin="0,126,0,0"/>
+
+                <Grid Margin="-16 0 0 0">
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M409,115 L380, 115 L380, 100"/>
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M380, 80 L380 50 L300 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M375,100 L385, 100 L375 80 L385 80 L375 100 L385 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M300,45 L300, 55"/>
+
+                    <Path Stroke="LightGreen" StrokeThickness="3"
+                          Data="M409,115 L440, 115 L440, 100"/>
+                    <Path Stroke="LightGreen" StrokeThickness="3"
+                          Data="M440,80 L440, 50 L550 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M435,100 L445, 100 L435 80 L445 80 L435 100 L445 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,45 L550, 55"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M408,120 L530 120 L530, 220"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,126 L408, 100"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,80 L408, 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,100 L413, 100 L403 80 L413 80 L403 100 L413 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,50 L413,50"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 220 L530 250"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 270 L530 330"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M525,250 L535, 250 L525 270 L535 270 L525 250 L535 250"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M409,330 L440, 330"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M460,330 L550, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,325 L550,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M440,325 L460 335 L460, 325 L440,335 L440,325 L460,335"/>
+
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M409,330 L380, 330"/>
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M360,330 L280, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M280,325 L280,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M380,325 L360 335 L360, 325 L380,335 L380,325 L360,335"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,308 L408, 340"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,360 L408, 370"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,360 L413, 360 L403 340 L413 340 L403 360 L413 360"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,370 L413, 370"/>
+                    <TextBlock Margin="343,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Text="Вода из "/><Run Language="ru-ru" Text="декарбониатора"/></TextBlock>
+                    <TextBlock Text="Раствор NaOH" HorizontalAlignment="Left" Margin="556,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="249,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Промывочная вода"/></TextBlock>
+                    <TextBlock Text="Взрыхляющая вода" Margin="257,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Text="Сжатый воздух" HorizontalAlignment="Left" Margin="556,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="420,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Вода на подпитку котлов"/></TextBlock>
+                </Grid>
             </Grid>
 
             <Grid x:Name="Na" 
@@ -219,6 +612,84 @@ FontFamily="{DynamicResource MaterialDesignFont}">
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        Margin="0,126,0,0"/>
+
+                <Grid Margin="-16 0 0 0">
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M409,115 L380, 115 L380, 100"/>
+                    <Path Stroke="Yellow" StrokeThickness="3"
+                          Data="M380, 80 L380 50 L300 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M375,100 L385, 100 L375 80 L385 80 L375 100 L385 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M300,45 L300, 55"/>
+
+                    <Path Stroke="#fb49ff" StrokeThickness="3"
+                          Data="M409,115 L440, 115 L440, 100"/>
+                    <Path Stroke="#fb49ff" StrokeThickness="3"
+                          Data="M440,80 L440, 50 L550 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M435,100 L445, 100 L435 80 L445 80 L435 100 L445 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,45 L550, 55"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M408,120 L530 120 L530, 220"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,126 L408, 100"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,80 L408, 50"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,100 L413, 100 L403 80 L413 80 L403 100 L413 100"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,50 L413,50"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 220 L530 250"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M530, 270 L530 330"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M525,250 L535, 250 L525 270 L535 270 L525 250 L535 250"/>
+
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M409,330 L440, 330"/>
+                    <Path Stroke="Gray" StrokeThickness="3"
+                          Data="M460,330 L550, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M550,325 L550,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M440,325 L460 335 L460, 325 L440,335 L440,325 L460,335"/>
+
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M409,330 L380, 330"/>
+                    <Path Stroke="Orange" StrokeThickness="3"
+                          Data="M360,330 L280, 330"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M280,325 L280,335"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M380,325 L360 335 L360, 325 L380,335 L380,325 L360,335"/>
+
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,308 L408, 340"/>
+                    <Path Stroke="Blue" StrokeThickness="3"
+                          Data="M408,360 L408, 370"/>
+                    <Path Stroke="Black" StrokeThickness="2"
+                          Data="M403,360 L413, 360 L403 340 L413 340 L403 360 L413 360"/>
+                    <Path Stroke="White" StrokeThickness="3"
+                          Data="M403,370 L413, 370"/>
+                    <TextBlock Margin="343,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Text="Вода из "/><Run Language="ru-ru" Text="осветлительных фильтров"/></TextBlock>
+                    <TextBlock Text="Раствор NaCl" HorizontalAlignment="Left" Margin="556,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="249,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Промывочная вода"/></TextBlock>
+                    <TextBlock Text="Взрыхляющая вода" Margin="257,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Text="Сжатый воздух" HorizontalAlignment="Left" Margin="556,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"/>
+                    <TextBlock Margin="420,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                               Style="{StaticResource Text_Unit}"><Run Language="ru-ru" Text="Вода на подпитку котлов"/></TextBlock>
+                </Grid>
             </Grid>
 
             <!--BF Block-->

@@ -220,7 +220,7 @@
 
                 <Grid Grid.Column="0" Margin="-52,95,0,0">
                     <Path Stroke="Blue" StrokeThickness="5"
-                          Data="M703 352 L703 370 L741 370 L741 230 L779 230 L779 255"/>
+                          Data="M703 352 L703 370 L741 370 L741 230 L779 230 L779 253"/>
                     <Path Stroke="Blue" StrokeThickness="5"
                           Data="M779 352 L779 410 L883 410"/>
 
