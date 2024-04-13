@@ -967,8 +967,20 @@ namespace HydroVisionDesign.ViewModel
 
         #endregion
 
-        public DesaltingPartWTPVM() 
+        public DesaltingPartWTPVM()
         {
+            IsHiddenMain = true;
+            IsHiddenThreeStage = true;
+
+            IsHiddenFilterProperty = true;
+            IsHiddenVolumeOfIonForMAFProperty = false;
+            IsHiddenVolumeOfIonForIonFilterProperty = false;
+            IsHiddenCationProperty = false;
+            IsHiddenAnionProperty = false;
+            IsHiddenClarifierProp = false;
+            IsHiddenDecarbonizerProp = false;
+            IsHiddenClarificationFilterProp = false;
+            IsHiddenWaterFlowToTheNextStage = false;
 
             #region Команды
 
