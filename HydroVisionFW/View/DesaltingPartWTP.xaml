@@ -48,8 +48,8 @@
             </Border>
 
 
-             <!--Lines-->
-         
+            <!--Lines-->
+
             <Grid Grid.Column="0" Margin="-52,95,0,0">
                 <Path Stroke="Blue" StrokeThickness="5"
                       Data="M190,130 L218, 130"/>
@@ -74,6 +74,7 @@
 
                 <Path Stroke="Blue" StrokeThickness="5"
                       Data="M629 290 L663 290 L663 230 L704, 230 L704 260"/>
+
             </Grid>
 
 
@@ -95,9 +96,9 @@
                     <Path Stroke="Blue" StrokeThickness="5"
                           Data="M865 350 L865 412 L883 412"/>
                 </Grid>
-                
+
                 <!--MAF_IMAGE-->
-                
+
                 <Image Source="/Resources/Images/Filter_MA.png"
                        Height="100"
                        Width="100"
@@ -279,7 +280,7 @@
 
 
             <!--Na_scheme-->
-            <Grid Visibility="{Binding IsHiddenNa,
+            <Grid  Visibility="{Binding IsHiddenNa,
                   Converter = {StaticResource BooleanToVisibilityConverter}}"
                   Margin="-52,95,0,0">
                 <!--Na_IMAGE-->
@@ -298,12 +299,23 @@
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnNaCommand}"/>
                     </Image.InputBindings>
                 </Image>
+                
                 <!--Tank_IMAGE-->
 
                 <Image Source="/Resources/Images/Tank.png"
                        Height="100"
                        Width="100"
                        Grid.Column="0" Margin="52,205,100,0"/>
+
+                <TextBlock HorizontalAlignment="Left" Margin="491,404,0,0" TextWrapping="Wrap" Text="БУВ" VerticalAlignment="Top"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M459, 460 L459, 486 L494 486"/>
+
+                <Path Stroke="Blue" StrokeThickness="5"
+                      Data="M521, 486 L580, 486"/>
+                <TextBlock HorizontalAlignment="Left" Margin="497,504,0,0" TextWrapping="Wrap" Text="На подпитку теплосети" VerticalAlignment="Top"/>
+
             </Grid>
 
 
@@ -325,6 +337,7 @@
                    Height="100"
                    Width="100"
                    Grid.Column="0" Margin="0,120,580,380"/>
+            <TextBlock HorizontalAlignment="Left" Margin="197,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="БОсВ"/></TextBlock>
 
             <!--Clarifier_IMAGE-->
 
@@ -337,6 +350,10 @@
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnClarifierCommand}"/>
                 </Image.InputBindings>
             </Image>
+
+            <Path Stroke="Blue" StrokeThickness="5" Margin="-52,95,0,0"
+                      Data="M120 240 L100 240 L100 300"/>
+            <TextBlock HorizontalAlignment="Left" Margin="36,398,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Исходная вода"/></TextBlock>
 
             <!--Decatbonizer_IMAGE-->
 
@@ -357,6 +374,16 @@
                        Width="100"
                        Grid.Column="0" Margin="750,300,0,0"/>
 
+            <TextBlock HorizontalAlignment="Left" Margin="863,499,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="БОбВ"/></TextBlock>
+
+            <Path Stroke="Blue" StrokeThickness="5" Margin="-52,95,0,0"
+                      Data="M884 460 L884 487 L918 487"/>
+
+            <Path Stroke="Blue" StrokeThickness="5" Margin="-52,95,0,0"
+                      Data="M946 487 L1000 487"/>
+
+            <TextBlock HorizontalAlignment="Left" Margin="877,599,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="На подпитку котлов"/></TextBlock>
+
             <!--Prop-->
             <Grid Grid.Column="1">
                 <Border>
@@ -366,33 +393,33 @@
                 </Border>
             </Grid>
 
-                <GroupBox Header="Свойства"
+            <GroupBox Header="Свойства"
                       Grid.Column="1">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
-                        
+
                         <!--FilterProp-->
-                    <Grid x:Name="FilterProperty" 
+                        <Grid x:Name="FilterProperty" 
                       Visibility="{Binding IsHiddenFilterProperty, 
                       Converter = {StaticResource BooleanToVisibilityConverter}}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="30"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Площадь фильтрования" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Площадь фильтрования" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="0" Margin="2" IsReadOnly="True"
                              Text="{Binding FiltrationArea}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="0" Text="м2" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -432,24 +459,24 @@
                              Text="{Binding NumberOfRegenerationsPerDay}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="7" Text="" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                </Grid>
+                        </Grid>
 
-                    <!--VolumeOfIonMAF-->
-                    <Grid Visibility="{Binding IsHiddenVolumeOfIonForMAFProperty, 
+                        <!--VolumeOfIonMAF-->
+                        <Grid Visibility="{Binding IsHiddenVolumeOfIonForMAFProperty, 
                               Converter = {StaticResource BooleanToVisibilityConverter}}"
                             Grid.ColumnSpan="3" Grid.Row="9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
                             <TextBlock Grid.Column="0" Grid.Row="0" Text="Обьем ионитных материалов" Margin="5,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="0" Grid.Row="1" Text="В один фильтр" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="1" Margin="2" IsReadOnly="True"
@@ -468,22 +495,22 @@
                             <TextBox Grid.Column="1" Grid.Row="4" Margin="2" IsReadOnly="True"
                       Text="{Binding VolumeOfIonExchangeMaterialsInGroupFilterCationOrAnion}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="4" Text="м3" Margin="1" Style="{StaticResource Text_Unit}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
+                        </Grid>
 
-                    <!--VolumeOfIonIFilter-->
-                    <Grid Visibility="{Binding IsHiddenVolumeOfIonForIonFilterProperty, 
+                        <!--VolumeOfIonIFilter-->
+                        <Grid Visibility="{Binding IsHiddenVolumeOfIonForIonFilterProperty, 
                           Converter = {StaticResource BooleanToVisibilityConverter}}"
                           Grid.ColumnSpan="3" Grid.Row="9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
                             <TextBlock Grid.Column="0" Grid.Row="0" Text="Обьем ионитных материалов" Margin="5,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="0" Grid.Row="1" Text="В один фильтр" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="1" Margin="2" IsReadOnly="True"
@@ -495,27 +522,27 @@
                                  Text="{Binding VolumeOfIonExchangeMaterialsInGroupFilter}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="3" Text="м3" Margin="1" Style="{StaticResource Text_Unit}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                    </Grid>
+                        </Grid>
 
-                    <!--CationProp-->
-                    <Grid x:Name="CationProp"
+                        <!--CationProp-->
+                        <Grid x:Name="CationProp"
                           Grid.ColumnSpan="3" Grid.Row="10"
                           Visibility="{Binding IsHiddenCationProperty, 
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
 
-                        </Grid.RowDefinitions>
+                            </Grid.RowDefinitions>
 
                             <TextBlock Grid.Column="0" Grid.Row="1" Text="Расчет катионита" Margin="5,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="0" Grid.Row="2" Text="Расход воды на соб. нужды" Margin="0,0,0,0" VerticalAlignment="Center"/>
@@ -538,26 +565,26 @@
                                  Text="{Binding DailyConsumptionOfChemicalReagentCation}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="5" Text="кг" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                    </Grid>
+                        </Grid>
 
-                    <!--AnionProp-->
-                    <Grid x:Name="AnionProp"
+                        <!--AnionProp-->
+                        <Grid x:Name="AnionProp"
                           Grid.ColumnSpan="3" Grid.Row="11"
                           Visibility="{Binding IsHiddenAnionProperty, 
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
 
                             <TextBlock Grid.Column="0" Grid.Row="1" Text="Расчет анионита" Margin="5,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="0" Grid.Row="2" Text="Расход воды на собственные нужды" Margin="0,0,0,0" VerticalAlignment="Center"/>
@@ -579,29 +606,29 @@
                             <TextBox Grid.Column="1" Grid.Row="5" Margin="2" IsReadOnly="True"
                                  Text="{Binding DailyConsumptionOfChemicalReagentAnion}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="5" Text="кг" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
+                        </Grid>
 
-                    <!--BF-->
-                    <Grid Visibility="{Binding IsHiddenClarificationFilterProp, 
+                        <!--BF-->
+                        <Grid Visibility="{Binding IsHiddenClarificationFilterProp, 
                           Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
 
                             <TextBlock Grid.Column="0" Grid.Row="0" Text="Площадь фильтрования" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="0" Margin="2" IsReadOnly="True"
@@ -652,16 +679,16 @@
                             <TextBox Grid.Column="1" Grid.Row="10" Margin="2" IsReadOnly="True"
                                  Text="{Binding ActualFiltrationSpeed}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="10" Text="м3/ч" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
+                        </Grid>
 
-                    <!--Clarifier-->
-                    <Grid Visibility="{Binding IsHiddenClarifierProp, 
+                        <!--Clarifier-->
+                        <Grid Visibility="{Binding IsHiddenClarifierProp, 
                           Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="25"/>
                                 <RowDefinition Height="25"/>
@@ -762,40 +789,40 @@
                                  Text="{Binding ClarifierHeight}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="19" Text="мм" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                    </Grid>
+                        </Grid>
 
-                    <!--Decarbonizer-->
-                    <Grid Visibility="{Binding IsHiddenDecarbonizerProp, 
+                        <!--Decarbonizer-->
+                        <Grid Visibility="{Binding IsHiddenDecarbonizerProp, 
                           Converter={StaticResource BooleanToVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
 
                             <TextBlock Grid.Column="0" Grid.Row="0" Text="Концентрация СО2 перед Д." Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="0" Margin="2" IsReadOnly="True"
@@ -878,10 +905,10 @@
                             <TextBox Grid.Column="1" Grid.Row="21" Margin="2" IsReadOnly="True"
                                  Text="{Binding DecarbonizerAirFlow}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="21" Text="м3/ч" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
+                        </Grid>
 
-                    <!--WaterFlowToNextStage-->
-                    <Grid Grid.ColumnSpan="3" Grid.Row="12"
+                        <!--WaterFlowToNextStage-->
+                        <Grid Grid.ColumnSpan="3" Grid.Row="12"
                           Visibility="{Binding IsHiddenWaterFlowToTheNextStage, 
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
@@ -901,6 +928,8 @@
                     </StackPanel>
                 </ScrollViewer>
             </GroupBox>
+
+
 
 
         </Grid>
