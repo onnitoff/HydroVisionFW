@@ -404,7 +404,7 @@
                       Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -467,7 +467,7 @@
                             Grid.ColumnSpan="3" Grid.Row="9">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -503,7 +503,7 @@
                           Grid.ColumnSpan="3" Grid.Row="9">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -531,7 +531,7 @@
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -574,7 +574,7 @@
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -613,7 +613,7 @@
                           Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -686,7 +686,7 @@
                           Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="48"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -767,7 +767,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="15" Text="Марка осветлителя" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="15" Margin="2" IsReadOnly="True"
                                  Text="{Binding ClarifierBrand}"/>
-                            <TextBlock Grid.Column="2"  Grid.Row="15" Text="мг/кг" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2"  Grid.Row="15" Text="" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                             <TextBlock Grid.Column="0" Grid.Row="16" Text="Производительность" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="16" Margin="2" IsReadOnly="True"
@@ -796,7 +796,7 @@
                           Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -913,7 +913,7 @@
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
