@@ -821,6 +821,7 @@ namespace HydroVisionFW.ViewModel
         {
             CalcDecarbonizer calc = new CalcDecarbonizer();
             calc.CaclFirstProperty();
+            FilterCount = DecarbonizerStorage.Instance.m;
         }
 
         private void GetComboBox_Decarbonizer()
