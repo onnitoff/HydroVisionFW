@@ -296,7 +296,7 @@ namespace HydroVisionDesign.ViewModel
             BoilerStorage.Instance.NumberOfTurbinesSecond = NumberOfTurbinesSecond;
             BoilerStorage.Instance.VacationCouple = VacationCouple;
             BoilerStorage.Instance.Losses = Losses;
-            BoilerStorage.Instance.BlowdownLosses = BlowdownLosses / 100;
+            BoilerStorage.Instance.BlowdownLosses = BlowdownLosses;
             // запись из бд для котла
             DataStorage.Instance.SelectedBoilerFirstItem = SelectedBoilerFirstItem.Id;
             DataStorage.Instance.BoilerTypeFirst = SelectedBoilerFirstItem.Type;

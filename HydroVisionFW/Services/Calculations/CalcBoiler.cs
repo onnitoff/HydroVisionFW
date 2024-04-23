@@ -50,13 +50,13 @@ namespace HydroVisionFW.Services.Calculations
                 BoilerStorage.Instance.ExternalLosses = perfomance.ExternalLosses(BoilerStorage.Instance.Losses, BoilerStorage.Instance.VacationCouple);
 
             if (BoilerStorage.Instance.BlowdownLosses != 0 && DataStorage.Instance.BoilerTypeFirst == 1 && DataStorage.Instance.BoilerTypeSecond != 1)
-                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceFirst,
+                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses / 100, DataStorage.Instance.BoilerPerfomanceFirst,
                                                        BoilerStorage.Instance.NumberOfBoilersFirst);
             if (BoilerStorage.Instance.BlowdownLosses != 0 && DataStorage.Instance.BoilerTypeSecond == 1 && DataStorage.Instance.BoilerTypeFirst != 1)
-                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceSecond,
+                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses / 100, DataStorage.Instance.BoilerPerfomanceSecond,
                                                        BoilerStorage.Instance.NumberOfBoilersSecond);
             if (BoilerStorage.Instance.BlowdownLosses != 0 && DataStorage.Instance.BoilerTypeFirst == 1 && DataStorage.Instance.BoilerTypeSecond == 1)
-                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses, DataStorage.Instance.BoilerPerfomanceFirst,
+                BoilerStorage.Instance.PurgingLosses = perfomance.PurgingLosses(BoilerStorage.Instance.BlowdownLosses / 100, DataStorage.Instance.BoilerPerfomanceFirst,
                                                        BoilerStorage.Instance.NumberOfBoilersFirst, DataStorage.Instance.BoilerPerfomanceSecond, BoilerStorage.Instance.NumberOfBoilersSecond);
 
 
@@ -79,16 +79,30 @@ namespace HydroVisionFW.Services.Calculations
                     }
                     else
                     {
-                        BoilerStorage.Instance.FuelOilConsumptionFirst = item.OilConsumption;
+                        if (item.OilConsumption == 0)
+                        {
+                            BoilerStorage.Instance.FuelOilConsumptionSecond = 27;
+                        }
+                        //  BoilerStorage.Instance.FuelOilConsumptionFirst = item.OilConsumption;
+                        break;
                     }
+                }
 
+                foreach (var item in fuelOilConsumptions)
+                {
                     if (item.Perfomance <= DataStorage.Instance.BoilerPerfomanceSecond)
                     {
+
                         BoilerStorage.Instance.FuelOilConsumptionSecond = item.OilConsumption;
                     }
                     else
                     {
-                        BoilerStorage.Instance.FuelOilConsumptionSecond = item.OilConsumption;
+                        if (item.Perfomance <= 420)
+                        {
+                            BoilerStorage.Instance.FuelOilConsumptionSecond = 27;
+                        }
+                        // BoilerStorage.Instance.FuelOilConsumptionSecond = item.OilConsumption;
+                        break;
                     }
                 }
 
