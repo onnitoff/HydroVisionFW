@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathWater", "..\..\..\vs-re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Design_Test", "WPF_Design_Test\WPF_Design_Test.csproj", "{B598A511-84A9-4BD2-93BE-25A110D36576}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{20513B96-4929-4CF1-8A8B-7D074FB9E76C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{B598A511-84A9-4BD2-93BE-25A110D36576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B598A511-84A9-4BD2-93BE-25A110D36576}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B598A511-84A9-4BD2-93BE-25A110D36576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20513B96-4929-4CF1-8A8B-7D074FB9E76C}.Debug|Any CPU.ActiveCfg = Debug
+		{20513B96-4929-4CF1-8A8B-7D074FB9E76C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
