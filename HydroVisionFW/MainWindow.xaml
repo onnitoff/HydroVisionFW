@@ -73,6 +73,15 @@
                         </Grid>
                     </Menu:Btn>
 
+                    <!--DesaltingPartWTP-->
+                    <Menu:Btn Style="{StaticResource BtnStyle}"
+                              Command="{Binding Path=ParamConstCommand}">
+                        <Grid>
+                            <TextBlock Text="Параметры констант"
+                                       Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:Btn>
+
                     <!--CoolingSystem-->
                     <!--<Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding Path=CoolingSystemCommand}">
