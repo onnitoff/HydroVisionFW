@@ -16,12 +16,11 @@ namespace HydroVisionFW.Services.Calculations
 
         public void Calculations()
         {
-            const double t = 3.5;
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
 
             MAFStorage.Instance.f_ct = filters.FilterArea(MAFStorage.Instance.d_ct);
             MAFStorage.Instance.T_FAA = filters.FilterCycleDurationForThreeStage(MAFStorage.Instance.f_ct, MAFStorage.Instance.m, MAFStorage.Instance.h, BoilerStorage.Instance.PerfomanceWTP);
-            MAFStorage.Instance.n = filters.NumberOfRegenerationsPerDay(MAFStorage.Instance.T_FAA, t);
+            MAFStorage.Instance.n = filters.NumberOfRegenerationsPerDay(MAFStorage.Instance.T_FAA, DataStorage.Instance.t_Filters);
             MAFStorage.Instance.V_vl = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilter(MAFStorage.Instance.f_ct, MAFStorage.Instance.h);
             MAFStorage.Instance.V_vlK = filters.VolumeOfIonExchangeMaterialsInWetStateInOneFilterCationAndAnion(MAFStorage.Instance.V_vl);
             MAFStorage.Instance.SumV_vl = filters.VolumeOfIonExchangeMaterialsInWetStateInGroupFilters(MAFStorage.Instance.f_ct, MAFStorage.Instance.h, MAFStorage.Instance.m);

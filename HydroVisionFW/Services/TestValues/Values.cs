@@ -201,6 +201,20 @@ namespace HydroVisionDesign.Services.TestValues
             #endregion
 
 
+            #region Начальные параметры констант
+            DataStorage.Instance.K_Al = 0.5;
+            DataStorage.Instance.K_Fe = 0.45;
+            DataStorage.Instance.ResidualHardnessCarbonate = 0.7;
+            DataStorage.Instance.CationOnSecondStageFilter = 0.3;
+            DataStorage.Instance.t_Filters = 3.5;
+
+            BFStorage.Instance.i = 12;
+            BFStorage.Instance.t_vzr = 8;
+            BFStorage.Instance.t_otm = 10;
+            BFStorage.Instance.n = 2;
+
+
+            #endregion
 
 
 

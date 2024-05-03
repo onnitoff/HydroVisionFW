@@ -40,19 +40,129 @@
            Margin="0 0 0 20"/>
                 </StackPanel>
 
-                <!--Param-->
+                <!--K_Al_Fe-->
                 <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
-                    Margin="10 10 10 20">
-                    <TextBlock Text="Первый"
-                               Margin="0 0 10 0"
+                    Margin="10 0 10 20">
+                    
+                    <TextBlock Text="K_Al_Fe = "
+                               Margin="0 0 0 0"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center" />
-                    <TextBox Text="Binding"
+                    <TextBox Text="{Binding K_Al_Fe}"
                              Margin="0"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"/>
                 </StackPanel>
+
+                <!--ResidualHardnessCarbonate-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 0 10 20">
+
+                    <TextBlock Text="Ж_ост_к = "
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" />
+                    <TextBox Text="{Binding ResidualHardnessCarbonate}"
+                             Margin="0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--CationOnSecondStageFilter-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 0 10 20">
+
+                    <TextBlock Text="U_н2 = "
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" />
+                    <TextBox Text="{Binding CationOnSecondStageFilter}"
+                             Margin="0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--t_Filters-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 0 10 20">
+
+                    <TextBlock Text="Продолжительность операций t = "
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" />
+                    <TextBox Text="{Binding t_Filters}"
+                             Margin="0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--i_BF-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 0 10 20">
+
+                    <TextBlock Text="Интенсивность взрыхления ОФ i = "
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" />
+                    <TextBox Text="{Binding i_BF}"
+                             Margin="0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--t_vzr_BF-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 0 10 20">
+
+                    <TextBlock Text="Продолжительность взрыхления ОФ t_взр = "
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" />
+                    <TextBox Text="{Binding t_vzr_BF}"
+                             Margin="0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--t_otm_BF-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 0 10 20">
+
+                    <TextBlock Text="Продолжительность отмывки ОФ t_отм = "
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" />
+                    <TextBox Text="{Binding t_otm_BF}"
+                             Margin="0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--n_BF-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10 0 10 20">
+
+                    <TextBlock Text="Число промывок каждого ОФ n_о = "
+                               Margin="0 0 0 0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" />
+                    <TextBox Text="{Binding n_BF}"
+                             Margin="0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"/>
+                </StackPanel>
+
+
+
+
             </StackPanel>
         </ScrollViewer>
 
@@ -64,3 +174,4 @@
         Margin="50"/>
     </Grid>
 </UserControl>
+
