@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HydroVisionPRO", "HydroVisionFW\HydroVisionPRO.csproj", "{D5151055-09A2-4CFB-BEAC-CF762C94C60F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathWater", "..\..\..\vs-repos\Water\MathWater\MathWater\MathWater.csproj", "{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Design_Test", "WPF_Design_Test\WPF_Design_Test.csproj", "{B598A511-84A9-4BD2-93BE-25A110D36576}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{20513B96-4929-4CF1-8A8B-7D074FB9E76C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathWater", "..\..\..\..\..\vs-repos\Water\MathWater\MathWater\MathWater.csproj", "{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,16 +21,16 @@ Global
 		{D5151055-09A2-4CFB-BEAC-CF762C94C60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5151055-09A2-4CFB-BEAC-CF762C94C60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5151055-09A2-4CFB-BEAC-CF762C94C60F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B598A511-84A9-4BD2-93BE-25A110D36576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B598A511-84A9-4BD2-93BE-25A110D36576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B598A511-84A9-4BD2-93BE-25A110D36576}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B598A511-84A9-4BD2-93BE-25A110D36576}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20513B96-4929-4CF1-8A8B-7D074FB9E76C}.Debug|Any CPU.ActiveCfg = Debug
 		{20513B96-4929-4CF1-8A8B-7D074FB9E76C}.Release|Any CPU.ActiveCfg = Release
+		{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D9D4FEE-7694-4E7B-8C30-C1ACF70FEF7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
