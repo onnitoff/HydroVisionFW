@@ -60,6 +60,8 @@ namespace HydroVisionDesign.Services.DataStorages
         public double SumOfStrongAcidAnions { get; set; } = 0;
 
         public double K_Al_Fe { get; set; } = 0;
+        public double K_Al { get; set; } = 0;
+        public double K_Fe { get; set; } = 0;
         public double ExcessLime { get; set; } = 0;
         public double ResidualHardnessCarbonate { get; set; } = 0;
         public double ResidualHardnessNoCarbonate { get; set; } = 0;
@@ -77,6 +79,9 @@ namespace HydroVisionDesign.Services.DataStorages
         public double NaCationOnFilter { get; set; } = 0;
 
         public string DesaltingScheme { get; set; } = String.Empty;
+
+
+        public double t_Filters = 0;
 
 
 

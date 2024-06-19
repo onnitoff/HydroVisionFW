@@ -33,6 +33,7 @@ namespace HydroVisionFW.Services.DataStorages
         public double d_p { get; set;}
         public double d_ct { get; set; }
         public double f_ct { get; set; }
+        public double t { get;set; }
         public double T_FAA { get; set;}
         public double h { get; set;}
         public int m {  get; set; }

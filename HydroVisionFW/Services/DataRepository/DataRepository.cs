@@ -22,7 +22,8 @@ namespace HydroVisionFW.Services.DataRepository
                               select new FuelModel
                               {
                                   Id = first.Id,
-                                  OilConsumption = first.OilConsumption
+                                  OilConsumption = first.OilConsumption,
+                                  Perfomance = first.Perfomance
                               }).ToListAsync();
             }
         }

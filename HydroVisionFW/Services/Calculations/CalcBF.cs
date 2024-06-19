@@ -17,10 +17,7 @@ namespace HydroVisionFW.Services.Calculations
         {
 
             CalculationOfIonExchangeFilters filters = new CalculationOfIonExchangeFilters();
-            BFStorage.Instance.i = 12;
-            BFStorage.Instance.t_vzr = 8;
-            BFStorage.Instance.t_otm = 10;
-            BFStorage.Instance.n = 2;
+           
 
 
             BFStorage.Instance.f_ct = filters.FilterArea(BFStorage.Instance.d_ct);

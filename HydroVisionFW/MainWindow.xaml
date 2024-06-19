@@ -8,13 +8,14 @@
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="HydroVisionPro" 
-        Height="450" 
-        Width="900"
+        Height="800" 
+        Width="1500"
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
-        WindowState="Maximized"
         Background="Transparent"
-        Icon="/Resources/Images/Icon.ico">
+        Icon="/Resources/Images/Icon.ico"
+        ResizeMode="NoResize"
+        SizeToContent="Manual">
     <Window.DataContext>
         <vm:NavigationVM/>
     </Window.DataContext>
@@ -69,6 +70,15 @@
                               Command="{Binding Path=DesaltingPartCommand}">
                         <Grid>
                             <TextBlock Text="Обессоливающая часть ВПУ"
+                                       Style="{StaticResource Text_Style}"/>
+                        </Grid>
+                    </Menu:Btn>
+
+                    <!--DesaltingPartWTP-->
+                    <Menu:Btn Style="{StaticResource BtnStyle}"
+                              Command="{Binding Path=ParamConstCommand}">
+                        <Grid>
+                            <TextBlock Text="Параметры констант"
                                        Style="{StaticResource Text_Style}"/>
                         </Grid>
                     </Menu:Btn>

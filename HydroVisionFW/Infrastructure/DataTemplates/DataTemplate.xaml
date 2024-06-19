@@ -27,5 +27,8 @@
         <view:GivenParameters/>
     </DataTemplate>
 
-
+    <DataTemplate DataType="{x:Type vm:ParametersConstVM}">
+        <view:ParametersConst/>
+    </DataTemplate>
+    
 </ResourceDictionary>

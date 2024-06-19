@@ -50,6 +50,10 @@ namespace HydroVisionDesign.ViewModel
         public ICommand GivenParamCommand { get; set; }
         private void GivenParam(object obj) => CurrentView = new GivenParametersVM();
 
+        /// <summary>Навигация</summary>
+        public ICommand ParamConstCommand { get; set; }
+        private void ParamConst(object obj) => CurrentView = new ParametersConstVM();
+
         #endregion
 
         public NavigationVM()
@@ -63,6 +67,7 @@ namespace HydroVisionDesign.ViewModel
             CoolingSystemCommand = new RelayCommand(CoolingSystem);
             CirculationPumpsCommand = new RelayCommand(CirculationPumps);
             GivenParamCommand = new RelayCommand(GivenParam);
+            ParamConstCommand = new RelayCommand(ParamConst);
 
             // Начальное окно
             CurrentView = new GivenParametersVM();

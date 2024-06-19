@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:HydroVisionDesign.ViewModel"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:c="clr-namespace:HydroVisionFW.Services.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="795"
-             d:DesignWidth="1296"
+             d:DesignHeight="780"
+             d:DesignWidth="1210"
              Style="{StaticResource Page_Style}"
                      TextElement.Foreground="Black"
                      TextElement.FontWeight="DemiBold"
@@ -30,31 +31,34 @@
             </Border.Background>
         </Border>
 
-        <Grid Visibility="{Binding IsHiddenMain,
-              Converter = {StaticResource BooleanToVisibilityConverter}}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Grid Visibility="{Binding IsHiddenMain,
+              Converter = {StaticResource BooleanToVisibilityConverter}}"  x:Name="MainGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="290"/>
             </Grid.ColumnDefinitions>
             <Border>
-                <Border.Background>
-                    <SolidColorBrush Color="Transparent"/>
-                </Border.Background>
-                <i:Interaction.Triggers>
+                    <Border.Background>
+                        <SolidColorBrush Color="Transparent"/>
+                    </Border.Background>
+                    <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction Command="{Binding LeftBtnGridCommand}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Border>
 
+                
 
-            <!--Lines-->
+                <!--Lines-->
 
-            <Grid Grid.Column="0" Margin="-52,95,0,0">
+            <Grid Grid.Column="0" Margin="-77,80,0,0">
                 <Path Stroke="Blue" StrokeThickness="5"
                       Data="M190,130 L218, 130"/>
 
-                <Path Stroke="Blue" StrokeThickness="5"
+                
+                    <Path Stroke="Blue" StrokeThickness="5"
                       Data="M218,178 L218, 206 L255, 206"/>
 
                 <Path Stroke="Blue" StrokeThickness="5"
@@ -85,15 +89,15 @@
                   Visibility="{Binding IsHiddenThreeStage,
                   Converter = {StaticResource BooleanToVisibilityConverter}}">
 
-                <Grid Grid.Column="0" Margin="-52,95,0,0">
+                <Grid Grid.Column="0" Margin="-77,80,0,0">
 
-                    <Path Stroke="Blue" StrokeThickness="5"
+                    <Path Stroke="Blue" StrokeThickness="5" Grid.Column="0"
                           Data="M703 350 L703 370 L741 370 L741 230 L779 230 L779 255"/>
 
                     <Path Stroke="Blue" StrokeThickness="5"
                           Data="M779 350 L779 370 L825 370 L825 230 L865 230 L865 255"/>
 
-                    <Path Stroke="Blue" StrokeThickness="5"
+                    <Path Stroke="Blue" StrokeThickness="5" Margin="0"
                           Data="M865 350 L865 412 L883 412"/>
                 </Grid>
 
@@ -103,7 +107,7 @@
                        Height="100"
                        Width="100"
                        Grid.Column="0" Margin="620,250,0,250"
-                       >
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnMAFCommand}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnMAFCommand}"/>
@@ -115,7 +119,8 @@
                 <Image Source="/Resources/Images/Filter_A2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="528,250,80,250">
+                       Grid.Column="0" Margin="528,250,80,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
@@ -127,7 +132,8 @@
                 <Image Source="/Resources/Images/Filter_H2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="447,250,150,250">
+                       Grid.Column="0" Margin="447,250,150,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
@@ -139,7 +145,8 @@
                 <Image Source="/Resources/Images/Filter_A1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="265,250,345,250">
+                       Grid.Column="0" Margin="265,250,345,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
@@ -151,7 +158,8 @@
                 <Image Source="/Resources/Images/Filter_H1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="190,250,420,250">
+                       Grid.Column="0" Margin="190,250,420,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
@@ -175,7 +183,8 @@
                 <Image Source="/Resources/Images/Filter_A2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="528,250,80,250">
+                       Grid.Column="0" Margin="528,250,80,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2Command}"/>
@@ -187,7 +196,8 @@
                 <Image Source="/Resources/Images/Filter_H2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="447,250,150,250">
+                       Grid.Column="0" Margin="447,250,150,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
@@ -199,7 +209,8 @@
                 <Image Source="/Resources/Images/Filter_A1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="265,250,345,250">
+                       Grid.Column="0" Margin="265,250,345,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA1Command}"/>
@@ -211,14 +222,15 @@
                 <Image Source="/Resources/Images/Filter_H1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="190,250,420,250">
+                       Grid.Column="0" Margin="190,250,420,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
                     </Image.InputBindings>
                 </Image>
 
-                <Grid Grid.Column="0" Margin="-52,95,0,0">
+                <Grid Grid.Column="0" Margin="-77,80,0,0">
                     <Path Stroke="Blue" StrokeThickness="5"
                           Data="M703 352 L703 370 L741 370 L741 230 L779 230 L779 253"/>
                     <Path Stroke="Blue" StrokeThickness="5"
@@ -239,7 +251,8 @@
                 <Image Source="/Resources/Images/Filter_A2Simplified.png"
                    Height="100"
                    Width="100"
-                   Grid.Column="0" Margin="447,250,150,250">
+                   Grid.Column="0" Margin="447,250,150,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnA2SimplifiedCommand}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnA2SimplifiedCommand}"/>
@@ -251,7 +264,8 @@
                 <Image Source="/Resources/Images/Filter_H1.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="190,250,420,250">
+                       Grid.Column="0" Margin="190,250,420,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH1Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH1Command}"/>
@@ -263,14 +277,15 @@
                 <Image Source="/Resources/Images/Filter_H2.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="265,250,345,250">
+                       Grid.Column="0" Margin="265,250,345,250"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnH2Command}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnH2Command}"/>
                     </Image.InputBindings>
                 </Image>
 
-                <Grid Grid.Column="0" Margin="-52,95,0,0">
+                <Grid Grid.Column="0" Margin="-77,80,0,0">
 
                     <Path Stroke="Blue" StrokeThickness="5"
                           Data="M704 352 L704 412 L865 412 L883 412"/>
@@ -282,7 +297,7 @@
             <!--Na_scheme-->
             <Grid  Visibility="{Binding IsHiddenNa,
                   Converter = {StaticResource BooleanToVisibilityConverter}}"
-                  Margin="-52,95,0,0">
+                  Margin="-77,80,0,0">
                 <!--Na_IMAGE-->
 
                 <Path Stroke="Blue" StrokeThickness="5"
@@ -293,7 +308,8 @@
                 <Image Source="/Resources/Images/Filter_Na.png"
                        Height="100"
                        Width="100"
-                        Grid.Column="0" Margin="52,293,330,100">
+                        Grid.Column="0" Margin="77,296,330,100"
+                       Style="{StaticResource ImageHoverStyle}">
                     <Image.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnNaCommand}"/>
                         <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnNaCommand}"/>
@@ -305,7 +321,7 @@
                 <Image Source="/Resources/Images/Tank.png"
                        Height="100"
                        Width="100"
-                       Grid.Column="0" Margin="52,205,100,0"/>
+                       Grid.Column="0" Margin="77,218,100,0"/>
 
                 <TextBlock HorizontalAlignment="Left" Margin="491,404,0,0" TextWrapping="Wrap" Text="БУВ" VerticalAlignment="Top"/>
 
@@ -324,7 +340,8 @@
             <Image Source="/Resources/Images/Filter_Clarifier.png"
                    Height="100"
                    Width="100"
-                   Grid.Column="0" Margin="0,250,430,250">
+                   Grid.Column="0" Margin="0,250,430,250"
+                   Style="{StaticResource ImageHoverStyle}">
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnBFCommand}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnBFCommand}"/>
@@ -337,30 +354,32 @@
                    Height="100"
                    Width="100"
                    Grid.Column="0" Margin="0,120,580,380"/>
-            <TextBlock HorizontalAlignment="Left" Margin="197,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="БОсВ"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="171,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="БОсВ"/></TextBlock>
 
             <!--Clarifier_IMAGE-->
 
             <Image Source="/Resources/Images/Clarifier.png"
                    Height="150"
                    Width="150"
-                   Grid.Column="0" Margin="0,120,800,330">
+                   Grid.Column="0" Margin="0,120,800,330"
+                   Style="{StaticResource ImageHoverStyle}">
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnClarifierCommand}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnClarifierCommand}"/>
                 </Image.InputBindings>
             </Image>
 
-            <Path Stroke="Blue" StrokeThickness="5" Margin="-52,95,0,0"
+            <Path Stroke="Blue" StrokeThickness="5" Margin="-77,80,0,0"
                       Data="M120 240 L100 240 L100 300"/>
-            <TextBlock HorizontalAlignment="Left" Margin="36,398,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Исходная вода"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="14,386,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Исходная вода"/></TextBlock>
 
             <!--Decatbonizer_IMAGE-->
 
             <Image Source="/Resources/Images/Decarbonizer.png"
                        Height="150"
                        Width="150"
-                       Grid.Column="0" Margin="150,100,0,250">
+                       Grid.Column="0" Margin="150,100,0,250"
+                       Style="{StaticResource ImageHoverStyle}">
                 <Image.InputBindings>
                     <MouseBinding Gesture="LeftClick" Command="{Binding LeftBtnDecarbonizerCommand}"/>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding LeftDoubleBtnDecarbonizerCommand}"/>
@@ -374,15 +393,15 @@
                        Width="100"
                        Grid.Column="0" Margin="750,300,0,0"/>
 
-            <TextBlock HorizontalAlignment="Left" Margin="863,499,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="БОбВ"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="837,484,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="БОбВ"/></TextBlock>
 
-            <Path Stroke="Blue" StrokeThickness="5" Margin="-52,95,0,0"
+            <Path Stroke="Blue" StrokeThickness="5" Margin="-77,80,0,0"
                       Data="M884 460 L884 487 L918 487"/>
 
-            <Path Stroke="Blue" StrokeThickness="5" Margin="-52,95,0,0"
+            <Path Stroke="Blue" StrokeThickness="5" Margin="-77,80,0,0"
                       Data="M946 487 L1000 487"/>
 
-            <TextBlock HorizontalAlignment="Left" Margin="877,599,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="На подпитку котлов"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="815,597,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="На подпитку котлов"/></TextBlock>
 
             <!--Prop-->
             <Grid Grid.Column="1">
@@ -393,7 +412,8 @@
                 </Border>
             </Grid>
 
-            <GroupBox Header="Свойства"
+
+                <GroupBox Header="Свойства"
                       Grid.Column="1">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
@@ -404,7 +424,7 @@
                       Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -467,7 +487,7 @@
                             Grid.ColumnSpan="3" Grid.Row="9">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -503,7 +523,7 @@
                           Grid.ColumnSpan="3" Grid.Row="9">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -531,7 +551,7 @@
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -574,7 +594,7 @@
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -613,7 +633,7 @@
                           Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -686,7 +706,7 @@
                           Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="48"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -767,7 +787,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="15" Text="Марка осветлителя" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="15" Margin="2" IsReadOnly="True"
                                  Text="{Binding ClarifierBrand}"/>
-                            <TextBlock Grid.Column="2"  Grid.Row="15" Text="мг/кг" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2"  Grid.Row="15" Text="" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                             <TextBlock Grid.Column="0" Grid.Row="16" Text="Производительность" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Grid.Row="16" Margin="2" IsReadOnly="True"
@@ -796,7 +816,7 @@
                           Converter={StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -913,7 +933,7 @@
                           Converter = {StaticResource BooleanToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="37"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -925,13 +945,16 @@
                                  Text="{Binding WaterConsumptionForNextGroupOfFilters}"/>
                             <TextBlock Grid.Column="2"  Grid.Row="24" Text="м3/ч" Style="{StaticResource Text_Unit}" Margin="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
-                    </StackPanel>
-                </ScrollViewer>
+                         
+                        </StackPanel>
+
+                    </ScrollViewer>
             </GroupBox>
 
 
 
 
         </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

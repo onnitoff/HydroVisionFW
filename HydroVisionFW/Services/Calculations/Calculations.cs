@@ -56,7 +56,7 @@ namespace HydroVisionDesign.Services.Calculations
             RecalculationOfChangesInWaterQualityIndicators recalculationOfWaterIndicators = new RecalculationOfChangesInWaterQualityIndicators();
             if (DataStorage.Instance.TotalAlkalinity < 2) // для Al
             {
-                DataStorage.Instance.K_Al_Fe = 0.5;
+                DataStorage.Instance.K_Al_Fe = DataStorage.Instance.K_Al;
                 DataStorage.Instance.ResidualHardnessCarbonate = recalculationOfWaterIndicators.ResidualHardnessCarbonateAl(
                     DataStorage.Instance.TotalAlkalinity, DataStorage.Instance.K_Al_Fe);
                 DataStorage.Instance.ResidualHardnessNoCarbonate = recalculationOfWaterIndicators.ResidualHardnessNoCarbonateAl(
@@ -70,8 +70,8 @@ namespace HydroVisionDesign.Services.Calculations
             }
             else // для Fe
             {
-                DataStorage.Instance.K_Al_Fe = 0.35;
-                DataStorage.Instance.ResidualHardnessCarbonate = recalculationOfWaterIndicators.ResidualHardnessCarbonateFe(0.7);
+                DataStorage.Instance.K_Al_Fe = DataStorage.Instance.K_Fe;
+                DataStorage.Instance.ResidualHardnessCarbonate = recalculationOfWaterIndicators.ResidualHardnessCarbonateFe(DataStorage.Instance.ResidualHardnessCarbonate);
                 DataStorage.Instance.ResidualHardnessNoCarbonate = recalculationOfWaterIndicators.ResidualHardnessNoCarbonateFe(
                     DataStorage.Instance.NonCarbonateHardness, DataStorage.Instance.K_Al_Fe);
                 DataStorage.Instance.ResidualOverallHarndess = recalculationOfWaterIndicators.ResidualOverallHardnessFe(
@@ -85,25 +85,25 @@ namespace HydroVisionDesign.Services.Calculations
             }
 
             DataStorage.Instance.CationOnFirstStageFilter = recalculationOfWaterIndicators.CationOnFirstStageFilters(
-                   DataStorage.Instance.OverallHardness, DataStorage.Instance.Final_Na);
-            DataStorage.Instance.CationOnSecondStageFilter = recalculationOfWaterIndicators.CationOnSecondStageFilters(0.3);
+                   DataStorage.Instance.ResidualOverallHarndess, DataStorage.Instance.Final_Na);
+            DataStorage.Instance.CationOnSecondStageFilter = recalculationOfWaterIndicators.CationOnSecondStageFilters(DataStorage.Instance.CationOnSecondStageFilter);
 
             if (DataStorage.Instance.SumOfStrongAcidAnions < 2 && DataStorage.Instance.BoilerTypeFirst == 1 && DataStorage.Instance.BoilerTypeSecond == 1) // упрощенная схема
             {
                 DataStorage.Instance.AnionOnSecondStageFilterSimplified = recalculationOfWaterIndicators.AnionOnSimplifiedSecondStageFilters(
-                    DataStorage.Instance.ConcentrationSO, DataStorage.Instance.Final_Cl, DataStorage.Instance.Final_NO, DataStorage.Instance.K_Al_Fe,
+                    DataStorage.Instance.Final_SO, DataStorage.Instance.Final_Cl, DataStorage.Instance.Final_NO, DataStorage.Instance.K_Al_Fe,
                     DataStorage.Instance.SilicicAcidConcentration, DataStorage.Instance.ConcentrationCOBeforeDecarbonizer);
             }
             else if (DataStorage.Instance.SumOfStrongAcidAnions < 5) // двухступенчатая схема
             {
                 DataStorage.Instance.AnionOnFirstStageFilter = recalculationOfWaterIndicators.AnionOnFirstStageFilters(
-                    DataStorage.Instance.ConcentrationSO, DataStorage.Instance.Final_Cl, DataStorage.Instance.Final_NO, DataStorage.Instance.K_Al_Fe);
+                    DataStorage.Instance.Final_SO, DataStorage.Instance.Final_Cl, DataStorage.Instance.Final_NO, DataStorage.Instance.K_Al_Fe);
                 DataStorage.Instance.AnionOnSecondStageFilter = recalculationOfWaterIndicators.AnionOnSecondStageFilters(
                     DataStorage.Instance.SilicicAcidConcentration, DataStorage.Instance.ConcentrationCOBeforeDecarbonizer);
             }
 
             DataStorage.Instance.NaCationOnFilter = recalculationOfWaterIndicators.NaCationFilters(
-                DataStorage.Instance.OverallHardness);
+                DataStorage.Instance.ResidualOverallHarndess);
         }
 
         
