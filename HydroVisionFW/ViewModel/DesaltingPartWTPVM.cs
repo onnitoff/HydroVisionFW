@@ -977,9 +977,10 @@ namespace HydroVisionDesign.ViewModel
 
         public DesaltingPartWTPVM()
         {
+
             #region Команды
 
-            LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
+                  LeftBtnMAFCommand = new RelayCommand(OnLeftBtnMAFCommand);
             LeftDoubleBtnMAFCommand = new RelayCommand(OnLeftDoubleBtnMAFCommand);
 
             LeftBtnGridCommand = new RelayCommand(OnLeftBtnGridCommand);

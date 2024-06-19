@@ -22,8 +22,7 @@
     <Grid>
         <Border>
             <Border.Background>
-                <!--<ImageBrush ImageSource="/Resources/Images/BG_Perfomance.png"/>-->
-                <SolidColorBrush Color="Aqua"/>
+                <ImageBrush ImageSource="/Resources/Images/BG_Const.png"/>
             </Border.Background>
         </Border>
 

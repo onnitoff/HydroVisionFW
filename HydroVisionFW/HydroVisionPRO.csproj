@@ -221,6 +221,7 @@
     <Compile Include="Services\Calculations\CalcNa.cs" />
     <Compile Include="Services\Calculations\Calculations.cs" />
     <Compile Include="Services\Calculations\DesaltingScheme.cs" />
+    <Compile Include="Services\Converter\RelativePositionConverter.cs" />
     <Compile Include="Services\DataRepository\DataRepository.cs" />
     <Compile Include="Services\DataStorages\A1Storage.cs" />
     <Compile Include="Services\DataStorages\A2Storage.cs" />
@@ -403,6 +404,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\BG_Const.png" />
+    <Resource Include="Resources\Images\back_2.png" />
     <Resource Include="Resources\Images\Icon_128.ico" />
     <Resource Include="Resources\Images\BG_EquipmentWindow.png" />
     <Resource Include="Resources\Images\BG_DesaltingPart.png" />
