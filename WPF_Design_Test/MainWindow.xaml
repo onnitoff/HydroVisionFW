@@ -290,7 +290,10 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <ComboBox Style="{DynamicResource ComboBoxStyle1}" HorizontalAlignment="Left" Margin="410,258,0,0" VerticalAlignment="Top" Width="120"/>
+        
+        
+        <ComboBox Style="{DynamicResource ComboBoxStyle1}" HorizontalAlignment="Left" Margin="410,258,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ListBox x:Name="listBox" DisplayMemberPath="Name"/>
 
     </Grid>
 </Window>
