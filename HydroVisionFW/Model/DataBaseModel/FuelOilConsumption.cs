@@ -9,6 +9,7 @@ namespace HydroVisionFW.Model.DataBaseModel
     public class FuelOilConsumption
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public int Perfomance { get; set; }
         public int OilConsumption { get; set; }
     }

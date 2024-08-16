@@ -13,6 +13,6 @@ namespace HydroVisionFW.Model.DataBaseModel
         public int WaterConsumption { get; set; }
         public int Perfomance { get; set; }
         public int TurbineType { get; set; }
-        public Nullable<int> WaterConsumptionForNetworkHeaters { get; set; }
+        public int WaterConsumptionForNetworkHeaters { get; set; }
     }
 }

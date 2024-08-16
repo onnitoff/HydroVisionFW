@@ -211,6 +211,8 @@ namespace HydroVisionDesign.ViewModel
 
         #region Выбор оборудования
 
+        //public ObservableCollection<FuelOilConsumption> BoilerItems { get; set; }
+
         public ObservableCollection<Boilers> BoilerItems { get; set; }
         private Boilers _SelectedBoilerFirstItem;
         public Boilers SelectedBoilerFirstItem
@@ -342,6 +344,7 @@ namespace HydroVisionDesign.ViewModel
             ApplyCommand = new RelayCommand(OnApplyCommand);
             #endregion
 
+            //GetBoilersAsync();
             Task.Run(async () => await GetBoilersAsync());
             Task.Run(async () => await GetTurbineAsync());
             GetFuel();
@@ -354,8 +357,24 @@ namespace HydroVisionDesign.ViewModel
         private async Task GetBoilersAsync()
         {
             BoilerItems = new ObservableCollection<Boilers>();
+
+            //BoilerItems = new ObservableCollection<FuelOilConsumption>();
             using (var context = new WaterContext())
             {
+                //// Проверим, есть ли данные в таблице
+                //await context.FuelOilConsumption.ForEachAsync(boiler =>
+                //{
+                //    Application.Current.Dispatcher.Invoke(() =>
+                //    {
+                //        BoilerItems.Add(boiler);
+                //    });
+                //});
+
+
+
+
+
+
                 await context.Boilers.ForEachAsync(boiler =>
                 {
                     Application.Current.Dispatcher.Invoke(() =>
@@ -365,7 +384,7 @@ namespace HydroVisionDesign.ViewModel
                 });
                 if (BoilerItems.Count > 0)
                     SelectedBoilerFirstItem = BoilerItems[DataStorage.Instance.SelectedBoilerFirstItem - 1];
-                    SelectedBoilerSecondItem = BoilerItems[DataStorage.Instance.SelectedBoilerSecondItem - 1];
+                SelectedBoilerSecondItem = BoilerItems[DataStorage.Instance.SelectedBoilerSecondItem - 1];
             }
         }
 
@@ -376,6 +395,15 @@ namespace HydroVisionDesign.ViewModel
             TubineItems = new ObservableCollection<CoolingWaterFlowOnTurbine>();
             using (var context = new WaterContext())
             {
+                try
+                {
+                    var boilersList = await context.CoolingWaterFlowOnTurbine.ToListAsync();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+
                 await context.CoolingWaterFlowOnTurbine.ForEachAsync(turbine =>
                 {
                     Application.Current.Dispatcher.Invoke(() =>
