@@ -298,7 +298,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Water.db" />
+    <None Include="Water.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Resource Include="Resources\Fonts\Montserrat-Bold.ttf" />
     <Resource Include="Resources\Fonts\Montserrat-Regular.ttf" />
   </ItemGroup>
