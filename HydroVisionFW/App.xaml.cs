@@ -29,7 +29,6 @@ namespace HydroVisionFW
 
         private void CheckDatabaseConnection()
         {
-            string connectionString = "Data Source=example.db;Version=3;";
 
             try
             {

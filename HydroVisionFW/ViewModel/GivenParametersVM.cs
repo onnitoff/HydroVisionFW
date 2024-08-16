@@ -395,14 +395,6 @@ namespace HydroVisionDesign.ViewModel
             TubineItems = new ObservableCollection<CoolingWaterFlowOnTurbine>();
             using (var context = new WaterContext())
             {
-                try
-                {
-                    var boilersList = await context.CoolingWaterFlowOnTurbine.ToListAsync();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
 
                 await context.CoolingWaterFlowOnTurbine.ForEachAsync(turbine =>
                 {
