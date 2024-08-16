@@ -127,7 +127,7 @@ namespace HydroVisionDesign.Services.TestValues
             //DataStorage.Instance.TurbineType = 8;
             BoilerStorage.Instance.NumberOfTurbinesFirst = 3;
             //DataStorage.Instance.FuelType = 1;
-            BoilerStorage.Instance.VacationCouple = 0;
+            //BoilerStorage.Instance.VacationCouple = 0;
             BoilerStorage.Instance.Losses = 0;
             BoilerStorage.Instance.BlowdownLosses = 0.5;
 
